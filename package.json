@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "product-test": "jest -- ./Product/product.test.js",
+    "product-test": "jest -- ./Product/test.js",
     "reviews-test": "jest -- ./Reviews/reviews.test.js",
     "related-test": "jest -- ./Related/related.test.js",
     "questions-test": "jest -- ./Questions/questions.test.js",
