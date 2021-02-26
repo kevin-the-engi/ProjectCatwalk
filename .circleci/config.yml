@@ -6,7 +6,7 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
 jobs:
-  Products:
+  run_tests:
     docker:
       - image: circleci/node:12
     steps:
@@ -18,9 +18,22 @@ jobs:
           name: Product Tests
           command:
             npm run product-test
+      - run:
+          name: Reviews Tests
+          command:
+            npm run reviews-test
+      - run:
+          name: Questions Tests
+          command:
+            npm run questions-test
+      - run:
+          name: Related Tests
+          command:
+            npm run related-test
+
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - Products
+      - run_tests
