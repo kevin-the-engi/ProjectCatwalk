@@ -5,8 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch",
-    "start": "nodemon server/server.js"
+    "product-dev": "webpack --watch --config product/webpack.config.js",
+    "reviews-dev": "webpack --watch --config reviews/webpack.config.js",
+    "questions-dev": "webpack --watch --config questions/webpack.config.js",
+    "related-dev": "webpack --watch --config related/webpack.config.js",
+    "product": "nodemon product/server.js",
+    "reviews": "nodemon reviews/server.js",
+    "questions": "nodemon questions/server.js",
+    "related": "nodemon related/server.js"
   },
   "repository": {
     "type": "git",
