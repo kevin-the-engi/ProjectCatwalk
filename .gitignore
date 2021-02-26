@@ -5,6 +5,7 @@ node_modules/
 config.js
 Product/product.config.js
 Questions/questions.config.js
+Reviews/reviews.config.js
 
 # Logs
 logs
