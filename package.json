@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "product-test": "jest -- ./Product/product.test.js",
+    "reviews-test": "jest -- ./Reviews/reviews.test.js",
+    "related-test": "jest -- ./Related/related.test.js",
+    "questions-test": "jest -- ./Questions/questions.test.js",
     "product-dev": "webpack --watch --config product/webpack.config.js",
     "reviews-dev": "webpack --watch --config reviews/webpack.config.js",
     "questions-dev": "webpack --watch --config questions/webpack.config.js",
@@ -34,6 +37,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.13.0",
     "@babel/preset-env": "^7.13.5",
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
@@ -50,5 +54,11 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./Product/enzyme.config.js", "./Reviews/enzyme.config.js", "./Questions/enzyme.config.js", "./Related/enzyme.config.js"
+    ]
   }
 }
+
