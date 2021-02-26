@@ -7,13 +7,17 @@ orbs:
 # Orchestrate or schedule a set of jobs
 jobs:
   Products:
-  docker:
-        - image: alpine:3.7
+    docker:
+      - image: alpine:3.7
     steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
       - run:
           name: Product Tests
-          command: |
-            jest -- ./Product/product.test.js
+          command:
+            npm run product-test
 workflows:
   # Name the workflow "welcome"
   welcome:
