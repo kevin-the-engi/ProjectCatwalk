@@ -4,6 +4,7 @@ node_modules/
 # API Keys
 config.js
 Product/product.config.js
+Questions/questions.config.js
 
 # Logs
 logs
