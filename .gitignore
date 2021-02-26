@@ -3,6 +3,7 @@ node_modules/
 
 # API Keys
 config.js
+Product/config.js
 
 # Logs
 logs
