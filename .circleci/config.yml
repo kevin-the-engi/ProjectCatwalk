@@ -11,9 +11,9 @@ jobs:
       - image: circleci/node:12
     steps:
       - checkout
-      # - run:
-      #     name: Install dependencies
-      #     command: npm install
+      - run:
+          name: Install dependencies
+          command: npm install
       - run:
           name: Product Tests
           command:
