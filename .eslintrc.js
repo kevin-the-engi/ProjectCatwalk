@@ -23,5 +23,8 @@ module.exports = {
         "react"
     ],
     "rules": {
+    },
+    "resolve": {
+      "extensions": ['.js', '.jsx']
     }
 };

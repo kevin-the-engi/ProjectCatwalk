@@ -9,7 +9,7 @@ const port = 3000
 
 app.use(express.json())
 
-app.use(express.static('/Users/Ika/Work/frontend-capstone/public'))
+app.use(express.static(path.join(__dirname, '../public')))
 
 app.use('/', product.route)
 app.use('/', reviews.route)

@@ -58,10 +58,15 @@
       "./Related/enzyme.config.js"
     ],
     "collectCoverage": true,
-    "collectCoverageFrom": [ "**/Product/component/*.{js,jsx}", "**/Questions/component/*.{js,jsx}", "**/Related/component/*.{js,jsx}",  "**/Reviews/component/*.{js,jsx}",
-    "!**/node_modules/**",
+    "collectCoverageFrom": [
+      "**/Product/component/*.{js,jsx}",
+      "**/Questions/component/*.{js,jsx}",
+      "**/Related/component/*.{js,jsx}",
+      "**/Reviews/component/*.{js,jsx}",
+      "!**/node_modules/**",
       "!**/tools/**",
       "!**/build/**",
-      "!**/docs/**"]
+      "!**/docs/**"
+    ]
   }
 }

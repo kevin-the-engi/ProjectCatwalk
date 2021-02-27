@@ -5,8 +5,8 @@ import Questions from '../../Questions/component/Questions.jsx';
 import Related from '../../Related/component/RelatedItems.jsx';
 import Reviews from '../../Reviews/component/Reviews.jsx'
 
-ReactDOM.render(
-  // insert your component here to test individually, but delete before merging
-  <div>Hello World</div>,
-  document.getElementById('app')
-)
+// ReactDOM.render(
+//   // insert your component here to test individually, but delete before merging
+//   <div>Hello World</div>,
+//   document.getElementById('app')
+// )
