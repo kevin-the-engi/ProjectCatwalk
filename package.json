@@ -8,14 +8,8 @@
     "reviews-test": "jest --coverage ./Reviews/reviews.test.js",
     "related-test": "jest --coverage ./Related/related.test.js",
     "questions-test": "jest --coverage ./Questions/questions.test.js",
-    "product-dev": "webpack --watch --config ./Product/webpack.config.js",
-    "reviews-dev": "webpack --watch --config ./Reviews/webpack.config.js",
-    "questions-dev": "webpack --watch --config ./Questions/webpack.config.js",
-    "related-dev": "webpack --watch --config ./Related/webpack.config.js",
-    "product": "nodemon ./Product/server.js",
-    "reviews": "nodemon ./Reviews/server.js",
-    "questions": "nodemon ./Questions/server.js",
-    "related": "nodemon ./Related/server.js"
+    "webpack": "webpack --watch",
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
