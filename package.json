@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "product-test": "jest -- ./Product/test.js",
-    "reviews-test": "jest -- ./Reviews/reviews.test.js",
-    "related-test": "jest -- ./Related/related.test.js",
-    "questions-test": "jest -- ./Questions/questions.test.js",
+    "product-test": "jest --coverage ./Product/test.js",
+    "reviews-test": "jest --coverage ./Reviews/reviews.test.js",
+    "related-test": "jest --coverage ./Related/related.test.js",
+    "questions-test": "jest --coverage ./Questions/questions.test.js",
     "product-dev": "webpack --watch --config ./Product/webpack.config.js",
     "reviews-dev": "webpack --watch --config ./Reviews/webpack.config.js",
     "questions-dev": "webpack --watch --config ./Questions/webpack.config.js",
@@ -31,6 +31,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "jest-cli": "^26.6.3",
     "nodemon": "^2.0.7",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
@@ -57,8 +58,16 @@
   },
   "jest": {
     "setupFiles": [
-      "./Product/enzyme.config.js", "./Reviews/enzyme.config.js", "./Questions/enzyme.config.js", "./Related/enzyme.config.js"
-    ]
+      "./Product/enzyme.config.js",
+      "./Reviews/enzyme.config.js",
+      "./Questions/enzyme.config.js",
+      "./Related/enzyme.config.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [ "**/Product/component/*.{js,jsx}", "**/Questions/component/*.{js,jsx}", "**/Related/component/*.{js,jsx}",  "**/Reviews/component/*.{js,jsx}",
+    "!**/node_modules/**",
+      "!**/tools/**",
+      "!**/build/**",
+      "!**/docs/**"]
   }
 }
-
