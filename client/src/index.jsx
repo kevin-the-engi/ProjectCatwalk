@@ -7,6 +7,6 @@ import Reviews from '../../Reviews/component/Reviews.jsx'
 
 ReactDOM.render(
   // insert your component here to test individually, but delete before merging
-  <Product />,
+  <div>Hello World</div>,
   document.getElementById('app')
 )
