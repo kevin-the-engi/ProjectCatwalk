@@ -20,4 +20,6 @@ class Questions extends React.Component {
   }
 }
 
+export default Questions;
+
 ReactDOM.render(<Questions />, document.getElementById('app'));
