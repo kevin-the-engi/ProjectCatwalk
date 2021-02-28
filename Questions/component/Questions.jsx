@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from './SearchBar.jsx';
-import QList from './QList/QList.jsx';
+import QList from './QuestionList/QList.jsx';
 import dummyData from '../dummyData.js';
 
 class Questions extends React.Component {
@@ -24,5 +24,3 @@ class Questions extends React.Component {
 }
 
 export default Questions;
-
-ReactDOM.render(<Questions />, document.getElementById('app'));

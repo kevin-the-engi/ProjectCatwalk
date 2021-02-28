@@ -1,5 +1,5 @@
 import React from 'react';
-import QListA from './QListA.jsx';
+import QListA from './AnswerList/QListA.jsx';
 
 const QListQ = ({question}) => {
   console.log(question);

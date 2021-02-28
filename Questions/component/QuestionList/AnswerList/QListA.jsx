@@ -1,4 +1,6 @@
 import React from 'react';
+import HelpfulA from './HelpfulA.jsx';
+import ReportA from './ReportA.jsx';
 
 const QListA = (props) => {
   // console.log(props);
@@ -13,7 +15,7 @@ const QListA = (props) => {
   return(
     <div>
       <p>A: {props.answer.body}</p>
-      <p>by {props.answer.answerer_name}, {formattedDate}</p>
+      <p>by {props.answer.answerer_name}, {formattedDate} |</p>
     </div>
   );
 };
