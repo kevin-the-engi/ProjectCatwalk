@@ -1,0 +1,13 @@
+.productCard {
+    height: 100%;
+    width: 100%;
+    
+}
+
+.imageContainer {
+    height: 350px;
+}
+
+.previewImage {
+    max-height: 100%;
+}

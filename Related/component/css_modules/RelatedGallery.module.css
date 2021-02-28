@@ -1,0 +1,8 @@
+.relatedContainer {
+    display: flex;
+    box-sizing: border-box;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    overflow: auto hidden;
+    height: 500px;
+}
