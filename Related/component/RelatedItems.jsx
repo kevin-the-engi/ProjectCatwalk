@@ -1,5 +1,4 @@
 import React from 'react';
-import dummyData from './DummyData.js';
 import RelatedGallery from './RelatedGallery.jsx'
 import axios from 'axios';
 
@@ -8,25 +7,21 @@ class RelatedItems extends React.Component {
         super(props)
         this.state = {
             product_id: '',
-            relatedItems: [],
-            productsData: dummyData.productsData,
-            stylesData: dummyData.stylesData,
-            ratingsData: [],
-            compiledData: []    
+            relatedItems: []  
         }
     }
 
     componentDidMount() {
-        // hardcoded product_id temporarily for MVP functionality testing
+        // hardcoded product_id temporarily for MVP functionality testing, otherwise pass in the product_id from props
         this.setState({product_id: 14392})
         axios.get('/related', {
             params: {
-                // hardcoded product_id for MVP functionlaity testing
+                // hardcoded product_id for MVP functionality testing
                 product_id: 14392
             }
         })
             .then((response) => {
-                console.log('response from axios.get: ', response);
+                console.log('response from axios.get: ', response.data);
                 this.setState({relatedItems: response.data})
             })
             .catch((error) => {
@@ -35,14 +30,11 @@ class RelatedItems extends React.Component {
     }
 
     render() {
-        // console.log(dummyData);
-        // console.log(dummyData.productsData);
-        // console.log('this.state.productsData: ', this.state.productsData); 
-        // console.log('styles: ', this.state.stylesData[0].results[0].original_price);
-        // console.log('styles: ', this.stylesData[0].results[0].original_price);
+        console.log('this.state.relatedItems: ', this.state.relatedItems);
         return (
             <div>
-                <RelatedGallery productsData={this.state.productsData} stylesData={this.state.stylesData} ratingsData={this.state.ratingsData}/>
+                Related Products
+                <RelatedGallery relatedItems={this.state.relatedItems}/>
             </div>
         )
     }

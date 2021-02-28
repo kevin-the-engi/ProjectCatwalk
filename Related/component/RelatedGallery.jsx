@@ -5,7 +5,7 @@ import styles from './css_modules/RelatedGallery.module.css';
 const RelatedGallery = (props) => {
     return (
         <div className={styles.relatedContainer}>
-            <ProductCard productsData={props.productsData} stylesData={props.stylesData} ratingsData={props.ratingsData}/>
+            {props.relatedItems.map((relatedItem) => <ProductCard relatedItem={relatedItem}/>)}
         </div>
     )
 }

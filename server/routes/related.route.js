@@ -21,7 +21,6 @@ route.get('/related', (request, response) => {
             })
         }
     })
-
 })
 
 // helper function to retrieve product id's of all related items, given the product id of current item being displayed
@@ -79,12 +78,11 @@ let getRelatedProductData = (productIdsArray, callback) => {
                         .then((response) => {
                             eachProduct.reviews = response.data;
                             relatedProductData.push(eachProduct);
-                            // console.log('eachProduct: ', eachProduct);
-                            // console.log('relatedProductData: ', relatedProductData);
-                            if (i === productIdsArray.length - 1) {
-                                // console.log('final return data: ', relatedProductData);
+                           
+                            if (relatedProductData.length === productIdsArray.length) {
                                 callback(null, relatedProductData);
                             }
+                            return relatedProductData;
                         })
                         .catch((error) => {
                             console.log('error from /reviews/meta GET request: ');

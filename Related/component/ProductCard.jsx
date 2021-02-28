@@ -7,8 +7,8 @@ const ProductCard = (props) => {
     return (
         <div className={styles.productCard}>
             <a>
-                <PreviewImage stylesData={props.stylesData}/>
-                <ProductInformation productsData={props.productsData} stylesData={props.stylesData} ratingsData={props.ratingsData}/>
+                <PreviewImage relatedItem={props.relatedItem}/>
+                <ProductInformation relatedItem={props.relatedItem}/>
             </a>
         </div>
     )
