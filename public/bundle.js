@@ -52,24 +52,36 @@ eval("\n\n//# sourceURL=webpack://frontend-capstone/./Related/component/RelatedI
 
 /***/ }),
 
+/***/ "./Reviews/component/IndividualReview.jsx":
+/*!************************************************!*\
+  !*** ./Reviews/component/IndividualReview.jsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar IndividualReview = function IndividualReview(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Summary: \", props.review.summary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Body: \", props.review.body));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IndividualReview);\n\n//# sourceURL=webpack://frontend-capstone/./Reviews/component/IndividualReview.jsx?");
+
+/***/ }),
+
 /***/ "./Reviews/component/Reviews.jsx":
 /*!***************************************!*\
   !*** ./Reviews/component/Reviews.jsx ***!
   \***************************************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack://frontend-capstone/./Reviews/component/Reviews.jsx?");
-
-/***/ }),
-
-/***/ "./client/src/index.jsx":
-/*!******************************!*\
-  !*** ./client/src/index.jsx ***!
-  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _Product_component_Product_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Product/component/Product.jsx */ \"./Product/component/Product.jsx\");\n/* harmony import */ var _Questions_component_Questions_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Questions/component/Questions.jsx */ \"./Questions/component/Questions.jsx\");\n/* harmony import */ var _Related_component_RelatedItems_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Related/component/RelatedItems.jsx */ \"./Related/component/RelatedItems.jsx\");\n/* harmony import */ var _Related_component_RelatedItems_jsx__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_Related_component_RelatedItems_jsx__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _Reviews_component_Reviews_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Reviews/component/Reviews.jsx */ \"./Reviews/component/Reviews.jsx\");\n/* harmony import */ var _Reviews_component_Reviews_jsx__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Reviews_component_Reviews_jsx__WEBPACK_IMPORTED_MODULE_5__);\n\n\n\n\n\n // ReactDOM.render(\n//   // insert your component here to test individually, but delete before merging\n//   <div>Hello World</div>,\n//   document.getElementById('app')\n// )\n\n//# sourceURL=webpack://frontend-capstone/./client/src/index.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _ReviewsList_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReviewsList.jsx */ \"./Reviews/component/ReviewsList.jsx\");\n/* harmony import */ var _reviewData_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reviewData.js */ \"./Reviews/component/reviewData.js\");\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\n // import ReactDOM from 'react-dom'\n\n\n\n\nvar Reviews = /*#__PURE__*/function (_React$Component) {\n  _inherits(Reviews, _React$Component);\n\n  var _super = _createSuper(Reviews);\n\n  function Reviews(props) {\n    var _this;\n\n    _classCallCheck(this, Reviews);\n\n    _this = _super.call(this, props);\n    _this.state = {\n      reviewData: []\n    };\n    return _this;\n  }\n\n  _createClass(Reviews, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      this.setState({\n        reviewData: _reviewData_js__WEBPACK_IMPORTED_MODULE_2__.default.results\n      });\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n        id: \"reviews\"\n      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewsList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {\n        reviewList: this.state.reviewData\n      }));\n    }\n  }]);\n\n  return Reviews;\n}(react__WEBPACK_IMPORTED_MODULE_0__.Component);\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews); // ReactDOM.render(\n//   // insert your component here to test individually, but delete before merging\n//   <Reviews />,\n//   document.getElementById('app')\n// )\n\n//# sourceURL=webpack://frontend-capstone/./Reviews/component/Reviews.jsx?");
+
+/***/ }),
+
+/***/ "./Reviews/component/ReviewsList.jsx":
+/*!*******************************************!*\
+  !*** ./Reviews/component/ReviewsList.jsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
 
 /***/ }),
 
