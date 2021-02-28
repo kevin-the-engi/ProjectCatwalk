@@ -10,5 +10,3 @@ import Reviews from '../../Reviews/component/Reviews.jsx'
 //   <div>Hello World</div>,
 //   document.getElementById('app')
 // )
-
-ReactDOM.render(<Reviews />, document.getElementById('app'))
