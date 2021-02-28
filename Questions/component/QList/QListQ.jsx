@@ -1,9 +1,10 @@
 import React from 'react';
 
-const QListQ = (props) => {
-  console.log(props);
+const QListQ = ({question}) => {
+  console.log(question);
   return(
     <div>
+      Q: {question.question_body}
 
     </div>
   )

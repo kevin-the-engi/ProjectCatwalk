@@ -38,7 +38,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar QListQ = function QListQ(props) {\n  console.log(props);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QListQ);\n\n//# sourceURL=webpack://frontend-capstone/./Questions/component/QList/QListQ.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar QListQ = function QListQ(_ref) {\n  var question = _ref.question;\n  console.log(question);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Q: \", question.question_body);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QListQ);\n\n//# sourceURL=webpack://frontend-capstone/./Questions/component/QList/QListQ.jsx?");
 
 /***/ }),
 
