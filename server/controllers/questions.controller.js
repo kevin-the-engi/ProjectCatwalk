@@ -1,12 +1,10 @@
-const TOKEN = require('../../Questions/component/config.js');
+const TOKEN = require('../../Questions/config.js');
 const axios = require('axios');
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 
 const options = {
   headers: {
-    'Access-Control-Allow-Headers' : "*",
-    'User-Agent': 'request',
-    'Authorization': `Bearer ${TOKEN}`
+    'Authorization': TOKEN
   }
 };
 
@@ -15,16 +13,31 @@ console.log(options);
 const readQuestions = (req, res) => {
   let id = req.query.product_id;
   let query = API + req.path + '?product_id=' + id;
-  // console.log(query);
+  console.log(query);
 
-  axios.get(query, options)
-    .then(questions => {
-      res.status(200).send(questions);
-    })
-    .catch(err => {
-      console.log(err);
-      res.sendStatus(500);
-    })
+  axios({
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${id}`,
+    headers: {
+      Authorization: TOKEN
+    }
+  })
+  .then(questions => {
+    res.status(200).send(questions);
+  })
+  .catch(err => {
+    console.log(err);
+    res.send(500);
+  })
+
+  // axios.get(query, options)
+  //   .then(questions => {
+  //     res.status(200).send(questions);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.sendStatus(500);
+  //   })
   // res.send('Calm down, I am trying to GET your questions');
 };
 
