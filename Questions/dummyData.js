@@ -18,33 +18,68 @@ const dummyData = {
         // ...
       }
     }},
-    {
-      "question_id": 38,
-      "question_body": "How long does it last?",
-      "question_date": "2019-06-28T00:00:00.000Z",
-      "asker_name": "funnygirl",
-      "question_helpfulness": 2,
-      "reported": false,
-      "answers": {
-        70: {
-          "id": 70,
-          "body": "Some of the seams started splitting the first time I wore it!",
-          "date": "2019-11-28T00:00:00.000Z",
-          "answerer_name": "sillyguy",
-          "helpfulness": 6,
-          "photos": [],
-        },
-        78: {
-          "id": 78,
-          "body": "9 lives",
-          "date": "2019-11-12T00:00:00.000Z",
-          "answerer_name": "iluvdogz",
-          "helpfulness": 31,
-          "photos": [],
-        }
+  {
+    "question_id": 38,
+    "question_body": "How long does it last?",
+    "question_date": "2019-06-28T00:00:00.000Z",
+    "asker_name": "funnygirl",
+    "question_helpfulness": 2,
+    "reported": false,
+    "answers": {
+      70: {
+        "id": 70,
+        "body": "Some of the seams started splitting the first time I wore it!",
+        "date": "2019-11-28T00:00:00.000Z",
+        "answerer_name": "sillyguy",
+        "helpfulness": 6,
+        "photos": [],
+      },
+      78: {
+        "id": 78,
+        "body": "9 lives",
+        "date": "2019-11-12T00:00:00.000Z",
+        "answerer_name": "iluvdogz",
+        "helpfulness": 31,
+        "photos": [],
       }
-    },
-  ]
+    }
+  },
+  {
+    "question_id": 90,
+    "question_body": "Is it edible?",
+    "question_date": "2019-06-28T00:00:00.000Z",
+    "asker_name": "FlyingPig",
+    "question_helpfulness": 4,
+    "reported": false,
+    "answers": {
+      97: {
+        "id": 97,
+        "body": "It's actually tasty!",
+        "date": "2019-11-28T00:00:00.000Z",
+        "answerer_name": "chillPhil",
+        "helpfulness": 6,
+        "photos": [],
+      },
+    }
+  },
+  {
+    "question_id": 50,
+    "question_body": "Can it block kryptonite?",
+    "question_date": "2019-06-28T00:00:00.000Z",
+    "asker_name": "Farmboy",
+    "question_helpfulness": 2,
+    "reported": false,
+    "answers": {
+      30: {
+        "id": 30,
+        "body": "No.",
+        "date": "2019-11-28T00:00:00.000Z",
+        "answerer_name": "TheDarkestKnightintheNight",
+        "helpfulness": 10,
+        "photos": [],
+      },
+    }
+  }]
 }
 
 export default dummyData;
