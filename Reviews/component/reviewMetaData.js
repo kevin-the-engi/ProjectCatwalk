@@ -1,4 +1,4 @@
-{
+var reviewMetaData = {
   "product_id": "14931",
   "ratings": {
       "1": "5",
