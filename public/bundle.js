@@ -31,6 +31,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./Questions/component/QList/QListA.jsx":
+/*!**********************************************!*\
+  !*** ./Questions/component/QList/QListA.jsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar QListA = function QListA(props) {\n  // console.log(props);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"A: \", props.answer.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"by \", props.answer.answerer_name));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QListA);\n\n//# sourceURL=webpack://frontend-capstone/./Questions/component/QList/QListA.jsx?");
+
+/***/ }),
+
 /***/ "./Questions/component/QList/QListQ.jsx":
 /*!**********************************************!*\
   !*** ./Questions/component/QList/QListQ.jsx ***!
@@ -38,7 +49,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar QListQ = function QListQ(_ref) {\n  var question = _ref.question;\n  console.log(question);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Q: \", question.question_body);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QListQ);\n\n//# sourceURL=webpack://frontend-capstone/./Questions/component/QList/QListQ.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _QListA_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QListA.jsx */ \"./Questions/component/QList/QListA.jsx\");\n\n\n\nvar QListQ = function QListQ(_ref) {\n  var question = _ref.question;\n  console.log(question);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"Q: \", question.question_body, \" \"), Object.keys(question.answers).map(function (answer) {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QListA_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {\n      key: answer,\n      answer: question.answers[answer]\n    });\n  }));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QListQ);\n\n//# sourceURL=webpack://frontend-capstone/./Questions/component/QList/QListQ.jsx?");
 
 /***/ }),
 
