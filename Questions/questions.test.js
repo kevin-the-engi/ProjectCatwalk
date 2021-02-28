@@ -5,6 +5,7 @@ import Questions from './component/Questions.jsx';
 import SearchBar from './component/SearchBar.jsx';
 import QList from './component/QuestionList/QList.jsx';
 import QListQ from './component/QuestionList/QListQ.jsx';
+import QListA from './component/QuestionList/AnswerList/QListA.jsx';
 
 describe('Questions', () => {
   let wrapper;
@@ -13,11 +14,11 @@ describe('Questions', () => {
     wrapper = shallow(<Questions />);
   });
 
-  it('should initiate SearchBar component', () => {
+  it('should contain SearchBar component', () => {
     expect(wrapper.containsMatchingElement(<SearchBar />)).toBe(true);
   });
 
-  it('should initiate QList Component', () => {
+  it('should contain QList Component', () => {
     expect(wrapper.containsMatchingElement(<QList />)).toBe(true);
   });
 
@@ -58,4 +59,26 @@ describe('QuestionList', () => {
 
     expect(wrapper.containsMatchingElement(<QListQ />)).toBe(true);
   });
-})
+});
+
+describe('QListQ', () => {
+  const question = {
+    question_body: 'How is your day?',
+    answers: {
+      70: { body: 'Pretty good.' },
+      71: { body: 'Meh.' } }
+  };
+
+  it('should render each question item correctly', () => {
+
+    const wrapper = shallow(<QListQ question={question} />);
+
+    expect(wrapper.props().children[0]).toEqual(<p>Q: {question.question_body}</p>);
+  });
+
+  it('should contain QListA component', () => {
+    const wrapper = shallow(<QListQ question={question} />);
+
+    expect(wrapper.containsMatchingElement(<QListA />)).toBe(true);
+  });
+});

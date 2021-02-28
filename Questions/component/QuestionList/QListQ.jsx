@@ -1,16 +1,16 @@
 import React from 'react';
 import QListA from './AnswerList/QListA.jsx';
 
-const QListQ = ({question}) => {
-  console.log(question);
+const QListQ = (props) => {
+  // console.log(question);
   return(
     <div>
-      <p>Q: {question.question_body} </p>
+      <p>Q: {props.question.question_body}</p>
 
-      {Object.keys(question.answers).map(answer =>
+      {Object.keys(props.question.answers).map(answer =>
         <QListA
           key={answer}
-          answer={question.answers[answer]}
+          answer={props.question.answers[answer]}
         />
       )}
     </div>
