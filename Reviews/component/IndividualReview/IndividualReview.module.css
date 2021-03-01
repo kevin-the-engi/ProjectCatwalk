@@ -1,0 +1,19 @@
+.summary {
+  font-weight: bold;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerRight {
+  display: flex;
+  justify-content: space-between;
+}
+
+.individualReview {
+  border-bottom: 1px solid grey;
+  font-family: Arial;
+}
+
