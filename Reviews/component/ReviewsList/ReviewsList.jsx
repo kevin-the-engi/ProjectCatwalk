@@ -1,5 +1,5 @@
 import React from 'react'
-import IndividualReview from './IndividualReview.jsx'
+import IndividualReview from '../IndividualReview/IndividualReview.jsx'
 
 const ReviewsList = (props) => {
   return (
