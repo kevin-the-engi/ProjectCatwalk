@@ -36,6 +36,7 @@ class QModal extends React.Component {
         <div id="modal-main">
           <form onSubmit={this.handleSubmit}>
             <h2>Add a Question</h2>
+            <sub>About the [Product Name]</sub>
 
             <p><label>Question:</label><br />
             <textarea onChange={this.handleChange} name="question" value={this.state.question}
