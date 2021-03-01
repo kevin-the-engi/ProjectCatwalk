@@ -1,0 +1,36 @@
+.info {
+  height: 625px;
+  width: 480px;
+  border:2px solid black;
+  text-align: left;
+  grid-column: 2 / 9;
+}
+
+p {
+  max-width: 100%;
+  height: auto;
+}
+
+.reviews {
+  height: 25px;
+  width: 200px;
+  border:2px solid black;
+}
+
+.category {
+  font-family: "adobe-clean", sans-serif;
+  font-size: 16px;
+}
+
+.name {
+  font-family: "adobe-clean", sans-serif;
+  font-size: 40px;
+}
+
+.description2 {
+  height: 250px;
+  width: 480px;
+  border:2px solid black;
+  grid-row: 5;
+  grid-column: 2 / 9;
+}
