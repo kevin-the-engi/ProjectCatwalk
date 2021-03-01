@@ -4,7 +4,7 @@ import styles from '../css/Questions.css';
 import SearchBar from './SearchBar.jsx';
 import QList from './QuestionList/QList.jsx';
 import MoreQ from './MoreQ.jsx';
-import QAdd from './QAdd.jsx';
+import QAdd from './QAdd/QAdd.jsx';
 import dummyData from '../dummyData.js';
 
 class Questions extends React.Component {
@@ -14,12 +14,18 @@ class Questions extends React.Component {
       questions: [],
       answers: []
     }
+
+    this.addQuestion = this.addQuestion.bind(this);
   }
 
   componentDidMount() {
     this.setState({
       questions: dummyData.results
     })
+  }
+
+  addQuestion(questionData) {
+    console.log(questionData);
   }
 
   render() {
@@ -36,7 +42,7 @@ class Questions extends React.Component {
 
         <div className="footer">
           <MoreQ />
-          <QAdd />
+          <QAdd addQ={this.addQuestion}/>
         </div>
       </div>
     )
