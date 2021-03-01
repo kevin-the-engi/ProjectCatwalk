@@ -4,6 +4,9 @@ node_modules/
 # API Keys
 config.js
 
+# Bundle
+bundle.js
+
 # Logs
 logs
 *.log
