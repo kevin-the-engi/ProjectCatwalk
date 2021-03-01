@@ -7,7 +7,7 @@ const IndividualReview = (props) => {
     <div className={styles.individualReview}>
       <div className={styles.header}>
         <div>
-        Star Rating
+        {props.review.rating}
         </div>
         <div className={styles.headerRight}>
           <div>
@@ -25,7 +25,7 @@ const IndividualReview = (props) => {
         {props.review.body}
       </div>
       <div>
-        Helpful and report
+        Helpful? Yes ({props.review.helpfulness}) | Report
       </div>
     </div>
   )
