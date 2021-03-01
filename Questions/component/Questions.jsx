@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from '../css/Questions.css';
-import SearchBar from './SearchBar.jsx';
+import SearchBar from './SearchBar/SearchBar.jsx';
 import QList from './QuestionList/QList.jsx';
 import MoreQ from './MoreQ.jsx';
 import QAdd from './QAdd/QAdd.jsx';
@@ -16,6 +16,7 @@ class Questions extends React.Component {
     }
 
     this.addQuestion = this.addQuestion.bind(this);
+    this.addAnswer = this.addAnswer.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,10 @@ class Questions extends React.Component {
 
   addQuestion(questionData) {
     console.log(questionData);
+  }
+
+  addAnswer(answerData) {
+    console.log(answerData);
   }
 
   render() {

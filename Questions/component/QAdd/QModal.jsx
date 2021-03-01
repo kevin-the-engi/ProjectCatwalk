@@ -21,8 +21,6 @@ class QModal extends React.Component {
     this.setState({
       [field]: value
     })
-
-    console.log(this.state);
   }
 
   handleSubmit(event) {
