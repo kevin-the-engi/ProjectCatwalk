@@ -2,8 +2,10 @@ const { default: axios } = require('axios')
 var express = require('express')
 var app = express()
 var route = express.Router()
+// Tester should copy/paste their own API key here
 var API_KEY = require('../../Related/config.js');
 
+// GET request handler
 route.get('/related', (request, response) => {
     console.log('request product_id: ', request.query.product_id);
     getRelatedProductIds(request.query.product_id, (error, productIds) => {
