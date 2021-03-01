@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../css/MoreQ.css';
 
 class MoreQ extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class MoreQ extends React.Component {
 
   render() {
     return(
-      <button onClick={this.handleClick}>More Questions</button>
+      <button id="MoreQ" onClick={this.handleClick}><h3>More Answered Questions</h3></button>
     )
   }
 };
