@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '/Users/Ika/Work/frontend-capstone/Product/component/PGallery.module.css'
+import styles from './PGallery.module.css'
 
 const Gallery = () => (
   <section>
