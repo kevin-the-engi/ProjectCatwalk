@@ -1,11 +1,18 @@
 import React from 'react';
 import QListA from './AnswerList/QListA.jsx';
+import HelpfulQ from './HelpfulQ.jsx';
+import AAdd from './AAdd.jsx';
 
 const QListQ = (props) => {
-  // console.log(question);
+  // console.log(props);
   return(
-    <div>
-      <p>Q: {props.question.question_body}</p>
+    <div id="question">
+      Q: {props.question.question_body}
+
+      <div id="questionSide">
+        <HelpfulQ helpful={props.question.question_helpfulness}/>
+        <AAdd />
+      </div>
 
       {Object.keys(props.question.answers).map(answer =>
         <QListA
