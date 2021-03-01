@@ -17,6 +17,8 @@ class Questions extends React.Component {
 
     this.addQuestion = this.addQuestion.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
+    this.getAnswers = this.getAnswers.bind(this);
+    this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +35,14 @@ class Questions extends React.Component {
     console.log(answerData);
   }
 
+  getAnswers(questionID) {
+
+  }
+
+  updateHelpfulQ() {
+
+  }
+
   render() {
     return (
       <div className="container">
@@ -42,7 +52,11 @@ class Questions extends React.Component {
         </div>
 
         <div className="body">
-          <QList qData={this.state.questions} />
+          <QList
+            qData={this.state.questions}
+            getAnswers={this.getAnswers}
+            updateHelpfulQ={this.updateHelpfulQ}
+          />
         </div>
 
         <div className="footer">

@@ -80,7 +80,7 @@ let getRelatedProductData = (productIdsArray, callback) => {
                         .then((response) => {
                             eachProduct.reviews = response.data;
                             relatedProductData.push(eachProduct);
-                           
+
                             if (relatedProductData.length === productIdsArray.length) {
                                 callback(null, relatedProductData);
                             }
@@ -98,7 +98,7 @@ let getRelatedProductData = (productIdsArray, callback) => {
             .catch((error) => {
                 console.log('error from /styles GET request: ', error.message);
             })
-    
+
     }
 }
 

@@ -5,12 +5,17 @@ import AAdd from './AAdd.jsx';
 
 const QListQ = (props) => {
   // console.log(props);
+  const questionID = props.question.question_id;
+  // send questionID to top component to get answers
   return(
     <div id="question">
       Q: {props.question.question_body}
 
       <div id="questionSide">
-        <HelpfulQ helpful={props.question.question_helpfulness}/>
+        <HelpfulQ
+          helpful={props.question.question_helpfulness}
+          updateHelpfulQ={props.updateHelpfulQ}
+        />
         <AAdd />
       </div>
 

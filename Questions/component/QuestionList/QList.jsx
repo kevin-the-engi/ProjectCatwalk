@@ -10,6 +10,8 @@ const QList = (props) => {
         <QListQ
           key={i}
           question={question}
+          getAnswers={props.getAnswers}
+          updateHelpfulQ={props.updateHelpfulQ}
         />
       )}
     </div>
