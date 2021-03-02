@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './css_modules/RelatedGallery.module.css';
 
 class ProductInformation extends React.Component {
     constructor(props) {
@@ -24,11 +25,6 @@ class ProductInformation extends React.Component {
     }
 
     calculateAverageRating() {
-        // let numberOfReviews = this.props.relatedItem.reviews.ratings[1] + this.props.relatedItem.reviews.ratings[2] + this.props.relatedItem.reviews.ratings[3] + this.props.relatedItem.reviews.ratings[4] + this.props.relatedItem.reviews.ratings[5];
-        // console.log('numberOfReviews: ', numberOfReviews);
-        // let average = ((1 * this.props.relatedItem.reviews.ratings[1]) + (2 * this.props.relatedItem.reviews.ratings[2]) + (3 * this.props.relatedItem.reviews.ratings[3]) + (4 * this.props.relatedItem.reviews.ratings[4]) + (5 * this.props.relatedItem.reviews.ratings[5])) / numberOfReviews;
-        // console.log('average: ', average);
-        // return average;
         let numberOfReviews = 0;
         let weightedSum = 0;
         for (let key in this.props.relatedItem.reviews.ratings) {
@@ -53,20 +49,24 @@ class ProductInformation extends React.Component {
     }
 
     render() {
+        let displayPrice;
+        if (this.state.salePrice === null) {
+            displayPrice = <div class={styles.price}>${this.state.defaultPrice}</div>;
+        } else {
+            displayPrice = <div class={styles.price}>${this.state.salePrice}</div>;
+        }
 
         return (
             <div>
-                <div class="category">
+                <div className={styles.category}>
                     {this.state.category}
                 </div>
-                <div class="product-name">
+                <div class={styles.productName}>
                     {this.state.productName}
                 </div>
-                <div class="price">
-                    Original Price: {this.state.defaultPrice}, Sale Price: {this.state.salePrice}
-                </div>
-                <div class="rating">
-                    Average Rating: {this.state.averageRating}
+                {displayPrice}
+                <div class={styles.averageRating}>
+                    Avg Rating: {this.state.averageRating}
                 </div>
             </div>
         )

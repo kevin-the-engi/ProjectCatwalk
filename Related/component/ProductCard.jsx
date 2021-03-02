@@ -1,7 +1,7 @@
 import React from 'react';
 import PreviewImage from './PreviewImage.jsx';
 import ProductInformation from './ProductInformation.jsx';
-import styles from './css_modules/ProductCard.module.css';
+import styles from './css_modules/RelatedGallery.module.css';
 
 const ProductCard = (props) => {
     return (

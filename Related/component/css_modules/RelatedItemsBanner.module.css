@@ -1,0 +1,14 @@
+.relatedItemsBanner {
+  box-sizing: border-box;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 8px;
+}
+
+p {
+  color: rgb;
+  font-family: "adobe-clean", sans-serif;
+}
