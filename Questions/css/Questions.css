@@ -2,3 +2,11 @@
   max-width: 900px;
   margin: 0 auto;
 }
+
+.helpful {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
