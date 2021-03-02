@@ -4,7 +4,7 @@ var app = express()
 var route = express.Router()
 
 // Relace with tester API KEY
-var API = require('../../Product/config.js')
+//var API = require('../../Product/config.js')
 
 //CONTROLLERS
 route.get('/product', (request, response) => {

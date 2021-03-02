@@ -25,7 +25,7 @@ class WriteNewReview extends React.Component {
         <button>MORE REVIEWS</button>
         <button id="addReview" onClick={this.handleClick}>ADD A REVIEW +</button>
         <div>
-          {this.state.clicked ? <NewReview /> : null}
+          {this.state.clicked ? <NewReview metaData={this.props.metaData}/> : null}
         </div>
       </div>
     )

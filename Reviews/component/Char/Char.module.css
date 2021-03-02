@@ -1,0 +1,12 @@
+.option {
+  display: flex;
+}
+
+.optionRow {
+  margin-right: 15px;
+}
+
+.char {
+  margin-top: 10px;
+  font-size: 18px;
+}
