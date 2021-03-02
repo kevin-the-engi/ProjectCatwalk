@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.container {
+  font-family: "adobe-clean", sans-serif;
+}
+
 .helpful {
   background: none;
   border: none;

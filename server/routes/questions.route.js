@@ -1,8 +1,8 @@
 const express = require('express');
 // const api = require('../controllers/questions.controller.js');
 
-const app = express();
-const route = express.Router();
+// const app = express();
+// const route = express.Router();
 
 // route.get('/qa/questions', api.readQuestions);
 
