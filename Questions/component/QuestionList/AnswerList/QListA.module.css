@@ -1,0 +1,19 @@
+.body {
+  display: flex;
+  align-items: baseline;
+}
+
+.prefix {
+  font-size: 20px;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.answererContainer {
+  margin: 10px 0;
+}

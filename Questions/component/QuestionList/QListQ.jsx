@@ -9,19 +9,19 @@ const QListQ = (props) => {
   const questionID = props.question.question_id;
   // send questionID to top component to get answers
   return(
-    <div className={styles.question}>
-      <div className={styles.questionBody}>
-        <div className={styles.questionLeft}>
-          <span className={styles.questionQ}>
+    <div className={styles.questionContainer}>
+      <div className={styles.body}>
+        <div className={styles.left}>
+          <span className={styles.prefix}>
             Q:
           </span>
-          <span className={styles.questionText}>
+          <span className={styles.text}>
             {props.question.question_body}
           </span>
         </div>
 
-        <div className={styles.questionRight}>
-          <div className={styles.questionSidebar}>
+        <div className={styles.right}>
+          <div className={styles.sidebar}>
             <HelpfulQ
               helpful={props.question.question_helpfulness}
               updateHelpfulQ={props.updateHelpfulQ}

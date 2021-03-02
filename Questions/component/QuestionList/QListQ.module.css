@@ -3,32 +3,35 @@
   border-radius: 5px;
 } */
 
-.questionBody {
+.body {
   display: flex;
   padding: 2em 0;
   justify-content: space-between;
+  align-items: baseline;
 }
 
-.questionLeft {
+.left {
   display: flex;
   width: 70%;
 }
 
-.questionRight {
+.right {
   display: flex;
   justify-content: flex-end;
+  align-items: baseline;
   width: 30%;
 }
 
-.questionText, .questionQ {
+.text, .prefix {
   font-weight: bold;
   font-size: 20px;
 }
 
-.questionQ {
+.prefix {
   padding-right: 5px;
 }
 
-.questionSidebar {
+.sidebar {
   display: flex;
+  align-items: baseline;
 }
