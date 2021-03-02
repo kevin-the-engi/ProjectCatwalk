@@ -15,7 +15,8 @@ route.get('/related', (request, response) => {
         } else {
             getRelatedProductData(productIds, (error, results) => {
                 if (error) {
-                    console.log('error with getRelatedProductData invocation');
+                    // console.log('error with getRelatedProductData invocation');
+                    response.sendStatus(400);
                 } else {
                     // console.log('results from GET handler: ', results);
                     response.send(results);
@@ -35,11 +36,12 @@ let getRelatedProductIds = (id, callback) => {
         }
     })
         .then((response) => {
-            console.log('response from /related GET request: ', response.data);
+            // console.log('response from /related GET request: ', response.data);
             callback(null, response.data);
         })
         .catch((error) => {
-            console.log('error from /related GET request: ');
+            // console.log('error from /related GET request: ');
+            callback(error);
         })
 }
 
@@ -87,16 +89,19 @@ let getRelatedProductData = (productIdsArray, callback) => {
                             return relatedProductData;
                         })
                         .catch((error) => {
-                            console.log('error from /reviews/meta GET request: ');
+                            // console.log('error from /reviews/meta GET request: ');
+                            callback(error);
                         })
                     })
                     .catch((error => {
-                        console.log('error from /product_id GET request: ');
+                        // console.log('error from /product_id GET request: ');
+                        callback(error);
                     }))
 
             })
             .catch((error) => {
-                console.log('error from /styles GET request: ', error.message);
+                // console.log('error from /styles GET request: ', error.message);
+                callback(error);
             })
     
     }
