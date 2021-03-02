@@ -74,6 +74,7 @@ class Questions extends React.Component {
             getAnswers={this.getAnswers}
             updateHelpfulQ={this.updateHelpfulQ}
           />
+
         </div>
 
         <div className="footer">
