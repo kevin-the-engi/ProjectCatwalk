@@ -1,6 +1,7 @@
 .title {
   margin-left: 20%;
   font-family: Arial;
+  padding-bottom: 15px;
 }
 
 .container {
@@ -23,6 +24,12 @@
 }
 
 .sortBar {
-  height: 50px;
+  height: 30px;
   font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.footer {
+  padding-top: 35px;
 }
