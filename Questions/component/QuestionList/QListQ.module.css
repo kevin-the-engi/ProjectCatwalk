@@ -1,0 +1,14 @@
+.questionBody {
+  display: flex;
+  padding: 2em 0;
+  justify-content: space-between;
+}
+
+.questionText {
+  font-weight: bold;
+}
+
+.questionSidebar {
+  display: flex;
+  justify-content: flex-end;
+}

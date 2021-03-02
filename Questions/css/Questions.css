@@ -4,7 +4,16 @@
 }
 
 .container {
-  font-family: "adobe-clean", sans-serif;
+  font-family: Arial;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  display: flex;
 }
 
 .helpful, #AAdd-btn {

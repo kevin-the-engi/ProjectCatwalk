@@ -2,21 +2,30 @@ import React from 'react';
 import QListA from './AnswerList/QListA.jsx';
 import HelpfulQ from './HelpfulQ.jsx';
 import AAdd from './AAdd/AAdd.jsx';
+import styles from './QListQ.module.css';
 
 const QListQ = (props) => {
   // console.log(props);
   const questionID = props.question.question_id;
   // send questionID to top component to get answers
   return(
-    <div id="question">
-      Q: {props.question.question_body}
+    <div className={styles.question}>
+      <div className={styles.questionBody}>
+        <div className={styles.questionLeft}>
+          <span className={styles.questionText}>
+            Q: {props.question.question_body}
+        </span>
+        </div>
 
-      <div id="questionSide">
-        <HelpfulQ
-          helpful={props.question.question_helpfulness}
-          updateHelpfulQ={props.updateHelpfulQ}
-        />
-        <AAdd />
+        <div className={styles.questionRight}>
+          <div className={styles.questionSidebar}>
+            <HelpfulQ
+              helpful={props.question.question_helpfulness}
+              updateHelpfulQ={props.updateHelpfulQ}
+              />
+            <AAdd />
+          </div>
+        </div>
       </div>
 
       {Object.keys(props.question.answers).map(answer =>
