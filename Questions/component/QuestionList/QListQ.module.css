@@ -4,8 +4,18 @@
   justify-content: space-between;
 }
 
-.questionText {
+.questionLeft {
+  display: flex;
+  width: 70%;
+}
+
+.questionText, .questionQ {
   font-weight: bold;
+  font-size: 20px;
+}
+
+.questionQ {
+  padding-right: 5px;
 }
 
 .questionSidebar {

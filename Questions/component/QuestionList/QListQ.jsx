@@ -12,9 +12,12 @@ const QListQ = (props) => {
     <div className={styles.question}>
       <div className={styles.questionBody}>
         <div className={styles.questionLeft}>
+          <span className={styles.questionQ}>
+            Q:
+          </span>
           <span className={styles.questionText}>
-            Q: {props.question.question_body}
-        </span>
+            {props.question.question_body}
+          </span>
         </div>
 
         <div className={styles.questionRight}>
