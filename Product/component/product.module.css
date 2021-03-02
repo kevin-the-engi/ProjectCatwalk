@@ -4,12 +4,14 @@
   margin: 0;
 }
 
-.body {
+.context {
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
   grid-column-gap: 30px;
 }
 
