@@ -22,7 +22,7 @@ class HelpfulQ extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const display = this.state.show ? 'helpful display-on' : 'helpful display-off';
 
     return(

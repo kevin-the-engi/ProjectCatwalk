@@ -33,7 +33,7 @@ class QModal extends React.Component {
     // console.log(this.props)
     return(
       <div className={this.props.show ? 'modal-back display-on' : 'modal-back display-off'}>
-        <div id="modal-main">
+        <div className="modal-main">
           <form onSubmit={this.handleSubmit}>
             <h2>Submit your Answer</h2>
             <sub>[Product Name]: [QuestionBody]</sub>

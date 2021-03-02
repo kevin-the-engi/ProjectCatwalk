@@ -27,8 +27,8 @@ class AAdd extends React.Component {
 
   render() {
     return(
-      <div id="AAdd">
-        <button id="AAdd" onClick={this.showModal}><h3>Add Answer</h3></button>
+      <div id="AAdd-div">
+        <button id="AAdd-btn" onClick={this.showModal}>Add Answer</button>
         <AModal show={this.state.show} close={this.hideModal} addA={this.props.addA} />
       </div>
     )
