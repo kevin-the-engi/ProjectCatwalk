@@ -33,3 +33,12 @@ test("name text is updated", () => {
   expect(wrapper.state().name).toEqual("name");
   expect(wrapper.find("#name").props().value).toEqual("name");
 })
+
+test("summary text is updated", () => {
+  const wrapper = mount(<NewReview performSearch={() => {}} />);
+  wrapper.find("#summary").simulate("change", {
+    target: { name: "summary", value: "summary" }
+  });
+  expect(wrapper.state().summary).toEqual("summary");
+  expect(wrapper.find("#summary").props().value).toEqual("summary");
+})
