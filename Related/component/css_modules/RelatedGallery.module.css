@@ -87,8 +87,10 @@
     left: 25px;
     cursor: pointer;
     appearance: none;
-    top: 250px;
+    top: 275px;
     border: 0px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .arrowLeft {
@@ -109,8 +111,10 @@
     right: 25px;
     cursor: pointer;
     appearance: none;
-    top: 250px;
+    top: 275px;
     border: 0px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .arrowRight {

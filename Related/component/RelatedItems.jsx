@@ -34,15 +34,17 @@ class RelatedItems extends React.Component {
     console.log('this.state.relatedItems: ', this.state.relatedItems);
     return (
       <div>
-        <div className={styles.relatedItemsBanner}>
-          <p>RELATED PRODUCTS</p>
-        </div>
-        <RelatedGallery relatedItems={this.state.relatedItems}/>
-        <div className={styles.relatedItemsBanner}>
-          <p>YOUR OUTFIT</p>
+        <div className={styles.widgetContainer}>
+          <div className={styles.relatedItemsBanner}>
+            <p>RELATED PRODUCTS</p>
+          </div>
+          <RelatedGallery relatedItems={this.state.relatedItems}/>
+          <div className={styles.relatedItemsBanner}>
+            <p>YOUR OUTFIT</p>
+          </div>
         </div>
       </div>
-    )
+      )
   }
 }
 

@@ -1,8 +1,13 @@
+.widgetContainer {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
 .relatedItemsBanner {
+  display: flex;
   box-sizing: border-box;
   margin-top: 16px;
   margin-bottom: 16px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   margin-left: 8px;
