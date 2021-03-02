@@ -3,7 +3,7 @@ var express = require('express')
 var app = express()
 var route = express.Router()
 // Tester should copy/paste their own API key here
-var API_KEY = require('../../Related/config.js');
+// var API_KEY = require('../../Related/config.js');
 
 // GET request handler
 route.get('/related', (request, response) => {
@@ -80,7 +80,7 @@ let getRelatedProductData = (productIdsArray, callback) => {
                         .then((response) => {
                             eachProduct.reviews = response.data;
                             relatedProductData.push(eachProduct);
-                           
+
                             if (relatedProductData.length === productIdsArray.length) {
                                 callback(null, relatedProductData);
                             }
@@ -98,7 +98,7 @@ let getRelatedProductData = (productIdsArray, callback) => {
             .catch((error) => {
                 console.log('error from /styles GET request: ', error.message);
             })
-    
+
     }
 }
 
