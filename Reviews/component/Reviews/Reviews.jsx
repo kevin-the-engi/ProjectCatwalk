@@ -2,6 +2,7 @@ import React from 'react'
 // import ReactDOM from 'react-dom'
 import ReviewsList from '../ReviewsList/ReviewsList.jsx'
 import dummyData from '../reviewData.js'
+import metaData from '../reviewMetaData.js'
 import WriteNewReview from '../WriteNewReview/WriteNewReview.jsx'
 import styles from './Reviews.module.css'
 
@@ -10,12 +11,14 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewData: []
+      reviewData: [],
+      metaData: {}
     }
   }
   componentDidMount() {
     this.setState({
-      reviewData: dummyData.results
+      reviewData: dummyData.results,
+      metaData: metaData
     })
   }
 
@@ -34,13 +37,13 @@ class Reviews extends React.Component {
         </div>
         <div className={styles.right}>
           <div className={styles.sortBar}>
-            Sort Bar
+            5 reviews, sorted by relevance
           </div>
           <div id="reviews">
             <ReviewsList reviewList={this.state.reviewData}/>
           </div>
-          <div>
-            <WriteNewReview/>
+          <div className={styles.footer}>
+            <WriteNewReview metaData={this.state.metaData}/>
           </div>
         </div>
       </div>
@@ -50,10 +53,4 @@ class Reviews extends React.Component {
 }
 
 export default Reviews;
-
-// ReactDOM.render(
-//   // insert your component here to test individually, but delete before merging
-//   <Reviews />,
-//   document.getElementById('app')
-// )
 

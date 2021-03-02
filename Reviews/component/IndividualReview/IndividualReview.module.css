@@ -1,15 +1,24 @@
 .summary {
   font-weight: bold;
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+
+.body {
+  font-size: 16px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 15px;
 }
 
 .headerRight {
   display: flex;
   justify-content: space-between;
+  font-size: 13px;
 }
 
 .individualReview {
@@ -17,3 +26,19 @@
   font-family: Arial;
 }
 
+.reviewer_name {
+  margin-right: 4px;
+}
+
+.helpfulness {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  font-size: 13px;
+}
+
+.helpfulYesButton {
+  text-decoration: underline;
+  margin-left: 5px;
+  margin-right: 5px;
+}
