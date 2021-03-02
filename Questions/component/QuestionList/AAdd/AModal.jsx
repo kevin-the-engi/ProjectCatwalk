@@ -12,6 +12,7 @@ class QModal extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
@@ -24,15 +25,31 @@ class QModal extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     this.props.addA(this.state);
     this.props.close();
+
+    this.setState = {
+      body: '',
+      name: '',
+      email: '',
+      photos: []
+    }
+  }
+
+  handleClick(event) {
     event.preventDefault();
+    if (!event.target.closest(".modal-main")) {
+      this.props.close();
+    }
   }
 
   render() {
     // console.log(this.props)
+    let display = this.props.show ? 'modal-back display-on' : 'modal-back display-off'
+
     return(
-      <div className={this.props.show ? 'modal-back display-on' : 'modal-back display-off'}>
+      <div className={display} onClick={this.handleClick}>
         <div className="modal-main">
           <form onSubmit={this.handleSubmit}>
             <h2>Submit your Answer</h2>

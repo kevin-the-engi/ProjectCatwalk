@@ -25,6 +25,7 @@ class QModal extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     this.props.addQ(this.state);
     this.props.close();
 
@@ -33,12 +34,11 @@ class QModal extends React.Component {
       name: '',
       email: ''
     }
-
-    event.preventDefault();
   }
 
 
   handleClick(event) {
+    event.preventDefault();
     if (!event.target.closest(".modal-main")) {
       this.props.close();
     }
