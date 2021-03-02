@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './pGallery.module.css'
+import styles from './PGallery.module.css'
 import Thumbnail from './Thumbnails.jsx'
 
 const Gallery = ({image, thumbnails}) => (
