@@ -27,6 +27,13 @@ class QModal extends React.Component {
   handleSubmit(event) {
     this.props.addQ(this.state);
     this.props.close();
+
+    this.setState = {
+      body: '',
+      name: '',
+      email: ''
+    }
+
     event.preventDefault();
   }
 
@@ -38,7 +45,7 @@ class QModal extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     let display = this.props.show ? 'modal-back display-on' : 'modal-back display-off';
 
     return(

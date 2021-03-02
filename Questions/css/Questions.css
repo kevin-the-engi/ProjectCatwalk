@@ -2,3 +2,7 @@
   max-width: 900px;
   margin: 0 auto;
 }
+
+.container {
+  font-family: "adobe-clean", sans-serif;
+}
