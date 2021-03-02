@@ -53,27 +53,45 @@ class QModal extends React.Component {
         <div className="modal-main">
           <form onSubmit={this.handleSubmit}>
             <h2>Add a Question</h2>
-            <sub>About the [Product Name]</sub>
+            <sub>About the [Product Name]</sub><br />
 
-            <p><label>Question:</label><br />
-            <textarea onChange={this.handleChange} name="question" value={this.state.question}
-              placeholder="Why did you like the product or not?" required></textarea></p>
+            <p><label>Your Question:</label><br />
+            <textarea
+              onChange={this.handleChange}
+              name="question"
+              value={this.state.question}
+              placeholder="Why did you like the product or not?"
+              maxLength="1000"
+              rows="8"
+              cols="40"
+              required>
+            </textarea></p><br />
 
-            <p><label>Nickname:</label><br />
+            <p><label>What is your nickname:</label><br />
             <input
-              onChange={this.handleChange} type="text" name="name" value={this.state.name}
-              placeholder="jackson11!" required>
-            </input><br />
-            <sub>For privacy reasons, do not use your full name or email address</sub></p>
+              onChange={this.handleChange}
+              type="text"
+              name="name"
+              value={this.state.name}
+              placeholder="jackson11!"
+              maxLength="60"
+              required>
+            </input>
+            <sub>For privacy reasons, do not use your full name or email address</sub></p><br />
 
-            <p><label>Email:</label><br />
+            <p><label>Your email:</label><br />
             <input
-              onChange={this.handleChange} type="email" name="email" value={this.state.email}
-              placeholder="jackson11!@email.com" required>
-            </input><br />
+              onChange={this.handleChange}
+              type="email"
+              name="email"
+              value={this.state.email}
+              placeholder="jackson11!@email.com"
+              maxLength="60"
+              required>
+            </input>
             <sub>For authentication reasons, you will not be emailed</sub></p>
 
-            <input type="submit" value="Submit"></input>
+            <input type="submit" value="Submit question"></input>
             <button type="button" onClick={this.props.close}>Close</button>
           </form>
         </div>

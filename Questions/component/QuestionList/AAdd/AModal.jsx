@@ -56,24 +56,41 @@ class QModal extends React.Component {
             <sub>[Product Name]: [QuestionBody]</sub>
 
             <p><label>Your Answer:</label><br />
-            <textarea onChange={this.handleChange} name="answer"
-              value={this.state.body} required></textarea></p>
+            <textarea
+              onChange={this.handleChange}
+              name="answer"
+              value={this.state.body}
+              maxLength="1000"
+              rows="8"
+              cols="40"
+              required>
+            </textarea></p><br />
 
             <p><label>What is your nickname:</label><br />
             <input
-              onChange={this.handleChange} type="text" name="name" value={this.state.name}
-              placeholder="jack543!" required>
-            </input><br />
-            <sub>For privacy reasons, do not use your full name or email address</sub></p>
+              onChange={this.handleChange}
+              type="text"
+              name="name"
+              value={this.state.name}
+              placeholder="jack543!"
+              maxLength="60"
+              required>
+            </input>
+            <sub>For privacy reasons, do not use your full name or email address</sub></p><br />
 
-            <p><label>Email:</label><br />
+            <p><label>Your email:</label><br />
             <input
-              onChange={this.handleChange} type="email" name="email" value={this.state.email}
-              placeholder="jack@email.com" required>
-            </input><br />
+              onChange={this.handleChange}
+              type="email"
+              name="email"
+              value={this.state.email}
+              placeholder="jack@email.com"
+              maxLength="60"
+              required>
+            </input>
             <sub>For authentication reasons, you will not be emailed</sub></p>
 
-            <input type="submit" value="Submit"></input>
+            <input type="submit" value="Submit answer"></input>
             <button type="button" onClick={this.props.close}>Close</button>
           </form>
         </div>
