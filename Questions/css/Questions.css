@@ -6,3 +6,11 @@
 .container {
   font-family: "adobe-clean", sans-serif;
 }
+
+.helpful {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
