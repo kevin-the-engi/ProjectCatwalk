@@ -38,7 +38,6 @@ class QModal extends React.Component {
 
 
   handleClick(event) {
-    event.preventDefault();
     if (!event.target.closest(".modal-main")) {
       this.props.close();
     }
@@ -58,7 +57,7 @@ class QModal extends React.Component {
             <p><label>Your Question:</label><br />
             <textarea
               onChange={this.handleChange}
-              name="question"
+              name="body"
               value={this.state.question}
               placeholder="Why did you like the product or not?"
               maxLength="1000"
