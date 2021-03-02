@@ -58,7 +58,7 @@ class QModal extends React.Component {
             <textarea
               onChange={this.handleChange}
               name="body"
-              value={this.state.question}
+              value={this.state.body}
               placeholder="Why did you like the product or not?"
               maxLength="1000"
               rows="8"
