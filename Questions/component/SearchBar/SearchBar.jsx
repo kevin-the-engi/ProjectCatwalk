@@ -3,8 +3,8 @@ import styles from '../../css/SearchBar.css';
 
 
 class SearchBar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       search: ''
     }
@@ -19,6 +19,8 @@ class SearchBar extends React.Component {
     this.setState({
       [field]: value
     })
+
+    this.props.dynamicSearch(value);
   }
 
   render() {
