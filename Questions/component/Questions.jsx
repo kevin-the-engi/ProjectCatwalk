@@ -68,15 +68,11 @@ class Questions extends React.Component {
         </div>
 
         <div className="body">
-<<<<<<< HEAD
-          <QList qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions} />
-=======
           <QList
-            qData={this.state.questions}
+            qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
             getAnswers={this.getAnswers}
             updateHelpfulQ={this.updateHelpfulQ}
           />
->>>>>>> main
         </div>
 
         <div className="footer">
