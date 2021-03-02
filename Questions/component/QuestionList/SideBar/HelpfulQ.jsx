@@ -26,10 +26,10 @@ class HelpfulQ extends React.Component {
     const display = this.state.show ? `${sidebar.helpful} ${styles['display-on']}` : `${sidebar.helpful} ${styles['display-off']}`;
 
     return(
-      <div>
-        <span>Helpful?</span>
+      <div className={styles.helpContainer}>
+        <span className={styles.text}>Helpful?</span>
         <button className={display} onClick={this.handleClick}>Yes</button>
-        <span>({this.props.helpful})</span>
+        <span className={styles.number}>({this.props.helpful}) |</span>
       </div>
     )
   }

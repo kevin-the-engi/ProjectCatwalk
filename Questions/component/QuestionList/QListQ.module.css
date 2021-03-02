@@ -1,3 +1,8 @@
+/* .question {
+  border: 2px solid lightslategray;
+  border-radius: 5px;
+} */
+
 .questionBody {
   display: flex;
   padding: 2em 0;
@@ -7,6 +12,12 @@
 .questionLeft {
   display: flex;
   width: 70%;
+}
+
+.questionRight {
+  display: flex;
+  justify-content: flex-end;
+  width: 30%;
 }
 
 .questionText, .questionQ {
@@ -20,5 +31,4 @@
 
 .questionSidebar {
   display: flex;
-  justify-content: flex-end;
 }

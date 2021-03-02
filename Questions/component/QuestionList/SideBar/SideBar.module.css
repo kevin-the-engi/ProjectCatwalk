@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.helpful {
+  margin-right: 10px;
+}
+
 .display-on {
   display: block;
 }
