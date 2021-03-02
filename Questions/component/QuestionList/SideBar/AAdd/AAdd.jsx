@@ -1,5 +1,6 @@
 import React from 'react';
 import AModal from './AModal.jsx';
+import sidebar from '../SideBar.module.css';
 
 class AAdd extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class AAdd extends React.Component {
   render() {
     return(
       <div id="AAdd-div">
-        <button id="AAdd-btn" onClick={this.showModal}>Add Answer</button>
+        <button id={sidebar.['AAdd-btn']} onClick={this.showModal}>Add Answer</button>
         <AModal show={this.state.show} close={this.hideModal} addA={this.props.addA} />
       </div>
     )

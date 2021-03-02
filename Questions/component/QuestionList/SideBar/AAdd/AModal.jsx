@@ -1,4 +1,5 @@
 import React from 'react';
+import modal from '../../../../css/Modal.css';
 
 class QModal extends React.Component {
   constructor(props) {

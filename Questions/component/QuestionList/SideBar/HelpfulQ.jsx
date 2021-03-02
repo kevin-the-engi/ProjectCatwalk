@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../../css/HelpfulQ.css';
+import styles from './HelpfulQ.module.css';
+import sidebar from './SideBar.module.css';
 
 class HelpfulQ extends React.Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class HelpfulQ extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-
     this.props.updateHelpfulQ();
 
     this.setState({
@@ -23,7 +23,7 @@ class HelpfulQ extends React.Component {
 
   render() {
     // console.log(this.props);
-    const display = this.state.show ? 'helpful display-on' : 'helpful display-off';
+    const display = this.state.show ? `${sidebar.helpful} ${styles['display-on']}` : `${sidebar.helpful} ${styles['display-off']}`;
 
     return(
       <div>

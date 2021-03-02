@@ -1,7 +1,7 @@
 import React from 'react';
 import QListA from './AnswerList/QListA.jsx';
-import HelpfulQ from './HelpfulQ.jsx';
-import AAdd from './AAdd/AAdd.jsx';
+import HelpfulQ from './SideBar/HelpfulQ.jsx';
+import AAdd from './SideBar/AAdd/AAdd.jsx';
 import styles from './QListQ.module.css';
 
 const QListQ = (props) => {
