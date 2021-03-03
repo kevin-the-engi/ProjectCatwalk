@@ -26,9 +26,18 @@ class Questions extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      productID: Number(dummyData.product_id),
-      questions: dummyData.results
+    let productID = '?product_id=14931';
+    let qData = {};
+
+    axios.get('qa/questions/' + productID)
+    .then(questions => {
+      qData = questions.data;
+    })
+    .then(()=> {
+      this.setState({
+        productID: qData.product_id,
+        questions: qData.results
+      })
     })
   }
 
@@ -46,8 +55,8 @@ class Questions extends React.Component {
     }
   }
 
-  getQuestions() {
-
+  getQuestions(questions) {
+    console.log(questions);
   }
 
   addQuestion(questionForm) {
@@ -68,11 +77,25 @@ class Questions extends React.Component {
   }
 
   getAnswers(questionID) {
+    let aData = {};
 
+    axios.get(`/qa/questions/?question_id=${questionID}`)
+      .then(answers => {
+        aData = answers.data;
+      })
+      .then(() => {
+        this.setState({
+          answers: aData.results
+        })
+      })
   }
 
   updateHelpfulQ() {
 
+    axios.put(`/qa/questions/:question_id=${id}/helpful`)
+      .then(res => {
+        console.log(res);
+      })
   }
 
   render() {

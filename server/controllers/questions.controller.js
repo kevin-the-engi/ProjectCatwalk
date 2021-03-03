@@ -15,6 +15,8 @@ const readQuestions = (req, res) => {
   let count = req.query.count || 5;
   let query = API + req.path + `?product_id=${id}&page=${page}&count=${count}`;
 
+  console.log(query)
+
   axios.get(query, options)
   .then(questions => {
     res.status(200).send(questions.data);
