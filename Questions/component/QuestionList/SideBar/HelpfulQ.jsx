@@ -14,7 +14,7 @@ class HelpfulQ extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.updateHelpfulQ();
+    this.props.updateHelpfulQ(this.props.questionID);
 
     this.setState({
       show: false

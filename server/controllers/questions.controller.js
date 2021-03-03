@@ -71,7 +71,7 @@ const createAnswers = (req, res) => {
 };
 
 const updateHelpfulQ = (req, res) => {
-  axios.put(API + req.path, {} ,options)
+  axios.put(API + req.path, req.body ,options)
   .then(() => {
     res.sendStatus(204);
   })

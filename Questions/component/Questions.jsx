@@ -12,6 +12,7 @@ class Questions extends React.Component {
     super();
     this.state = {
       productID: 0,
+      productData: {},
       questions: [],
       answers: [],
       filtered: [],
@@ -37,6 +38,7 @@ class Questions extends React.Component {
     .then(()=> {
       this.setState({
         productID: qData.product_id,
+        productData: qData,
         questions: qData.results
       })
     })
@@ -102,17 +104,23 @@ class Questions extends React.Component {
     //   })
   }
 
-  updateHelpfulQ() {
-    let newQData = {};
+  updateHelpfulQ(questionID) {
+    let qData = {};
 
-    axios.put(`/qa/questions/:question_id=${id}/helpful`)
-      .then(updatedData => {
-        newQData = updateData.data;
-      })
+    axios.put(`/qa/questions/${questionID}/helpful`, { question_helpfulness: 1 })
       .then(() => {
-        this.setState({
-          product_id: newQData.product_id,
-          questions: newQData.results
+        let productID = `?product_id=${this.state.productID}`;
+
+        axios.get('qa/questions/' + productID)
+        .then(questions => {
+          qData = questions.data;
+        })
+        .then(()=> {
+          this.setState({
+            productID: qData.product_id,
+            productData: qData,
+            questions: qData.results
+          })
         })
       })
   }

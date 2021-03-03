@@ -5,7 +5,7 @@ import AAdd from './SideBar/AAdd/AAdd.jsx';
 import styles from './QListQ.module.css';
 
 const QListQ = (props) => {
-  console.log(props);
+  // console.log(props);
   const questionID = props.question.question_id;
   props.getAnswers(questionID);
   return(
@@ -24,6 +24,7 @@ const QListQ = (props) => {
           <div className={styles.sidebar}>
             <HelpfulQ
               helpful={props.question.question_helpfulness}
+              questionID={props.question.question_id}
               updateHelpfulQ={props.updateHelpfulQ}
               />
             <AAdd />
