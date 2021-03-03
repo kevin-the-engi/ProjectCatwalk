@@ -10,6 +10,7 @@ const QList = (props) => {
           key={i}
           question={question}
           getAnswers={props.getAnswers}
+          addAnswer={props.addAnswer}
           updateHelpfulQ={props.updateHelpfulQ}
         />
       )}

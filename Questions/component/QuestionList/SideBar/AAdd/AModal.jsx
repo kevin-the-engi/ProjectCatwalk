@@ -28,15 +28,15 @@ class QModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addA(this.state);
+    this.props.addAnswer(this.props.qID, this.state);
     this.props.close();
 
-    this.setState = {
+    this.setState = ({
       body: '',
       name: '',
       email: '',
       photos: []
-    }
+    })
   }
 
   handleClick(event) {

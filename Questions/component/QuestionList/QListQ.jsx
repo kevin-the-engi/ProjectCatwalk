@@ -26,8 +26,11 @@ const QListQ = (props) => {
               helpful={props.question.question_helpfulness}
               questionID={props.question.question_id}
               updateHelpfulQ={props.updateHelpfulQ}
-              />
-            <AAdd />
+            />
+            <AAdd
+              addAnswer={props.addAnswer}
+              qID={props.question.question_id}
+            />
           </div>
         </div>
       </div>

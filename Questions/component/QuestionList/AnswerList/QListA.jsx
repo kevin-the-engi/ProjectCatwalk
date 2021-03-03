@@ -7,7 +7,7 @@ const QListA = (props) => {
   // console.log(props);
   let date = props.answer.date.slice(0, 10).split('-');
   let year = Number(date[0]);
-  let month = Number(date[1]);
+  let month = Number(date[1]) - 1;
   let day = Number(date[2]);
   date = new Date(year, month, day)
 
