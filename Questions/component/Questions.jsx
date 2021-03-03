@@ -39,6 +39,9 @@ class Questions extends React.Component {
         questions: qData.results
       })
     })
+    .catch(err =>{
+      console.log(err);
+    })
   }
 
   dynamicSearch(search) {
@@ -60,8 +63,8 @@ class Questions extends React.Component {
   }
 
   addQuestion(questionForm) {
-    let product_id = { product_id: this.state.productID}
-    let data = Object.assign(questionForm, product_id);
+    let productID = { product_id: this.state.productID};
+    let data = Object.assign(questionForm, productID);
 
     axios.post('/qa/questions', data)
       .then(res => {
@@ -72,8 +75,16 @@ class Questions extends React.Component {
       })
   }
 
-  addAnswer(answerData) {
+  addAnswer(questionID, answerForm) {
     console.log(answerData);
+
+    axios.post(`/qa/questions/:question_id=${questionID}/answers`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   getAnswers(questionID) {
