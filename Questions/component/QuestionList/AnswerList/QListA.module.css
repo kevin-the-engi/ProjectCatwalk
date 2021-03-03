@@ -1,6 +1,7 @@
 .body {
   display: flex;
   align-items: baseline;
+  margin: 20px 0;
 }
 
 .prefix {

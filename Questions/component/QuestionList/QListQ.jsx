@@ -9,7 +9,7 @@ const QListQ = (props) => {
   const questionID = props.question.question_id;
   // send questionID to top component to get answers
   return(
-    <div className={styles.questionContainer}>
+    <section className={styles.questionContainer}>
       <div className={styles.body}>
         <div className={styles.left}>
           <span className={styles.prefix}>
@@ -37,7 +37,7 @@ const QListQ = (props) => {
           answer={props.question.answers[answer]}
         />
       )}
-    </div>
+    </section>
   )
 }
 

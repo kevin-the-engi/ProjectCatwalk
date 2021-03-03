@@ -3,9 +3,15 @@
   border-radius: 5px;
 } */
 
+/* .questionContainer {
+  display: flex;
+  flex-flow: column;
+  height: 400px;
+  overflow: scroll;
+} */
+
 .body {
   display: flex;
-  padding: 2em 0;
   justify-content: space-between;
   align-items: baseline;
 }
