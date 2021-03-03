@@ -14,7 +14,8 @@ class Questions extends React.Component {
       productID: 0,
       questions: [],
       answers: [],
-      filtered: []
+      filtered: [],
+      search: ''
     }
 
     this.getQuestions = this.getQuestions.bind(this);
@@ -45,15 +46,15 @@ class Questions extends React.Component {
   }
 
   dynamicSearch(search) {
+    this.setState({
+      search: search
+    })
+
     if (search.length >= 3) {
       let filtered = this.state.questions.filter(question => question.question_body.toLowerCase().includes(search.toLowerCase()));
 
       this.setState({
         filtered: filtered
-      })
-    } else {
-      this.setState({
-        filtered: []
       })
     }
   }
@@ -76,7 +77,7 @@ class Questions extends React.Component {
   }
 
   addAnswer(questionID, answerForm) {
-    console.log(answerData);
+    console.log(answerForm);
 
     axios.post(`/qa/questions/:question_id=${questionID}/answers`)
       .then(res => {
@@ -102,11 +103,26 @@ class Questions extends React.Component {
   }
 
   updateHelpfulQ() {
+    let newQData = {};
 
     axios.put(`/qa/questions/:question_id=${id}/helpful`)
-      .then(res => {
-        console.log(res);
+      .then(updatedData => {
+        newQData = updateData.data;
       })
+      .then(() => {
+        this.setState({
+          product_id: newQData.product_id,
+          questions: newQData.results
+        })
+      })
+  }
+
+  updateHelpfulA() {
+
+  }
+
+  reportA() {
+
   }
 
   render() {
