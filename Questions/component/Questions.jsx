@@ -40,9 +40,9 @@ class Questions extends React.Component {
         questions: qData.results
       })
     })
-    .catch(err =>{
-      console.log(err);
-    })
+    // .catch(err =>{
+    //   console.log(err);
+    // })
   }
 
   dynamicSearch(search) {
@@ -91,15 +91,15 @@ class Questions extends React.Component {
   getAnswers(questionID) {
     let aData = {};
 
-    axios.get(`/qa/questions/?question_id=${questionID}`)
-      .then(answers => {
-        aData = answers.data;
-      })
-      .then(() => {
-        this.setState({
-          answers: aData.results
-        })
-      })
+    // axios.get(`/qa/questions/${questionID}/answers`)
+    //   .then(answers => {
+    //     aData = answers.data;
+    //   })
+    //   .then(() => {
+    //     this.setState({
+    //       answers: aData.results
+    //     })
+    //   })
   }
 
   updateHelpfulQ() {
@@ -136,6 +136,7 @@ class Questions extends React.Component {
         <div className="body">
           <QList
             qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
+            aData={this.state.answers}
             getAnswers={this.getAnswers}
             updateHelpfulQ={this.updateHelpfulQ}
           />

@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '../../css/QAdd.css';
-import QModal from './QModal.jsx';
+import AModal from './AModal.jsx';
+import sidebar from '../SideBar.module.css';
 
-class QAdd extends React.Component {
+class AAdd extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,12 +28,12 @@ class QAdd extends React.Component {
 
   render() {
     return(
-      <div id="QAdd-div">
-        <button id="QAdd-btn" onClick={this.showModal}><h3>Add a Question</h3></button>
-        <QModal show={this.state.show} close={this.hideModal} addQ={this.props.addQ} />
+      <div id="AAdd-div">
+        <button id={sidebar.['AAdd-btn']} onClick={this.showModal}>Add Answer</button>
+        <AModal show={this.state.show} close={this.hideModal} addA={this.props.addA} />
       </div>
     )
   }
 };
 
-export default QAdd;
+export default AAdd;

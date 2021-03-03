@@ -1,0 +1,19 @@
+.helpful, #AAdd-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.helpful {
+  margin-right: 10px;
+}
+
+.display-on {
+  display: block;
+}
+
+.display-off {
+  display: none;
+}

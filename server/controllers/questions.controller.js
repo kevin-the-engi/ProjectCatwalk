@@ -15,7 +15,7 @@ const readQuestions = (req, res) => {
   let count = req.query.count || 5;
   let query = API + req.path + `?product_id=${id}&page=${page}&count=${count}`;
 
-  console.log(query)
+  // console.log(query)
 
   axios.get(query, options)
   .then(questions => {
@@ -28,9 +28,13 @@ const readQuestions = (req, res) => {
 };
 
 const readAnswers = (req, res) => {
-  let id = req.params.question_id;
+  let page = req.query.page || 1;
+  let count = req.query.count || 5;
+  let query = API + req.path + `/?page=${page}&count=${count}`;
 
-  axios.get(API + req.path, options)
+  // console.log(query);
+
+  axios.get(API + query, options)
   .then(answers => {
     res.status(200).send(answers.data);
   })

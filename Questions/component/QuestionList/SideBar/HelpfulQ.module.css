@@ -5,3 +5,7 @@
 .display-off {
   display: none;
 }
+
+.text, .number {
+  margin-right: 10px;
+}
