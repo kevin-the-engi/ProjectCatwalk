@@ -6,31 +6,43 @@ class IndividualReview extends React.Component {
     super(props);
     this.state = {
       helpful: false,
-      report: false
+      report: false,
+      review: ''
     }
-    //  this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
-    //  this.handleReportClick = this.handleReportClick.bind(this);
+      this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
+      this.handleReportClick = this.handleReportClick.bind(this);
   }
 
-  // handleHelpfulClick(e) {
-  //   e.preventDefault();
-  //   this.setState({
-  //     helpful: true
-  //   })
-  // }
+  handleHelpfulClick(e) {
+    e.preventDefault();
+    this.setState({
+      helpful: true
+    })
+    var reviewId = this.state.review;
+    this.props.handleHelpful(reviewId)
+  }
 
-  //  handleReportClick(e) {
-  //   e.preventDefault();
-  //   this.setState({
-  //     report: true
-  //   })
-  //  }
+   handleReportClick(e) {
+    e.preventDefault();
+    this.setState({
+      report: true
+    })
+    var reviewId = this.state.review;
+    this.props.handleReport(reviewId)
+   }
+
+  componentDidMount() {
+    this.setState({
+      review: this.props.review.review_id
+    })
+  }
 
   render() {
+    console.log('this.state.helpful', this.state.helpful)
     var date = this.props.review.date.slice(0, 10).split('-');
     var year = Number(date[0])
-    var month = Number(date[1])
-    var day = Number(date[2])
+    var month = Number(date[1]) -1;
+    var day = Number(date[2]) -1;
     var newDate = new Date(year, month, day)
     var formattedDate = new Intl.DateTimeFormat('en-US', {
       year:  'numeric',
@@ -42,7 +54,7 @@ class IndividualReview extends React.Component {
       <div className={styles.individualReview}>
         <div className={styles.header}>
           <div>
-          {this.props.review.rating}
+          ★★★☆☆
           </div>
           <div className={styles.headerRight}>
             <div className={styles.reviewer_name}>
@@ -61,13 +73,13 @@ class IndividualReview extends React.Component {
         </div>
         <div className={styles.helpfulness}>
           Helpful?
-          <div className={styles.helpfulYesButton} >
+          <div className={styles.helpfulYesButton} name={this.state.review} onClick={this.handleHelpfulClick}>
             Yes
           </div>
           <div>
           ({this.props.review.helpfulness}) |
           </div>
-          <div>
+          <div name={this.state.review} onClick={this.handleReportClick}>
             Report
           </div>
         </div>
