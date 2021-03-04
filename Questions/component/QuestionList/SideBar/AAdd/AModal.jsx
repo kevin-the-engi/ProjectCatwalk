@@ -15,6 +15,7 @@ class QModal extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.fileInput = React.createRef();
   }
 
   handleChange(event) {
@@ -28,7 +29,9 @@ class QModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addAnswer(this.props.qID, this.state);
+    // this.props.addAnswer(this.props.qID, this.state);
+    console.log(this.fileInput.current.files[0]);
+    console.log(this.fileInput.current.files[1]);
     this.props.close();
 
     this.setState = ({
@@ -96,6 +99,14 @@ class QModal extends React.Component {
                 required>
               </input>
               <sub>For authentication reasons, you will not be emailed</sub></p>
+
+              <p><label>Upload Photo</label></p>
+              <input
+                type="file"
+                className="photo"
+                accept="image/*"
+                ref={this.fileInput}>
+              </input>
             </div>
 
             <div className="form-footer">
