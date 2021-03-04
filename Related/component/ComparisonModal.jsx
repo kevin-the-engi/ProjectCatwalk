@@ -35,7 +35,7 @@ class ComparisonModal extends React.Component {
       showHide = null;
     } else {
       showHide = 
-        <div className={styles.comparisonModalDisplayBlock}>
+        <div className={styles.comparisonModalDisplayBlock} onClick={this.props.hideModal}>
           <section className={styles.comparisonModalMain}>
             <div>
               Comparing
