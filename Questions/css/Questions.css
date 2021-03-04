@@ -1,9 +1,7 @@
 .container {
-  max-width: 900px;
-  margin: 5em auto;
-}
+  /* max-width: 900px; */
 
-.container {
+  margin: 5em 20%;
   font-family: Arial;
 }
 

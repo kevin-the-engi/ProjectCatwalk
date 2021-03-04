@@ -50,7 +50,7 @@ class QModal extends React.Component {
 
   render() {
     // console.log(this.props)
-    let display = this.props.show ? 'modal-back display-on' : 'modal-back display-off'
+    let display = this.props.show ? 'modal-back display-on' : 'modal-back display-off';
 
     return(
       <div className={display} onClick={this.handleClick}>
