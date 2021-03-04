@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import axios from 'axios';
 import styles from '../css/Questions.css';
 import SearchBar from './SearchBar/SearchBar.jsx';
 import QList from './QuestionList/QList.jsx';
@@ -11,11 +11,13 @@ class Questions extends React.Component {
   constructor() {
     super();
     this.state = {
+      productID: 0,
       questions: [],
       answers: [],
       filtered: []
     }
 
+    this.getQuestions = this.getQuestions.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
     this.dynamicSearch = this.dynamicSearch.bind(this);
@@ -25,6 +27,7 @@ class Questions extends React.Component {
 
   componentDidMount() {
     this.setState({
+      productID: Number(dummyData.product_id),
       questions: dummyData.results
     })
   }
@@ -43,8 +46,21 @@ class Questions extends React.Component {
     }
   }
 
-  addQuestion(questionData) {
-    console.log(questionData);
+  getQuestions() {
+
+  }
+
+  addQuestion(questionForm) {
+    let product_id = { product_id: this.state.productID}
+    let data = Object.assign(questionForm, product_id);
+
+    axios.post('/qa/questions', data)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   addAnswer(answerData) {

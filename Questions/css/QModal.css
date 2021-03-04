@@ -15,7 +15,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#modal-main {
+.modal-main {
   position: absolute;
   background: white;
   border: 2px solid darkgrey;
