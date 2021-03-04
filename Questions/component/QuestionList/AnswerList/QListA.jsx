@@ -14,8 +14,6 @@ const QListA = (props) => {
     }
   } = props;
 
-  console.log(props);
-
   let date = props.answer.date.slice(0, 10).split('-');
   let year = Number(date[0]);
   let month = Number(date[1]) - 1;
