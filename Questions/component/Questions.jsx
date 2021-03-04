@@ -12,9 +12,11 @@ class Questions extends React.Component {
     super();
     this.state = {
       productID: 0,
+      productData: {},
       questions: [],
       answers: [],
-      filtered: []
+      filtered: [],
+      search: ''
     }
 
     this.getQuestions = this.getQuestions.bind(this);
@@ -26,52 +28,114 @@ class Questions extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      productID: Number(dummyData.product_id),
-      questions: dummyData.results
+    let productID = '?product_id=14931';
+    let qData = {};
+
+    axios.get('qa/questions/' + productID)
+    .then(questions => {
+      qData = questions.data;
     })
+    .then(()=> {
+      this.setState({
+        productID: qData.product_id,
+        productData: qData,
+        questions: qData.results
+      })
+    })
+    // .catch(err =>{
+    //   console.log(err);
+    // })
   }
 
   dynamicSearch(search) {
+    this.setState({
+      search: search
+    })
+
     if (search.length >= 3) {
       let filtered = this.state.questions.filter(question => question.question_body.toLowerCase().includes(search.toLowerCase()));
 
       this.setState({
         filtered: filtered
       })
-    } else {
-      this.setState({
-        filtered: []
-      })
     }
   }
 
   getQuestions() {
+    let qData = {};
+    let productID = `?product_id=${this.state.productID}`;
 
+    axios.get('qa/questions/' + productID)
+      .then(questions => {
+        qData = questions.data;
+      })
+      .then(() => {
+        this.setState({
+          productID: qData.product_id,
+          productData: qData,
+          questions: qData.results
+        })
+      })
   }
 
   addQuestion(questionForm) {
-    let product_id = { product_id: this.state.productID}
-    let data = Object.assign(questionForm, product_id);
+    let productID = { product_id: Number(this.state.productID) };
+    let data = Object.assign(questionForm, productID);
 
-    axios.post('/qa/questions', data)
-      .then(res => {
+    axios.post('/qa/questions/', data)
+      .then((res) => {
         console.log(res);
+        this.getQuestions();
       })
       .catch(err => {
         console.log(err);
       })
   }
 
-  addAnswer(answerData) {
-    console.log(answerData);
+  addAnswer(questionID, answerForm) {
+    console.log(questionID, answerForm);
+
+    axios.post(`/qa/questions/${questionID}/answers`, answerForm)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .then(() => {
+        this.getQuestions();
+      })
   }
 
   getAnswers(questionID) {
+    let aData = {};
+
+    // axios.get(`/qa/questions/${questionID}/answers`)
+    //   .then(answers => {
+    //     aData = answers.data;
+    //   })
+    //   .then(() => {
+    //     this.setState({
+    //       answers: aData.results
+    //     })
+    //   })
+  }
+
+  updateHelpfulQ(questionID) {
+    axios.put(`/qa/questions/${questionID}/helpful`, { question_helpfulness: 1 })
+      .then(() => {
+        this.getQuestions();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  updateHelpfulA() {
 
   }
 
-  updateHelpfulQ() {
+  reportA() {
 
   }
 
@@ -86,7 +150,9 @@ class Questions extends React.Component {
         <div className="body">
           <QList
             qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
+            aData={this.state.answers}
             getAnswers={this.getAnswers}
+            addAnswer={this.addAnswer}
             updateHelpfulQ={this.updateHelpfulQ}
           />
         </div>
