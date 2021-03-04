@@ -2,3 +2,20 @@
   display: flex;
   justify-content: flex-start;
 }
+
+.moreReviews {
+  height: 60px;
+  width: 170px;
+  margin-right: 15px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.addReview {
+  width: 200px;
+  height: 60px;
+  width: 170px;
+  margin-right: 15px;
+  font-size: 15px;
+  font-weight: bold;
+}

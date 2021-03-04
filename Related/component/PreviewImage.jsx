@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './css_modules/ProductCard.module.css';
+import styles from './css_modules/RelatedGallery.module.css';
 
 class PreviewImage extends React.Component {
     constructor(props) {
