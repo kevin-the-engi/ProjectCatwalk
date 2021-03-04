@@ -5,6 +5,13 @@ import AAdd from './SideBar/AAdd/AAdd.jsx';
 import styles from './QListQ.module.css';
 
 const QListQ = (props) => {
+  const {
+    question: {
+      question_body,
+      question_helpfulness,
+      question_id,
+      answers
+    }} = props;
   // console.log(props);
   // useEffect(() => {
   //   props.getAnswers(props.question.question_id);
@@ -18,29 +25,31 @@ const QListQ = (props) => {
             Q:
           </span>
           <span className={styles.text}>
-            {props.question.question_body}
+            {question_body}
           </span>
         </div>
 
         <div className={styles.right}>
           <div className={styles.sidebar}>
             <HelpfulQ
-              helpful={props.question.question_helpfulness}
-              questionID={props.question.question_id}
+              helpful={question_helpfulness}
+              questionID={question_id}
               updateHelpfulQ={props.updateHelpfulQ}
             />
             <AAdd
               addAnswer={props.addAnswer}
-              qID={props.question.question_id}
+              qID={question_id}
             />
           </div>
         </div>
       </div>
 
-      {Object.keys(props.question.answers).map(answer =>
+      {Object.keys(answers).map(answer =>
         <QListA
           key={answer}
-          answer={props.question.answers[answer]}
+          answer={answers[answer]}
+          updateHelpfulA={props.updateHelpfulA}
+          reportA={props.reportA}
         />
       )}
     </section>

@@ -26,6 +26,8 @@ class Questions extends React.Component {
     this.dynamicSearch = this.dynamicSearch.bind(this);
     this.getAnswers = this.getAnswers.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
+    this.updateHelpfulA = this.updateHelpfulA.bind(this);
+    this.reportA = this.reportA.bind(this);
   }
 
   componentDidMount() {
@@ -133,12 +135,24 @@ class Questions extends React.Component {
       })
   }
 
-  updateHelpfulA() {
-
+  updateHelpfulA(answerID) {
+    axios.put(`/qa/answers/${answerID}/helpful`, { answer_helpfulness: 1 })
+      .then(() => {
+        this.getQuestions();
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
-  reportA() {
-
+  reportA(answerID) {
+    axios.put(`/qa/answers/${answerID}/report`, { reported: true })
+      .then(() => {
+        this.getQuestions();
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
@@ -156,6 +170,8 @@ class Questions extends React.Component {
             getAnswers={this.getAnswers}
             addAnswer={this.addAnswer}
             updateHelpfulQ={this.updateHelpfulQ}
+            updateHelpfulA={this.updateHelpfulA}
+            reportA={this.reportA}
           />
         </div>
 

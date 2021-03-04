@@ -4,7 +4,18 @@ import HelpfulA from './HelpfulA.jsx';
 import ReportA from './ReportA.jsx';
 
 const QListA = (props) => {
-  // console.log(props);
+  const {
+    answer: {
+      id,
+      body,
+      answerer,
+      answerer_name,
+      helpfulness
+    }
+  } = props;
+
+  console.log(props);
+
   let date = props.answer.date.slice(0, 10).split('-');
   let year = Number(date[0]);
   let month = Number(date[1]) - 1;
@@ -23,17 +34,25 @@ const QListA = (props) => {
 
         <div className={styles.textContainer}>
           <span className={styles.text}>
-            {props.answer.body}
+            {body}
           </span>
 
           <span className={styles.answererContainer}>
             <span className={styles.answerer}>
               <sub>
-                by {props.answer.answerer_name}, {formattedDate} |
+                by {answerer_name}, {formattedDate} |
               </sub>
             </span>
-            <HelpfulA />
-            <ReportA />
+
+            <HelpfulA
+              helpful={helpfulness}
+              answerID={id}
+              updateHelpfulA={props.updateHelpfulA}
+            />
+            <ReportA
+              answerID={id}
+              reportA={props.reportA}
+            />
           </span>
         </div>
       </div>

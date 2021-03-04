@@ -12,6 +12,8 @@ const QList = (props) => {
           getAnswers={props.getAnswers}
           addAnswer={props.addAnswer}
           updateHelpfulQ={props.updateHelpfulQ}
+          updateHelpfulA={props.updateHelpfulA}
+          reportA={props.reportA}
         />
       )}
     </div>
