@@ -40,7 +40,7 @@ input {
 }
 
 .submitButton {
-  margin-top: 15px;
+
   width: 20%;
   height: 40px;
   font-size: 15px;
@@ -62,4 +62,16 @@ input {
 
 .inputs {
   font-size: 18px;
+}
+
+.recommendButton {
+  width: 50px;
+  height: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.privacy {
+  margin-bottom: 15px;
+  font-size: 15px;
 }

@@ -22,8 +22,8 @@ class CharList extends React.Component {
     var characteristics = Object.keys(this.props.metaData.characteristics);
     return (
       <div>
-        {characteristics.map((char, i) =>
-        <Char char={char} metaData={this.props.metaData} handleSelectOption={this.handleSelectOption} key={i}/>)}
+        {characteristics.map((char) =>
+        <Char char={char} metaData={this.props.metaData} handleSelectOption={this.handleSelectOption} />)}
       </div>
     )
   }

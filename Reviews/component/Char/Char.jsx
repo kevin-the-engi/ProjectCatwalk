@@ -6,6 +6,11 @@ class Char extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      '1': false,
+      '2': false,
+      '3': false,
+      '4': false,
+      '5': false,
     }
     this.handleSelect = this.handleSelect.bind(this);
   }
@@ -16,19 +21,14 @@ class Char extends React.Component {
     this.props.handleSelectOption(charId, e.target.name)
   }
 
+
   render() {
+    console.log('1 state', this.state['1'])
     var charOptionsToRender = charOptionMapping[this.props.char];
     var selectedChar = Object.entries(charOptionsToRender);
     return (
       <div>
-        <div className={styles.char}>{this.props.char}: </div>
-        <div>
-          <button name="1" onClick={this.handleSelect}>1</button>
-          <button name="2" onClick={this.handleSelect}>2</button>
-          <button name="3" onClick={this.handleSelect}>3</button>
-          <button name="4" onClick={this.handleSelect}>4</button>
-          <button name="5" onClick={this.handleSelect}>5</button>
-        </div>
+        <div className={styles.char}>{this.props.char}*: </div>
         <div  className={styles.option}>
         {selectedChar.map((option) => {
           return (
@@ -37,6 +37,48 @@ class Char extends React.Component {
             </div>
           )
         })}
+        </div>
+        <div className={styles.buttonContainer}>
+          <div className={styles.b}>
+            <div className={styles.label}>
+              1:
+            </div>
+            <div className={styles.buttons}>
+              <input type="radio" name="1" onClick={this.handleSelect} />
+            </div>
+          </div>
+          <div className={styles.b}>
+            <div className={styles.label}>
+              2:
+            </div>
+            <div className={styles.buttons}>
+              <input type="radio" name="2" onClick={this.handleSelect} />
+            </div>
+          </div>
+          <div className={styles.b}>
+            <div className={styles.label}>
+              3:
+            </div>
+            <div className={styles.buttons}>
+              <input type="radio" name="3" onClick={this.handleSelect} />
+            </div>
+          </div>
+          <div className={styles.b}>
+            <div className={styles.label}>
+              4:
+            </div>
+            <div className={styles.buttons}>
+              <input type="radio" name="4" onClick={this.handleSelect} />
+            </div>
+          </div>
+          <div className={styles.b}>
+            <div className={styles.label}>
+              5:
+            </div>
+            <div className={styles.buttons}>
+              <input type="radio" name="5" onClick={this.handleSelect} />
+            </div>
+          </div>
         </div>
       </div>
     )

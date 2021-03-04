@@ -13,19 +13,20 @@ class WriteNewReview extends React.Component {
   }
 
   handleClick(e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({
-      clicked: true
+      clicked: !this.state.clicked
     })
   }
 
   render() {
+    console.log('click state', this.state.clicked)
     return (
       <div className={styles.footer}>
-        <button>MORE REVIEWS</button>
-        <button id="addReview" onClick={this.handleClick}>ADD A REVIEW +</button>
+        <button className={styles.moreReviews}>MORE REVIEWS</button>
+        <button id="addReview" className={styles.addReview} onClick={this.handleClick}>ADD A REVIEW +</button>
         <div>
-          {this.state.clicked ? <NewReview metaData={this.props.metaData}/> : null}
+          {this.state.clicked ? <NewReview metaData={this.props.metaData} handlePostReview={this.props.handlePostReview} handleClick={this.handleClick}/> : null}
         </div>
       </div>
     )
