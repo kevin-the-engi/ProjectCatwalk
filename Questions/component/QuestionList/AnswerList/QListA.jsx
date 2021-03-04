@@ -13,6 +13,7 @@ const QListA = (props) => {
 
   const formattedDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(date);
 
+  // console.log(props);
   return(
     <div className={styles.answerContainer}>
       <div className={styles.body}>
@@ -26,7 +27,11 @@ const QListA = (props) => {
           </span>
 
           <span className={styles.answererContainer}>
-            <span className={styles.answerer}><sub>by {props.answer.answerer_name}, {formattedDate} |</sub></span>
+            <span className={styles.answerer}>
+              <sub>
+                by {props.answer.answerer_name}, {formattedDate} |
+              </sub>
+            </span>
             <HelpfulA />
             <ReportA />
           </span>
