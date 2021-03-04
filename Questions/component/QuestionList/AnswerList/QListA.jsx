@@ -8,7 +8,7 @@ const QListA = (props) => {
   let date = props.answer.date.slice(0, 10).split('-');
   let year = Number(date[0]);
   let month = Number(date[1]) - 1;
-  let day = Number(date[2]);
+  let day = Number(date[2]) - 1;
   date = new Date(year, month, day)
 
   const formattedDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(date);
@@ -26,7 +26,9 @@ const QListA = (props) => {
           </span>
 
           <span className={styles.answererContainer}>
-            <sub>by {props.answer.answerer_name}, {formattedDate} |</sub>
+            <span className={styles.answerer}><sub>by {props.answer.answerer_name}, {formattedDate} |</sub></span>
+            <HelpfulA />
+            <ReportA />
           </span>
         </div>
       </div>

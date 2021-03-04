@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from './HelpfulQ.module.css';
-import sidebar from './SideBar.module.css';
+import styles from './SideBar.module.css';
 
 class HelpfulQ extends React.Component {
   constructor(props) {
@@ -23,10 +22,10 @@ class HelpfulQ extends React.Component {
 
   render() {
     // console.log(this.props);
-    const display = this.state.show ? `${sidebar.helpful} ${styles['display-on']}` : `${sidebar.helpful} ${styles['display-off']}`;
+    const display = this.state.show ? `${styles['helpful-btn']} ${styles['display-on']}` : `${styles['helpful-btn']} ${styles['display-off']}`;
 
     return(
-      <div className={styles.helpContainer}>
+      <div className="helpContainer">
         <span className={styles.text}>Helpful?</span>
         <button className={display} onClick={this.handleClick}>Yes</button>
         <span className={styles.number}>({this.props.helpful}) |</span>

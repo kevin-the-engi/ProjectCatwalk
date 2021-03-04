@@ -16,7 +16,8 @@ class Questions extends React.Component {
       questions: [],
       answers: [],
       filtered: [],
-      search: ''
+      search: '',
+      count: 2
     }
 
     this.getQuestions = this.getQuestions.bind(this);
@@ -110,15 +111,16 @@ class Questions extends React.Component {
   getAnswers(questionID) {
     let aData = {};
 
-    // axios.get(`/qa/questions/${questionID}/answers`)
-    //   .then(answers => {
-    //     aData = answers.data;
-    //   })
-    //   .then(() => {
-    //     this.setState({
-    //       answers: aData.results
-    //     })
-    //   })
+    axios.get(`/qa/questions/${questionID}/answers`)
+      .then(answers => {
+        aData = answers.data;
+        console.log(aData);
+      })
+      .then(() => {
+        this.setState({
+          answers: aData.results
+        })
+      })
   }
 
   updateHelpfulQ(questionID) {

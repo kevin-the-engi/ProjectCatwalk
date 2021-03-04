@@ -6,8 +6,10 @@ import styles from './QListQ.module.css';
 
 const QListQ = (props) => {
   // console.log(props);
-  const questionID = props.question.question_id;
-  props.getAnswers(questionID);
+  // useEffect(() => {
+  //   props.getAnswers(props.question.question_id);
+  // })
+
   return(
     <section className={styles.questionContainer}>
       <div className={styles.body}>

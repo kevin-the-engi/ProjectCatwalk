@@ -4,7 +4,7 @@ const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 
 const options = {
   headers: {
-    Authorization: TOKEN
+    Authorization: TOKEN // replace with your own key and comment out line 1
   }
 };
 
@@ -14,8 +14,6 @@ const readQuestions = (req, res) => {
   let page = req.query.page || 1;
   let count = req.query.count || 5;
   let query = API + req.path + `?product_id=${id}&page=${page}&count=${count}`;
-
-  // console.log(query)
 
   axios.get(query, options)
   .then(questions => {
@@ -32,9 +30,7 @@ const readAnswers = (req, res) => {
   let count = req.query.count || 5;
   let query = API + req.path + `/?page=${page}&count=${count}`;
 
-  // console.log(query);
-
-  axios.get(API + query, options)
+  axios.get(query, options)
   .then(answers => {
     res.status(200).send(answers.data);
   })
