@@ -1,4 +1,5 @@
 import React from 'react';
+import ComparisonModal from './ComparisonModal.jsx';
 import styles from './css_modules/RelatedGallery.module.css';
 
 class ProductInformation extends React.Component {
@@ -9,8 +10,11 @@ class ProductInformation extends React.Component {
             productName: '',
             defaultPrice: '',
             salePrice: '',
-            averageRating: ''
+            averageRating: '',
+            show: false
         }
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
     }
 
     componentDidMount() {
@@ -48,6 +52,14 @@ class ProductInformation extends React.Component {
         }
     }
 
+    showModal() {
+      this.setState({show: true});
+    }
+
+    hideModal() {
+      this.setState({show: false});
+    }
+
     render() {
         let displayPrice;
         if (this.state.salePrice === null) {
@@ -55,6 +67,8 @@ class ProductInformation extends React.Component {
         } else {
             displayPrice = <div class={styles.price}>${this.state.salePrice}</div>;
         }
+
+        console.log('this.state.show: ', this.state.show);
 
         return (
             <div>
@@ -68,6 +82,8 @@ class ProductInformation extends React.Component {
                 <div class={styles.averageRating}>
                     Avg Rating: {this.state.averageRating}
                 </div>
+                <div className={styles.starButton} onClick={this.showModal}>☆</div>
+                <ComparisonModal hideModal={this.hideModal} show={this.state.show}/>
             </div>
         )
 

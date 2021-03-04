@@ -5,13 +5,13 @@ var route = express.Router()
 // Tester should copy/paste their own API key here
 var API_KEY = require('../../Related/config.js');
 
-// GET request handler
+// GET request handler for retrieving information on related products
 route.get('/related', (request, response) => {
-    console.log('request product_id: ', request.query.product_id);
+    // console.log('/related request product_id: ', request.query.product_id);
     getRelatedProductIds(request.query.product_id, (error, productIds) => {
         if (error) {
             console.log('error with getRelatedProductIds invocation');
-            // set error status here
+            response.sendStatus(400);
         } else {
             getRelatedProductData(productIds, (error, results) => {
                 if (error) {
@@ -19,11 +19,30 @@ route.get('/related', (request, response) => {
                     response.sendStatus(400);
                 } else {
                     // console.log('results from GET handler: ', results);
-                    response.send(results);
+                    response.status(200).send(results);
                 }
             })
         }
     })
+})
+
+route.get('/current', (request, response) => {
+  // console.log('/current request product_id: ', request.query.product_id);
+  getCurrentProductData(request.query.product_id, (error, results) => {
+    if (error) {
+      console.log('error with getCurrentProductData invocation');
+      response.sendStatus(400);
+    } else {
+      // console.log('results from getCurrentProductData: ', results);
+      response.status(200).send(results);
+    }
+  })
+})
+
+// GET request handler for retrieving information on current product being viewed
+route.get('/current', (request, response) => {
+  console.log('/current request product_id: ', request.query.product_id);
+
 })
 
 // helper function to retrieve product id's of all related items, given the product id of current item being displayed
@@ -105,6 +124,25 @@ let getRelatedProductData = (productIdsArray, callback) => {
             })
     
     }
+}
+
+// helper function for to retrieve product information for the product currently being viewed
+let getCurrentProductData = (id, callback) => {
+  axios({
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}`,
+    headers: {
+        Authorization: API_KEY
+    }
+  })
+  .then((response) => {
+    // console.log('response from /current product_id GET request: ', response.data);
+    callback(null, response.data);
+  })
+  .catch((error) => {
+    // console.log('error from /current product_id GET request: ', error.message);
+    callback(error);
+  })
 }
 
 module.exports.route = route;
