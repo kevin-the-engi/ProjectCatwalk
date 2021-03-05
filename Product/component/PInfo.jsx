@@ -2,67 +2,92 @@ import React from 'react';
 import styles from './PInfo.module.css';
 import Style from './Style.jsx';
 import Option from './Option.jsx'
+import Feature from './Feature.jsx'
 
-const Info = ({info, changeStyle, thumbnails}) => (
-  <div>
-    <div className={styles.left}>
-      <div className={styles.info}>
-        <div className={styles.reviews}>
-        ★★★★☆ <a className={styles.link}>Read all reviews</a>
-        </div>
+class Info extends React.Component {
+  constructor (props) {
+    super(props)
 
-        <div className={styles.category}>
-          <p>CATEGORY</p>
-        </div>
+    this.state = {
+      quantity: {},
+      skus: this.props.defaultStyle
+    }
 
-        <div className={styles.name} >
-          <p className={styles.name}>Expanded Product Name</p>
-        </div>
+    this.addSizes = this.addSizes.bind(this)
+  }
 
-        <div className={styles.price}>
-          <p>{'$' + info.original_price}</p>
-        </div>
+  addSizes(skus) {
+    this.setState({
+      skus: skus
+    })
+  }
 
-        <div className={styles.text}>
-          <p><strong>STYLE ></strong></p><p className={styles.second}>SELECTED STYLE</p>
-        </div>
+  render () {
 
-        <div className={styles.styles}>
-          {thumbnails.map(img =>
-          <Style img={img} changeStyle={changeStyle}/>)}
-        </div>
+    return (
+      <div>
+        <div className={styles.left}>
+          <div className={styles.info}>
+            <div className={styles.reviews}>
+            ★★★★☆ <a className={styles.link}>Read all reviews</a>
+            </div>
 
-        <div className={styles.selectors}>
-          <div className={styles.select} >
-            <select>
-              <option className={styles.option}>SELECT SIZE</option>
-            </select>
+            <div className={styles.category}>
+              <p>{this.props.info.category}</p>
+            </div>
+
+            <div className={styles.name} >
+              <p className={styles.name}>{this.props.info.name}</p>
+            </div>
+
+            <div className={styles.price}>
+              <p>{'$' + this.props.info.default_price}</p>
+            </div>
+
+            <div className={styles.text}>
+              <p><strong>STYLE ></strong></p><p className={styles.second}>SELECTED STYLE</p>
+            </div>
+
+            <div className={styles.styles}>
+              {this.props.styles.map(style =>
+              <Style style={style} changeStyle={this.props.changeStyle} addSizes={this.addSizes}/>)}
+            </div>
+
+            <div className={styles.selectors}>
+              <div className={styles.select} >
+                <select>
+                  <option className={styles.option}>SELECT SIZE</option>
+                </select>
+              </div>
+              <div className={styles.quantity}>
+                <select>
+                  <option>-</option>
+                </select>
+              </div>
+            </div>
+
+            <div className={styles.checkout}>
+              <button className={styles.cart}>ADD TO BAG</button>
+              <button className={styles.favorite}>☆</button>
+            </div>
+
           </div>
-          <div className={styles.quantity}>
-            <select>
-              <option>-</option>
-            </select>
+
+          <div className={styles.description2}>
+            <ul>
+              {this.props.features.map(feature =>
+                <Feature feature={feature.feature}/>
+              )}
+            </ul>
           </div>
         </div>
-
-        <div className={styles.checkout}>
-          <button className={styles.cart}>ADD TO BAG</button>
-          <button className={styles.favorite}>☆</button>
-        </div>
-
       </div>
-
-      <div className={styles.description2}>
-        <ul>Product descripton2</ul>
-      </div>
-    </div>
-  </div>
-)
+    )
+  }
+}
 
 export default Info;
 
-  /* <option className={styles.option}>SELECT SIZE</option> */
 
-  // {for (var key in info['skus']) {
-  //   <Options size={key} />
-  // }}
+
+

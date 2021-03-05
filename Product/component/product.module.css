@@ -7,8 +7,9 @@
 .container {
   display: flex;
   margin-top: 5%;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 17%;
+  margin-right: 12%;
+  overflow: hidden;
 }
 
 .left {
@@ -17,5 +18,5 @@
 
 .right {
   width: 33%;
-  margin-left:-50px;
+  margin-left:-60px;
 }

@@ -4,4 +4,6 @@
   border-radius: 50%;
   margin-right: 20px;
   margin-bottom: 18px;
+  cursor: pointer;
+  border:1px solid black;
 }
