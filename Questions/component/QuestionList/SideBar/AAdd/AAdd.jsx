@@ -35,7 +35,7 @@ class AAdd extends React.Component {
           show={this.state.show}
           close={this.hideModal}
           addAnswer={this.props.addAnswer}
-          qID={this.props.qID}
+          questionID={this.props.questionID}
         />
       </div>
     )

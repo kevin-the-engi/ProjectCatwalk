@@ -17,7 +17,8 @@ class Questions extends React.Component {
       answers: [],
       filtered: [],
       search: '',
-      count: 2
+      qCount: 2,
+      aCount: 2
     }
 
     this.getQuestions = this.getQuestions.bind(this);
@@ -69,7 +70,7 @@ class Questions extends React.Component {
 
   getQuestions() {
     let qData = {};
-    let productID = `?product_id=14931&page=1&count=${this.state.count}`;
+    let productID = `?product_id=14931&page=1&count=${this.state.qCount}`;
 
     axios.get('qa/questions/' + productID)
       .then(questions => {
@@ -99,8 +100,6 @@ class Questions extends React.Component {
   }
 
   addAnswer(questionID, answerForm) {
-    console.log(questionID, answerForm);
-
     axios.post(`/qa/questions/${questionID}/answers`, answerForm)
       .then(res => {
         console.log(res);
@@ -117,13 +116,13 @@ class Questions extends React.Component {
     let aData = {};
 
     axios.get(`/qa/questions/${questionID}/answers`)
-      .then(answers => {
+    .then(answers => {
         aData = answers.data;
         console.log(aData);
       })
       .then(() => {
         this.setState({
-          answers: aData.results
+          answers: aData
         })
       })
   }
@@ -159,13 +158,13 @@ class Questions extends React.Component {
   }
 
   moreQ() {
-    this.state.count += 2;
+    this.state.qCount += 2;
 
     this.setState({
-      count: this.state.count
+      qCount: this.state.qCount
     })
 
-    if (this.state.count >= 4 && this.state.questions.length >= 4) {
+    if (this.state.qCount >= 4 && this.state.questions.length >= 4) {
       let divHeight = document.getElementById('Q&AList').clientHeight;
       document.getElementById('Q&AList').style.height = divHeight;
       document.getElementById('Q&AList').setAttribute("class", "overFlow");

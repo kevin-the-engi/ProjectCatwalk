@@ -38,15 +38,20 @@ const QListA = (props) => {
           <span className={styles.answererContainer}>
             <span className={styles.answerer}>
               <sub>
-                by {answerer_name}, {formattedDate} |
+                by {answerer_name === 'Seller' ? <strong>{answerer_name}</strong>: `${answerer_name}`} , {formattedDate}
               </sub>
             </span>
+
+            <span className="separator"><sub>|</sub></span>
 
             <HelpfulA
               helpful={helpfulness}
               answerID={id}
               updateHelpfulA={props.updateHelpfulA}
             />
+
+            <span className="separator"><sub>|</sub></span>
+
             <ReportA
               answerID={id}
               reportA={props.reportA}

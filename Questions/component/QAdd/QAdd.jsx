@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../css/Footer.module.css';
+import styles from '../../css/Buttons.module.css';
 import QModal from './QModal.jsx';
 
 class QAdd extends React.Component {

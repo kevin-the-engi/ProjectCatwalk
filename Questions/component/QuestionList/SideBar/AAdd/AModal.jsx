@@ -29,12 +29,12 @@ class QModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // this.props.addAnswer(this.props.qID, this.state);
+    this.props.addAnswer(this.props.questionID, this.state);
     console.log(this.fileInput.current.files[0]);
     console.log(this.fileInput.current.files[1]);
     this.props.close();
 
-    this.setState = ({
+    this.setState({
       body: '',
       name: '',
       email: '',

@@ -21,6 +21,10 @@
 
 }
 
+.separator {
+  margin: 0 10px;
+}
+
 .overFlow {
   overflow-x: hidden;
   overflow-y: scroll;

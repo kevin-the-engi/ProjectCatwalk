@@ -28,7 +28,7 @@ class HelpfulQ extends React.Component {
       <div className="helpContainer">
         <span className={styles.text}>Helpful?</span>
         <button className={display} onClick={this.handleClick}>Yes</button>
-        <span className={styles.number}>({this.props.helpful}) |</span>
+        <span className={styles.number}>({this.props.helpful})</span>
       </div>
     )
   }

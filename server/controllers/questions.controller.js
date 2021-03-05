@@ -27,7 +27,7 @@ const readQuestions = (req, res) => {
 
 const readAnswers = (req, res) => {
   let page = req.query.page || 1;
-  let count = req.query.count || 5;
+  let count = req.query.count || 2;
   let query = API + req.path + `/?page=${page}&count=${count}`;
 
   axios.get(query, options)
