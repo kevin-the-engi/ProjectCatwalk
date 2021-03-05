@@ -28,23 +28,26 @@ class Questions extends React.Component {
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
     this.updateHelpfulA = this.updateHelpfulA.bind(this);
     this.reportA = this.reportA.bind(this);
+    this.moreQ = this.moreQ.bind(this);
+    this.sortQuestions = this.sortQuestions.bind(this);
   }
 
   componentDidMount() {
-    let productID = '?product_id=14931';
-    let qData = {};
+    this.getQuestions();
+    // let productID = '?product_id=14931&page=1&';
+    // let qData = {};
 
-    axios.get('qa/questions/' + productID)
-    .then(questions => {
-      qData = questions.data;
-    })
-    .then(()=> {
-      this.setState({
-        productID: qData.product_id,
-        productData: qData,
-        questions: qData.results
-      })
-    })
+    // axios.get('qa/questions/' + productID)
+    // .then(questions => {
+    //   qData = questions.data;
+    // })
+    // .then(()=> {
+    //   this.setState({
+    //     productID: qData.product_id,
+    //     productData: qData,
+    //     questions: qData.results
+    //   })
+    // })
     // .catch(err =>{
     //   console.log(err);
     // })
@@ -66,7 +69,7 @@ class Questions extends React.Component {
 
   getQuestions() {
     let qData = {};
-    let productID = `?product_id=${this.state.productID}`;
+    let productID = `?product_id=14931&page=1&count=${this.state.count}`;
 
     axios.get('qa/questions/' + productID)
       .then(questions => {
@@ -155,6 +158,26 @@ class Questions extends React.Component {
       })
   }
 
+  moreQ() {
+    this.state.count += 2;
+
+    this.setState({
+      count: this.state.count
+    })
+
+    if (this.state.count >= 4 && this.state.questions.length >= 4) {
+      let divHeight = document.getElementById('Q&AList').clientHeight;
+      document.getElementById('Q&AList').style.height = divHeight;
+      document.getElementById('Q&AList').setAttribute("class", "overFlow");
+    }
+
+    this.getQuestions();
+  }
+
+  sortQuestions() {
+
+  }
+
   render() {
     return (
       <div className="container">
@@ -176,8 +199,12 @@ class Questions extends React.Component {
         </div>
 
         <div className="footer">
-          <MoreQ />
-          <QAdd addQ={this.addQuestion}/>
+          <MoreQ
+            moreQ={this.moreQ}
+          />
+          <QAdd
+            addQ={this.addQuestion}
+          />
         </div>
       </div>
     )

@@ -1,21 +1,29 @@
 .container {
-  /* max-width: 900px; */
+  max-width: 900px;
 
-  margin: 5em 20%;
+  margin: 5em auto;
   font-family: Arial;
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  height: 800px;
+  /* height: 800px; */
   overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   margin: 3em 0;
 }
 
 .footer {
   display: flex;
+  /* justify-content: space-evenly; */
+  justify-content: flex-start;
+
+}
+
+.overFlow {
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .helpful, #AAdd-btn {
