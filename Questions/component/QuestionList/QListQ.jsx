@@ -3,6 +3,7 @@ import QListA from './AnswerList/QListA.jsx';
 import HelpfulQ from './SideBar/HelpfulQ.jsx';
 import AAdd from './SideBar/AAdd/AAdd.jsx';
 import styles from './QListQ.module.css';
+import axios from 'axios';
 
 class QListQ extends React.Component {
   constructor(props) {
@@ -10,10 +11,21 @@ class QListQ extends React.Component {
     this.state = {
       answers: []
     }
+
+    this.getAnswers = this.getAnswers.bind(this);
   }
 
   componentDidMount() {
-    this.props.getAnswers(this.props.question.question_id);
+    this.getAnswers(this.props.question.question_id);
+  }
+
+  getAnswers(questionID) {
+    axios.get(`/qa/questions/${questionID}/answers`)
+      .then(answers => {
+        this.setState({
+          answers: answers.data.results
+      })
+    })
   }
 
   render() {
@@ -26,7 +38,7 @@ class QListQ extends React.Component {
       }
     } = this.props;
 
-    console.log(this.props.aData)
+    // console.log(question_id)
 
     return(
       <section className={styles.questionContainer}>
@@ -58,12 +70,23 @@ class QListQ extends React.Component {
           </div>
         </div>
 
-        {Object.keys(answers).map(answer =>
+        {/* {Object.keys(answers).map(answer =>
           <QListA
             key={answer}
             answer={answers[answer]}
             updateHelpfulA={this.props.updateHelpfulA}
             reportA={this.props.reportA}
+          />
+        )} */}
+
+        {this.state.answers.map(answer =>
+          <QListA
+            key={answer.answer_id}
+            questionID={question_id}
+            answer={answer}
+            updateHelpfulA={this.props.updateHelpfulA}
+            reportA={this.props.reportA}
+            getAnswers={this.getAnswers}
           />
         )}
       </section>

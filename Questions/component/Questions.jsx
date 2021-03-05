@@ -21,16 +21,16 @@ class Questions extends React.Component {
       aCount: 2
     }
 
+    this.dynamicSearch = this.dynamicSearch.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
-    this.dynamicSearch = this.dynamicSearch.bind(this);
     this.getAnswers = this.getAnswers.bind(this);
+    this.sortAnswers = this.sortAnswers.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
     this.updateHelpfulA = this.updateHelpfulA.bind(this);
     this.reportA = this.reportA.bind(this);
     this.moreQ = this.moreQ.bind(this);
-    this.sortQuestions = this.sortQuestions.bind(this);
   }
 
   componentDidMount() {
@@ -76,6 +76,9 @@ class Questions extends React.Component {
       .then(questions => {
         qData = questions.data;
       })
+      .catch(err => {
+        console.log(err);
+      })
       .then(() => {
         this.setState({
           productID: qData.product_id,
@@ -110,21 +113,32 @@ class Questions extends React.Component {
       .then(() => {
         this.getQuestions();
       })
-  }
+    }
 
   getAnswers(questionID) {
-    let aData = {};
+    // let aData = [];
+
 
     axios.get(`/qa/questions/${questionID}/answers`)
-    .then(answers => {
-        aData = answers.data;
-        console.log(aData);
+      .then(answers => {
+        return answers.data.results;
+      })
+      .then((data) => {
+        this.setState({
+          answers: data
+        })
+
       })
       .then(() => {
-        this.setState({
-          answers: aData
-        })
+        console.log(this.state.answers)
       })
+
+    // console.log(aData);
+  }
+
+  sortAnswers() {
+    console.log(this.state.questions)
+    this.state.questions.map()
   }
 
   updateHelpfulQ(questionID) {
@@ -171,10 +185,6 @@ class Questions extends React.Component {
     }
 
     this.getQuestions();
-  }
-
-  sortQuestions() {
-
   }
 
   render() {

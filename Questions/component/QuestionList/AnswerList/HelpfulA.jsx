@@ -14,6 +14,7 @@ class HelpfulA extends React.Component {
   handleClick(event) {
     event.preventDefault();
     this.props.updateHelpfulA(this.props.answerID);
+    this.props.getAnswers(this.props.questionID);
 
     this.setState({
       show: false

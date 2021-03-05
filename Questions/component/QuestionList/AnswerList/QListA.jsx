@@ -6,9 +6,8 @@ import ReportA from './ReportA.jsx';
 const QListA = (props) => {
   const {
     answer: {
-      id,
+      answer_id,
       body,
-      answerer,
       answerer_name,
       helpfulness
     }
@@ -22,7 +21,7 @@ const QListA = (props) => {
 
   const formattedDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(date);
 
-  // console.log(props);
+  console.log(props);
   return(
     <div className={styles.answerContainer}>
       <div className={styles.body}>
@@ -45,16 +44,20 @@ const QListA = (props) => {
             <span className="separator"><sub>|</sub></span>
 
             <HelpfulA
+              answerID={answer_id}
+              questionID={props.questionID}
               helpful={helpfulness}
-              answerID={id}
               updateHelpfulA={props.updateHelpfulA}
+              getAnswers={props.getAnswers}
             />
 
             <span className="separator"><sub>|</sub></span>
 
             <ReportA
-              answerID={id}
+              answerID={answer_id}
+              questionID={props.questionID}
               reportA={props.reportA}
+              getAnswers={props.getAnswers}
             />
           </span>
         </div>
