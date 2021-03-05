@@ -32,35 +32,35 @@ class Info extends React.Component {
             ★★★★☆ <a className={styles.link}>Read all reviews</a>
             </div>
 
-            <div className={styles.category}>
-              <p>{this.props.info.category}</p>
+            <div>
+              <p className={styles.category}>{this.props.info.category}</p>
             </div>
 
-            <div className={styles.name} >
+            <div>
               <p className={styles.name}>{this.props.info.name}</p>
             </div>
 
-            <div className={styles.price}>
-              <p>{'$' + this.props.info.default_price}</p>
+            <div>
+              <p className={styles.price}>{'$' + this.props.info.default_price}</p>
             </div>
 
-            <div className={styles.text}>
-              <p><strong>STYLE ></strong></p><p className={styles.second}>SELECTED STYLE</p>
+            <div className={styles.textbox}>
+              <p className={styles.text}><strong>STYLE ></strong></p><p className={styles.second}>SELECTED STYLE</p>
             </div>
 
             <div className={styles.styles}>
-              {this.props.styles.map(style =>
-              <Style style={style} changeStyle={this.props.changeStyle} addSizes={this.addSizes}/>)}
+              {this.props.styles.map((style, i) =>
+              <Style key={i} style={style} changeStyle={this.props.changeStyle} addSizes={this.addSizes}/>)}
             </div>
 
             <div className={styles.selectors}>
               <div className={styles.select} >
-                <select>
+                <select className={styles.selectButton}>
                   <option className={styles.option}>SELECT SIZE</option>
                 </select>
               </div>
               <div className={styles.quantity}>
-                <select>
+                <select className={styles.selectButton}>
                   <option>-</option>
                 </select>
               </div>
@@ -74,9 +74,9 @@ class Info extends React.Component {
           </div>
 
           <div className={styles.description2}>
-            <ul>
-              {this.props.features.map(feature =>
-                <Feature feature={feature.feature}/>
+            <ul className={styles.list}>
+              {this.props.features.map((feature, i) =>
+                <Feature key={i} feature={feature.feature}/>
               )}
             </ul>
           </div>

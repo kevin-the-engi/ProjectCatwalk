@@ -7,13 +7,13 @@ const Gallery = ({image, changeStyle, info, stylePhotos, handleThumbnailClick}) 
     <div>
       <img className={styles.image} src={image} alt="dress"></img>
       <div className={styles.thumbnails}>
-      {stylePhotos.map(photo =>
-        <Thumbnail photo={photo.url} handleThumbnailClick={handleThumbnailClick}/>)}
+      {stylePhotos.map((photo, i) =>
+        <Thumbnail key={i} photo={photo.url} handleThumbnailClick={handleThumbnailClick}/>)}
       </div>
     </div>
     <div className={styles.description1}>
-      <h3>{info.slogan}</h3>
-      <p>{info.description}</p>
+      <h3 className={styles.heading}>{info.slogan}</h3>
+      <p className={styles.text}>{info.description}</p>
    </div>
   </div>
 )

@@ -17,12 +17,6 @@
   overflow: hidden;
 }
 
-
-h3 {
-  font-family: "adobe-clean", sans-serif;
-  font-size: 20px;
-}
-
 .description1 {
   height: 150px;
   width: 660px;
@@ -33,14 +27,14 @@ h3 {
   font-family: "adobe-clean", sans-serif
 }
 
-h3 {
+.heading {
   color: #141414;
   font-family: "adobe-clean", sans-serif;
   margin-bottom: 10px;
   margin-right: 5px;
 }
 
-p {
+.text {
   color: #141414;
   font-family: "adobe-clean", sans-serif;
   font-size: 16px;
