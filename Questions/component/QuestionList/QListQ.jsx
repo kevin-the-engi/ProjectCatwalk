@@ -13,6 +13,9 @@ class QListQ extends React.Component {
     }
 
     this.getAnswers = this.getAnswers.bind(this);
+    this.addAnswer = this.addAnswer.bind(this);
+    this.updateHelpfulA = this.updateHelpfulA.bind(this);
+    this.reportA = this.reportA.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +29,39 @@ class QListQ extends React.Component {
           answers: answers.data.results
       })
     })
+  }
+
+  addAnswer(questionID, answerForm) {
+    axios.post(`/qa/questions/${questionID}/answers`, answerForm)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .then(() => {
+        this.getAnswers(questionID);
+      })
+    }
+
+  updateHelpfulA(questionID, answerID) {
+    axios.put(`/qa/answers/${answerID}/helpful`, { answer_helpfulness: 1 })
+      .then(() => {
+        this.getAnswers(questionID);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  reportA(questionID, answerID) {
+    axios.put(`/qa/answers/${answerID}/report`, { reported: true })
+      .then(() => {
+        this.getAnswers(questionID);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
@@ -63,29 +99,20 @@ class QListQ extends React.Component {
               <span className="separator">|</span>
 
               <AAdd
-                addAnswer={this.props.addAnswer}
+                addAnswer={this.addAnswer}
                 questionID={question_id}
               />
             </div>
           </div>
         </div>
 
-        {/* {Object.keys(answers).map(answer =>
-          <QListA
-            key={answer}
-            answer={answers[answer]}
-            updateHelpfulA={this.props.updateHelpfulA}
-            reportA={this.props.reportA}
-          />
-        )} */}
-
         {this.state.answers.map(answer =>
           <QListA
             key={answer.answer_id}
             questionID={question_id}
             answer={answer}
-            updateHelpfulA={this.props.updateHelpfulA}
-            reportA={this.props.reportA}
+            updateHelpfulA={this.updateHelpfulA}
+            reportA={this.reportA}
             getAnswers={this.getAnswers}
           />
         )}

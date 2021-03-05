@@ -5,16 +5,11 @@ const QList = (props) => {
   // console.log(props.qData);
   return (
     <div id="Q&AList">
-      {props.qData.map((question, i) =>
+      {props.qData.map(question =>
         <QListQ
-          key={i}
+          key={question.question_id}
           question={question}
-          aData={props.aData}
-          getAnswers={props.getAnswers}
-          addAnswer={props.addAnswer}
           updateHelpfulQ={props.updateHelpfulQ}
-          updateHelpfulA={props.updateHelpfulA}
-          reportA={props.reportA}
         />
       )}
     </div>

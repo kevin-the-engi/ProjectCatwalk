@@ -13,8 +13,7 @@ class HelpfulA extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.updateHelpfulA(this.props.answerID);
-    this.props.getAnswers(this.props.questionID);
+    this.props.updateHelpfulA(this.props.questionID, this.props.answerID);
 
     this.setState({
       show: false

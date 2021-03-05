@@ -24,34 +24,13 @@ class Questions extends React.Component {
     this.dynamicSearch = this.dynamicSearch.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
-    this.addAnswer = this.addAnswer.bind(this);
-    this.getAnswers = this.getAnswers.bind(this);
     this.sortAnswers = this.sortAnswers.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
-    this.updateHelpfulA = this.updateHelpfulA.bind(this);
-    this.reportA = this.reportA.bind(this);
     this.moreQ = this.moreQ.bind(this);
   }
 
   componentDidMount() {
     this.getQuestions();
-    // let productID = '?product_id=14931&page=1&';
-    // let qData = {};
-
-    // axios.get('qa/questions/' + productID)
-    // .then(questions => {
-    //   qData = questions.data;
-    // })
-    // .then(()=> {
-    //   this.setState({
-    //     productID: qData.product_id,
-    //     productData: qData,
-    //     questions: qData.results
-    //   })
-    // })
-    // .catch(err =>{
-    //   console.log(err);
-    // })
   }
 
   dynamicSearch(search) {
@@ -102,40 +81,6 @@ class Questions extends React.Component {
       })
   }
 
-  addAnswer(questionID, answerForm) {
-    axios.post(`/qa/questions/${questionID}/answers`, answerForm)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .then(() => {
-        this.getQuestions();
-      })
-    }
-
-  getAnswers(questionID) {
-    // let aData = [];
-
-
-    axios.get(`/qa/questions/${questionID}/answers`)
-      .then(answers => {
-        return answers.data.results;
-      })
-      .then((data) => {
-        this.setState({
-          answers: data
-        })
-
-      })
-      .then(() => {
-        console.log(this.state.answers)
-      })
-
-    // console.log(aData);
-  }
-
   sortAnswers() {
     console.log(this.state.questions)
     this.state.questions.map()
@@ -151,25 +96,6 @@ class Questions extends React.Component {
       })
   }
 
-  updateHelpfulA(answerID) {
-    axios.put(`/qa/answers/${answerID}/helpful`, { answer_helpfulness: 1 })
-      .then(() => {
-        this.getQuestions();
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-
-  reportA(answerID) {
-    axios.put(`/qa/answers/${answerID}/report`, { reported: true })
-      .then(() => {
-        this.getQuestions();
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
 
   moreQ() {
     this.state.qCount += 2;
@@ -202,8 +128,6 @@ class Questions extends React.Component {
             getAnswers={this.getAnswers}
             addAnswer={this.addAnswer}
             updateHelpfulQ={this.updateHelpfulQ}
-            updateHelpfulA={this.updateHelpfulA}
-            reportA={this.reportA}
           />
         </div>
 

@@ -13,7 +13,7 @@ class ReportA extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.reportA(this.props.answerID);
+    this.props.reportA(this.props.questionID, this.props.answerID);
 
     this.setState({
       reported: true
