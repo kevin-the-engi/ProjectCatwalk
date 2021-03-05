@@ -33,16 +33,15 @@ class Questions extends React.Component {
   }
 
   dynamicSearch(search) {
-    // console.log(search);
-    this.setState({
-      search: search
-    })
-
     if (search.length >= 3) {
       let filtered = this.state.questions.filter(question => question.question_body.toLowerCase().includes(search.toLowerCase()));
 
       this.setState({
         filtered: filtered
+      })
+    } else {
+      this.setState({
+        filtered: []
       })
     }
   }
