@@ -1,12 +1,12 @@
 import React from 'react';
-import ProdChar from '../ProdChar/ProdChar.jsx'
+import ProdChar from '../ProdChar/ProdChar.jsx';
 
 
 const ProductBreakdown = (props) => {
 
   var chars = []
   if (props && props.metaData && props.metaData.characteristics) {
-    chars = Object.keys(props.metaData.characteristics)
+    chars = Object.keys(props.metaData.characteristics);
   }
 
   return (

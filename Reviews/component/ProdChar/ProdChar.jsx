@@ -4,14 +4,13 @@ import styles from './ProdChar.module.css'
 
 const ProdChar = (props) => {
 
-  let charMeaning = []
-  var charOptionsToRender = {}
-  var percentage
+  let charMeaning = [];
+  var charOptionsToRender = {};
+  var percentage;
   if (props && props.metaData && props.metaData.characteristics && props.char && props.metaData.characteristics[props.char].value) {
     var charOptionstoRender = charOptions[props.char];
     charMeaning = Object.values(charOptions[props.char]);
-    percentage = (props.metaData.characteristics[props.char].value / 5) * 100
-    console.log(percentage)
+    percentage = (props.metaData.characteristics[props.char].value / 5) * 100;
   }
   return (
    <div className={styles.container}>
