@@ -1,0 +1,58 @@
+.container {
+  padding-bottom: 15px;
+}
+
+.progressBar {
+  position: relative;
+  height: 6px;
+  width: 100%;
+  background:rgb(218, 216, 216);
+}
+
+.explanations {
+  display: flex;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  justify-content: space-between;
+}
+
+.explanation {
+  font-size: 13px;
+  text-align: left;
+  width: 33%;
+}
+
+.explanation2 {
+  font-size: 13px;
+  text-align: center;
+  width: 33%;
+}
+
+.explanation3 {
+  text-align: right;
+  font-size: 13px;
+  width: 33%;
+}
+
+.chars {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.filler {
+  background-color: transparent;
+  border: 7px solid transparent;
+  border-bottom-width: 14px;
+  border-top-width: 14px;
+  height: auto;
+  width: 0;
+  border-top-color: #000;
+  position: relative;
+  top: -3px;
+}
+
+.barContainer {
+  height: 15px;
+  display: block;
+}

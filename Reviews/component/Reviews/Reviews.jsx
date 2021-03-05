@@ -5,6 +5,7 @@ import dummyData from '../reviewData.js'
 import metaData from '../reviewMetaData.js'
 import WriteNewReview from '../WriteNewReview/WriteNewReview.jsx'
 import RatingBreakdown from '../RatingBreakdown/RatingBreakdown.jsx'
+import ProductBreakdown from '../ProductBreakdown/ProductBreakdown.jsx'
 import styles from './Reviews.module.css'
 import axios from 'axios'
 
@@ -50,7 +51,7 @@ class Reviews extends React.Component {
       })
     })
     .catch((err) => {
-      console.log('error getting meta data from reviews from api')
+      console.log('error getting meta data from reviews from api', err)
     })
   }
 
@@ -99,7 +100,7 @@ class Reviews extends React.Component {
             <RatingBreakdown recommended={this.state.recommended} ratings={this.state.ratings}/>
           </div>
           <div>
-            [product breakdown]
+            <ProductBreakdown metaData={this.state.metaData}/>
           </div>
         </div>
         <div className={styles.right}>
