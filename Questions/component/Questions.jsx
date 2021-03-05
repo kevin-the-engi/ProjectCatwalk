@@ -12,19 +12,18 @@ class Questions extends React.Component {
     super();
     this.state = {
       productID: 0,
+      productName: '',
       productData: {},
       questions: [],
-      answers: [],
       filtered: [],
       search: '',
       qCount: 2,
-      aCount: 2
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
+    this.getProductName = this.getProductName.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
-    this.sortAnswers = this.sortAnswers.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
     this.moreQ = this.moreQ.bind(this);
   }
@@ -34,6 +33,7 @@ class Questions extends React.Component {
   }
 
   dynamicSearch(search) {
+    // console.log(search);
     this.setState({
       search: search
     })
@@ -47,11 +47,23 @@ class Questions extends React.Component {
     }
   }
 
+  getProductName() {
+    axios.get(`/products/${this.state.productID}`)
+      .then(productName => {
+        this.setState({
+          productName: productName.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   getQuestions() {
     let qData = {};
     let productID = `?product_id=14931&page=1&count=${this.state.qCount}`;
 
-    axios.get('qa/questions/' + productID)
+    axios.get('/qa/questions/' + productID)
       .then(questions => {
         qData = questions.data;
       })
@@ -64,6 +76,9 @@ class Questions extends React.Component {
           productData: qData,
           questions: qData.results
         })
+      })
+      .then(() => {
+        this.getProductName();
       })
   }
 
@@ -79,11 +94,6 @@ class Questions extends React.Component {
       .catch(err => {
         console.log(err);
       })
-  }
-
-  sortAnswers() {
-    console.log(this.state.questions)
-    this.state.questions.map()
   }
 
   updateHelpfulQ(questionID) {
@@ -128,6 +138,7 @@ class Questions extends React.Component {
             getAnswers={this.getAnswers}
             addAnswer={this.addAnswer}
             updateHelpfulQ={this.updateHelpfulQ}
+            productName={this.state.productName}
           />
         </div>
 
@@ -137,6 +148,7 @@ class Questions extends React.Component {
           />
           <QAdd
             addQ={this.addQuestion}
+            productName={this.state.productName}
           />
         </div>
       </div>

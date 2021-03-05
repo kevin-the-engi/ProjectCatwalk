@@ -55,7 +55,7 @@ class QModal extends React.Component {
     return(
       <div className={display} onClick={this.handleClick}>
         <div className="modal-main">
-          <form onSubmit={this.handleSubmit}>
+          <form className="form" onSubmit={this.handleSubmit}>
             <div className="form-header">
               <h2>Submit your Answer</h2>
               <sub>[Product Name]: [QuestionBody]</sub>
@@ -69,12 +69,12 @@ class QModal extends React.Component {
                 name="body"
                 value={this.state.body}
                 maxLength="1000"
-                rows="8"
+                rows="4"
                 cols="40"
                 required>
               </textarea></p><br />
 
-              <p><label>What is your nickname:</label><br />
+              <p><label>Nickname:</label><br />
               <input
                 className="field"
                 onChange={this.handleChange}
@@ -87,7 +87,7 @@ class QModal extends React.Component {
               </input>
               <sub>For privacy reasons, do not use your full name or email address</sub></p><br />
 
-              <p><label>Your email:</label><br />
+              <p><label>Email:</label><br />
               <input
                 className="field"
                 onChange={this.handleChange}
@@ -111,11 +111,11 @@ class QModal extends React.Component {
 
             <div className="form-footer">
               <div className="submit">
-                <button className="submit-btn" type="submit">Submit answer</button>
+                <button className="submit-btn" type="submit"><h4>SUBMIT ANSWER</h4></button>
               </div>
-              <div className="close">
+              {/* <div className="close">
                 <button className="close-btn" type="button" onClick={this.props.close}>Close</button>
-              </div>
+              </div> */}
             </div>
           </form>
         </div>

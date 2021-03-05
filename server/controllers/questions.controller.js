@@ -9,6 +9,17 @@ const options = {
 };
 
 
+const readProductName = (req, res) => {
+  axios.get(API + req.path, options)
+    .then(product => {
+      res.status(200).send(product.data.name);
+    })
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    })
+}
+
 const readQuestions = (req, res) => {
   let id = req.query.product_id;
   let page = req.query.page || 1;
@@ -115,6 +126,7 @@ const updateReportA = (req, res) => {
 };
 
 module.exports = {
+  readProductName,
   readQuestions,
   readAnswers,
   createQuestions,

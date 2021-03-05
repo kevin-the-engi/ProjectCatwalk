@@ -1,9 +1,9 @@
 import React from 'react';
+import axios from 'axios';
 import QListA from './AnswerList/QListA.jsx';
 import HelpfulQ from './SideBar/HelpfulQ.jsx';
 import AAdd from './SideBar/AAdd/AAdd.jsx';
 import styles from './QListQ.module.css';
-import axios from 'axios';
 
 class QListQ extends React.Component {
   constructor(props) {
