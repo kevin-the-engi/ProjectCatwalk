@@ -12,7 +12,6 @@ const options = {
 }
 //Controller
 route.post('/reviews', (req, res) => {
-  console.log(req.body)
   postReview(req.body, (err, results) => {
     if (err) {
       res.sendStatus(400);
@@ -22,11 +21,122 @@ route.post('/reviews', (req, res) => {
   })
 })
 
+route.get('/reviews/', (req, res) => {
+  getReviews(req.query.product_id, (err, results) => {
+    if (err) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).send(results.data);
+    }
+  })
+})
+
+route.get('/reviews/meta', (req, res) => {
+  getMetaReviews(req.query.product_id, (err, results) => {
+    if (err) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).send(results.data);
+    }
+  })
+})
+
+route.put('/reviews/', (req, res) => {
+  putHelpful(req.body.review_id, (err, results) => {
+    if (err) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).send(results.data);
+    }
+  })
+})
+
+route.put('/reviews/report', (req, res) => {
+  putReport(req.body.review_id, (err, results) => {
+    if (err) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).send(results.data);
+    }
+  })
+})
+
 //Model
 var postReview = (params, callback) => {
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', params, options)
   .then((response) => {
     callback(null, response.data)
+  })
+  .catch((err) => {
+    callback(err, null)
+  })
+}
+
+var getReviews = (id, callback) => {
+  axios({
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/`,
+    headers: {
+      Authorization: API_KEY
+    },
+    params: {
+      product_id: id
+    }
+  })
+  .then((response) => {
+    callback(null, response)
+  })
+  .catch((err) => {
+    callback(err, null)
+  })
+}
+
+var getMetaReviews = (id, callback) => {
+  axios({
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta`,
+    headers: {
+      Authorization: API_KEY
+    },
+    params: {
+      product_id: id
+    }
+  })
+  .then((response) => {
+    callback(null, response)
+  })
+  .catch((err) => {
+    callback(err, null)
+  })
+}
+
+
+var putHelpful = (id, callback) => {
+  axios({
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${id}/helpful`,
+    headers: {
+      Authorization: API_KEY
+    }
+  })
+  .then((response) => {
+    callback(null, response)
+  })
+  .catch((err) => {
+    callback(err, null)
+  })
+}
+
+var putReport = (id, callback) => {
+  axios({
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${id}/report`,
+    headers: {
+      Authorization: API_KEY
+    }
+  })
+  .then((response) => {
+    callback(null, response)
   })
   .catch((err) => {
     callback(err, null)

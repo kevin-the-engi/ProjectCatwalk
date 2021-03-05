@@ -1,8 +1,153 @@
+/* CSS for container */
 .relatedContainer {
     display: flex;
     box-sizing: border-box;
     flex-flow: row nowrap;
     justify-content: flex-start;
     overflow: auto hidden;
-    height: 500px;
+    max-height: 450px;
+    align-items: stretch;
+    scroll-behavior: smooth;
+}
+
+.relatedContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* CSS for product card */
+.productCard {
+    flex: none;
+    height: 100%;
+    width: 350px;
+    height: 425px;
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.imageContainer {
+    height: 70%;
+    display: flex;
+}
+
+.previewImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: "adobe-clean", sans-serif;
+    font-size: small;
+    text-transform: uppercase;
+    color: grey;
+}
+
+.productName {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: "adobe-clean", sans-serif;
+    font-size: small;
+    text-transform: uppercase;
+    color: black;
+}
+
+.price {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: "adobe-clean", sans-serif;
+    font-size: small;
+    text-transform: uppercase;
+    color: red;
+}
+
+.averageRating {
+    margin-left: 5px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-family: "adobe-clean", sans-serif;
+    font-size: small;
+    text-transform: uppercase;
+    color: black;
+}
+
+.starButton {
+  margin-left: 5px;
+}
+
+/* CSS for arrow buttons */
+.leftArrowButton {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: white;
+    left: 25px;
+    cursor: pointer;
+    appearance: none;
+    top: 275px;
+    border: 0px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.arrowLeft {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.rightArrowButton {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: white;
+    right: 25px;
+    cursor: pointer;
+    appearance: none;
+    top: 275px;
+    border: 0px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.arrowRight {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+/* CSS for comparison modal */
+.comparisonModalDisplayBlock {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.comparisonModalMain {
+  position: fixed;
+  background: white;
+  width: 60%;
+  height: 40%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
 }

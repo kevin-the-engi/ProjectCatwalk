@@ -1,4 +1,6 @@
 import React from 'react';
+import ComparisonModal from './ComparisonModal.jsx';
+import styles from './css_modules/RelatedGallery.module.css';
 
 class ProductInformation extends React.Component {
     constructor(props) {
@@ -8,8 +10,11 @@ class ProductInformation extends React.Component {
             productName: '',
             defaultPrice: '',
             salePrice: '',
-            averageRating: ''
+            averageRating: '',
+            show: false
         }
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
     }
 
     componentDidMount() {
@@ -24,11 +29,6 @@ class ProductInformation extends React.Component {
     }
 
     calculateAverageRating() {
-        // let numberOfReviews = this.props.relatedItem.reviews.ratings[1] + this.props.relatedItem.reviews.ratings[2] + this.props.relatedItem.reviews.ratings[3] + this.props.relatedItem.reviews.ratings[4] + this.props.relatedItem.reviews.ratings[5];
-        // console.log('numberOfReviews: ', numberOfReviews);
-        // let average = ((1 * this.props.relatedItem.reviews.ratings[1]) + (2 * this.props.relatedItem.reviews.ratings[2]) + (3 * this.props.relatedItem.reviews.ratings[3]) + (4 * this.props.relatedItem.reviews.ratings[4]) + (5 * this.props.relatedItem.reviews.ratings[5])) / numberOfReviews;
-        // console.log('average: ', average);
-        // return average;
         let numberOfReviews = 0;
         let weightedSum = 0;
         for (let key in this.props.relatedItem.reviews.ratings) {
@@ -52,22 +52,38 @@ class ProductInformation extends React.Component {
         }
     }
 
+    showModal() {
+      this.setState({show: true});
+    }
+
+    hideModal() {
+      this.setState({show: false});
+    }
+
     render() {
+        let displayPrice;
+        if (this.state.salePrice === null) {
+            displayPrice = <div class={styles.price}>${this.state.defaultPrice}</div>;
+        } else {
+            displayPrice = <div class={styles.price}>${this.state.salePrice}</div>;
+        }
+
+        console.log('this.state.show: ', this.state.show);
 
         return (
             <div>
-                <div class="category">
+                <div className={styles.category}>
                     {this.state.category}
                 </div>
-                <div class="product-name">
+                <div class={styles.productName}>
                     {this.state.productName}
                 </div>
-                <div class="price">
-                    Original Price: {this.state.defaultPrice}, Sale Price: {this.state.salePrice}
+                {displayPrice}
+                <div class={styles.averageRating}>
+                    Avg Rating: {this.state.averageRating}
                 </div>
-                <div class="rating">
-                    Average Rating: {this.state.averageRating}
-                </div>
+                <div className={styles.starButton} onClick={this.showModal}>☆</div>
+                <ComparisonModal hideModal={this.hideModal} show={this.state.show}/>
             </div>
         )
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import modal from '../../css/Modal.css';
-import form from '../../css/Form.css';
+import modal from '../../../../css/Modal.css';
+import styles from '../../../../css/Form.css';
 
 class QModal extends React.Component {
   constructor(props) {
@@ -8,12 +8,14 @@ class QModal extends React.Component {
     this.state = {
       body: '',
       name: '',
-      email:''
+      email: '',
+      photos: []
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.fileInput = React.createRef();
   }
 
   handleChange(event) {
@@ -27,16 +29,18 @@ class QModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addQ(this.state);
+    // this.props.addAnswer(this.props.qID, this.state);
+    console.log(this.fileInput.current.files[0]);
+    console.log(this.fileInput.current.files[1]);
     this.props.close();
 
-    this.setState = {
+    this.setState = ({
       body: '',
       name: '',
-      email: ''
-    }
+      email: '',
+      photos: []
+    })
   }
-
 
   handleClick(event) {
     if (!event.target.closest(".modal-main")) {
@@ -53,18 +57,17 @@ class QModal extends React.Component {
         <div className="modal-main">
           <form onSubmit={this.handleSubmit}>
             <div className="form-header">
-              <h2>Add a Question</h2>
-              <sub>About the [Product Name]</sub><br />
+              <h2>Submit your Answer</h2>
+              <sub>[Product Name]: [QuestionBody]</sub>
             </div>
 
             <div className="form-body">
-              <p><label>Your Question:</label><br />
+              <p><label>Your Answer:</label><br />
               <textarea
                 className="textarea"
                 onChange={this.handleChange}
                 name="body"
                 value={this.state.body}
-                placeholder="Why did you like the product or not?"
                 maxLength="1000"
                 rows="8"
                 cols="40"
@@ -78,7 +81,7 @@ class QModal extends React.Component {
                 type="text"
                 name="name"
                 value={this.state.name}
-                placeholder="jackson11!"
+                placeholder="jack543!"
                 maxLength="60"
                 required>
               </input>
@@ -91,16 +94,24 @@ class QModal extends React.Component {
                 type="email"
                 name="email"
                 value={this.state.email}
-                placeholder="jackson11!@email.com"
+                placeholder="jack@email.com"
                 maxLength="60"
                 required>
               </input>
               <sub>For authentication reasons, you will not be emailed</sub></p>
+
+              <p><label>Upload Photo</label></p>
+              <input
+                type="file"
+                className="photo"
+                accept="image/*"
+                ref={this.fileInput}>
+              </input>
             </div>
 
             <div className="form-footer">
               <div className="submit">
-                <button className="submit-btn" type="submit">Submit question</button>
+                <button className="submit-btn" type="submit">Submit answer</button>
               </div>
               <div className="close">
                 <button className="close-btn" type="button" onClick={this.props.close}>Close</button>
