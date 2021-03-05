@@ -28,8 +28,8 @@ class QAdd extends React.Component {
 
   render() {
     return(
-      <div id="QAdd">
-        <button id="QAdd" onClick={this.showModal}><h3>Add a Question</h3></button>
+      <div id="QAdd-div">
+        <button id="QAdd-btn" onClick={this.showModal}><h3>Add a Question</h3></button>
         <QModal show={this.state.show} close={this.hideModal} addQ={this.props.addQ} />
       </div>
     )
