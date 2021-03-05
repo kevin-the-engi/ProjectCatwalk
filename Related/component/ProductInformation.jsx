@@ -68,7 +68,7 @@ class ProductInformation extends React.Component {
             displayPrice = <div class={styles.price}>${this.state.salePrice}</div>;
         }
 
-        console.log('this.state.show: ', this.state.show);
+        // console.log('this.state.show: ', this.state.show);
 
         return (
             <div>
@@ -83,7 +83,7 @@ class ProductInformation extends React.Component {
                     Avg Rating: {this.state.averageRating}
                 </div>
                 <div className={styles.starButton} onClick={this.showModal}>☆</div>
-                <ComparisonModal hideModal={this.hideModal} show={this.state.show}/>
+                <ComparisonModal hideModal={this.hideModal} show={this.state.show} currentItem={this.props.currentItem} relatedItem={this.props.relatedItem}/>
             </div>
         )
 

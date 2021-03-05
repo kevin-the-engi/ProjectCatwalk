@@ -40,7 +40,7 @@ class RelatedItems extends React.Component {
     })
     .then((response) => {
       console.log('response from /current axios.get ', response.data);
-      this.setState({currentItem: [response.data]});
+      this.setState({currentItem: response.data});
     })
     .catch((error => {
       console.log('error from axios.get for /current: ', error);
@@ -57,7 +57,7 @@ class RelatedItems extends React.Component {
           <div className={styles.relatedItemsBanner}>
             <p>RELATED PRODUCTS</p>
           </div>
-          <RelatedGallery relatedItems={this.state.relatedItems}/>
+          <RelatedGallery relatedItems={this.state.relatedItems} currentItem={this.state.currentItem}/>
           <div className={styles.relatedItemsBanner}>
             <p>YOUR OUTFIT</p>
           </div>

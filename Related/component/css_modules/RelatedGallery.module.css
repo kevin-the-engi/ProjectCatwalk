@@ -42,10 +42,9 @@
     margin-left: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-family: "adobe-clean", sans-serif;
+    font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
     font-size: small;
-    text-transform: uppercase;
-    color: grey;
+    color: #767677;
 }
 
 .productName {

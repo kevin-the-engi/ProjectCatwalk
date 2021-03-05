@@ -8,7 +8,7 @@ const ProductCard = (props) => {
         <div className={styles.productCard}>
             <a>
               <PreviewImage relatedItem={props.relatedItem}/>
-              <ProductInformation relatedItem={props.relatedItem}/>
+              <ProductInformation relatedItem={props.relatedItem} currentItem={props.currentItem}/>
             </a>
         </div>
     )
