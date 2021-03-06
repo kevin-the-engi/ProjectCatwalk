@@ -1,5 +1,6 @@
 import React from 'react'
 import Sliders from '../Sliders/Sliders.jsx'
+import Stars from '../Stars/Stars.jsx'
 import styles from './RatingBreakdown.modules.css'
 
 const RatingBreakdown = (props) => {
@@ -24,16 +25,13 @@ const RatingBreakdown = (props) => {
     var rating = recommendTrue / (recommendTrue + recommendFalse) * 100;
     var roundedRating = rating.toFixed(1);
    }
-
     return (
       <div>
         <div className={styles.header}>
           <div className={styles.numRating}>
             {roundedAvg}
           </div>
-          <div>
-             ★★★☆☆
-          </div>
+          <Stars rating={Math.round(roundedAvg)}/>
         </div>
         <div className={styles.recommend}>
           {roundedRating}% of reviewers recommend this product

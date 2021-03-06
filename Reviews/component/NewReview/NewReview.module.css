@@ -1,17 +1,30 @@
+
 .modal {
-  background-color: white;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 65%;
-  max-width: 100%;
-  height: 85%;
-  max-height: 100%;
-  z-index: 1010;
-  border: 2px black;
-  border-style: solid;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: block;
+}
+
+.modalmain {
+  position:fixed;
+  background: white;
+  width: 40%;
+  height: 80%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  max-height: 100vh;
+  overflow-y: auto;
   font-family: Arial;
+  font-size: 16px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
 .form {
@@ -21,7 +34,7 @@
 
 .title {
   font-size: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -31,28 +44,27 @@
   text-align: center;
 }
 
-input {
+.inputs {
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  width: 90%
 }
 
 .submitButton {
-
   width: 20%;
   height: 40px;
   font-size: 15px;
 }
 
 .starContainer {
-  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .star {
   height: 20px;
   width: 20px;
+  margin-right: 5px;
 }
 
 .recommend {
@@ -60,18 +72,103 @@ input {
   font-size: 18px;
 }
 
-.inputs {
-  font-size: 18px;
-}
-
 .recommendButton {
-  width: 50px;
-  height: 30px;
   margin-right: 10px;
   margin-left: 10px;
+  height: 24px;
+  width: 24px;
+  margin-bottom: 10px;
+}
+
+.select {
+  font-size: 13px;
+  margin-top: 20px;
 }
 
 .privacy {
   margin-bottom: 15px;
   font-size: 15px;
 }
+
+.productContainer {
+  display:flex;
+  margin-top: 15px;
+}
+
+.footer {
+ display: flex;
+}
+
+.ratingContainer {
+  width: 50%;
+}
+
+.infoContainer {
+  display: flex;
+}
+
+.product, .reviews {
+  border-bottom: 1px solid rgb(105, 105, 105);
+  margin-bottom: 20px;
+}
+
+
+.productExp, .yourReview, .personalInfo {
+  font-weight: bold;
+  font-size: 19px;
+  margin-bottom: 15px;
+}
+
+.summaryInput {
+  margin-top: 15px;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+.bodyInput {
+  margin-top: 5px;
+  height: 100px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+.recommendContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.recommendButtons {
+  display: flex;
+}
+
+.recommendLabel {
+  padding-top: 7px;
+}
+
+.chars {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.ratingContainer {
+  font-size: 18px;
+  /* margin-top: 20px; */
+}
+
+
+

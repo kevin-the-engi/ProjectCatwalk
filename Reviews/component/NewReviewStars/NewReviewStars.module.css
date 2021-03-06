@@ -1,0 +1,19 @@
+.starContainer {
+  margin-top: 10px;
+}
+
+.star {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+  border: none;
+  outline: none;
+  color: transparent;
+ text-shadow: 0 0 0 #000204;
+ font-size: 20px;
+}
+
+.select {
+  font-size: 13px;
+  margin-top: 20px;
+}

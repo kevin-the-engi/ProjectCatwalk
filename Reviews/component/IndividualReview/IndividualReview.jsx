@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './IndividualReview.module.css';
+import Stars from '../Stars/Stars.jsx'
 
 class IndividualReview extends React.Component {
   constructor(props) {
@@ -38,7 +39,6 @@ class IndividualReview extends React.Component {
   }
 
   render() {
-    console.log('this.state.helpful', this.state.helpful)
     var date = this.props.review.date.slice(0, 10).split('-');
     var year = Number(date[0])
     var month = Number(date[1]) -1;
@@ -53,9 +53,7 @@ class IndividualReview extends React.Component {
     return (
       <div className={styles.individualReview}>
         <div className={styles.header}>
-          <div>
-          ★★★☆☆
-          </div>
+          <Stars rating={this.props.review.rating}/>
           <div className={styles.headerRight}>
             <div className={styles.reviewer_name}>
               {this.props.review.reviewer_name},

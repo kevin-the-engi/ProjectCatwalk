@@ -20,7 +20,6 @@ class WriteNewReview extends React.Component {
   }
 
   render() {
-    console.log('click state', this.state.clicked)
     return (
       <div className={styles.footer}>
         <button className={styles.moreReviews}>MORE REVIEWS</button>

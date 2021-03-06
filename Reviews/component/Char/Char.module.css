@@ -1,15 +1,23 @@
+
+
 .option {
+  font-size: 13px;
+  width: 85%;
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
 }
 
 .optionRow {
   margin-right: 15px;
+  font-size: 14px;
 }
 
 .char {
-  margin-top: 5px;
+  /* margin-top: 5px; */
   font-size: 18px;
   display: flex;
+  margin-bottom: 15px;
 }
 
 .label {
@@ -19,23 +27,55 @@
   padding-top: 6px;
 }
 
-
-.buttons {
-  height: 20px;
-  width: 20px;
+.buttons, .buttons1 , .buttons5 {
+  height: 22px;
+  width: 22px;
   vertical-align: top;
-  margin-right: 10px;
+  position: relative;
+  top: -13px;
 }
 
+.buttons1 {
+  right: 6px;
+}
 
+.buttons5 {
+  left: 6px;
+}
 
 .b {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  height: 1px;
+  width: 85%;
+  background:rgb(0, 0, 0);
+  bottom: -17px;
+}
+
+.buttonContainer {
+  height: 38px;
 }
 
 
-.buttonContainer {
-  display: flex;
-  flex-direction: row;
+.charContainer {
+  width: 50%;
+}
+
+.char1 {
+  width: 33%;
+  text-align: left;
+}
+.char2 {
+  width: 33%;
+  text-align: center;
+}
+.char3 {
+  width: 33%;
+  text-align: right;
+}
+
+.select {
+  font-size: 13px;
 }
