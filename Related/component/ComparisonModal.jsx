@@ -8,6 +8,7 @@ class ComparisonModal extends React.Component {
       features: {},
       tableRows: []
     }
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -46,7 +47,7 @@ class ComparisonModal extends React.Component {
         }
       }
     }
-    // this.setState({features: Object.entries(featuresData)});
+
     let featuresArray = Object.entries(featuresData);
     let rows = [];
     for (let i = 0; i < featuresArray.length; i++) {
@@ -57,19 +58,21 @@ class ComparisonModal extends React.Component {
     this.setState({tableRows: rows});
   }
 
-  render() {
-    // console.log('this.props.currentItem from ComparisonModal: ', this.props.currentItem);
-    // console.log('this.props.relatedItem from ComparisonModal: ', this.props.relatedItem);
-    // console.log('this.state.features: ', this.state.features);
+  handleClick (event) {
+    if (!event.target.closest("#comparisonModal")) {
+      this.props.hideModal();
+    }
+  }
 
-    console.log('this.state.tableRows: ', this.state.tableRows);
+  render() {
+   
     let showHide;
     if (!this.props.show) {
       showHide = null;
     } else {
       showHide = 
-        <div className={styles.comparisonModalDisplayBlock} onClick={this.props.hideModal}>
-          <section className={styles.comparisonModalMain}>
+        <div className={styles.comparisonModalDisplayBlock} onClick={this.handleClick}>
+          <section id="comparisonModal" className={styles.comparisonModalMain}>
             <div className={styles.modalBanner}>
               <div className={styles.modalBannerContent}>
               Comparing
