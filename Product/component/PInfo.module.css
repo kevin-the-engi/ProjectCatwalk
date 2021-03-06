@@ -1,36 +1,143 @@
+.left {
+  display: flex;
+  flex-flow: column;
+}
+
 .info {
   height: 625px;
-  width: 480px;
-  border:2px solid black;
-  text-align: left;
-  grid-column: 2 / 9;
 }
 
-p {
-  max-width: 100%;
-  height: auto;
-}
 
 .reviews {
-  height: 25px;
+  height: 20px;
   width: 200px;
-  border:2px solid black;
+  margin-top: 18px;
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .category {
   font-family: "adobe-clean", sans-serif;
   font-size: 16px;
+  margin-top: 18px;
 }
 
 .name {
   font-family: "adobe-clean", sans-serif;
   font-size: 40px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.price {
+  font-family: "adobe-clean", sans-serif;
+  margin-top: 18px;
+}
+
+.textbox {
+  display: flex;
+  margin-top: 18px;
+}
+
+.text {
+  text-transform: uppercase;
+  font-family: "adobe-clean", sans-serif;
+}
+
+.second {
+  font-family: "adobe-clean", sans-serif;
+  margin-left: 5px;
+}
+
+.styles {
+  display: flex;
+  flex-flow: row wrap;
+  width: 90%;
+  height: 160px;
+  margin-top: 18px;
+  overflow: hidden;
+}
+
+.selectors {
+  display: flex;
+  margin-top: 18px;
+  height: 65px;
+}
+
+.select {
+  height: 65px;
+  width: 260px;
+  margin-right: 20px;
+}
+
+.selectButton {
+  height: 100%;
+  width: 100%;
+  font-size: 18px;
+  font-family: "adobe-clean", sans-serif;
+  padding-left: 6%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.quantity {
+  height: 65px;
+  width: 140px;
+  cursor: pointer;
+}
+
+.checkout {
+  display: flex;
+  margin-top: 18px;
+  height: 65px;
+  cursor: pointer;
+}
+
+.cart {
+  height: 65px;
+  width: 330px;
+  margin-right: 20px;
+  background-color: white;
+  font-size: 18px;
+  font-family: "adobe-clean", sans-serif;
+  border:1px solid black;
+  text-align: left;
+  padding-left: 5%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.favorite {
+  height: 65px;
+  width: 70px;
+  background-color: white;
+  border:1px solid black;
+  cursor: pointer;
 }
 
 .description2 {
-  height: 250px;
+  height: 150px;
   width: 480px;
-  border:2px solid black;
-  grid-row: 2/ 5;
-  grid-column: 2 / 9;
+  margin-top: 60px;
+  color: #141414;
+  font-family: "adobe-clean", sans-serif;
+  border-left: 2px solid grey;
+}
+
+.list {
+  font-family: "adobe-clean", sans-serif;
+  font-size: 16px;
+  margin-left: 35px;
+  list-style-type: none;
+}
+
+.list li:before {
+  content: '✓ ';
+ }
+
+.list li {
+  margin-bottom: 10px;
 }

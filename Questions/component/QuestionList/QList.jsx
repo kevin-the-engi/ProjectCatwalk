@@ -2,16 +2,15 @@ import React from 'react';
 import QListQ from './QListQ.jsx';
 
 const QList = (props) => {
-  // console.log(props.qData);
+  // console.log(props);
   return (
     <div id="Q&AList">
-      {props.qData.map((question, i) =>
+      {props.qData.map(question =>
         <QListQ
-          key={i}
+          key={question.question_id}
           question={question}
-          getAnswers={props.getAnswers}
-          addAnswer={props.addAnswer}
           updateHelpfulQ={props.updateHelpfulQ}
+          productName={props.productName}
         />
       )}
     </div>

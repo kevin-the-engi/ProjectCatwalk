@@ -3,13 +3,13 @@ var express = require('express')
 var app = express()
 var route = express.Router()
 
-// Relace with tester API KEY
-//var API = require('../../Product/config.js')
+// Replace with tester API KEY
+var API = require('../../Product/config.js')
 
 //CONTROLLERS
-route.get('/product', (request, response) => {
+route.get('/product/styles', (request, response) => {
   // console.log('request id: ', request.query.id);
-  getProduct(request.query.id, (err, result) => {
+  getProductStyles(request.query.id, (err, result) => {
     if (err) {
       response.sendStatus(404)
     } else {
@@ -18,20 +18,19 @@ route.get('/product', (request, response) => {
   })
 })
 
-route.get('/products', (request, response) => {
-  console.log('request id: ', request.query.product_id);
-  getProductData(request.query.product_id, (err, result) => {
+route.get('/product/data', (request, response) => {
+  console.log('request id: ', request.query.id);
+  getProductData(request.query.id, (err, result) => {
     if (err) {
       response.sendStatus(404)
     } else {
-      console.log(result)
       response.send(result)
     }
   })
 })
 
 //MODALS
-let getProduct = (id, callback) => {
+let getProductStyles = (id, callback) => {
   axios({
     method: 'get',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}/styles`,
