@@ -17,7 +17,7 @@ class Questions extends React.Component {
       questions: [],
       qTotal: 0,
       qCount: 2,
-      hide: false
+      hide: true
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
@@ -30,7 +30,19 @@ class Questions extends React.Component {
   }
 
   componentDidMount() {
-    this.getQuestions();
+    const id = 14807;
+    const query = `?product_id=${id}&page=1&count=${this.state.qCount}`;
+
+    axios.get('/qa/questions' + query)
+      .then(questions => {
+        this.setState({
+          productID: questions.data.product_id
+        })
+      })
+      .then(() => {
+        this.getProductName();
+        this.getQuestions();
+      })
   }
 
   dynamicSearch(search) {
@@ -60,13 +72,11 @@ class Questions extends React.Component {
   }
 
   getQuestions() {
-    let id = 14931;
-    let productID = `?product_id=${id}&page=1&count=${this.state.qCount}`;
+    let query = `?product_id=${this.state.productID}&page=1&count=${this.state.qCount}`;
 
-    axios.get('/qa/questions/' + productID)
+    axios.get('/qa/questions/' + query)
       .then(questions => {
         this.setState({
-          productID: questions.data.product_id,
           productData: questions.data,
           questions: questions.data.results
         })
@@ -76,7 +86,6 @@ class Questions extends React.Component {
       })
       .then(() => {
         this.getTotalQ();
-        this.getProductName();
       })
   }
 
@@ -95,9 +104,9 @@ class Questions extends React.Component {
   }
 
   getTotalQ() {
-    let productID = `?product_id=${this.state.productID}&page=1&count=100`;
+    let query = `?product_id=${this.state.productID}&page=1&count=100`;
 
-    axios.get('/qa/questions' + productID)
+    axios.get('/qa/questions' + query)
       .then((questions) => {
         this.setState({
           qTotal: questions.data.results.length
@@ -105,6 +114,13 @@ class Questions extends React.Component {
       })
       .catch(err => {
         console.log(err);
+      })
+      .then(() => {
+        if (this.state.qTotal !== 0 && this.state.qCount < this.state.qTotal) {
+          this.setState({
+            hide: false
+          })
+        }
       })
   }
 
@@ -119,11 +135,16 @@ class Questions extends React.Component {
   }
 
   moreQ() {
+    // console.log(this.state.qCount, this.state.qTotal);
     this.state.qCount += 2;
 
     if (this.state.qCount >= this.state.qTotal) {
       this.setState({
         hide: true
+      })
+    } else {
+      this.setState({
+        hide: false
       })
     }
 
@@ -149,11 +170,14 @@ class Questions extends React.Component {
         </div>
 
         <div className="body">
-          <QList
-            qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
-            updateHelpfulQ={this.updateHelpfulQ}
-            productName={this.state.productName}
-          />
+          {this.state.qTotal !== 0 ?
+            <QList
+              qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
+              updateHelpfulQ={this.updateHelpfulQ}
+              productName={this.state.productName}
+            />  :
+            <i>There are no questions for this product. Be the first to ask!</i>
+          }
         </div>
 
         <div className="footer">
