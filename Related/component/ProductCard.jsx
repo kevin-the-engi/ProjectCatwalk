@@ -6,10 +6,10 @@ import styles from './css_modules/RelatedGallery.module.css';
 const ProductCard = (props) => {
     return (
         <div className={styles.productCard}>
-            <a>
-              <PreviewImage relatedItem={props.relatedItem}/>
-              <ProductInformation relatedItem={props.relatedItem} currentItem={props.currentItem}/>
-            </a>
+          <a>
+            <PreviewImage relatedItem={props.relatedItem} currentItem={props.currentItem}/>
+            <ProductInformation relatedItem={props.relatedItem} currentItem={props.currentItem}/>
+          </a>
         </div>
     )
 }

@@ -1,13 +1,13 @@
 /* CSS for container */
 .relatedContainer {
-    display: flex;
-    box-sizing: border-box;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    overflow: auto hidden;
-    max-height: 450px;
-    align-items: stretch;
-    scroll-behavior: smooth;
+  display: flex;
+  box-sizing: border-box;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  overflow: auto hidden;
+  max-height: 450px;
+  align-items: stretch;
+  scroll-behavior: smooth;
 }
 
 .relatedContainer::-webkit-scrollbar {
@@ -16,118 +16,153 @@
 
 /* CSS for product card */
 .productCard {
-    flex: none;
-    height: 100%;
-    width: 350px;
-    height: 425px;
-    border-color: black;
-    border-style: solid;
-    border-width: thin;
-    margin-right: 8px;
-    margin-left: 8px;
+  flex: none;
+  height: 100%;
+  width: 30%;
+  height: 425px;
+  border: 1px solid transparent;
+  margin-right: 8px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.productCard:hover {
+  border: 1px solid black;
+  /* margin: -2px; */
 }
 
 .imageContainer {
-    height: 70%;
-    display: flex;
+  height: 70%;
+  display: flex;
 }
 
 .previewImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.star {
+  font-size: 27px;
+}
+
+.star:hover {
+  color: white;
+}
+
+.starContainer {
+  margin-left: -10%;
+  margin-top: 1%;
+  order: 2;
+}
+
+.productInformationContainer {
+  display: block;
+  clear: both;
+  padding: 10px;
+  overflow: auto;
+}
+
+.categoryContainer {
+  display: flex;
+  justify-content: space-between;
+  min-height: 17px;
 }
 
 .category {
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
-    font-size: small;
-    color: #767677;
+  flex: 1 1 auto;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #767677;
+}
+
+.productDetailsContainer {
+  line-height: normal;
+  height: 65px;
+  display: block;
 }
 
 .productName {
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-family: "adobe-clean", sans-serif;
-    font-size: small;
-    text-transform: uppercase;
-    color: black;
+  display: block;
+  margin-top: 10px;
+  max-height: 30px;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: black;
 }
 
 .price {
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-family: "adobe-clean", sans-serif;
-    font-size: small;
-    text-transform: uppercase;
-    color: red;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: red;
 }
 
 .averageRating {
-    margin-left: 5px;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-family: "adobe-clean", sans-serif;
-    font-size: small;
-    text-transform: uppercase;
-    color: black;
+  margin-top: 20px;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: black;
 }
 
 .starButton {
-  margin-left: 5px;
+  margin-left: 0px;
 }
 
 /* CSS for arrow buttons */
 .leftArrowButton {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: white;
-    left: 25px;
-    cursor: pointer;
-    appearance: none;
-    top: 275px;
-    border: 0px;
-    margin-left: 20%;
-    margin-right: 20%;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: white;
+  left: 25px;
+  cursor: pointer;
+  appearance: none;
+  top: 275px;
+  border: 0px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .arrowLeft {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
 }
 
 .rightArrowButton {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: white;
-    right: 25px;
-    cursor: pointer;
-    appearance: none;
-    top: 275px;
-    border: 0px;
-    margin-left: 20%;
-    margin-right: 20%;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: white;
+  right: 25px;
+  cursor: pointer;
+  appearance: none;
+  top: 275px;
+  border: 0px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .arrowRight {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 /* CSS for comparison modal */
@@ -144,9 +179,60 @@
 .comparisonModalMain {
   position: fixed;
   background: white;
-  width: 60%;
-  height: 40%;
-  top:50%;
-  left:50%;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%,-50%);
+  border: 1px solid black;
+  padding: 1%;
+}
+
+.modalBanner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.modalBannerContent {
+  /* flex: 1 1 auto; */
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #aeaec2;
+  text-transform: uppercase;
+  margin-left: 3px;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.tableHeaders {
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
+  line-height: 80px;
+  vertical-align: top;
+}
+
+.leftColumn {
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.centerColumn {
+  text-align: center;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #aeaec2;
+  white-space: nowrap;
+}
+
+.rightColumn {
+  text-align: right;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  white-space: nowrap;
 }

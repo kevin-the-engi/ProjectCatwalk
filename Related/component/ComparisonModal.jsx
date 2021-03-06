@@ -57,33 +57,6 @@ class ComparisonModal extends React.Component {
     this.setState({tableRows: rows});
   }
 
-  organizeFeaturesData() {
-    // need to have qualities of current and related product passed down as props (DONE)
-    // create a state object to track qualities of each of the two products being compared (DONE)
-    // return table rows and add as variable to the conditional rendering within the render() method
-
-    // let rows = [];
-    // for (let i = 0; i < this.state.features.length; i++) {
-    //   let currentRow = [this.state.features[i][1].currentItem.value, this.state.features[i][0], this.state.features[i][1].relatedItem.value]
-    //   rows.push(currentRow);
-    // }
-
-    // this.setState({tableRows: rows});
-    // let results;
-    // for (var key in this.state.features) {
-    //   let currentRow = 
-    //       <tr>
-    //         <td>{this.state.features[key]['currentItem']['value']}</td>
-    //         <td>{this.state.features[key]}</td>
-    //         <td>{this.state.features[key]['relatedItem']['value']}</td>
-    //       </tr>;
-    //     // console.log('results: ', results);
-    //     // console.log('this.state.features[key][currentItem][value]: ', this.state.features[key]['currentItem']['value']);
-    //   results += currentRow;
-    // }
-    // return results;
-  }
-
   render() {
     // console.log('this.props.currentItem from ComparisonModal: ', this.props.currentItem);
     // console.log('this.props.relatedItem from ComparisonModal: ', this.props.relatedItem);
@@ -97,23 +70,27 @@ class ComparisonModal extends React.Component {
       showHide = 
         <div className={styles.comparisonModalDisplayBlock} onClick={this.props.hideModal}>
           <section className={styles.comparisonModalMain}>
-            <div>
+            <div className={styles.modalBanner}>
+              <div className={styles.modalBannerContent}>
               Comparing
+              </div>
             </div>
-            <table>
-              <tr>
-                <th>Current Product Name</th>
-                <th></th>
-                <th>Related Product Name</th>
-              </tr>
-              {this.state.tableRows.map((feature) => (
-              <tr>
-                <td>{feature[0]}</td>
-                <td>{feature[1]}</td>
-                <td>{feature[2]}</td>
-              </tr>
-              ))}
-            </table>
+            <div className={styles.tableContainer}>
+              <table>
+                <tr className={styles.tableHeaders}>
+                  <th className={styles.leftHeader}>Current Product Name</th>
+                  <th className={styles.centerHeader}></th>
+                  <th className={styles.rightHeader}>Related Product Name</th>
+                </tr>
+                {this.state.tableRows.map((feature) => (
+                <tr>
+                  <td className={styles.leftColumn}>{feature[0]}</td>
+                  <td className={styles.centerColumn}>{feature[1]}</td>
+                  <td className={styles.rightColumn}>{feature[2]}</td>
+                </tr>
+                ))}
+              </table>
+            </div>
           </section>
         </div>
     }

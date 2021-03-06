@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './css_modules/RelatedGallery.module.css';
+import ComparisonModal from './ComparisonModal.jsx';
 
 class PreviewImage extends React.Component {
     constructor(props) {
@@ -7,6 +8,8 @@ class PreviewImage extends React.Component {
         this.state = {
             url: ''
         }
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
     }
 
     componentDidMount() {
@@ -17,10 +20,22 @@ class PreviewImage extends React.Component {
         }
     }
 
+    showModal() {
+      this.setState({show: true});
+    }
+
+    hideModal() {
+      this.setState({show: false});
+    }
+
     render() {
 
         return (
             <div className={styles.imageContainer}>
+              <div className={styles.starContainer}>
+                <span className={styles.star} onClick={this.showModal}>☆</span>
+                <ComparisonModal hideModal={this.hideModal} show={this.state.show} currentItem={this.props.currentItem} relatedItem={this.props.relatedItem}/>
+              </div>
                 <img className={styles.previewImage} src={this.state.url}></img>
             </div>
         )

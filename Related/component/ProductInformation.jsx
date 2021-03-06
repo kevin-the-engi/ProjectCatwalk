@@ -1,5 +1,4 @@
 import React from 'react';
-import ComparisonModal from './ComparisonModal.jsx';
 import styles from './css_modules/RelatedGallery.module.css';
 
 class ProductInformation extends React.Component {
@@ -13,8 +12,6 @@ class ProductInformation extends React.Component {
             averageRating: '',
             show: false
         }
-        this.showModal = this.showModal.bind(this);
-        this.hideModal = this.hideModal.bind(this);
     }
 
     componentDidMount() {
@@ -25,7 +22,6 @@ class ProductInformation extends React.Component {
         })
         // check which style is the default style, and whether there is a sale price
         this.findPrices();
-        
     }
 
     calculateAverageRating() {
@@ -52,14 +48,6 @@ class ProductInformation extends React.Component {
         }
     }
 
-    showModal() {
-      this.setState({show: true});
-    }
-
-    hideModal() {
-      this.setState({show: false});
-    }
-
     render() {
         let displayPrice;
         if (this.state.salePrice === null) {
@@ -71,19 +59,21 @@ class ProductInformation extends React.Component {
         // console.log('this.state.show: ', this.state.show);
 
         return (
-            <div>
+            <div className={styles.productInformationContainer}>
+              <div className={styles.categoryContainer}>
                 <div className={styles.category}>
                     {this.state.category}
                 </div>
+              </div>
+              <div className={styles.productDetailsContainer}>
                 <div class={styles.productName}>
                     {this.state.productName}
                 </div>
                 {displayPrice}
                 <div class={styles.averageRating}>
-                    Avg Rating: {this.state.averageRating}
+                    Rating: {this.state.averageRating}
                 </div>
-                <div className={styles.starButton} onClick={this.showModal}>☆</div>
-                <ComparisonModal hideModal={this.hideModal} show={this.state.show} currentItem={this.props.currentItem} relatedItem={this.props.relatedItem}/>
+              </div>
             </div>
         )
 

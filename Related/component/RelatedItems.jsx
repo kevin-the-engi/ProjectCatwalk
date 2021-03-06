@@ -55,11 +55,11 @@ class RelatedItems extends React.Component {
       <div>
         <div className={styles.widgetContainer}>
           <div className={styles.relatedItemsBanner}>
-            <p>RELATED PRODUCTS</p>
+            <p className={styles.sectionTitle}>Related Products</p>
           </div>
           <RelatedGallery relatedItems={this.state.relatedItems} currentItem={this.state.currentItem}/>
           <div className={styles.relatedItemsBanner}>
-            <p>YOUR OUTFIT</p>
+            <p className={styles.sectionTitle}>Your Outfit</p>
           </div>
         </div>
       </div>
