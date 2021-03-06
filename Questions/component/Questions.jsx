@@ -16,8 +16,8 @@ class Questions extends React.Component {
       productData: {},
       questions: [],
       filtered: [],
-      search: '',
       qCount: 2,
+      showMore: true
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
@@ -59,22 +59,19 @@ class Questions extends React.Component {
   }
 
   getQuestions() {
-    let qData = {};
-    let productID = `?product_id=14931&page=1&count=${this.state.qCount}`;
+    let id = 14931;
+    let productID = `?product_id=${id}&page=1&count=${this.state.qCount + 5}`;
 
     axios.get('/qa/questions/' + productID)
       .then(questions => {
-        qData = questions.data;
+        this.setState({
+          productID: questions.data.product_id,
+          productData: questions.data,
+          questions: questions.data.results
+        })
       })
       .catch(err => {
         console.log(err);
-      })
-      .then(() => {
-        this.setState({
-          productID: qData.product_id,
-          productData: qData,
-          questions: qData.results
-        })
       })
       .then(() => {
         this.getProductName();
@@ -105,9 +102,14 @@ class Questions extends React.Component {
       })
   }
 
-
   moreQ() {
     this.state.qCount += 2;
+
+    if (this.state.qCount > this.state.questions.length) {
+      this.setState({
+        showMore: false
+      })
+    }
 
     this.setState({
       qCount: this.state.qCount
@@ -115,6 +117,7 @@ class Questions extends React.Component {
 
     if (this.state.qCount >= 4 && this.state.questions.length >= 4) {
       let divHeight = document.getElementById('Q&AList').clientHeight;
+
       document.getElementById('Q&AList').style.height = divHeight;
       document.getElementById('Q&AList').setAttribute("class", "overFlow");
     }
@@ -131,20 +134,20 @@ class Questions extends React.Component {
         </div>
 
         <div className="body">
-          <QList
-            qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
-            aData={this.state.answers}
-            getAnswers={this.getAnswers}
-            addAnswer={this.addAnswer}
-            updateHelpfulQ={this.updateHelpfulQ}
-            productName={this.state.productName}
-          />
+          {this.state.questions.length !== 0 ?
+            <QList
+              qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
+              qCount={this.state.qCount}
+              updateHelpfulQ={this.updateHelpfulQ}
+              productName={this.state.productName}
+            /> :
+            <i>There are no questions for this product. Be the first to ask!</i>}
         </div>
 
         <div className="footer">
-          <MoreQ
-            moreQ={this.moreQ}
-          />
+          {this.state.showMore ?
+            <MoreQ moreQ={this.moreQ}/> : null}
+
           <QAdd
             addQuestion={this.addQuestion}
             productName={this.state.productName}

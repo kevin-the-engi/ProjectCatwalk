@@ -26,6 +26,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: thin;
+  scrollbar-color: rebeccapurple green;
 }
 
 .display-on {

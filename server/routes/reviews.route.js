@@ -1,13 +1,13 @@
 var express = require('express')
 var app = express()
 var route = express.Router()
-// var API_KEY = require('../../Reviews/config.js')
+var API_KEY = require('../../Reviews/config.js')
 var API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 var axios = require('axios')
 
 const options = {
   headers: {
-    // Authorization: API_KEY
+    Authorization: API_KEY
   }
 }
 //Controller
