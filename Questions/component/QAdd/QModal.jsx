@@ -1,6 +1,6 @@
 import React from 'react';
 import modal from '../../css/Modal.css';
-import form from '../../css/Form.css';
+import form from '../../css/Form.module.css';
 
 class QModal extends React.Component {
   constructor(props) {
@@ -30,11 +30,11 @@ class QModal extends React.Component {
     this.props.addQuestion(this.state);
     this.props.close();
 
-    this.setState = {
+    this.setState({
       body: '',
       name: '',
       email: ''
-    }
+    })
   }
 
 
@@ -52,29 +52,32 @@ class QModal extends React.Component {
       <div className={display} onClick={this.handleClick}>
         <div className="modal-main">
           <form onSubmit={this.handleSubmit}>
-            <div className="form">
-              <div className="form-header">
-                <h2>Add a Question</h2>
-                <sub>About the [{this.props.productName}]</sub><br />
-              </div>
+            <div className={form["form-header"]}>
+              <h2>Add a Question</h2>
+              <sub>About the [{this.props.productName}]</sub><br />
+            </div>
 
-              <div className="form-body">
-                <p><label>Your Question:</label><br />
+            <div className={form["form-body"]}>
+              <div className={form["form-main"]}>
+                <label><h4>Your Question:</h4></label><br />
                 <textarea
-                  className="textarea"
+                  className={form.textarea}
                   onChange={this.handleChange}
                   name="body"
                   value={this.state.body}
                   placeholder="Why did you like the product or not?"
+                  minLength="20"
                   maxLength="1000"
                   rows="4"
                   cols="40"
                   required>
-                </textarea></p><br />
+                </textarea><br />
+              </div>
 
-                <p><label>Nickname:</label><br />
+              <div className={form["form-user"]}>
+                <label><h4>Nickname:</h4></label>
                 <input
-                  className="field"
+                  className={form.field}
                   onChange={this.handleChange}
                   type="text"
                   name="name"
@@ -83,11 +86,13 @@ class QModal extends React.Component {
                   maxLength="60"
                   required>
                 </input>
-                <sub>For privacy reasons, do not use your full name or email address</sub></p><br />
+                <sub>For privacy reasons, do not use your full name or email address</sub><br />
+              </div>
 
-                <p><label>Email:</label><br />
+              <div className={form["form-email"]}>
+                <label><h4>Email:</h4></label>
                 <input
-                  className="field"
+                  className={form.field}
                   onChange={this.handleChange}
                   type="email"
                   name="email"
@@ -96,17 +101,17 @@ class QModal extends React.Component {
                   maxLength="60"
                   required>
                 </input>
-                <sub>For authentication reasons, you will not be emailed</sub></p>
+                <sub>For authentication reasons, you will not be emailed</sub>
               </div>
+            </div>
 
-              <div className="form-footer">
-                <div className="submit">
-                  <button className="submit-btn" type="submit"><h4>SUBMIT QUESTION</h4></button>
-                </div>
-                {/* <div className="close">
-                  <button className="close-btn" type="button" onClick={this.props.close}>Close</button>
-                </div> */}
+            <div className={form["form-footer"]}>
+              <div className={form.submitDiv}>
+                <button className={form["submit-btn"]} type="submit"><h4>SUBMIT QUESTION</h4></button>
               </div>
+              {/* <div className="close">
+                <button className="close-btn" type="button" onClick={this.props.close}>Close</button>
+              </div> */}
             </div>
           </form>
         </div>

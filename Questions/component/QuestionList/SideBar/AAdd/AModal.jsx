@@ -1,6 +1,6 @@
 import React from 'react';
 import modal from '../../../../css/Modal.css';
-import styles from '../../../../css/Form.css';
+import form from '../../../../css/Form.module.css';
 
 class QModal extends React.Component {
   constructor(props) {
@@ -55,63 +55,72 @@ class QModal extends React.Component {
     return(
       <div className={display} onClick={this.handleClick}>
         <div className="modal-main">
-          <form className="form" onSubmit={this.handleSubmit}>
-            <div className="form-header">
+          <form onSubmit={this.handleSubmit}>
+            <div className={form["form-header"]}>
               <h2>Submit your Answer</h2>
               <sub>[{this.props.productName}]: [{this.props.questionBody}]</sub>
             </div>
 
-            <div className="form-body">
-              <p><label>Your Answer:</label><br />
-              <textarea
-                className="textarea"
-                onChange={this.handleChange}
-                name="body"
-                value={this.state.body}
-                maxLength="1000"
-                rows="4"
-                cols="40"
-                required>
-              </textarea></p><br />
+            <div className={form["form-body"]}>
+              <div className={form["form-main"]}>
+                <label><h4>Your Answer:</h4></label><br />
+                <textarea
+                  className={form.textarea}
+                  onChange={this.handleChange}
+                  name="body"
+                  value={this.state.body}
+                  minLength="20"
+                  maxLength="1000"
+                  rows="4"
+                  cols="40"
+                  required>
+                </textarea><br />
+              </div>
 
-              <p><label>Nickname:</label><br />
-              <input
-                className="field"
-                onChange={this.handleChange}
-                type="text"
-                name="name"
-                value={this.state.name}
-                placeholder="jack543!"
-                maxLength="60"
-                required>
-              </input>
-              <sub>For privacy reasons, do not use your full name or email address</sub></p><br />
+              <div className={form["form-user"]}>
+              < label><h4>Nickname:</h4></label>
+                <input
+                  className={form.field}
+                  onChange={this.handleChange}
+                  type="text"
+                  name="name"
+                  value={this.state.name}
+                  placeholder="jack543!"
+                  maxLength="60"
+                  required>
+                </input>
+                <sub>For privacy reasons, do not use your full name or email address</sub><br />
+              </div>
 
-              <p><label>Email:</label><br />
-              <input
-                className="field"
-                onChange={this.handleChange}
-                type="email"
-                name="email"
-                value={this.state.email}
-                placeholder="jack@email.com"
-                maxLength="60"
-                required>
-              </input>
-              <sub>For authentication reasons, you will not be emailed</sub></p><br />
+              <div className={form["form-user"]}>
+                <label><h4>Email:</h4></label>
+                <input
+                  className={form.field}
+                  onChange={this.handleChange}
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  placeholder="jack@email.com"
+                  maxLength="60"
+                  required>
+                </input>
+                <sub>For authentication reasons, you will not be emailed</sub><br />
+              </div>
 
-              <p><label>Upload Photo:</label></p>
-              <input
-                type="file"
-                className="photo"
-                accept="image/*"
-                ref={this.fileInput}>
-              </input>
+              <div className={form["for-photo"]}>
+                <label>Upload Photo:</label>
+                <input
+                  type="file"
+                  className="photo"
+                  accept="image/*"
+                  ref={this.fileInput}>
+                </input>
+              </div>
             </div>
 
-            <div className="form-footer">
-              <div className="submit">
-                <button className="submit-btn" type="submit"><h4>SUBMIT ANSWER</h4></button>
+            <div className={form["form-footer"]}>
+              <div className={form.submitDiv}>
+                <button className={form["submit-btn"]} type="submit"><h4>SUBMIT ANSWER</h4></button>
               </div>
               {/* <div className="close">
                 <button className="close-btn" type="button" onClick={this.props.close}>Close</button>
