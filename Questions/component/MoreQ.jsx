@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../css/MoreQ.css';
+import styles from '../css/Buttons.module.css';
 
 class MoreQ extends React.Component {
   constructor(props) {
@@ -9,12 +9,16 @@ class MoreQ extends React.Component {
   }
 
   handleClick() {
-    console.log('clicked')
+    this.props.moreQ();
   }
 
   render() {
     return(
-      <button id="MoreQ" onClick={this.handleClick}><h3>More Answered Questions</h3></button>
+      <div className="footer-MoreQ">
+        <button id={styles['MoreQ-btn']} onClick={this.handleClick}>
+          <h3>More Answered Questions</h3>
+        </button>
+      </div>
     )
   }
 };
