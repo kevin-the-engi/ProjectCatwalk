@@ -1,13 +1,13 @@
 .progress_bar {
   position: relative;
-  height: 10px;
+  height: 6px;
   width: 70%;
   background:rgb(218, 216, 216);
   margin-right: 10px;
 }
 
 .filler {
-  background:rgb(10, 103, 10);
+  background:rgb(0, 3, 0);
   height: 100%;
 }
 

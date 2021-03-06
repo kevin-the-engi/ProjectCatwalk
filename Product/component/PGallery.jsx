@@ -1,34 +1,23 @@
 import React from 'react';
 import styles from './PGallery.module.css'
-import Thumbnail from './Thumbnails.jsx'
+import Thumbnail from './Thumbnail.jsx'
 
-const Gallery = ({image, thumbnails}) => (
-    <section>
-    <div className={styles.gallery}>
-      <img className={styles.main} src={image} alt="dress"></img>
+const Gallery = ({image, changeStyle, info, stylePhotos, handleThumbnailClick}) => (
+  <div className={styles.right}>
+    <div>
+      <img className={styles.image} src={image} alt="dress"></img>
       <div className={styles.thumbnails}>
-        {thumbnails.map(img =>
-          <Thumbnail img={img} />)}
+      {stylePhotos.map((photo, i) =>
+        <Thumbnail key={i} photo={photo.url} handleThumbnailClick={handleThumbnailClick}/>)}
       </div>
-      <div className={styles.description1}>
-        <h3>Product Slogan</h3>
-        <p>Product descripton1</p>
-     </div>
     </div>
-  </section>
+    <div className={styles.description1}>
+      <h3 className={styles.heading}>{info.slogan}</h3>
+      <p className={styles.text}>{info.description}</p>
+   </div>
+  </div>
 )
+
 
 export default Gallery;
 
-// return (
-//   <section>
-//   <div className={styles.gallery}>
-//     <img className={styles.main} src={this.props.image} alt="dress"></img>
-//     <div className={styles.thumbnails}>
-//     </div>
-//   </div>
-//   <div className={styles.description1}>
-//     <h3>Product Slogan</h3>
-//     <p>Product descripton1</p>
-//   </div>
-// </section>
