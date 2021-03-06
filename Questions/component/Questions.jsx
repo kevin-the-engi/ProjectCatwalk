@@ -146,7 +146,7 @@ class Questions extends React.Component {
             moreQ={this.moreQ}
           />
           <QAdd
-            addQ={this.addQuestion}
+            addQuestion={this.addQuestion}
             productName={this.state.productName}
           />
         </div>

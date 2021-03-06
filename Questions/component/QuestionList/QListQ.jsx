@@ -101,6 +101,8 @@ class QListQ extends React.Component {
               <AAdd
                 addAnswer={this.addAnswer}
                 questionID={question_id}
+                questionBody={question_body}
+                productName={this.props.productName}
               />
             </div>
           </div>

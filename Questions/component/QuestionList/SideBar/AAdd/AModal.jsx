@@ -58,7 +58,7 @@ class QModal extends React.Component {
           <form className="form" onSubmit={this.handleSubmit}>
             <div className="form-header">
               <h2>Submit your Answer</h2>
-              <sub>[Product Name]: [QuestionBody]</sub>
+              <sub>[{this.props.productName}]: [{this.props.questionBody}]</sub>
             </div>
 
             <div className="form-body">
@@ -98,9 +98,9 @@ class QModal extends React.Component {
                 maxLength="60"
                 required>
               </input>
-              <sub>For authentication reasons, you will not be emailed</sub></p>
+              <sub>For authentication reasons, you will not be emailed</sub></p><br />
 
-              <p><label>Upload Photo</label></p>
+              <p><label>Upload Photo:</label></p>
               <input
                 type="file"
                 className="photo"

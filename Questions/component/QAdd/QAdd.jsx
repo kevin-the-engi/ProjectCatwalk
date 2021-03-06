@@ -35,7 +35,8 @@ class QAdd extends React.Component {
         <QModal
           show={this.state.show}
           close={this.hideModal}
-          addQ={this.props.addQ}
+          addQuestion={this.props.addQuestion}
+          productName={this.props.productName}
         />
       </div>
     )

@@ -36,6 +36,8 @@ class AAdd extends React.Component {
           close={this.hideModal}
           addAnswer={this.props.addAnswer}
           questionID={this.props.questionID}
+          questionBody={this.props.questionBody}
+          productName={this.props.productName}
         />
       </div>
     )
