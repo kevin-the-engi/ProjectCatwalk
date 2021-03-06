@@ -100,8 +100,8 @@ class Info extends React.Component {
               <div className={styles.quantity}>
                 <select className={styles.selectButton}>
                   <option>-</option>
-                  {this.state.quantity.map(num =>
-                    <OptionQ quantity={num} />)}
+                  {this.state.quantity.map((num, i) =>
+                    <OptionQ key={i} quantity={num} />)}
                 </select>
               </div>
             </div>
