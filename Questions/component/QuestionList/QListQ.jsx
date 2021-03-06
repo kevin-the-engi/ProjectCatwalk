@@ -27,7 +27,8 @@ class QListQ extends React.Component {
   getAnswers(questionID) {
     axios.get(`/qa/questions/${questionID}/answers?page=1&count=100`)
       .then(answers => {
-        let sortSeller = answers.data.results.sort((a, b) => (a.answerer_name === 'Seller') ? -1 : (a === b) ? ((a.answer_name !== 'Seller') ? 1 : -1) : 1);
+        let sortSeller = answers.data.results.sort((a, b) =>
+          (a.answerer_name === 'Seller') ? -1 : (a === b) ? ((a.answer_name !== 'Seller') ? 1 : -1) : 1);
 
         if (!this.state.show) {
           let twoAnswers = sortSeller.slice(0, 2);
@@ -54,7 +55,7 @@ class QListQ extends React.Component {
       .then(() => {
         this.getAnswers(questionID);
       })
-    }
+  }
 
   updateHelpfulA(questionID, answerID) {
     axios.put(`/qa/answers/${answerID}/helpful`, { answer_helpfulness: 1 })
@@ -85,8 +86,6 @@ class QListQ extends React.Component {
         answers
       }
     } = this.props;
-
-    // console.log(question_id)
 
     return(
       <section className={styles.questionContainer}>

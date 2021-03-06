@@ -62,7 +62,6 @@ const QListA = (props) => {
           </span>
         </div>
       </div>
-
     </div>
   );
 };

@@ -29,7 +29,7 @@ class AAdd extends React.Component {
   render() {
     // console.log(this.props)
     return(
-      <div id="AAdd-div">
+      <div id="addAnswerDiv">
         <button id={sidebar.['addAnswer-btn']} onClick={this.showModal}>Add Answer</button>
         <AModal
           show={this.state.show}

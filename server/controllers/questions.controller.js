@@ -26,14 +26,39 @@ const readQuestions = (req, res) => {
   let count = req.query.count || 5;
   let query = API + req.path + `?product_id=${id}&page=${page}&count=${count}`;
 
+  // const innerFunction = (pg, data = null) => {
+  //   if (data !== null) {
+  //     if (data.length === 0) {
+  //       return [];
+  //     }
+  //   }
+
+  //   let query = API + req.path + `?product_id=${id}&page=${pg}&count=5`;
+
+  //   axios.get(query, options)
+  //   .then(questions => {
+  //     // res.status(200).send(questions.data);
+  //     let questionsPage = [];
+  //     questionsPage = questionsPage.concat(innerFunction(pg++, questions.data));
+
+  //     res.status(200).send(questionsPage);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.sendStatus(500);
+  //   })
+  // }
+
+  // innerFunction(page)
+
   axios.get(query, options)
-  .then(questions => {
-    res.status(200).send(questions.data);
-  })
-  .catch(err => {
-    console.log(err);
-    res.sendStatus(500);
-  })
+    .then(questions => {
+      res.status(200).send(questions.data);
+    })
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    })
 };
 
 const readAnswers = (req, res) => {
@@ -42,13 +67,13 @@ const readAnswers = (req, res) => {
   let query = API + req.path + `/?page=${page}&count=${count}`;
 
   axios.get(query, options)
-  .then(answers => {
-    res.status(200).send(answers.data);
-  })
-  .catch(err => {
-    console.log(err);
-    res.sendStatus(500);
-  })
+    .then(answers => {
+      res.status(200).send(answers.data);
+    })
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    })
 };
 
 const createQuestions = (req, res) => {
