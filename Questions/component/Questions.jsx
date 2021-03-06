@@ -154,6 +154,7 @@ class Questions extends React.Component {
 
     if (this.state.qCount >= 4 && this.state.questions.length >= 4) {
       let divHeight = document.getElementById('Q&AList').clientHeight;
+
       document.getElementById('Q&AList').style.height = divHeight;
       document.getElementById('Q&AList').setAttribute("class", "overFlow");
     }

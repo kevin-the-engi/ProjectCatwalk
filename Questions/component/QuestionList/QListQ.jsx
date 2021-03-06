@@ -9,7 +9,9 @@ class QListQ extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: []
+      answers: [],
+      aTotal: 0,
+      show: false
     }
 
     this.getAnswers = this.getAnswers.bind(this);
@@ -23,12 +25,22 @@ class QListQ extends React.Component {
   }
 
   getAnswers(questionID) {
-    axios.get(`/qa/questions/${questionID}/answers`)
+    axios.get(`/qa/questions/${questionID}/answers?page=1&count=100`)
       .then(answers => {
-        this.setState({
-          answers: answers.data.results
+        let sortSeller = answers.data.results.sort((a, b) => (a.answerer_name === 'Seller') ? -1 : (a === b) ? ((a.answer_name !== 'Seller') ? 1 : -1) : 1);
+
+        if (!this.state.show) {
+          let twoAnswers = sortSeller.slice(0, 2);
+
+          this.setState({
+            answers: twoAnswers,
+            aTotal: answers.data.results.length
+          })
+        }
       })
-    })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   addAnswer(questionID, answerForm) {
