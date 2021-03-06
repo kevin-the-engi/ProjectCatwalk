@@ -5,7 +5,6 @@ import SearchBar from './SearchBar/SearchBar.jsx';
 import QList from './QuestionList/QList.jsx';
 import MoreQ from './MoreQ.jsx';
 import QAdd from './QAdd/QAdd.jsx';
-import dummyData from '../dummyData.js';
 
 class Questions extends React.Component {
   constructor() {
@@ -14,16 +13,18 @@ class Questions extends React.Component {
       productID: 0,
       productName: '',
       productData: {},
-      questions: [],
       filtered: [],
-      search: '',
+      questions: [],
+      qTotal: 0,
       qCount: 2,
+      hide: false
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
     this.getProductName = this.getProductName.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
+    this.getTotalQ = this.getTotalQ.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
     this.moreQ = this.moreQ.bind(this);
   }
@@ -59,24 +60,22 @@ class Questions extends React.Component {
   }
 
   getQuestions() {
-    let qData = {};
-    let productID = `?product_id=14931&page=1&count=${this.state.qCount}`;
+    let id = 14931;
+    let productID = `?product_id=${id}&page=1&count=${this.state.qCount}`;
 
     axios.get('/qa/questions/' + productID)
       .then(questions => {
-        qData = questions.data;
+        this.setState({
+          productID: questions.data.product_id,
+          productData: questions.data,
+          questions: questions.data.results
+        })
       })
       .catch(err => {
         console.log(err);
       })
       .then(() => {
-        this.setState({
-          productID: qData.product_id,
-          productData: qData,
-          questions: qData.results
-        })
-      })
-      .then(() => {
+        this.getTotalQ();
         this.getProductName();
       })
   }
@@ -89,6 +88,20 @@ class Questions extends React.Component {
       .then((res) => {
         console.log(res);
         this.getQuestions();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  getTotalQ() {
+    let productID = `?product_id=${this.state.productID}&page=1&count=100`;
+
+    axios.get('/qa/questions' + productID)
+      .then((questions) => {
+        this.setState({
+          qTotal: questions.data.results.length
+        })
       })
       .catch(err => {
         console.log(err);
@@ -108,6 +121,12 @@ class Questions extends React.Component {
 
   moreQ() {
     this.state.qCount += 2;
+
+    if (this.state.qCount >= this.state.qTotal) {
+      this.setState({
+        hide: true
+      })
+    }
 
     this.setState({
       qCount: this.state.qCount
@@ -133,18 +152,14 @@ class Questions extends React.Component {
         <div className="body">
           <QList
             qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
-            aData={this.state.answers}
-            getAnswers={this.getAnswers}
-            addAnswer={this.addAnswer}
             updateHelpfulQ={this.updateHelpfulQ}
             productName={this.state.productName}
           />
         </div>
 
         <div className="footer">
-          <MoreQ
-            moreQ={this.moreQ}
-          />
+          {this.state.hide ?  null : <MoreQ moreQ={this.moreQ} />}
+
           <QAdd
             addQuestion={this.addQuestion}
             productName={this.state.productName}
