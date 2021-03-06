@@ -118,7 +118,6 @@ class Questions extends React.Component {
       })
   }
 
-
   moreQ() {
     this.state.qCount += 2;
 

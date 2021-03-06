@@ -37,7 +37,7 @@ const QListA = (props) => {
           <span className={styles.answererContainer}>
             <span className={styles.answerer}>
               <sub>
-                by {answerer_name === 'Seller' ? <strong>{answerer_name}</strong>: `${answerer_name}`} , {formattedDate}
+                by {answerer_name === 'Seller' ? <strong>{answerer_name}</strong>: `${answerer_name}`}, {formattedDate}
               </sub>
             </span>
 
