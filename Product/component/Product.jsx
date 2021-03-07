@@ -85,6 +85,7 @@ class Product extends React.Component {
   render () {
     return(
       <div>
+      <div className={styles.header}></div>
       <div className={styles.container}>
         <div className={styles.left}>
           <div id="gallery">

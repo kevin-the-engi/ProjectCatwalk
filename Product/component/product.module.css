@@ -18,5 +18,6 @@
 
 .right {
   width: 33%;
+  /* margin-right: 10%; */
   margin-left:-60px;
 }

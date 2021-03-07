@@ -3,22 +3,57 @@ import styles from './PInfo.module.css';
 import Style from './Style.jsx';
 import Option from './Option.jsx'
 import Feature from './Feature.jsx'
+import OptionQ from './OptionQ.jsx'
 
 class Info extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      quantity: {},
-      skus: this.props.defaultStyle
+      skusData: [],
+      quantity: [],
     }
 
-    this.addSizes = this.addSizes.bind(this)
+    this.changeSizes = this.changeSizes.bind(this)
   }
 
-  addSizes(skus) {
+  static getDerivedStateFromProps(props, state) {
+    var skusData = []
+
+    for(var sku in props.defaultStyle) {
+      skusData.push(props.defaultStyle[sku])
+    }
+
+    return {
+      skusData: skusData
+    }
+  }
+
+  // renders sizes of new style selected by user
+  changeSizes(skus) {
+    var skusData = []
+    // push whole sku object to element
+    for(var sku in skus) {
+      skusData.push(skus[sku])
+    }
     this.setState({
-      skus: skus
+      skusData: skusData,
+    })
+  }
+
+
+  displayQuantities(e){
+    var size =  e.target.value
+    var quantity;
+    for(var i = 0; i < this.state.skusData.length; i++) {
+      if(this.state.skusData[i].size === size) {
+        quantity = this.state.skusData[i].quantity
+      }
+    }
+    quantity = [...Array(quantity + 1).keys()].slice(1, 16)
+    // sets quantity based on selected size
+    this.setState({
+      quantity: quantity
     })
   }
 
@@ -50,18 +85,23 @@ class Info extends React.Component {
 
             <div className={styles.styles}>
               {this.props.styles.map((style, i) =>
-              <Style key={i} style={style} changeStyle={this.props.changeStyle} addSizes={this.addSizes}/>)}
+              <Style key={i} style={style} changeStyle={this.props.changeStyle} displaySizes={this.displaySizes}/>)}
             </div>
 
             <div className={styles.selectors}>
               <div className={styles.select} >
-                <select className={styles.selectButton}>
+                <select className={styles.selectButton} onChange={(e) => this.displayQuantities(e)}>
                   <option className={styles.option}>SELECT SIZE</option>
+                  {this.state.skusData.map((skuData, i) =>
+                    <Option key ={i} sku={skuData}/>
+                  )}
                 </select>
               </div>
               <div className={styles.quantity}>
                 <select className={styles.selectButton}>
                   <option>-</option>
+                  {this.state.quantity.map((num, i) =>
+                    <OptionQ key={i} quantity={num} />)}
                 </select>
               </div>
             </div>
