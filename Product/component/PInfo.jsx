@@ -16,7 +16,6 @@ class Info extends React.Component {
 
     this.displayQuantities = this.displayQuantities.bind(this)
   }
-
   // based on currently selected style and size
   displayQuantities(e){
     var size =  e.target.value
