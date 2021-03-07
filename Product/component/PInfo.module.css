@@ -33,26 +33,6 @@
   font-weight: bold;
 }
 
-.price {
-  font-family: "adobe-clean", sans-serif;
-  margin-top: 5%;
-}
-
-.textbox {
-  display: flex;
-  margin-top: 5%;
-}
-
-.text {
-  text-transform: uppercase;
-  font-family: "adobe-clean", sans-serif;
-}
-
-.second {
-  font-family: "adobe-clean", sans-serif;
-  margin-left: 5px;
-}
-
 .styles {
   display: flex;
   flex-flow: row wrap;
@@ -102,7 +82,7 @@
   height: 65px;
   width: 330px;
   margin-right: 20px;
-  background-color: white;
+  background-color: black;
   font-size: 18px;
   font-family: "adobe-clean", sans-serif;
   border:1px solid black;
@@ -110,6 +90,7 @@
   padding-left: 5%;
   font-weight: bold;
   cursor: pointer;
+  color: white;
 }
 
 .favorite {
