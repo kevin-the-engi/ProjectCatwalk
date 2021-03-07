@@ -1,6 +1,6 @@
 import React from 'react';
 import FileUpload from './FileUpload.jsx';
-import modal from '../../../../css/Modal.css';
+import modal from './AModal.module.css';
 import form from '../../../../css/Form.module.css';
 
 class AModal extends React.Component {
@@ -42,7 +42,6 @@ class AModal extends React.Component {
         })
       }
     })
-
   }
 
   handleSubmit(event) {
@@ -64,13 +63,12 @@ class AModal extends React.Component {
   }
 
   handleClick(event) {
-    if (!event.target.closest(".modal-main")) {
+    if (!event.target.closest("#modal-main")) {
       this.props.close();
     }
   }
 
   deletePhoto(index) {
-    console.log(index)
     this.state.photos.splice(index, 1);
     this.setState({
       photos: this.state.photos,
@@ -80,12 +78,13 @@ class AModal extends React.Component {
 
   render() {
     // console.log(this.props)
-    let display = this.props.show ? 'modal-back display-on' : 'modal-back display-off';
+    let display = this.props.show ? `${modal["modal-back"]} ${modal.["display-on"]}` : `${modal["modal-back"]} ${modal["display-off"]}`;
 
     return(
       <div className={display} onClick={this.handleClick}>
-        <div className="modal-main">
-          <form onSubmit={this.handleSubmit}>
+        <div className={modal["modal-main"]} id="modal-main">
+          <form className={form["answer-form"]} onSubmit={this.handleSubmit}>
+            <div className={form["form-container"]}>
             <div className={form["form-header"]}>
               <h2>Submit your Answer</h2>
               <sub>[{this.props.productName}]: [{this.props.questionBody}]</sub>
@@ -137,27 +136,29 @@ class AModal extends React.Component {
                 <sub>For authentication reasons, you will not be emailed</sub><br />
               </div>
 
-              {this.state.show ?
-                <div className={form["form-photo"]}>
-                  <label><h4>Upload Photo:</h4></label>
-                  <input
-                    type="file"
-                    className="photo"
-                    accept="image/*"
-                    onChange={this.handleUpload}>
-                  </input>
-                </div> : null
-              }
+              <div className={form["form-photos"]}>
+                {this.state.show ?
+                  <div className={form["form-upload"]}>
+                    <label><h4>Upload Photo:</h4></label>
+                    <input
+                      type="file"
+                      className="photo"
+                      accept="image/*"
+                      onChange={this.handleUpload}>
+                    </input>
+                  </div> : null
+                }
 
-              <div className={form["form-thumbnails"]}>
-                {this.state.photos.map((photo, i) =>
-                  <FileUpload
-                    key={i}
-                    photo={photo}
-                    alt={i}
-                    delete={this.deletePhoto}
-                  />
-                )}
+                <div className={form["form-thumbnails"]}>
+                  {this.state.photos.map((photo, i) =>
+                    <FileUpload
+                      key={i}
+                      photo={photo}
+                      alt={i}
+                      delete={this.deletePhoto}
+                    />
+                  )}
+                </div>
               </div>
             </div>
 
@@ -168,6 +169,7 @@ class AModal extends React.Component {
               {/* <div className="close">
                 <button className="close-btn" type="button" onClick={this.props.close}>Close</button>
               </div> */}
+            </div>
             </div>
           </form>
         </div>

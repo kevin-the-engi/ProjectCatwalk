@@ -37,11 +37,3 @@
   border-radius: 10px;
   background: lightgray;
 }
-
-.display-on {
-  display: block;
-}
-
-.display-off {
-  display: none;
-}
