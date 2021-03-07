@@ -1,5 +1,6 @@
 import React from 'react';
 import RelatedGallery from './RelatedGallery.jsx';
+import OutfitGallery from './OutfitGallery.jsx';
 import axios from 'axios';
 import styles from './css_modules/RelatedItemsBanner.module.css';
 
@@ -61,6 +62,7 @@ class RelatedItems extends React.Component {
           <div className={styles.relatedItemsBanner}>
             <p className={styles.sectionTitle}>Your Outfit</p>
           </div>
+          <OutfitGallery/>
         </div>
       </div>
       )

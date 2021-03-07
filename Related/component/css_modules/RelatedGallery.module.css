@@ -18,8 +18,8 @@
 .productCard {
   flex: none;
   height: 100%;
-  width: 30%;
-  height: 425px;
+  flex-basis: 30%;
+  height: 400px;
   border: 1px solid transparent;
   margin-right: 8px;
   margin-left: 8px;
@@ -28,7 +28,6 @@
 
 .productCard:hover {
   border: 1px solid black;
-  /* margin: -2px; */
 }
 
 .imageContainer {
@@ -112,10 +111,6 @@
   font-size: 12px;
   text-transform: uppercase;
   color: black;
-}
-
-.starButton {
-  margin-left: 0px;
 }
 
 /* CSS for arrow buttons */
@@ -237,4 +232,71 @@
   font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
   font-size: 12px;
   white-space: nowrap;
+}
+
+/* CSS for Outfit Gallery */
+.outfitContainer {
+  display: flex;
+  box-sizing: border-box;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  overflow: auto hidden;
+  max-height: 450px;
+  align-items: stretch;
+  scroll-behavior: smooth;
+}
+
+.addToOutfitCard {
+  flex: none;
+  height: 100%;
+  flex-basis: 30%;
+  height: 400px;
+  border: 1px solid transparent;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.addToOutfitCard:hover {
+  border: 1px solid black;
+}
+
+.addToOutfitCardContainer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.addToOutfitCardContainer:hover .addToOutfitButton {
+  background-color: black;
+}
+
+.addToOutfitCardContainer:hover .addToOutfitLabel {
+  color: black;
+  font-weight: bold;
+}
+
+.addToOutfitButton {
+  height: 80px;
+  line-height: 80px; 
+  width: 80px;  
+  font-size: 3.5em;
+  font-weight: thin;
+  border-radius: 50%;
+  background-color: lightgray;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.addToOutfitLabel {
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: lightgray;
+  margin-top: 10px;
 }
