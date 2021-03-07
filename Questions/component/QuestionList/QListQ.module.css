@@ -28,6 +28,26 @@
   width: 30%;
 }
 
+.questionContainer {
+  border: 10px solid #f7f7f7;
+  border-radius: 10px;
+  background: #f7f7f7;
+  padding: 5px;
+  margin: 20px 0;
+}
+
+section.questionContainer:first-of-type {
+  margin-top: 0px;
+}
+
+section.questionContainer:last-of-type {
+  margin-bottom: 0px;
+}
+
+.answersContainer {
+  margin-top: 10px;
+}
+
 .text, .prefix {
   font-weight: bold;
   font-size: 20px;

@@ -119,16 +119,18 @@ class QListQ extends React.Component {
           </div>
         </div>
 
-        {this.state.answers.map(answer =>
-          <QListA
-            key={answer.answer_id}
-            questionID={question_id}
-            answer={answer}
-            updateHelpfulA={this.updateHelpfulA}
-            reportA={this.reportA}
-            getAnswers={this.getAnswers}
-          />
-        )}
+        <section className={styles.answersContainer}>
+          {this.state.answers.map(answer =>
+            <QListA
+              key={answer.answer_id}
+              questionID={question_id}
+              answer={answer}
+              updateHelpfulA={this.updateHelpfulA}
+              reportA={this.reportA}
+              getAnswers={this.getAnswers}
+            />
+          )}
+        </section>
       </section>
     )
   }
