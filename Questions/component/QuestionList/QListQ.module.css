@@ -1,15 +1,15 @@
-.body {
+.question-body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
-.left {
+.question-left {
   display: flex;
   width: 70%;
 }
 
-.right {
+.question-right {
   display: flex;
   justify-content: flex-end;
   align-items: baseline;
@@ -36,16 +36,16 @@ section.questionContainer:last-of-type {
   margin-top: 10px;
 }
 
-.text, .prefix {
+.question-text, .question-prefix {
   font-weight: bold;
   font-size: 20px;
 }
 
-.prefix {
+.question-prefix {
   padding-right: 5px;
 }
 
-.sidebar {
+.question-sidebar {
   display: flex;
   align-items: baseline;
 }

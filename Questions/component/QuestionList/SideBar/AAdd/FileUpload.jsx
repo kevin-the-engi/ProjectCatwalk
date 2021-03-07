@@ -16,7 +16,7 @@ class FileUpload extends React.Component {
   render() {
     // console.log(this.props);
     return(
-      <div className={form[`overlay`]}>
+      <div className={form.overlay}>
         <img
           onClick={this.handleClick}
           className={form.thumbnail}

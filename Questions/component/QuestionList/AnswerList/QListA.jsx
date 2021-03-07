@@ -24,13 +24,13 @@ const QListA = (props) => {
   // console.log(props);
   return(
     <div className={styles.answerContainer}>
-      <div className={styles.body}>
-        <span className={styles.prefix}>
+      <div className={styles["answer-body"]}>
+        <span className={styles["answer-prefix"]}>
           A:
         </span>
 
         <div className={styles.textContainer}>
-          <span className={styles.text}>
+          <span className={styles["answer-text"]}>
             {body}
           </span>
 

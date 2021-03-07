@@ -1,10 +1,10 @@
-.body {
+.answer-body {
   display: flex;
   align-items: baseline;
   margin-top: 10px;
 }
 
-.prefix {
+.answer-prefix {
   font-size: 20px;
   font-weight: bold;
   padding-right: 5px;

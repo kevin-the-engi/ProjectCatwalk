@@ -178,24 +178,25 @@ class Questions extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="header">
+      <div className="main-container">
+        <div className="main-header">
           <h4>Questions & Answers</h4>
           <SearchBar dynamicSearch={this.dynamicSearch} />
         </div>
 
-        <div className="body">
+        <div className="main-body">
           {this.state.match ?
             (this.state.qTotal !== 0 ?
               <QList
                 qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
                 updateHelpfulQ={this.updateHelpfulQ}
                 productName={this.state.productName}
-              />  : <i>There are no questions for this product. Be the first to ask!</i>) : <i>There are no matches. Try again.</i>
+              />  : <i>There are no questions for this product. Be the first to ask!</i>)
+              : <i>There are no matches. Try again.</i>
           }
         </div>
 
-        <div className="footer">
+        <div className="main-footer">
           {this.state.hide ?  null : <MoreQ moreQ={this.moreQ} />}
 
           <QAdd

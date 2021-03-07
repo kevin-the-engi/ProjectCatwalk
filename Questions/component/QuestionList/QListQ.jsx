@@ -89,18 +89,18 @@ class QListQ extends React.Component {
 
     return(
       <section className={styles.questionContainer}>
-        <div className={styles.body}>
-          <div className={styles.left}>
-            <span className={styles.prefix}>
+        <div className={styles["question-body"]}>
+          <div className={styles["question-left"]}>
+            <span className={styles["question-prefix"]}>
               Q:
             </span>
-            <span className={styles.text}>
+            <span className={styles["question-text"]}>
               {question_body}
             </span>
           </div>
 
-          <div className={styles.right}>
-            <div className={styles.sidebar}>
+          <div className={styles["question-right"]}>
+            <div className={styles["question-sidebar"]}>
               <HelpfulQ
                 helpful={question_helpfulness}
                 questionID={question_id}

@@ -1,18 +1,18 @@
-.container {
+.main-container {
   /* max-width: 900px; */
 
   margin: 5em 20%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.body {
+.main-body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
   margin: 3em 0;
 }
 
-.footer {
+.main-footer {
   display: flex;
   /* justify-content: space-evenly; */
   justify-content: flex-start;
