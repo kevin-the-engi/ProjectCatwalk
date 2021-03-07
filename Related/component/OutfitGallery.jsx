@@ -6,7 +6,7 @@ import styles from './css_modules/RelatedGallery.module.css';
 const OutfitGallery = (props) => {
   return (
     <div className={styles.outfitContainer}>
-      <AddToOutfitCard/>
+      <AddToOutfitCard addToOutfit={props.addToOutfit}/>
     </div>
   )
 }

@@ -9,9 +9,11 @@ class RelatedItems extends React.Component {
     super(props)
     this.state = {
       product_id: '',
-      currentItem: [],
-      relatedItems: []  
+      currentItem: {},
+      relatedItems: [],
+      outfitItems: []
     }
+    this.addToOutfit = this.addToOutfit.bind(this);
   }
 
   componentDidMount() {
@@ -46,12 +48,16 @@ class RelatedItems extends React.Component {
     .catch((error => {
       console.log('error from axios.get for /current: ', error);
     }))
+  }
 
-}
+  addToOutfit() {
+    this.setState({outfitItems: [...this.state.outfitItems, this.state.currentItem]})
+  }
 
   render() {
     // console.log('this.state.relatedItems: ', this.state.relatedItems);
     // console.log('this.state.currentItem: ', this.state.currentItem);
+    // console.log('this.state.outfitItems: ', this.state.outfitItems);
     return (
       <div>
         <div className={styles.widgetContainer}>
@@ -62,7 +68,7 @@ class RelatedItems extends React.Component {
           <div className={styles.relatedItemsBanner}>
             <p className={styles.sectionTitle}>Your Outfit</p>
           </div>
-          <OutfitGallery/>
+          <OutfitGallery addToOutfit={this.addToOutfit} outfitItems={this.state.outfitItems}/>
         </div>
       </div>
       )
