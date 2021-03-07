@@ -1,8 +1,9 @@
 import React from 'react';
+import FileUpload from './FileUpload.jsx';
 import modal from '../../../../css/Modal.css';
 import form from '../../../../css/Form.module.css';
 
-class QModal extends React.Component {
+class AModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,9 +14,10 @@ class QModal extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.fileInput = React.createRef();
+    this.deletePhoto = this.deletePhoto.bind(this);
   }
 
   handleChange(event) {
@@ -27,11 +29,17 @@ class QModal extends React.Component {
     })
   }
 
+  handleUpload(event) {
+    let photo = URL.createObjectURL(event.target.files[0]);
+
+    this.setState({
+      photos: [...this.state.photos, photo]
+    })
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     this.props.addAnswer(this.props.questionID, this.state);
-    console.log(this.fileInput.current.files[0]);
-    console.log(this.fileInput.current.files[1]);
     this.props.close();
 
     this.setState({
@@ -46,6 +54,10 @@ class QModal extends React.Component {
     if (!event.target.closest(".modal-main")) {
       this.props.close();
     }
+  }
+
+  deletePhoto() {
+
   }
 
   render() {
@@ -107,14 +119,24 @@ class QModal extends React.Component {
                 <sub>For authentication reasons, you will not be emailed</sub><br />
               </div>
 
-              <div className={form["for-photo"]}>
+              <div className={form["form-photo"]}>
                 <label>Upload Photo:</label>
                 <input
                   type="file"
                   className="photo"
                   accept="image/*"
-                  ref={this.fileInput}>
+                  onChange={this.handleUpload}>
                 </input>
+              </div>
+
+              <div className={form["form-thumbnails"]}>
+                {this.state.photos.map((photo, i) =>
+                  <FileUpload
+                    key={i}
+                    photo={photo}
+                    alt={i}
+                  />
+                )}
               </div>
             </div>
 
@@ -133,4 +155,4 @@ class QModal extends React.Component {
   }
 }
 
-export default QModal;
+export default AModal;
