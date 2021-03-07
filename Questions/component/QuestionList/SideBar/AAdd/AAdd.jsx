@@ -30,12 +30,14 @@ class AAdd extends React.Component {
     // console.log(this.props)
     return(
       <div id="AAdd-div">
-        <button id={sidebar.['AAdd-btn']} onClick={this.showModal}>Add Answer</button>
+        <button id={sidebar.['addAnswer-btn']} onClick={this.showModal}>Add Answer</button>
         <AModal
           show={this.state.show}
           close={this.hideModal}
           addAnswer={this.props.addAnswer}
-          qID={this.props.qID}
+          questionID={this.props.questionID}
+          questionBody={this.props.questionBody}
+          productName={this.props.productName}
         />
       </div>
     )

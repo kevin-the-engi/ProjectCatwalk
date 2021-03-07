@@ -5,76 +5,78 @@ import SearchBar from './SearchBar/SearchBar.jsx';
 import QList from './QuestionList/QList.jsx';
 import MoreQ from './MoreQ.jsx';
 import QAdd from './QAdd/QAdd.jsx';
-import dummyData from '../dummyData.js';
 
 class Questions extends React.Component {
   constructor() {
     super();
     this.state = {
       productID: 0,
+      productName: '',
       productData: {},
-      questions: [],
-      answers: [],
       filtered: [],
-      search: ''
+      questions: [],
+      qTotal: 0,
+      qCount: 2,
+      hide: false
     }
 
+    this.dynamicSearch = this.dynamicSearch.bind(this);
+    this.getProductName = this.getProductName.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
-    this.addAnswer = this.addAnswer.bind(this);
-    this.dynamicSearch = this.dynamicSearch.bind(this);
-    this.getAnswers = this.getAnswers.bind(this);
+    this.getTotalQ = this.getTotalQ.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
+    this.moreQ = this.moreQ.bind(this);
   }
 
   componentDidMount() {
-    let productID = '?product_id=14931';
-    let qData = {};
-
-    axios.get('qa/questions/' + productID)
-    .then(questions => {
-      qData = questions.data;
-    })
-    .then(()=> {
-      this.setState({
-        productID: qData.product_id,
-        productData: qData,
-        questions: qData.results
-      })
-    })
-    // .catch(err =>{
-    //   console.log(err);
-    // })
+    this.getQuestions();
   }
 
   dynamicSearch(search) {
-    this.setState({
-      search: search
-    })
-
     if (search.length >= 3) {
       let filtered = this.state.questions.filter(question => question.question_body.toLowerCase().includes(search.toLowerCase()));
 
       this.setState({
         filtered: filtered
       })
+    } else {
+      this.setState({
+        filtered: []
+      })
     }
   }
 
-  getQuestions() {
-    let qData = {};
-    let productID = `?product_id=${this.state.productID}`;
+  getProductName() {
+    axios.get(`/products/${this.state.productID}`)
+      .then(productName => {
+        this.setState({
+          productName: productName.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
-    axios.get('qa/questions/' + productID)
+  getQuestions() {
+    let id = 14931;
+    let productID = `?product_id=${id}&page=1&count=${this.state.qCount}`;
+
+    axios.get('/qa/questions/' + productID)
       .then(questions => {
-        qData = questions.data;
+        this.setState({
+          productID: questions.data.product_id,
+          productData: questions.data,
+          questions: questions.data.results
+        })
+      })
+      .catch(err => {
+        console.log(err);
       })
       .then(() => {
-        this.setState({
-          productID: qData.product_id,
-          productData: qData,
-          questions: qData.results
-        })
+        this.getTotalQ();
+        this.getProductName();
       })
   }
 
@@ -92,33 +94,18 @@ class Questions extends React.Component {
       })
   }
 
-  addAnswer(questionID, answerForm) {
-    console.log(questionID, answerForm);
+  getTotalQ() {
+    let productID = `?product_id=${this.state.productID}&page=1&count=100`;
 
-    axios.post(`/qa/questions/${questionID}/answers`, answerForm)
-      .then(res => {
-        console.log(res);
+    axios.get('/qa/questions' + productID)
+      .then((questions) => {
+        this.setState({
+          qTotal: questions.data.results.length
+        })
       })
       .catch(err => {
         console.log(err);
       })
-      .then(() => {
-        this.getQuestions();
-      })
-  }
-
-  getAnswers(questionID) {
-    let aData = {};
-
-    // axios.get(`/qa/questions/${questionID}/answers`)
-    //   .then(answers => {
-    //     aData = answers.data;
-    //   })
-    //   .then(() => {
-    //     this.setState({
-    //       answers: aData.results
-    //     })
-    //   })
   }
 
   updateHelpfulQ(questionID) {
@@ -131,12 +118,26 @@ class Questions extends React.Component {
       })
   }
 
-  updateHelpfulA() {
+  moreQ() {
+    this.state.qCount += 2;
 
-  }
+    if (this.state.qCount >= this.state.qTotal) {
+      this.setState({
+        hide: true
+      })
+    }
 
-  reportA() {
+    this.setState({
+      qCount: this.state.qCount
+    })
 
+    if (this.state.qCount >= 4 && this.state.questions.length >= 4) {
+      let divHeight = document.getElementById('Q&AList').clientHeight;
+      document.getElementById('Q&AList').style.height = divHeight;
+      document.getElementById('Q&AList').setAttribute("class", "overFlow");
+    }
+
+    this.getQuestions();
   }
 
   render() {
@@ -150,16 +151,18 @@ class Questions extends React.Component {
         <div className="body">
           <QList
             qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
-            aData={this.state.answers}
-            getAnswers={this.getAnswers}
-            addAnswer={this.addAnswer}
             updateHelpfulQ={this.updateHelpfulQ}
+            productName={this.state.productName}
           />
         </div>
 
         <div className="footer">
-          <MoreQ />
-          <QAdd addQ={this.addQuestion}/>
+          {this.state.hide ?  null : <MoreQ moreQ={this.moreQ} />}
+
+          <QAdd
+            addQuestion={this.addQuestion}
+            productName={this.state.productName}
+          />
         </div>
       </div>
     )
