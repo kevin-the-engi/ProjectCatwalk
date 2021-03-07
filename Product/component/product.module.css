@@ -4,6 +4,36 @@
   margin: 0;
 }
 
+.header {
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 8%;
+  background-color: black;
+}
+
+.container {
+  display: flex;
+  margin-top: 2%;
+  margin-left: 20%;
+  margin-right: 20%;
+  overflow: hidden;
+}
+
+.left {
+  width: 66%;
+}
+
+.right {
+  width: 33%;
+}
+
+
+/*  {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .container {
   display: flex;
   margin-top: 5%;
@@ -19,5 +49,5 @@
 .right {
   width: 33%;
   /* margin-right: 10%; */
-  margin-left:-60px;
-}
+  /* margin-left:-60px;
+} */

@@ -112,7 +112,7 @@ class Info extends React.Component {
             </div>
 
           </div>
-
+          
           <div className={styles.description2}>
             <ul className={styles.list}>
               {this.props.features.map((feature, i) =>
