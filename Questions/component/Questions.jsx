@@ -17,7 +17,8 @@ class Questions extends React.Component {
       questions: [],
       qTotal: 0,
       qCount: 2,
-      hide: true
+      hide: true,
+      match: true
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
@@ -47,14 +48,27 @@ class Questions extends React.Component {
 
   dynamicSearch(search) {
     if (search.length >= 3) {
-      let filtered = this.state.questions.filter(question => question.question_body.toLowerCase().includes(search.toLowerCase()));
+      let filtered = this.state.questions.filter(question => {
+         if (question.question_body.toLowerCase().includes(search.toLowerCase())) {
+           this.setState({
+             match: true
+           })
+
+           return question;
+         } else {
+           this.setState({
+             match: false
+           })
+         }
+      });
 
       this.setState({
         filtered: filtered
       })
     } else {
       this.setState({
-        filtered: []
+        filtered: [],
+        match: true
       })
     }
   }
@@ -171,13 +185,13 @@ class Questions extends React.Component {
         </div>
 
         <div className="body">
-          {this.state.qTotal !== 0 ?
-            <QList
-              qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
-              updateHelpfulQ={this.updateHelpfulQ}
-              productName={this.state.productName}
-            />  :
-            <i>There are no questions for this product. Be the first to ask!</i>
+          {this.state.match ?
+            (this.state.qTotal !== 0 ?
+              <QList
+                qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
+                updateHelpfulQ={this.updateHelpfulQ}
+                productName={this.state.productName}
+              />  : <i>There are no questions for this product. Be the first to ask!</i>) : <i>There are no matches. Try again.</i>
           }
         </div>
 
