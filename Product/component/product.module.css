@@ -1,9 +1,3 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 .header {
   margin-left: 20%;
   margin-right: 20%;
@@ -27,27 +21,3 @@
   width: 33%;
 }
 
-
-/*  {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-.container {
-  display: flex;
-  margin-top: 5%;
-  margin-left: 17%;
-  margin-right: 12%;
-  overflow: hidden;
-}
-
-.left {
-  width: 66%;
-}
-
-.right {
-  width: 33%;
-  /* margin-right: 10%; */
-  /* margin-left:-60px;
-} */
