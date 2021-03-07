@@ -51,12 +51,24 @@
   height: 40px;
 }
 
+.form-thumbnails {
+  display: flex;
+}
+
 .thumbnail {
+  display: block;
   border: 5px solid transparent;
   border-radius: 10px;
   object-fit: cover;
 }
 
 .thumbnail:hover {
-  background:rgba(0,0,0,0.5);
+  opacity: 0.5;
+  z-index: 100;
+}
+
+.overlay:hover {
+  background-color: black;
+  border-radius: 10px;
+  opacity: 0.8;
 }

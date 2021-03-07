@@ -10,7 +10,8 @@ class AModal extends React.Component {
       body: '',
       name: '',
       email: '',
-      photos: []
+      photos: [],
+      show: true
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,19 +35,31 @@ class AModal extends React.Component {
 
     this.setState({
       photos: [...this.state.photos, photo]
+    }, () => {
+      if (this.state.photos.length === 5) {
+        this.setState({
+          show: false
+        })
+      }
     })
+
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addAnswer(this.props.questionID, this.state);
+
+    const formData = {...this.state};
+    delete formData.show;
+
+    this.props.addAnswer(this.props.questionID, formData);
     this.props.close();
 
     this.setState({
       body: '',
       name: '',
       email: '',
-      photos: []
+      photos: [],
+      show: true
     })
   }
 
@@ -56,8 +69,13 @@ class AModal extends React.Component {
     }
   }
 
-  deletePhoto() {
-
+  deletePhoto(index) {
+    console.log(index)
+    this.state.photos.splice(index, 1);
+    this.setState({
+      photos: this.state.photos,
+      show: true
+    })
   }
 
   render() {
@@ -119,15 +137,17 @@ class AModal extends React.Component {
                 <sub>For authentication reasons, you will not be emailed</sub><br />
               </div>
 
-              <div className={form["form-photo"]}>
-                <label>Upload Photo:</label>
-                <input
-                  type="file"
-                  className="photo"
-                  accept="image/*"
-                  onChange={this.handleUpload}>
-                </input>
-              </div>
+              {this.state.show ?
+                <div className={form["form-photo"]}>
+                  <label><h4>Upload Photo:</h4></label>
+                  <input
+                    type="file"
+                    className="photo"
+                    accept="image/*"
+                    onChange={this.handleUpload}>
+                  </input>
+                </div> : null
+              }
 
               <div className={form["form-thumbnails"]}>
                 {this.state.photos.map((photo, i) =>
@@ -135,6 +155,7 @@ class AModal extends React.Component {
                     key={i}
                     photo={photo}
                     alt={i}
+                    delete={this.deletePhoto}
                   />
                 )}
               </div>
