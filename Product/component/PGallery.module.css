@@ -2,41 +2,52 @@
   display: flex;
   flex-flow: column;
 }
+
+.imageDiv {
+  height: 625px;
+  width: 80%;
+  text-align: center;
+  border: 1px solid black;
+}
+
 .image{
   height: 625px;
-  width: 800px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .thumbnails {
   height: 400px;
   width: 70px;
   position: absolute;
-  top: 13%;
-  /* left: 50px; */
-  left: 19%;
+  top: 15%;
+  left: 22%;
   overflow: hidden;
 }
 
 .description1 {
   height: 150px;
-  width: 660px;
-  margin-top: 60px;
-  margin-left: 140px;
+  width: 100%;
+  margin-top: 7%;
   text-align: left;
   color: #141414;
-  font-family: "adobe-clean", sans-serif
+  font-family: "adobe-clean", sans-serif;
 }
 
 .heading {
   color: #141414;
   font-family: "adobe-clean", sans-serif;
   margin-bottom: 10px;
-  margin-right: 5px;
+  text-align: left;
+  margin-right: 20%;
+  margin-left: 5%;
 }
 
 .text {
   color: #141414;
   font-family: "adobe-clean", sans-serif;
   font-size: 16px;
-  margin-right: 5px;
+  text-align: left;
+  margin-right: 20%;
+  margin-left: 5%;
 }

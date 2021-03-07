@@ -1,0 +1,20 @@
+.price {
+  font-family: "adobe-clean", sans-serif;
+  margin-top: 5%;
+}
+
+.textbox {
+  display: flex;
+  margin-top: 5%;
+}
+
+.text {
+  text-transform: uppercase;
+  font-family: "adobe-clean", sans-serif;
+}
+
+.second {
+  text-transform: uppercase;
+  font-family: "adobe-clean", sans-serif;
+  margin-left: 5px;
+}

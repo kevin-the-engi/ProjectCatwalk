@@ -11,7 +11,6 @@
 .reviews {
   height: 20px;
   width: 200px;
-  margin-top: 18px;
 }
 
 .link {
@@ -22,7 +21,8 @@
 .category {
   font-family: "adobe-clean", sans-serif;
   font-size: 16px;
-  margin-top: 18px;
+  margin-top: 10%;
+  text-transform: uppercase;
 }
 
 .name {
@@ -32,39 +32,20 @@
   font-weight: bold;
 }
 
-.price {
-  font-family: "adobe-clean", sans-serif;
-  margin-top: 18px;
-}
-
-.textbox {
-  display: flex;
-  margin-top: 18px;
-}
-
-.text {
-  text-transform: uppercase;
-  font-family: "adobe-clean", sans-serif;
-}
-
-.second {
-  font-family: "adobe-clean", sans-serif;
-  margin-left: 5px;
-}
-
 .styles {
   display: flex;
   flex-flow: row wrap;
-  width: 90%;
+  width: 100%;
   height: 160px;
-  margin-top: 18px;
+  margin-top: 5%;
   overflow: hidden;
 }
 
 .selectors {
   display: flex;
-  margin-top: 18px;
-  height: 65px;
+  margin-top: 5%;
+  /* height: 65px; */
+  width: 100%;
 }
 
 .select {
@@ -91,7 +72,7 @@
 
 .checkout {
   display: flex;
-  margin-top: 18px;
+  margin-top: 10%;
   height: 65px;
   cursor: pointer;
 }
@@ -100,7 +81,7 @@
   height: 65px;
   width: 330px;
   margin-right: 20px;
-  background-color: white;
+  background-color: black;
   font-size: 18px;
   font-family: "adobe-clean", sans-serif;
   border:1px solid black;
@@ -108,6 +89,7 @@
   padding-left: 5%;
   font-weight: bold;
   cursor: pointer;
+  color: white;
 }
 
 .favorite {
@@ -120,8 +102,8 @@
 
 .description2 {
   height: 150px;
-  width: 480px;
-  margin-top: 60px;
+  width: 100%;
+  margin-top: 14%;
   color: #141414;
   font-family: "adobe-clean", sans-serif;
   border-left: 2px solid grey;
