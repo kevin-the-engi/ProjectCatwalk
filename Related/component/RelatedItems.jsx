@@ -27,11 +27,11 @@ class RelatedItems extends React.Component {
       }
     })
     .then((response) => {
-      console.log('response from /related axios.get: ', response.data);
+      // console.log('response from /related axios.get: ', response.data);
       this.setState({relatedItems: response.data});
     })
     .catch((error) => {
-      console.log('error from axios.get for /related: ', error);
+      // console.log('error from axios.get for /related: ', error);
     })
 
     // get product information for current item, used for comparison modal
@@ -42,11 +42,11 @@ class RelatedItems extends React.Component {
       }
     })
     .then((response) => {
-      console.log('response from /current axios.get ', response.data);
+      // console.log('response from /current axios.get ', response.data);
       this.setState({currentItem: response.data});
     })
     .catch((error => {
-      console.log('error from axios.get for /current: ', error);
+      // console.log('error from axios.get for /current: ', error);
     }))
   }
 
@@ -55,9 +55,9 @@ class RelatedItems extends React.Component {
   }
 
   render() {
-    console.log('this.state.relatedItems: ', this.state.relatedItems);
+    // console.log('this.state.relatedItems: ', this.state.relatedItems);
     // console.log('this.state.currentItem: ', this.state.currentItem);
-    console.log('this.state.outfitItems: ', this.state.outfitItems);
+    // console.log('this.state.outfitItems: ', this.state.outfitItems);
     return (
       <div>
         <div className={styles.widgetContainer}>
