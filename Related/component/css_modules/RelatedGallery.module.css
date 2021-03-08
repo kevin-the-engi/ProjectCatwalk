@@ -52,7 +52,7 @@
 .starContainer {
   margin-left: -10%;
   margin-top: 1%;
-  order: 2;
+  order: 1;
 }
 
 .productInformationContainer {
@@ -115,18 +115,28 @@
 
 /* CSS for arrow buttons */
 .leftArrowButton {
+  align-self: center;
   position: absolute;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
   background-color: white;
-  left: 25px;
   cursor: pointer;
   appearance: none;
-  top: 275px;
   border: 0px;
-  margin-left: 20%;
-  margin-right: 20%;
+  outline: none;
+}
+
+.leftArrowButton:hover {
+  background-color: black;
+}
+
+.leftArrowButton:hover .arrowLeft {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
 }
 
 .arrowLeft {
@@ -139,18 +149,32 @@
 }
 
 .rightArrowButton {
+  align-self: center;
   position: absolute;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
   background-color: white;
-  right: 25px;
   cursor: pointer;
   appearance: none;
-  top: 275px;
   border: 0px;
-  margin-left: 20%;
-  margin-right: 20%;
+  right: 22%;
+  margin-right: 5px;
+  /* margin-left: 20%; */
+  outline: none;
+
+}
+
+.rightArrowButton:hover {
+  background-color: black;
+}
+
+.rightArrowButton:hover .arrowRight {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 .arrowRight {
@@ -183,6 +207,7 @@
   transform: translate(-50%,-50%);
   border: 1px solid black;
   padding: 1%;
+  border-radius: 2%;
 }
 
 .modalBanner {

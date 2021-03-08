@@ -7,9 +7,11 @@ import styles from './css_modules/RelatedGallery.module.css';
 const RelatedGallery = (props) => {
     return (
         <div className={styles.relatedContainer} id="relatedContainer">
+          {/* <div className={styles.arrowButtonContainer}> */}
             <LeftArrowButton/>
-            {props.relatedItems.map((relatedItem) => <ProductCard relatedItem={relatedItem} currentItem={props.currentItem}/>)}
             <RightArrowButton/>
+          {/* </div> */}
+          {props.relatedItems.map((relatedItem) => <ProductCard relatedItem={relatedItem} currentItem={props.currentItem}/>)}
         </div>
     )
 }

@@ -13,9 +13,9 @@ class RightArrowButton extends React.Component {
 
     render () {
         return (
-            <button className={styles.rightArrowButton} onClick={this.handleClick}>
-                <i className={styles.arrowRight}></i>
-            </button>
+          <button className={styles.rightArrowButton} onClick={this.handleClick}>
+              <i className={styles.arrowRight}></i>
+          </button>
         )
     }
 }

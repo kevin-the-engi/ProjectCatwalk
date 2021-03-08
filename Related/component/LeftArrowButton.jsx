@@ -12,10 +12,10 @@ class LeftArrowButton extends React.Component {
     }
 
     render () {
-        return (
-            <button className={styles.leftArrowButton} onClick={this.handleClick}>
-                <i className={styles.arrowLeft}></i>
-            </button>
+        return (      
+          <button className={styles.leftArrowButton} onClick={this.handleClick}>
+              <i className={styles.arrowLeft}></i>
+          </button> 
         )
     }
 }
