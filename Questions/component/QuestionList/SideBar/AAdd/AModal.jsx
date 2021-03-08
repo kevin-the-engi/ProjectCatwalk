@@ -11,7 +11,8 @@ class AModal extends React.Component {
       name: '',
       email: '',
       photos: [],
-      show: true
+      show: true,
+      file: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,6 +20,7 @@ class AModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.deletePhoto = this.deletePhoto.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   handleChange(event) {
@@ -32,15 +34,25 @@ class AModal extends React.Component {
 
   handleUpload(event) {
     let photo = URL.createObjectURL(event.target.files[0]);
+    let file = event.target.files[0].name;
 
     this.setState({
-      photos: [...this.state.photos, photo]
+      photos: [...this.state.photos, photo],
+      file: file
     }, () => {
       if (this.state.photos.length === 5) {
         this.setState({
           show: false
         })
       }
+    })
+  }
+
+  reset(event) {
+    event.preventDefault();
+
+    this.setState({
+      file: Date.now()
     })
   }
 
@@ -58,7 +70,8 @@ class AModal extends React.Component {
       name: '',
       email: '',
       photos: [],
-      show: true
+      show: true,
+      file: ''
     })
   }
 
@@ -142,10 +155,12 @@ class AModal extends React.Component {
                     <label><h4>Upload Photo:</h4></label>
                     <input
                       type="file"
+                      key={this.state.file}
                       className="photo"
                       accept="image/*"
                       onChange={this.handleUpload}>
                     </input>
+                    <button onClick={this.reset}></button>
                   </div> : null
                 }
 
