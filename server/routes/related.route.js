@@ -13,7 +13,7 @@ route.get('/related', (request, response) => {
             console.log('error with getRelatedProductIds invocation');
             response.sendStatus(400);
         } else {
-            getRelatedProductData(productIds, (error, results) => {
+            getProductData(productIds, (error, results) => {
                 if (error) {
                     // console.log('error with getRelatedProductData invocation');
                     response.sendStatus(400);
@@ -26,24 +26,36 @@ route.get('/related', (request, response) => {
     })
 })
 
+// GET request handler for retrieving information on current product being viewed
+// route.get('/current', (request, response) => {
+//   // console.log('/current request product_id: ', request.query.product_id);
+//   getCurrentProductData(request.query.product_id, (error, results) => {
+//     if (error) {
+//       console.log('error with getCurrentProductData invocation');
+//       response.sendStatus(400);
+//     } else {
+//       // console.log('results from getCurrentProductData: ', results);
+//       response.status(200).send(results);
+//     }
+//   })
+// })
+
 route.get('/current', (request, response) => {
-  // console.log('/current request product_id: ', request.query.product_id);
-  getCurrentProductData(request.query.product_id, (error, results) => {
+  getProductData([request.query.product_id], (error, results) => {
     if (error) {
-      console.log('error with getCurrentProductData invocation');
+      console.log('error with /current getProductData invocation');
       response.sendStatus(400);
     } else {
-      // console.log('results from getCurrentProductData: ', results);
       response.status(200).send(results);
     }
   })
 })
 
 // GET request handler for retrieving information on current product being viewed
-route.get('/current', (request, response) => {
-  console.log('/current request product_id: ', request.query.product_id);
+// route.get('/current', (request, response) => {
+//   console.log('/current request product_id: ', request.query.product_id);
 
-})
+// })
 
 // helper function to retrieve product id's of all related items, given the product id of current item being displayed
 let getRelatedProductIds = (id, callback) => {
@@ -64,8 +76,8 @@ let getRelatedProductIds = (id, callback) => {
         })
 }
 
-// helper function to retrieve styles data of all related items, given the array of product's from /related
-let getRelatedProductData = (productIdsArray, callback) => {
+// helper function to retrieve relevant product data for either the current product or all related items, given the array of product id's from /current or /related
+let getProductData = (productIdsArray, callback) => {
     let relatedProductData = [];
     for (let i = 0; i < productIdsArray.length; i++) {
         let eachProduct = {};
@@ -127,22 +139,22 @@ let getRelatedProductData = (productIdsArray, callback) => {
 }
 
 // helper function for to retrieve product information for the product currently being viewed
-let getCurrentProductData = (id, callback) => {
-  axios({
-    method: 'get',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}`,
-    headers: {
-        Authorization: API_KEY
-    }
-  })
-  .then((response) => {
-    // console.log('response from /current product_id GET request: ', response.data);
-    callback(null, response.data);
-  })
-  .catch((error) => {
-    // console.log('error from /current product_id GET request: ', error.message);
-    callback(error);
-  })
-}
+// let getCurrentProductData = (id, callback) => {
+//   axios({
+//     method: 'get',
+//     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}`,
+//     headers: {
+//         Authorization: API_KEY
+//     }
+//   })
+//   .then((response) => {
+//     // console.log('response from /current product_id GET request: ', response.data);
+//     callback(null, response.data);
+//   })
+//   .catch((error) => {
+//     // console.log('error from /current product_id GET request: ', error.message);
+//     callback(error);
+//   })
+// }
 
 module.exports.route = route;

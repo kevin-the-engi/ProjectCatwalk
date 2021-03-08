@@ -19,13 +19,20 @@ class PreviewImage extends React.Component {
     }
 
     render() {
+      let actionButton;
+      if (!this.props.currentItem) {
+        // Change to remove button once implemented
+        actionButton = null;
+      } else {
+        actionButton = <CompareButton relatedItem={this.props.relatedItem} currentItem={this.props.currentItem}/>
+      }
 
-        return (
-            <div className={styles.imageContainer}>
-              <CompareButton relatedItem={this.props.relatedItem} currentItem={this.props.currentItem}/>
-              <img className={styles.previewImage} src={this.state.url}></img>
-            </div>
-        )
+      return (
+          <div className={styles.imageContainer}>
+            {actionButton}
+            <img className={styles.previewImage} src={this.state.url}></img>
+          </div>
+      )
     }
 }
 

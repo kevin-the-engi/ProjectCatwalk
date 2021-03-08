@@ -9,7 +9,7 @@ class RelatedItems extends React.Component {
     super(props)
     this.state = {
       product_id: '',
-      currentItem: {},
+      currentItem: [],
       relatedItems: [],
       outfitItems: []
     }
@@ -51,13 +51,13 @@ class RelatedItems extends React.Component {
   }
 
   addToOutfit() {
-    this.setState({outfitItems: [...this.state.outfitItems, this.state.currentItem]})
+    this.setState({outfitItems: [...this.state.outfitItems, this.state.currentItem[0]]})
   }
 
   render() {
-    // console.log('this.state.relatedItems: ', this.state.relatedItems);
+    console.log('this.state.relatedItems: ', this.state.relatedItems);
     // console.log('this.state.currentItem: ', this.state.currentItem);
-    // console.log('this.state.outfitItems: ', this.state.outfitItems);
+    console.log('this.state.outfitItems: ', this.state.outfitItems);
     return (
       <div>
         <div className={styles.widgetContainer}>

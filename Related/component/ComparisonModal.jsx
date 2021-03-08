@@ -13,15 +13,15 @@ class ComparisonModal extends React.Component {
 
   componentDidMount() {
     let featuresData = {};
-    for (let i = 0; i < this.props.currentItem.features.length; i++) {
-      if (this.props.currentItem.features[i].value === null) {
-        featuresData[this.props.currentItem.features[i].feature] = {
+    for (let i = 0; i < this.props.currentItem[0].product.features.length; i++) {
+      if (this.props.currentItem[0].product.features[i].value === null) {
+        featuresData[this.props.currentItem[0].product.features[i].feature] = {
           currentItem: {contains: 'yes', value: '✓'},
           relatedItem: {contains: 'no', value: null}
         }
       } else {
-        featuresData[this.props.currentItem.features[i].feature] = {
-          currentItem: {contains: 'yes', value: this.props.currentItem.features[i].value},
+        featuresData[this.props.currentItem[0].product.features[i].feature] = {
+          currentItem: {contains: 'yes', value: this.props.currentItem[0].product.features[i].value},
           relatedItem: {contains: 'no', value: null}
         }
       }
@@ -65,6 +65,8 @@ class ComparisonModal extends React.Component {
   }
 
   render() {
+    // console.log('this.props.currentItem: ', this.props.currentItem);
+    // console.log('this.props.relatedItem: ', this.props.relatedItem);
    
     let showHide;
     if (!this.props.show) {
@@ -81,9 +83,9 @@ class ComparisonModal extends React.Component {
             <div className={styles.tableContainer}>
               <table>
                 <tr className={styles.tableHeaders}>
-                  <th className={styles.leftHeader}>Current Product Name</th>
+                  <th className={styles.leftHeader}>{this.props.currentItem[0].product.name}</th>
                   <th className={styles.centerHeader}></th>
-                  <th className={styles.rightHeader}>Related Product Name</th>
+                  <th className={styles.rightHeader}>{this.props.relatedItem.product.name}</th>
                 </tr>
                 {this.state.tableRows.map((feature) => (
                 <tr>
