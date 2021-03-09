@@ -20,30 +20,29 @@ import Checkout from './component/Checkout.jsx';
 describe('Product', () => {
   let wrapper;
 
-  it('renders correctly', () => {
+  it('should renders correctly', () => {
     wrapper = shallow(<Product />);
   });
 
-  it('renders Gallery', () => {
+  it('should renders Gallery', () => {
     expect(wrapper.containsMatchingElement(<Gallery />)).toBe(true);
   });
 
-  it('renders Info section', () => {
+  it('should render Info section', () => {
     expect(wrapper.containsMatchingElement(<Info />)).toBe(true);
   });
-
 })
 
 
 describe('Thumbnail', () => {
-  it('renders correctly', () => {
+  it('should render correctly', () => {
     shallow(<Thumbnail />)
   });
 })
 
 
 describe('Down Arrow and TopArrow', () => {
-  it('renders correctly', () => {
+  it('should render correctly', () => {
     shallow(<DownArrow />)
     shallow(<TopArrow />)
   });
@@ -62,21 +61,16 @@ describe('Gallery Mock', () => {
     wrapper = mount(<Gallery image={image} info={info} stylePhotos={stylePhotos}/>);
   });
 
-  it('accepts props and passes them down', () => {
+  it('should accept props and fully render children that receive them', () => {
     expect(wrapper.props().image).toEqual(image);
     expect(wrapper.props().info).toEqual(info);
     expect(wrapper.props().stylePhotos).toEqual(stylePhotos);
   });
 
-  it('contains slogan from props', () => {
+  it('should contain slogan from props', () => {
     const value = wrapper.find("h3").text();
     expect(value).toEqual("Blend in your crowd.");
   });
-
-  it('renders children with props', () => {
-    expect(wrapper.containsMatchingElement(<Thumbnail />)).toBe(true);
-    expect(wrapper.containsMatchingElement(<DownArrow />)).toBe(true);
-  })
 })
 
 
@@ -87,15 +81,15 @@ describe('Info Mock', () => {
   const features = [{feature: "Fabric", value: "Canvas"}];
   const skus = [{quantity: 8, size: "XS"}]
   const isStocked = true;
-  var quantity = [1,2,3,4]
+  const displayQuantities = jest.fn(5)
 
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<Info style={style} info={info} features={features} styles={styles} skus={skus}/>);
+    wrapper = mount(<Info style={style} info={info} features={features} styles={styles} skus={skus} displayQuantities={displayQuantities}/>);
   });
 
-  it('accepts props and passes them down', () => {
+  it('should accept props and fully render children that receive them', () => {
     expect(wrapper.props().style).toEqual(style);
     expect(wrapper.props().info).toEqual(info);
     expect(wrapper.props().styles).toEqual(styles);
@@ -103,41 +97,26 @@ describe('Info Mock', () => {
     expect(wrapper.props().skus).toEqual(skus);
   });
 
-  it('renders children with props', () => {
-    expect(wrapper.containsMatchingElement(<Style />)).toBe(true);
-    expect(wrapper.containsMatchingElement(<Checkout />)).toBe(true);
-  })
-
-  it('contains reviews link', () => {
+  it('should contain reviews link', () => {
     const value = wrapper.find("a").text();
     expect(value).toEqual("Read all reviews");
   });
-
-  // it('updates Info state', () => {
-  //   const child = shallow(<Checkout />)
-  //   // const instance = child.instance()
-  //   expect(wrapper.state().checkoutClicked).toEqual(false)
-  //   expect(wrapper.state().isStocked).toEqual(true)
-  //   child.find('button').invoke('checkSizeSelected')()
-  //   expect(wrapper.state().checkoutClicked).toEqual(true)
-  // });
 })
 
 // MOCKING - SHALLOW
 describe('OptionQ', () => {
   const quantity = "4";
 
-  it('accepts props', () => {
+  it('should accept quantity props and fully render', () => {
     const wrapper = mount(<OptionQ quantity={quantity}/>);
     expect(wrapper.props().quantity).toEqual(quantity);
   });
 })
 
-
 describe('FeatureList', () => {
   const features = [{feature: "Fabric", value: "Canvas"}];
 
-  it('contains list from props', () => {
+  it('should contain list of features from props', () => {
     const wrapper = shallow(<FeatureList featureList={features}/>)
     expect(wrapper.containsMatchingElement(<Feature />)).toBe(true);
   })

@@ -26,21 +26,31 @@ class Info extends React.Component {
     var size =  e.target.value
     var quantity;
     var isStocked = true;
+    var sizeSelected = false;
 
-    for(var i = 0; i < this.props.skus.length; i++) {
-      if(this.props.skus[i].size === size) {
-        quantity = this.props.skus[i].quantity
+    // if user selected size display quantity
+    if(size !== 'SELECT SIZE' ) {
+      sizeSelected = true;
+      for(var i = 0; i < this.props.skus.length; i++) {
+        if(this.props.skus[i].size === size) {
+          quantity = this.props.skus[i].quantity
+        }
       }
-    }
-    quantity = [...Array(quantity + 1).keys()].slice(1, 16)
-
-    if(quantity === 0) {
-      isStocked = false;
+      if(quantity === 0) {
+        // checkout button changes to "out of stock"
+        isStocked = false;
+        quantity = ['-']
+      } else {
+        quantity = [...Array(quantity + 1).keys()].slice(1, 16)
+      }
+    // otherwise display default quantity
+    } else {
+      quantity = ['-']
     }
 
     this.setState({
       quantity: quantity,
-      sizeSelected: true,
+      sizeSelected:sizeSelected,
       isStocked: isStocked
     })
   }
@@ -55,7 +65,7 @@ class Info extends React.Component {
     var prompt;
 
     if(this.state.sizeSelected === false && this.state.checkoutClicked === true) {
-      prompt = <p className={styles.reminder}>Please Select Size</p>
+      prompt = <p id="prompt" className={styles.reminder}>Please Select Size</p>
     }
 
     return (
@@ -81,7 +91,7 @@ class Info extends React.Component {
             {prompt}
             <div className={styles.selectorsDiv}>
               <div className={styles.select} >
-                <select className={styles.selectButton} onChange={(e) => this.displayQuantities(e)}>
+                <select id="sizeSelector" className={styles.selectButton} onChange={(e) => this.displayQuantities(e)}>
                   <option className={styles.option}>SELECT SIZE</option>
                   {this.props.skus.map((sku, i) =>
                     <Option key ={i} sku={sku}/>
@@ -97,7 +107,7 @@ class Info extends React.Component {
               </div>
             </div>
             <div className={styles.checkoutDiv}>
-              <Checkout isStocked={this.state.isStocked} checkSizeSelected={this.checkSizeSelected} />
+              <Checkout id="checkout" isStocked={this.state.isStocked} checkSizeSelected={this.checkSizeSelected} />
             </div>
           </div>
 
