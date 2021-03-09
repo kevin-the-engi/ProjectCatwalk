@@ -1,0 +1,37 @@
+.cart {
+  height: 3.4vw;
+  width: 17vw;
+  margin-right: 20px;
+  background-color:black;
+  color: white;
+  font-size: .9vw;
+  font-family: "adobe-clean", sans-serif;
+  border: 1px solid #AAB8C2;
+  text-align: left;
+  padding-left: 5%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cartGrey {
+  height: 3.4vw;
+  width: 17vw;
+  margin-right: 20px;
+  background-color: #E1E8ED;
+  color: white;
+  font-size: .9vw;
+  font-family: "adobe-clean", sans-serif;
+  border: 1px solid #AAB8C2;
+  text-align: left;
+  padding-left: 5%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.favorite {
+  height: 3.4vw;
+  width: 4vw;
+  background-color: white;
+  border: 1px solid #AAB8C2;
+  cursor: pointer;
+}
