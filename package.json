@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "product-test": "jest --coverage ./Product/test.js",
-    "reviews-test": "jest --coverage ./Reviews/*/*/*.test.js",
+    "reviews-test": "jest --coverage ./Reviews/reviews.test.js",
     "related-test": "jest --coverage ./Related/related.test.js",
     "questions-test": "jest --coverage ./Questions/questions.test.js",
     "webpack": "webpack --watch",
@@ -48,6 +48,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest": "^26.6.3",
     "jest-css-modules": "^2.1.0",
+    "sinon": "^9.2.4",
     "style-loader": "^2.0.0",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0"
@@ -64,7 +65,6 @@
       "**/Questions/component/*.{js,jsx}",
       "**/Related/component/*.{js,jsx}",
       "**/Reviews/component/*.{js,jsx}",
-      "**/Reviews/component/*/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/tools/**",
       "!**/build/**",
