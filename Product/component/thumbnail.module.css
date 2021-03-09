@@ -1,7 +1,7 @@
 .thumbnail {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 15px;
-  border: 1px solid black;
+  width: 3.5vw;
+  height: 3.5vw;
+  padding: 5px;
   object-fit: cover;
+  object-position: center;
 }
