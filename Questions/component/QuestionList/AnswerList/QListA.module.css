@@ -1,0 +1,22 @@
+.body {
+  display: flex;
+  align-items: baseline;
+  margin: 20px 0;
+}
+
+.prefix {
+  font-size: 20px;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.answererContainer {
+  display: flex;
+  align-items: flex-end;
+  margin: 10px 0;
+}

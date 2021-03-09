@@ -1,0 +1,37 @@
+.title {
+  margin-left: 22%;
+  font-family: Arial;
+  padding-bottom: 15px;
+}
+
+.container {
+  display: flex;
+  margin-left: 22%;
+  margin-right: 22%;
+}
+
+.right {
+ width: 66%;
+}
+
+.left {
+  width: 33%;
+  font-family: Arial;
+  margin-right: 5%;
+}
+
+.ratingBreakdown {
+  height: 300px;
+}
+
+.sortBar {
+  height: 50px;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.footer {
+  padding-top: 35px;
+  padding-bottom: 20px;
+}
