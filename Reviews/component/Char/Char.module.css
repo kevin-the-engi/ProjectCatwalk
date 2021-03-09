@@ -1,15 +1,20 @@
 .option {
+  font-size: 13px;
+  width: 85%;
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
 }
 
 .optionRow {
   margin-right: 15px;
+  font-size: 14px;
 }
 
 .char {
-  margin-top: 5px;
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
+  margin-bottom: 15px;
 }
 
 .label {
@@ -19,23 +24,56 @@
   padding-top: 6px;
 }
 
+.button, .button1 , .button5 {
+  height: 22px;
+  width: 22px;
+  vertical-align: top;
+  position: relative;
+  top: -13px;
+  cursor: pointer;
+}
+
+.button1 {
+  right: 6px;
+}
+
+.button5 {
+  left: 6px;
+}
 
 .buttons {
-  height: 20px;
-  width: 20px;
-  vertical-align: top;
-  margin-right: 10px;
-}
-
-
-
-.b {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  height: 1px;
+  width: 85%;
+  background:rgb(0, 0, 0);
+  bottom: -17px;
 }
-
 
 .buttonContainer {
-  display: flex;
-  flex-direction: row;
+  height: 38px;
+}
+
+
+.charContainer {
+  width: 50%;
+}
+
+.char1 {
+  width: 33%;
+  text-align: left;
+}
+.char2 {
+  width: 33%;
+  text-align: center;
+}
+.char3 {
+  width: 33%;
+  text-align: right;
+}
+
+.select {
+  font-size: 13px;
 }

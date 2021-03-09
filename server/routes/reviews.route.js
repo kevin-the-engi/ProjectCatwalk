@@ -1,13 +1,13 @@
 var express = require('express')
 var app = express()
 var route = express.Router()
-// var API_KEY = require('../../Reviews/config.js')
+//var API_KEY = require('../../Reviews/config.js')
 var API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 var axios = require('axios')
 
 const options = {
   headers: {
-    // Authorization: API_KEY
+ //    Authorization: API_KEY
   }
 }
 //Controller
@@ -37,6 +37,16 @@ route.get('/reviews/meta', (req, res) => {
       res.sendStatus(404);
     } else {
       res.status(200).send(results.data);
+    }
+  })
+})
+
+route.get('/products/', (request, response) => {
+  getProductName(request.query.product_id, (err, result) => {
+    if (err) {
+      response.sendStatus(404)
+    } else {
+      response.send(result)
     }
   })
 })
@@ -80,6 +90,7 @@ var getReviews = (id, callback) => {
       Authorization: API_KEY
     },
     params: {
+      count: 150,
       product_id: id
     }
   })
@@ -104,6 +115,23 @@ var getMetaReviews = (id, callback) => {
   })
   .then((response) => {
     callback(null, response)
+  })
+  .catch((err) => {
+    callback(err, null)
+  })
+}
+
+var getProductName = (id, callback) => {
+  axios({
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}`,
+    headers: {
+      Authorization: API_KEY
+    }
+
+  })
+  .then((response) => {
+    callback(null, response.data)
   })
   .catch((err) => {
     callback(err, null)

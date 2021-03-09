@@ -1,5 +1,4 @@
 import React from 'react'
-// import ReactDOM from 'react-dom'
 import ReviewsList from '../ReviewsList/ReviewsList.jsx'
 import dummyData from '../reviewData.js'
 import metaData from '../reviewMetaData.js'
@@ -17,11 +16,14 @@ class Reviews extends React.Component {
       reviewData: [],
       metaData: {},
       recommended: {true: '', false: ''},
-      ratings: {1: '', 2: '', 3: '', 4: '', 5: ''}
+      ratings: {1: '', 2: '', 3: '', 4: '', 5: ''},
+      view: 2,
+      productName: ''
     }
     this.handlePostReview=this.handlePostReview.bind(this);
     this.handleHelpful=this.handleHelpful.bind(this);
     this.handleReport = this.handleReport.bind(this);
+    this.handleViewMore = this.handleViewMore.bind(this);
   }
   componentDidMount() {
     axios.get('/reviews', {
@@ -52,6 +54,20 @@ class Reviews extends React.Component {
     })
     .catch((err) => {
       console.log('error getting meta data from reviews from api', err)
+    })
+
+    axios.get('/products/', {
+      params: {
+        product_id: 14931
+      }
+    })
+    .then((response) => {
+        this.setState({
+         productName: response.data.name
+        })
+    })
+    .catch((err) => {
+      console.log('error getting product name from api')
     })
   }
 
@@ -89,8 +105,17 @@ class Reviews extends React.Component {
     });
    }
 
+   handleViewMore() {
+     var currentView = this.state.view;
+     var updatedView = currentView + 2;
+     this.setState({
+       view: updatedView
+     })
+   }
 
   render() {
+    var reviewsToRender = this.state.reviewData.slice(0, (this.state.view));
+
     return (
       <div>
       <div className={styles.title}>RATINGS & REVIEWS</div>
@@ -99,19 +124,19 @@ class Reviews extends React.Component {
           <div className={styles.ratingBreakdown}>
             <RatingBreakdown recommended={this.state.recommended} ratings={this.state.ratings}/>
           </div>
-          <div>
+          <div id="productBreakdown">
             <ProductBreakdown metaData={this.state.metaData}/>
           </div>
         </div>
         <div className={styles.right}>
           <div className={styles.sortBar}>
-            5 reviews, sorted by relevance
+            {this.state.reviewData.length} reviews, sorted by relevance
           </div>
           <div id="reviews">
-            <ReviewsList reviewList={this.state.reviewData} handleHelpful={this.handleHelpful} handleReport={this.handleReport}/>
+            <ReviewsList reviewList={reviewsToRender} handleHelpful={this.handleHelpful} handleReport={this.handleReport}/>
           </div>
           <div className={styles.footer}>
-            <WriteNewReview metaData={this.state.metaData} handlePostReview={this.handlePostReview}/>
+            <WriteNewReview handleViewMore={this.handleViewMore} metaData={this.state.metaData} productName={this.state.productName} handlePostReview={this.handlePostReview}/>
           </div>
         </div>
       </div>

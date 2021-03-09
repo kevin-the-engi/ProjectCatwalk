@@ -1,5 +1,6 @@
 import React from 'react'
 import Char from '../Char/Char.jsx'
+import styles from './CharList.module.css'
 
 class CharList extends React.Component {
   constructor(props) {
@@ -19,9 +20,10 @@ class CharList extends React.Component {
   }
 
   render() {
+    console.log('charlist', this.state)
     var characteristics = Object.keys(this.props.metaData.characteristics);
     return (
-      <div>
+      <div className={styles.container}>
         {characteristics.map((char) =>
         <Char char={char} metaData={this.props.metaData} handleSelectOption={this.handleSelectOption} />)}
       </div>

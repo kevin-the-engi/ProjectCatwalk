@@ -9,6 +9,9 @@
   margin-right: 15px;
   font-size: 15px;
   font-weight: bold;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: white;
 }
 
 .addReview {
@@ -18,4 +21,12 @@
   margin-right: 15px;
   font-size: 15px;
   font-weight: bold;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: white
+}
+
+.moreReviews:hover, .addReview:hover {
+  color: white;
+  background-color: rgb(7, 0, 0);
 }

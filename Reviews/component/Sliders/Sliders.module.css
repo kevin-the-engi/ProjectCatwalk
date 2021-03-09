@@ -1,8 +1,8 @@
 .progress_bar {
   position: relative;
   height: 6px;
-  width: 70%;
-  background:rgb(218, 216, 216);
+  width: 80%;
+  background:rgb(220, 220, 220);
   margin-right: 10px;
 }
 
@@ -16,9 +16,15 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 14px;
+  padding-top: 5px;
 }
 
 .star {
   width: 50px;
+  margin-top: -5px;
+  margin-right: 5px;
 }
 
+.rating {
+  margin-top: -5px;
+}

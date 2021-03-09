@@ -1,6 +1,6 @@
 .title {
   margin-left: 22%;
-  font-family: Arial;
+  font-family: Helvetica;
   padding-bottom: 15px;
 }
 
@@ -16,17 +16,19 @@
 
 .left {
   width: 33%;
-  font-family: Arial;
+  font-family: Helvetica;
   margin-right: 5%;
+  display: flex;
+  flex-direction: column;
 }
 
 .ratingBreakdown {
-  height: 300px;
+  padding-bottom: 30px;
 }
 
 .sortBar {
   height: 50px;
-  font-family: Arial;
+  font-family: Helvetica;
   font-size: 20px;
   font-weight: bold;
 }

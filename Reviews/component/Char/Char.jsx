@@ -6,79 +6,57 @@ class Char extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      '1': false,
-      '2': false,
-      '3': false,
-      '4': false,
-      '5': false,
+      currentSelect: '',
+      selection: true
     }
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleChecked = this.handleChecked.bind(this);
+  }
+
+  handleChecked(e) {
+    var currentSelect = this.state.currentSelect
+    this.setState({
+      [currentSelect]: true
+    })
   }
 
   handleSelect(e) {
-    e.preventDefault();
+    this.setState({
+      currentSelect: e.target.value,
+      selection: false
+    })
     var charId = `${this.props.metaData.characteristics[this.props.char].id}`;
-    this.props.handleSelectOption(charId, e.target.name)
+    this.props.handleSelectOption(charId, e.target.value)
   }
 
 
   render() {
-    console.log('1 state', this.state['1'])
-    var charOptionsToRender = charOptionMapping[this.props.char];
-    var selectedChar = Object.entries(charOptionsToRender);
+    var charOptionsToRender = {};
+    var selectedChar = [];
+     if (this.props && this.props.char) {
+      charOptionsToRender = charOptionMapping[this.props.char];
+      selectedChar = Object.values(charOptionsToRender);
+     }
+
     return (
-      <div>
-        <div className={styles.char}>{this.props.char}*: </div>
-        <div  className={styles.option}>
-        {selectedChar.map((option) => {
-          return (
-            <div className={styles.optionRow}>
-              <div>{option[0]}: {option[1]}</div>
-            </div>
-          )
-        })}
-        </div>
+      <div className={styles.charContainer}>
+        <div className={styles.char}>{this.props.char}: </div>
+        {this.state.selection ?
+        <div className={styles.select}>Please select</div> :
+        <div className={styles.select}>{selectedChar[this.state.currentSelect - 1]}</div>}
         <div className={styles.buttonContainer}>
-          <div className={styles.b}>
-            <div className={styles.label}>
-              1:
-            </div>
-            <div className={styles.buttons}>
-              <input type="radio" name="1" onClick={this.handleSelect} />
-            </div>
+          <div className={styles.buttons} onChange={this.handleSelect}>
+            <input className={styles.button1} type="radio" id="1" value="1" checked={this.state.currentSelect === '1'}/>
+            <input className={styles.button} type="radio" id="2" value="2" checked={this.state.currentSelect === '2'}/>
+            <input className={styles.button} type="radio" id="3" value="3" checked={this.state.currentSelect === '3'}/>
+            <input className={styles.button} type="radio" id="4" value="4" checked={this.state.currentSelect === '4'}/>
+            <input className={styles.button5} type="radio" id="5" value="5" checked={this.state.currentSelect === '5'}/>
           </div>
-          <div className={styles.b}>
-            <div className={styles.label}>
-              2:
-            </div>
-            <div className={styles.buttons}>
-              <input type="radio" name="2" onClick={this.handleSelect} />
-            </div>
-          </div>
-          <div className={styles.b}>
-            <div className={styles.label}>
-              3:
-            </div>
-            <div className={styles.buttons}>
-              <input type="radio" name="3" onClick={this.handleSelect} />
-            </div>
-          </div>
-          <div className={styles.b}>
-            <div className={styles.label}>
-              4:
-            </div>
-            <div className={styles.buttons}>
-              <input type="radio" name="4" onClick={this.handleSelect} />
-            </div>
-          </div>
-          <div className={styles.b}>
-            <div className={styles.label}>
-              5:
-            </div>
-            <div className={styles.buttons}>
-              <input type="radio" name="5" onClick={this.handleSelect} />
-            </div>
-          </div>
+        </div>
+        <div className={styles.option}>
+          <div className={styles.char1}>{selectedChar[0]}</div>
+          <div className={styles.char2}>{selectedChar[2]}</div>
+          <div className={styles.char3}>{selectedChar[4]}</div>
         </div>
       </div>
     )
