@@ -8,7 +8,7 @@
     "product-test": "jest --coverage ./Product/test.js",
     "reviews-test": "jest --coverage ./Reviews/*/*/*.test.js",
     "related-test": "jest --coverage ./Related/related.test.js",
-    "questions-test": "jest --coverage ./Questions/questions.test.js",
+    "questions-test": "jest --coverage ./Questions/*/*/*.test.js",
     "webpack": "webpack --watch",
     "start": "nodemon server/server.js"
   },
@@ -61,7 +61,7 @@
     ],
     "collectCoverageFrom": [
       "**/Product/component/*.{js,jsx}",
-      "**/Questions/component/*.{js,jsx}",
+      "**/Questions/component/**/*.{js,jsx}",
       "**/Related/component/*.{js,jsx}",
       "**/Reviews/component/*.{js,jsx}",
       "**/Reviews/component/*/*.{js,jsx}",

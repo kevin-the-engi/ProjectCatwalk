@@ -37,7 +37,6 @@ class QModal extends React.Component {
     })
   }
 
-
   handleClick(event) {
     if (!event.target.closest("#modal-main")) {
       this.props.close();
@@ -78,6 +77,7 @@ class QModal extends React.Component {
                 <label><h4>Nickname:</h4></label>
                 <input
                   className={form.field}
+                  id="username"
                   onChange={this.handleChange}
                   type="text"
                   name="name"
@@ -93,6 +93,7 @@ class QModal extends React.Component {
                 <label><h4>Email:</h4></label>
                 <input
                   className={form.field}
+                  id="email"
                   onChange={this.handleChange}
                   type="email"
                   name="email"

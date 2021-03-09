@@ -3,7 +3,7 @@ import axios from 'axios';
 import styles from '../css/Questions.css';
 import SearchBar from './SearchBar/SearchBar.jsx';
 import QList from './QuestionList/QList.jsx';
-import MoreQ from './MoreQ.jsx';
+import MoreQ from './MoreQ/MoreQ.jsx';
 import QAdd from './QAdd/QAdd.jsx';
 
 class Questions extends React.Component {
