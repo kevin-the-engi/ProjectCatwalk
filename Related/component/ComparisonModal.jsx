@@ -81,7 +81,7 @@ class ComparisonModal extends React.Component {
               </div>
             </div>
             <div className={styles.tableContainer}>
-              <table>
+              <table id="comparisonTable">
                 <tr className={styles.tableHeaders}>
                   <th className={styles.leftHeader}>{this.props.currentItem[0].product.name}</th>
                   <th className={styles.centerHeader}></th>
