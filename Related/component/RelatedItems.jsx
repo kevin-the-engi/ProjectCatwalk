@@ -14,6 +14,7 @@ class RelatedItems extends React.Component {
       outfitItems: []
     }
     this.addToOutfit = this.addToOutfit.bind(this);
+    this.removeFromOutfit = this.removeFromOutfit.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +55,17 @@ class RelatedItems extends React.Component {
     this.setState({outfitItems: [...this.state.outfitItems, this.state.currentItem[0]]})
   }
 
+  removeFromOutfit(productID) {
+    let outfitArray = this.state.outfitItems;
+    for (let i = 0; i < outfitArray.length; i++) {
+      if (productID === outfitArray[i].product_id) {
+        outfitArray.splice(i, 1);
+        break;
+      }
+    }
+    this.setState({outfitItems: outfitArray});
+  }
+
   render() {
     // console.log('this.state.relatedItems: ', this.state.relatedItems);
     // console.log('this.state.currentItem: ', this.state.currentItem);
@@ -68,7 +80,7 @@ class RelatedItems extends React.Component {
           <div className={styles.relatedItemsBanner}>
             <p className={styles.sectionTitle}>Your Outfit</p>
           </div>
-          <OutfitGallery addToOutfit={this.addToOutfit} outfitItems={this.state.outfitItems}/>
+          <OutfitGallery addToOutfit={this.addToOutfit} removeFromOutfit={this.removeFromOutfit} outfitItems={this.state.outfitItems}/>
         </div>
       </div>
       )

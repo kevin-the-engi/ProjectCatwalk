@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './css_modules/RelatedGallery.module.css';
 import CompareButton from './CompareButton.jsx';
+import RemoveButton from './RemoveButton.jsx';
 
 class PreviewImage extends React.Component {
     constructor(props) {
@@ -20,9 +21,9 @@ class PreviewImage extends React.Component {
 
     render() {
       let actionButton;
+      // if the currentItem prop doesn't exist (i.e. when it is an outfit item product card)
       if (!this.props.currentItem) {
-        // Change to remove button once implemented
-        actionButton = null;
+        actionButton = <RemoveButton relatedItem={this.props.relatedItem} removeFromOutfit={this.props.removeFromOutfit}/>
       } else {
         actionButton = <CompareButton relatedItem={this.props.relatedItem} currentItem={this.props.currentItem}/>
       }

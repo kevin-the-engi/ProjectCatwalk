@@ -27,6 +27,10 @@
   cursor: pointer;
 }
 
+#productCard0 {
+  margin-left: 0px;
+}
+
 .productCard:hover {
   border: 1px solid black;
 }
@@ -43,7 +47,7 @@
 }
 
 .star {
-  font-size: 27px;
+  font-size: 150%;
 }
 
 .star:hover {
@@ -51,6 +55,7 @@
 }
 
 .starContainer {
+  /* align-self: flex-start; */
   margin-left: -10%;
   margin-top: 1%;
   order: 1;
@@ -290,7 +295,7 @@
   height: 400px;
   border: 1px solid transparent;
   margin-right: 8px;
-  margin-left: 8px;
+  /* margin-left: 8px; */
 }
 
 .addToOutfitCard:hover {
@@ -336,4 +341,34 @@
   letter-spacing: .5px;
   color: lightgray;
   margin-top: 10px;
+}
+
+.removeButtonContainer {
+  /* align-self: flex-start; */
+  margin-left: -10%;
+  margin-top: 3%;
+  order: 1;
+}
+
+.removeButton {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+}
+
+.removeButton > circle {
+  stroke: black;
+  fill: white;
+}
+
+.removeButton > path {
+  stroke: black;
+}
+
+.removeButton:hover > circle {
+  fill: black;
+}
+
+.removeButton:hover > path {
+  stroke: white;
 }
