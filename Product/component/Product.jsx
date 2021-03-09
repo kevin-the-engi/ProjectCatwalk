@@ -17,6 +17,8 @@ class Product extends React.Component {
     styles: [],
     style: {},
     skus: [],
+    thumbnailClicked: '',
+    styleClicked: ''
   }
 
   this.changeStyle = this.changeStyle.bind(this)
@@ -34,7 +36,6 @@ class Product extends React.Component {
       }
     })
     .then(response => {
-      console.log(response.data)
       var features = response.data['features']
       this.setState({
         info: response.data,
@@ -87,21 +88,35 @@ class Product extends React.Component {
     return skus;
   }
 
-  // user clicks on style - updates style info across the app alone with main image and thumbnails (style photos)
-  changeStyle(photos, style, skus) {
+  // user clicks on style - higlights it and updates style info across the app along with main image and thumbnails (style photos)
+  changeStyle(photos, style, skus, id) {
+    if(this.state.styleClicked !== id && this.state.styleClicked !== '') {
+      var clickedStyle = this.state.styleClicked
+      document.getElementById(clickedStyle).className = styles.style
+    }
+    document.getElementById(id).className = styles.styleClicked;
+
     var skus = this.getSkus(skus);
     this.setState({
       stylePhotos: photos,
       image: photos[0].url,
       style: style,
-      skus: skus
+      skus: skus,
+      styleClicked: id
     })
   }
 
-  // user clicks on thumnail - updates main image
-  handleThumbnailClick(photo) {
+  // user clicks on thumbnail - higlights thumbnail and updates main image
+  handleThumbnailClick(photo, id) {
+    if(this.state.thumbnailClicked !== id && this.state.thumbnailClicked !== '') {
+      var clickedStyle = this.state.thumbnailClicked
+      document.getElementById(clickedStyle).className = styles.thumbnail
+      }
+      document.getElementById(id).className = styles.clicked;
+
     this.setState({
-      image: photo
+      image: photo,
+      thumbnailClicked: id
     })
   }
 
@@ -112,7 +127,7 @@ class Product extends React.Component {
       <div className={styles.container}>
         <div className={styles.left}>
           <div id="gallery">
-            <Gallery changeStyle={this.changeStyle} handleThumbnailClick={this.handleThumbnailClick} image={this.state.image} styles={this.state.styles} info={this.state.info} stylePhotos={this.state.stylePhotos}/>
+            <Gallery handleThumbnailClick={this.handleThumbnailClick} image={this.state.image} info={this.state.info} stylePhotos={this.state.stylePhotos}/>
           </div>
         </div>
         <div className={styles.right}>
@@ -125,11 +140,5 @@ class Product extends React.Component {
     )
   }
 }
-
-// ReactDOM.render(
-//   // insert your component here to test individually, but delete before merging
-//   <Product />,
-//   document.getElementById('app')
-// )
 
 export default Product;
