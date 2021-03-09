@@ -17,9 +17,14 @@ describe('QListQ', () => {
     expect(Array.isArray(wrapper.instance().props.question.answers)).toBe(true);
   })
 
-  // it('should render QListA component', () => {
-  //   const wrapper = render(<QListQ question={question} />);
+  it('should contain QListA component', () => {
+    const wrapper = shallow(<QListQ question={question} />, {disableLifecycleMethods: true});
+    // const instance = wrapper.instance();
 
-  //   expect(wrapper.exists(<QListQ />)).toBe(true);
-  // })
-})
+    wrapper.setState({
+      answers: [{ answer_id: 12345 }]
+    })
+
+    expect(wrapper.containsMatchingElement(<QListA />)).toBe(true)
+  })
+});
