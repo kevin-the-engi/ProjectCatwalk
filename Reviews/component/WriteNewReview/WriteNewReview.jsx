@@ -22,10 +22,10 @@ class WriteNewReview extends React.Component {
   render() {
     return (
       <div className={styles.footer}>
-        <button className={styles.moreReviews}>MORE REVIEWS</button>
+        <button className={styles.moreReviews} onClick={this.props.handleViewMore}>MORE REVIEWS</button>
         <button id="addReview" className={styles.addReview} onClick={this.handleClick}>ADD A REVIEW +</button>
         <div>
-          {this.state.clicked ? <NewReview metaData={this.props.metaData} handlePostReview={this.props.handlePostReview} handleClick={this.handleClick}/> : null}
+          {this.state.clicked ? <NewReview metaData={this.props.metaData} productName={this.props.productName} handlePostReview={this.props.handlePostReview} handleClick={this.handleClick}/> : null}
         </div>
       </div>
     )

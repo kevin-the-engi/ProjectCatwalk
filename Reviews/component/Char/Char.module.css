@@ -1,5 +1,3 @@
-
-
 .option {
   font-size: 13px;
   width: 85%;
@@ -14,8 +12,7 @@
 }
 
 .char {
-  /* margin-top: 5px; */
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   margin-bottom: 15px;
 }
@@ -27,23 +24,24 @@
   padding-top: 6px;
 }
 
-.buttons, .buttons1 , .buttons5 {
+.button, .button1 , .button5 {
   height: 22px;
   width: 22px;
   vertical-align: top;
   position: relative;
   top: -13px;
+  cursor: pointer;
 }
 
-.buttons1 {
+.button1 {
   right: 6px;
 }
 
-.buttons5 {
+.button5 {
   left: 6px;
 }
 
-.b {
+.buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

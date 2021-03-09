@@ -39,6 +39,7 @@ class IndividualReview extends React.Component {
   }
 
   render() {
+   console.log(this.props)
     var date = this.props.review.date.slice(0, 10).split('-');
     var year = Number(date[0])
     var month = Number(date[1]) -1;
@@ -69,15 +70,23 @@ class IndividualReview extends React.Component {
         <div className={styles.body}>
           {this.props.review.body}
         </div>
+        {this.props.review.recommend ?
+        <div className={styles.recommend}>
+          ✓ I recommend this product
+        </div> : null }
+        {this.props.review.response ?
+        <div className={styles.response}>
+          <div className={styles.responseTitle}>Response:</div>
+          <div>{this.props.review.response}</div>
+        </div> : null }
         <div className={styles.helpfulness}>
           Helpful?
           <div className={styles.helpfulYesButton} name={this.state.review} onClick={this.handleHelpfulClick}>
             Yes
           </div>
-          <div>
-          ({this.props.review.helpfulness}) |
-          </div>
-          <div name={this.state.review} onClick={this.handleReportClick}>
+          <div className={styles.helpful}>({this.props.review.helpfulness})</div>
+          <div>|</div>
+          <div className={styles.report} name={this.state.review} onClick={this.handleReportClick}>
             Report
           </div>
         </div>

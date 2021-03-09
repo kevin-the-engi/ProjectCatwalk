@@ -3,7 +3,6 @@ import charOptions from './charOptions.js'
 import styles from './ProdChar.module.css'
 
 const ProdChar = (props) => {
-
   let charMeaning = [];
   var charOptionsToRender = {};
   var percentage;

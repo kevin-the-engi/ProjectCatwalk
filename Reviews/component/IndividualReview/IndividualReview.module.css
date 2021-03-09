@@ -23,7 +23,7 @@
 
 .individualReview {
   border-bottom: 1px solid grey;
-  font-family: Arial;
+  font-family: Helvetica;
 }
 
 .reviewer_name {
@@ -33,7 +33,7 @@
 .helpfulness {
   display: flex;
   padding-top: 20px;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
   font-size: 13px;
 }
 
@@ -41,4 +41,34 @@
   text-decoration: underline;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
+}
+
+.report {
+  margin-left: 13px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.helpful {
+  margin-right: 13px;
+}
+
+.recommend {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.response {
+  margin-top: 15px;
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  background-color: rgb(240, 240, 240);
+  font-size: 15px;
+}
+
+.responseTitle {
+  font-weight: bold;
+  margin-bottom: 15px;
 }

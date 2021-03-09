@@ -5,10 +5,18 @@ import { render } from 'enzyme';
 import WriteNewReview from './WriteNewReview.jsx'
 
 
-test('Test Button component', () => {
-    const mockCallBack = jest.fn();
+test('Test add review button', () => {
+  const mockCallBack = jest.fn();
 
-    const wrapper = mount((<WriteNewReview onClick={mockCallBack} />));
-    wrapper.find('#addReview').simulate('click', { preventDefault() {} });
-    expect(wrapper.state().clicked).toEqual(true);
-  });
+  const wrapper = shallow((<WriteNewReview onClick={mockCallBack} />));
+  wrapper.find('#addReview').simulate('click', { preventDefault() {} });
+  expect(wrapper.state().clicked).toEqual(true);
+});
+
+test('Test add review button', () => {
+  const mockCallBack = jest.fn();
+
+  const wrapper = shallow((<WriteNewReview onClick={mockCallBack} />));
+  wrapper.find('#addReview').simulate('click', { preventDefault() {} });
+  expect(wrapper.state().clicked).toEqual(true);
+});

@@ -12,12 +12,12 @@ class NewReviewStars extends React.Component {
   }
 
   makeSelection(e) {
-    e.preventDefault()
     var numRating = e.target.name
      this.setState({
        rating: numRating,
        selection: false
      })
+     this.props.changeStars(numRating)
    }
 
   render() {

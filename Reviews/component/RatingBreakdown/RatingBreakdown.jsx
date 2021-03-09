@@ -4,16 +4,16 @@ import Stars from '../Stars/Stars.jsx'
 import styles from './RatingBreakdown.modules.css'
 
 const RatingBreakdown = (props) => {
-
-   if (props.recommended.true !== '') {
-    var oneRatings = Number(props.ratings['1']);
-    var twoRatings = Number(props.ratings['2']);
-    var threeRatings = Number(props.ratings['3']);
-    var fourRatings = Number(props.ratings['4']);
-    var fiveRatings = Number(props.ratings['5']);
+   if (props && props.recommended.true !== '' || props.recommended.false!== '' && props.ratings) {
+    var oneRatings = Number(props.ratings['1']) || 0;
+    var twoRatings = Number(props.ratings['2']) || 0;
+    var threeRatings = Number(props.ratings['3']) || 0;
+    var fourRatings = Number(props.ratings['4']) || 0;
+    var fiveRatings = Number(props.ratings['5']) || 0;
     var totalRatings = oneRatings + twoRatings + threeRatings + fourRatings + fiveRatings;
     var avgRating = ((oneRatings*1) + (twoRatings*2) + (threeRatings*3) + (fourRatings*4) + (fiveRatings*5)) / totalRatings;
     var roundedAvg = avgRating.toFixed(1);
+
     var percentageOne = Math.round((oneRatings / totalRatings) * 100)
     var percentageTwo = Math.round((twoRatings / totalRatings) * 100)
     var percentageThree = Math.round((threeRatings / totalRatings) * 100)
@@ -26,7 +26,7 @@ const RatingBreakdown = (props) => {
     var roundedRating = rating.toFixed(1);
    }
     return (
-      <div>
+      <div className={styles.ratingBreakdown}>
         <div className={styles.header}>
           <div className={styles.numRating}>
             {roundedAvg}

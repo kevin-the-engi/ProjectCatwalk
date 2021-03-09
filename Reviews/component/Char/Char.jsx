@@ -7,12 +7,7 @@ class Char extends React.Component {
     super(props);
     this.state = {
       currentSelect: '',
-      selection: true,
-      1: false,
-      2: false,
-      3: false,
-      4: false,
-      5: false
+      selection: true
     }
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
@@ -26,26 +21,22 @@ class Char extends React.Component {
   }
 
   handleSelect(e) {
-    e.preventDefault();
     this.setState({
       currentSelect: e.target.value,
       selection: false
     })
     var charId = `${this.props.metaData.characteristics[this.props.char].id}`;
-    this.props.handleSelectOption(charId, e.target.name)
+    this.props.handleSelectOption(charId, e.target.value)
   }
 
 
   render() {
-    //console.log('select', this.state.currentSelect)
-    //console.log('typeofselect', typeof (this.state.currentSelect))
-    // console.log('1', this.state['1'])
-    // console.log('2', this.state['2'])
-    // console.log('3', this.state['3'])
-    // console.log('4', this.state['4'])
-    // console.log('5', this.state['5'])
-    var charOptionsToRender = charOptionMapping[this.props.char];
-    var selectedChar = Object.values(charOptionsToRender);
+    var charOptionsToRender = {};
+    var selectedChar = [];
+     if (this.props && this.props.char) {
+      charOptionsToRender = charOptionMapping[this.props.char];
+      selectedChar = Object.values(charOptionsToRender);
+     }
 
     return (
       <div className={styles.charContainer}>
@@ -54,12 +45,12 @@ class Char extends React.Component {
         <div className={styles.select}>Please select</div> :
         <div className={styles.select}>{selectedChar[this.state.currentSelect - 1]}</div>}
         <div className={styles.buttonContainer}>
-          <div className={styles.b} >
-            <input className={styles.buttons1} type="radio" name="1" value="1" onChange={this.handleSelect}/>
-            <input className={styles.buttons} type="radio" name="2" value="2" onChange={this.handleSelect}/>
-            <input className={styles.buttons} type="radio" name="3" value="3" onChange={this.handleSelect}/>
-            <input className={styles.buttons} type="radio" name="4" value="4" onChange={this.handleSelect}/>
-            <input className={styles.buttons5} type="radio" name="5" value="5" onChange={this.handleSelect}/>
+          <div className={styles.buttons} onChange={this.handleSelect}>
+            <input className={styles.button1} type="radio" id="1" value="1" checked={this.state.currentSelect === '1'}/>
+            <input className={styles.button} type="radio" id="2" value="2" checked={this.state.currentSelect === '2'}/>
+            <input className={styles.button} type="radio" id="3" value="3" checked={this.state.currentSelect === '3'}/>
+            <input className={styles.button} type="radio" id="4" value="4" checked={this.state.currentSelect === '4'}/>
+            <input className={styles.button5} type="radio" id="5" value="5" checked={this.state.currentSelect === '5'}/>
           </div>
         </div>
         <div className={styles.option}>

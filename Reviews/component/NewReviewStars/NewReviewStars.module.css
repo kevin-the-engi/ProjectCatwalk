@@ -9,8 +9,9 @@
   border: none;
   outline: none;
   color: transparent;
- text-shadow: 0 0 0 #000204;
- font-size: 20px;
+  text-shadow: 0 0 0 #000204;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .select {
