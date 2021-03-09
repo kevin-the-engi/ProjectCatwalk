@@ -8,6 +8,7 @@
   max-height: 450px;
   align-items: stretch;
   scroll-behavior: smooth;
+  margin-left: 8px;
 }
 
 .relatedContainer::-webkit-scrollbar {
@@ -96,7 +97,15 @@
   -webkit-box-orient: vertical;
 }
 
-.price {
+.defaultPrice {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+.salePrice {
   display: inline-flex;
   align-items: center;
   margin-top: 5px;
@@ -158,10 +167,8 @@
   appearance: none;
   border: 0px;
   right: 22%;
-  margin-right: 5px;
-  /* margin-left: 20%; */
+  margin-right: 0.25%;
   outline: none;
-
 }
 
 .rightArrowButton:hover {
@@ -269,6 +276,11 @@
   max-height: 450px;
   align-items: stretch;
   scroll-behavior: smooth;
+  margin-left: 8px;
+}
+
+.outfitContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .addToOutfitCard {

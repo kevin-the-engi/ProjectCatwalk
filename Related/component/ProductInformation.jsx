@@ -51,12 +51,23 @@ class ProductInformation extends React.Component {
     render() {
         let displayPrice;
         if (this.state.salePrice === null) {
-            displayPrice = <div class={styles.price}>${this.state.defaultPrice}</div>;
+            displayPrice = <div class={styles.defaultPrice}>${this.state.defaultPrice}</div>;
         } else {
-            displayPrice = <div class={styles.price}>${this.state.salePrice}</div>;
+            displayPrice = <div class={styles.salePrice}>${this.state.salePrice}</div>;
         }
 
-        // console.log('this.state.show: ', this.state.show);
+        let starRating;
+        if (Math.round(this.state.averageRating) === 1) {
+          starRating = '★☆☆☆☆';
+        } else if (Math.round(this.state.averageRating) === 2) {
+          starRating = '★★☆☆☆';
+        } else if (Math.round(this.state.averageRating) === 3) {
+          starRating = '★★★☆☆';
+        } else if (Math.round(this.state.averageRating) === 4) {
+          starRating = '★★★★☆';
+        } else if (Math.round(this.state.averageRating) === 5) {
+          starRating = '★★★★★';
+        }
 
         return (
             <div className={styles.productInformationContainer}>
@@ -71,7 +82,7 @@ class ProductInformation extends React.Component {
                 </div>
                 {displayPrice}
                 <div class={styles.averageRating}>
-                    Rating: {this.state.averageRating}
+                    {starRating}
                 </div>
               </div>
             </div>
