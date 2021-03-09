@@ -8,7 +8,9 @@ class RightArrowButton extends React.Component {
     }
 
     handleClick() {
-        document.getElementById('relatedContainer').scrollLeft += 358;
+        // document.getElementById('relatedContainer').scrollLeft += 358;
+        let width = document.getElementById('productCard0').offsetWidth;
+        document.getElementById('relatedContainer').scrollLeft += width;
     }
 
     render () {
