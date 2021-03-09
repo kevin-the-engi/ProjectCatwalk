@@ -3,18 +3,19 @@
   margin-top: 5%;
 }
 
-.textbox {
+.styleName {
   display: flex;
-  margin-top: 5%;
 }
 
 .text {
   text-transform: uppercase;
   font-family: "adobe-clean", sans-serif;
+  font-size: 1vw;
 }
 
 .second {
   text-transform: uppercase;
   font-family: "adobe-clean", sans-serif;
+  font-size: 1vw;
   margin-left: 5px;
 }

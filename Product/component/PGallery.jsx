@@ -1,15 +1,19 @@
 import React from 'react';
 import styles from './PGallery.module.css'
 import Thumbnail from './Thumbnail.jsx'
+import DownArrow from './DownArrow.jsx'
+import TopArrow from './TopArrow.jsx'
 
-const Gallery = ({image, changeStyle, info, stylePhotos, handleThumbnailClick}) => (
+const Gallery = ({image, info, stylePhotos, handleThumbnailClick}) => (
   <div className={styles.right}>
     <div className={styles.imageDiv}>
       <img className={styles.image} src={image} alt="dress"></img>
-      <div className={styles.thumbnails}>
+      <div id="thumbnails" className={styles.thumbnails}>
       {stylePhotos.map((photo, i) =>
-        <Thumbnail key={i} photo={photo.url} handleThumbnailClick={handleThumbnailClick}/>)}
+        <Thumbnail key={i} id={i} photo={photo.url} handleThumbnailClick={handleThumbnailClick}/>)}
       </div>
+      <TopArrow/>
+      <DownArrow/>
     </div>
     <div>
     <div className={styles.description1}>

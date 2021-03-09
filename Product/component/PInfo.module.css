@@ -4,13 +4,13 @@
 }
 
 .info {
-  height: 625px;
+  height: 33vw;
 }
 
-
 .reviews {
-  height: 20px;
-  width: 200px;
+  font-family: "adobe-clean", sans-serif;
+  font-size: 14px;
+  margin-top: 5%;
 }
 
 .link {
@@ -21,97 +21,80 @@
 .category {
   font-family: "adobe-clean", sans-serif;
   font-size: 16px;
-  margin-top: 10%;
+  font-size: .8vw;
   text-transform: uppercase;
+  margin-bottom: 0px;
 }
 
 .name {
+  margin: 0px 0px;
   font-family: "adobe-clean", sans-serif;
   font-size: 40px;
-  margin-top: 5px;
+  font-size: 2vw;
   font-weight: bold;
 }
 
 .styles {
   display: flex;
   flex-flow: row wrap;
-  width: 100%;
-  height: 160px;
-  margin-top: 5%;
+  width: 21vw;
+  height: 10vw;
   overflow: hidden;
 }
 
-.selectors {
-  display: flex;
+.reminder {
   margin-top: 5%;
-  /* height: 65px; */
+  font-family: "adobe-clean", sans-serif;
+  font-size: 14px;
+  color: red;
+
+}
+
+.selectorsDiv {
+  display: flex;
   width: 100%;
 }
 
 .select {
-  height: 65px;
-  width: 260px;
+  height: 3.4vw;
+  width: 13.5vw;
   margin-right: 20px;
 }
 
 .selectButton {
   height: 100%;
   width: 100%;
-  font-size: 18px;
+  font-size: .9vw;
   font-family: "adobe-clean", sans-serif;
   padding-left: 6%;
   font-weight: bold;
   cursor: pointer;
+  border: 1px solid #AAB8C2;
 }
 
 .quantity {
-  height: 65px;
-  width: 140px;
+  height: 3.4vw;
+  width: 7.3vw;
   cursor: pointer;
 }
 
-.checkout {
+.checkoutDiv {
   display: flex;
-  margin-top: 10%;
-  height: 65px;
+  margin-top: 5%;
+  width: 100%;
+  height: 6.6vh;
   cursor: pointer;
 }
 
-.cart {
-  height: 65px;
-  width: 330px;
-  margin-right: 20px;
-  background-color: black;
-  font-size: 18px;
-  font-family: "adobe-clean", sans-serif;
-  border:1px solid black;
-  text-align: left;
-  padding-left: 5%;
-  font-weight: bold;
-  cursor: pointer;
-  color: white;
-}
-
-.favorite {
-  height: 65px;
-  width: 70px;
-  background-color: white;
-  border:1px solid black;
-  cursor: pointer;
-}
 
 .description2 {
-  height: 150px;
-  width: 100%;
-  margin-top: 14%;
-  color: #141414;
-  font-family: "adobe-clean", sans-serif;
+  height: 8vw;
+  margin-top: 2vw;
   border-left: 2px solid grey;
 }
 
 .list {
-  font-family: "adobe-clean", sans-serif;
-  font-size: 16px;
+  height: 8vw;
   margin-left: 35px;
   list-style-type: none;
 }
@@ -123,3 +106,4 @@
 .list li {
   margin-bottom: 10px;
 }
+

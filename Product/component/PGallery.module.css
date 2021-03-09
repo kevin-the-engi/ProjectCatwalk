@@ -4,49 +4,104 @@
 }
 
 .imageDiv {
-  height: 625px;
-  width: 80%;
+  height: 33vw;
   text-align: center;
-  border: 1px solid black;
+  border:1px solid #E1E8ED;
+  position: relative;
 }
 
 .image{
-  height: 625px;
+  height: 100%;
   width: 100%;
   object-fit: cover;
+  cursor: crosshair;
 }
 
 .thumbnails {
-  height: 400px;
-  width: 70px;
+  height: 20.3vw;
+  width: 4vw;
   position: absolute;
-  top: 15%;
-  left: 22%;
+  top: 4%;
+  left: 2%;
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 
+.topArrow {
+  position: relative;
+  width: .6vw;
+  height: .6vw;
+  bottom: 98%;
+  margin-right: 85%;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.arrowTop {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: translateY(25%);
+  -webkit-transform: rotate(225deg);
+}
+
+.hide {
+  border: solid red;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: translateY(25%);
+  -webkit-transform: rotate(225deg);
+}
+
+.downArrow {
+  position: relative;
+  width: .6vw;
+  height: .6vw;
+  bottom: 36%;
+  margin-right: 85%;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.arrowDown {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: translateY(25%);
+  -webkit-transform: rotate(45deg);
+}
+
+
 .description1 {
-  height: 150px;
-  width: 100%;
-  margin-top: 7%;
+  height: 8vw;
+  margin-top: 2vw;
   text-align: left;
   color: #141414;
-  font-family: "adobe-clean", sans-serif;
+  font-family: "adobe-clean",
 }
 
 .heading {
+  font-size: .9vw;
   color: #141414;
   font-family: "adobe-clean", sans-serif;
-  margin-bottom: 10px;
   text-align: left;
   margin-right: 20%;
   margin-left: 5%;
 }
 
 .text {
+  font-size: .8vw;
   color: #141414;
   font-family: "adobe-clean", sans-serif;
-  font-size: 16px;
   text-align: left;
   margin-right: 20%;
   margin-left: 5%;
