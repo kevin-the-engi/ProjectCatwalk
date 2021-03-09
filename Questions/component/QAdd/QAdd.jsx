@@ -5,7 +5,6 @@ import QModal from './QModal.jsx';
 class QAdd extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       show: false
     }
@@ -29,7 +28,7 @@ class QAdd extends React.Component {
   render() {
     return(
       <div id="footer-QAdd">
-        <button id={styles['QAdd-btn']} onClick={this.showModal}>
+        <button id={styles["QAdd-btn"]} onClick={this.showModal}>
           <h3>Add a Question</h3>
         </button>
         <QModal

@@ -1,5 +1,5 @@
 import React from 'react';
-import modal from '../../css/Modal.css';
+import modal from './QModal.module.css';
 import form from '../../css/Form.module.css';
 
 class QModal extends React.Component {
@@ -37,20 +37,19 @@ class QModal extends React.Component {
     })
   }
 
-
   handleClick(event) {
-    if (!event.target.closest(".modal-main")) {
+    if (!event.target.closest("#modal-main")) {
       this.props.close();
     }
   }
 
   render() {
     // console.log(this.props)
-    let display = this.props.show ? 'modal-back display-on' : 'modal-back display-off';
+    let display = this.props.show ? `${modal["modal-back"]} ${modal.["display-on"]}` : `${modal["modal-back"]} ${modal["display-off"]}`;
 
     return(
       <div className={display} onClick={this.handleClick}>
-        <div className="modal-main">
+        <div className={modal["modal-main"]} id="modal-main">
           <form onSubmit={this.handleSubmit}>
             <div className={form["form-header"]}>
               <h2>Add a Question</h2>
@@ -78,6 +77,7 @@ class QModal extends React.Component {
                 <label><h4>Nickname:</h4></label>
                 <input
                   className={form.field}
+                  id="username"
                   onChange={this.handleChange}
                   type="text"
                   name="name"
@@ -93,6 +93,7 @@ class QModal extends React.Component {
                 <label><h4>Email:</h4></label>
                 <input
                   className={form.field}
+                  id="email"
                   onChange={this.handleChange}
                   type="email"
                   name="email"

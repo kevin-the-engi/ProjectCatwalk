@@ -1,4 +1,16 @@
+.answer-form {
+  height: auto;
+}
+
+.form-container {
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
+  height: 100%;
+}
+
 .form-header {
+  grid-row: 1 / span 1;
+  align-self: center;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -6,23 +18,26 @@
 }
 
 .form-body {
+  grid-row: 2 / span 1;
   display: flex;
   flex-direction: column;
   align-items: space-around;
   height: auto;
-  margin: 10% 0;
 }
 
 .form-footer {
+  grid-row: 3 / span 1;
+  align-self: center;
   width: 100%;
 }
 
-.form-main, .form-user, .form-email {
-  margin: 10px auto;
+.form-main, .form-user, .form-email, .form-photos {
+  margin: 20px auto;
   width: 100%;
 }
 
 .textarea, .field {
+  border-radius: 5px;
   height: auto;
   width: 100%;
   padding: 10px;
@@ -51,3 +66,27 @@
   height: 40px;
 }
 
+.form-thumbnails {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  background: #e6e6e6;
+}
+
+.thumbnail {
+  display: block;
+  border: 5px solid transparent;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.thumbnail:hover {
+  opacity: 0.5;
+  z-index: 100;
+}
+
+.overlay:hover {
+  background-color: black;
+  border-radius: 10px;
+  opacity: 0.8;
+}

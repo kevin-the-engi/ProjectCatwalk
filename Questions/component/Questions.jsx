@@ -3,7 +3,7 @@ import axios from 'axios';
 import styles from '../css/Questions.css';
 import SearchBar from './SearchBar/SearchBar.jsx';
 import QList from './QuestionList/QList.jsx';
-import MoreQ from './MoreQ.jsx';
+import MoreQ from './MoreQ/MoreQ.jsx';
 import QAdd from './QAdd/QAdd.jsx';
 
 class Questions extends React.Component {
@@ -17,7 +17,8 @@ class Questions extends React.Component {
       questions: [],
       qTotal: 0,
       qCount: 2,
-      hide: false
+      hide: true,
+      match: true
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
@@ -30,19 +31,44 @@ class Questions extends React.Component {
   }
 
   componentDidMount() {
-    this.getQuestions();
+    const id = 14807;
+    const query = `?product_id=${id}&page=1&count=${this.state.qCount}`;
+
+    axios.get('/qa/questions' + query)
+      .then(questions => {
+        this.setState({
+          productID: questions.data.product_id
+        })
+      })
+      .then(() => {
+        this.getProductName();
+        this.getQuestions();
+      })
   }
 
   dynamicSearch(search) {
     if (search.length >= 3) {
-      let filtered = this.state.questions.filter(question => question.question_body.toLowerCase().includes(search.toLowerCase()));
+      let filtered = this.state.questions.filter(question => {
+         if (question.question_body.toLowerCase().includes(search.toLowerCase())) {
+           this.setState({
+             match: true
+           })
+
+           return question;
+         } else {
+           this.setState({
+             match: false
+           })
+         }
+      });
 
       this.setState({
         filtered: filtered
       })
     } else {
       this.setState({
-        filtered: []
+        filtered: [],
+        match: true
       })
     }
   }
@@ -60,13 +86,11 @@ class Questions extends React.Component {
   }
 
   getQuestions() {
-    let id = 14931;
-    let productID = `?product_id=${id}&page=1&count=${this.state.qCount}`;
+    let query = `?product_id=${this.state.productID}&page=1&count=${this.state.qCount}`;
 
-    axios.get('/qa/questions/' + productID)
+    axios.get('/qa/questions/' + query)
       .then(questions => {
         this.setState({
-          productID: questions.data.product_id,
           productData: questions.data,
           questions: questions.data.results
         })
@@ -76,7 +100,6 @@ class Questions extends React.Component {
       })
       .then(() => {
         this.getTotalQ();
-        this.getProductName();
       })
   }
 
@@ -95,9 +118,9 @@ class Questions extends React.Component {
   }
 
   getTotalQ() {
-    let productID = `?product_id=${this.state.productID}&page=1&count=100`;
+    let query = `?product_id=${this.state.productID}&page=1&count=100`;
 
-    axios.get('/qa/questions' + productID)
+    axios.get('/qa/questions' + query)
       .then((questions) => {
         this.setState({
           qTotal: questions.data.results.length
@@ -105,6 +128,13 @@ class Questions extends React.Component {
       })
       .catch(err => {
         console.log(err);
+      })
+      .then(() => {
+        if (this.state.qTotal !== 0 && this.state.qCount < this.state.qTotal) {
+          this.setState({
+            hide: false
+          })
+        }
       })
   }
 
@@ -119,11 +149,16 @@ class Questions extends React.Component {
   }
 
   moreQ() {
+    // console.log(this.state.qCount, this.state.qTotal);
     this.state.qCount += 2;
 
     if (this.state.qCount >= this.state.qTotal) {
       this.setState({
         hide: true
+      })
+    } else {
+      this.setState({
+        hide: false
       })
     }
 
@@ -133,6 +168,7 @@ class Questions extends React.Component {
 
     if (this.state.qCount >= 4 && this.state.questions.length >= 4) {
       let divHeight = document.getElementById('Q&AList').clientHeight;
+
       document.getElementById('Q&AList').style.height = divHeight;
       document.getElementById('Q&AList').setAttribute("class", "overFlow");
     }
@@ -142,21 +178,25 @@ class Questions extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="header">
+      <div className="main-container">
+        <div className="main-header">
           <h4>Questions & Answers</h4>
           <SearchBar dynamicSearch={this.dynamicSearch} />
         </div>
 
-        <div className="body">
-          <QList
-            qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
-            updateHelpfulQ={this.updateHelpfulQ}
-            productName={this.state.productName}
-          />
+        <div className="main-body">
+          {this.state.match ?
+            (this.state.qTotal !== 0 ?
+              <QList
+                qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
+                updateHelpfulQ={this.updateHelpfulQ}
+                productName={this.state.productName}
+              />  : <i>There are no questions for this product. Be the first to ask!</i>)
+              : <i>There are no matches. Try again.</i>
+          }
         </div>
 
-        <div className="footer">
+        <div className="main-footer">
           {this.state.hide ?  null : <MoreQ moreQ={this.moreQ} />}
 
           <QAdd

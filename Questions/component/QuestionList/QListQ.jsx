@@ -9,7 +9,9 @@ class QListQ extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: []
+      answers: [],
+      aTotal: 0,
+      show: false
     }
 
     this.getAnswers = this.getAnswers.bind(this);
@@ -23,12 +25,23 @@ class QListQ extends React.Component {
   }
 
   getAnswers(questionID) {
-    axios.get(`/qa/questions/${questionID}/answers`)
+    axios.get(`/qa/questions/${questionID}/answers?page=1&count=100`)
       .then(answers => {
-        this.setState({
-          answers: answers.data.results
+        let sortSeller = answers.data.results.sort((a, b) =>
+          (a.answerer_name === 'Seller') ? -1 : (a === b) ? ((a.answer_name !== 'Seller') ? 1 : -1) : 1);
+
+        if (!this.state.show) {
+          let twoAnswers = sortSeller.slice(0, 2);
+
+          this.setState({
+            answers: twoAnswers,
+            aTotal: answers.data.results.length
+          })
+        }
       })
-    })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   addAnswer(questionID, answerForm) {
@@ -42,7 +55,7 @@ class QListQ extends React.Component {
       .then(() => {
         this.getAnswers(questionID);
       })
-    }
+  }
 
   updateHelpfulA(questionID, answerID) {
     axios.put(`/qa/answers/${answerID}/helpful`, { answer_helpfulness: 1 })
@@ -74,22 +87,20 @@ class QListQ extends React.Component {
       }
     } = this.props;
 
-    // console.log(question_id)
-
     return(
       <section className={styles.questionContainer}>
-        <div className={styles.body}>
-          <div className={styles.left}>
-            <span className={styles.prefix}>
+        <div className={styles["question-body"]}>
+          <div className={styles["question-left"]}>
+            <span className={styles["question-prefix"]}>
               Q:
             </span>
-            <span className={styles.text}>
+            <span className={styles["question-text"]}>
               {question_body}
             </span>
           </div>
 
-          <div className={styles.right}>
-            <div className={styles.sidebar}>
+          <div className={styles["question-right"]}>
+            <div className={styles["question-sidebar"]}>
               <HelpfulQ
                 helpful={question_helpfulness}
                 questionID={question_id}
@@ -108,16 +119,18 @@ class QListQ extends React.Component {
           </div>
         </div>
 
-        {this.state.answers.map(answer =>
-          <QListA
-            key={answer.answer_id}
-            questionID={question_id}
-            answer={answer}
-            updateHelpfulA={this.updateHelpfulA}
-            reportA={this.reportA}
-            getAnswers={this.getAnswers}
-          />
-        )}
+        <section className={styles.answersContainer}>
+          {this.state.answers.map(answer =>
+            <QListA
+              key={answer.answer_id}
+              questionID={question_id}
+              answer={answer}
+              updateHelpfulA={this.updateHelpfulA}
+              reportA={this.reportA}
+              getAnswers={this.getAnswers}
+            />
+          )}
+        </section>
       </section>
     )
   }

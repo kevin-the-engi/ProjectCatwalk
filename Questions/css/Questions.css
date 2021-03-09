@@ -1,18 +1,18 @@
-.container {
+.main-container {
   /* max-width: 900px; */
 
   margin: 5em 20%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.body {
+.main-body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
   margin: 3em 0;
 }
 
-.footer {
+.main-footer {
   display: flex;
   /* justify-content: space-evenly; */
   justify-content: flex-start;
@@ -25,13 +25,15 @@
 .overFlow {
   overflow-x: hidden;
   overflow-y: scroll;
-  scrollbar-width: thin;
 }
 
-.display-on {
-  display: block;
+.overFlow::-webkit-scrollbar {
+  background: floralwhite;
+  border-radius: 10px;
+  width: 10px;
 }
 
-.display-off {
-  display: none;
+.overFlow::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: lightgray;
 }

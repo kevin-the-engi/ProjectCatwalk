@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.sidebar {
+  margin: 0 50px;
+}
+
 .display-on {
   display: inline;
 }
