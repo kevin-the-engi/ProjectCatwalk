@@ -1,23 +1,65 @@
 .header {
-  margin-left: 20%;
-  margin-right: 20%;
-  height: 8%;
+  margin-left: 19%;
+  margin-right: 19%;
+  height: 4vw;
   background-color: black;
 }
 
 .container {
   display: flex;
   margin-top: 2%;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 17%;
+  margin-right: 17%;
   overflow: hidden;
 }
 
 .left {
-  width: 66%;
+  width: 55%;
+  margin-right: 3%;
+  margin-left: 3%;
 }
 
 .right {
-  width: 33%;
+  width: 34%;
+  border-top:1px solid #E1E8ED;
 }
 
+.thumbnail {
+  width: 3.5vw;
+  height: 3.5vw;
+  padding: 5px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.clicked {
+  width: 3.5vw;
+  height: 3.5vw;
+  padding: 5px;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 3px solid black;
+}
+
+
+.style {
+  width: 4vw;
+  height: 4vw;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: .9vw;
+  margin-bottom: .9vw;
+  cursor: pointer;
+  border:1px solid #657786;
+}
+
+.styleClicked {
+  width: 4vw;
+  height: 4vw;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: .9vw;
+  margin-bottom: .9vw;
+  cursor: pointer;
+  border:3px solid black;
+}
