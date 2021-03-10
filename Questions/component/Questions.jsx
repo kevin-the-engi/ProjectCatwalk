@@ -7,10 +7,10 @@ import MoreQ from './MoreQ/MoreQ.jsx';
 import QAdd from './QAdd/QAdd.jsx';
 
 class Questions extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      productID: 0,
+      productID: this.props.productId,
       productName: '',
       productData: {},
       filtered: [],
@@ -31,19 +31,18 @@ class Questions extends React.Component {
   }
 
   componentDidMount() {
-    const id = 14807;
-    const query = `?product_id=${id}&page=1&count=${this.state.qCount}`;
+    this.getProductName();
+    this.getQuestions(this.props.productId);
+  }
 
-    axios.get('/qa/questions' + query)
-      .then(questions => {
-        this.setState({
-          productID: questions.data.product_id
-        })
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props.productId !== prevProps.productId) {
+      this.setState((state, props) => {
+        productID: this.props.productId
       })
-      .then(() => {
-        this.getProductName();
-        this.getQuestions();
-      })
+      this.getProductName();
+      this.getQuestions(this.props.productId);
+    }
   }
 
   dynamicSearch(search) {
@@ -85,8 +84,8 @@ class Questions extends React.Component {
       })
   }
 
-  getQuestions() {
-    let query = `?product_id=${this.state.productID}&page=1&count=${this.state.qCount}`;
+  getQuestions(productID = this.state.productID) {
+    let query = `?product_id=${productID}&page=1&count=${this.state.qCount}`;
 
     axios.get('/qa/questions/' + query)
       .then(questions => {
@@ -173,7 +172,7 @@ class Questions extends React.Component {
       document.getElementById('Q&AList').setAttribute("class", "overFlow");
     }
 
-    this.getQuestions();
+    this.getQuestions(this.props.productId);
   }
 
   render() {

@@ -4,7 +4,7 @@ var app = express()
 var route = express.Router()
 
 // Replace with tester API KEY
-// var API = require('../../Product/config.js')
+var API = require('../../Product/config.js')
 
 //CONTROLLERS
 route.get('/product/styles', (request, response) => {
@@ -19,7 +19,6 @@ route.get('/product/styles', (request, response) => {
 })
 
 route.get('/product/data', (request, response) => {
-  console.log('request id: ', request.query.id);
   getProductData(request.query.id, (err, result) => {
     if (err) {
       response.sendStatus(404)

@@ -116,7 +116,7 @@ class AModal extends React.Component {
               < label><h4>Nickname:</h4></label>
                 <input
                   className={form.field}
-                  id="username"
+                  id="answer-username"
                   onChange={this.handleChange}
                   type="text"
                   name="name"
@@ -132,7 +132,7 @@ class AModal extends React.Component {
                 <label><h4>Email:</h4></label>
                 <input
                   className={form.field}
-                  id="email"
+                  id="answer-email"
                   onChange={this.handleChange}
                   type="email"
                   name="email"

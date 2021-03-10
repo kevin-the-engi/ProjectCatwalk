@@ -39,7 +39,6 @@ class IndividualReview extends React.Component {
   }
 
   render() {
-   console.log(this.props)
     var date = this.props.review.date.slice(0, 10).split('-');
     var year = Number(date[0])
     var month = Number(date[1]) -1;

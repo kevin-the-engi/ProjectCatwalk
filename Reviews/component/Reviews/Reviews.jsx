@@ -24,11 +24,23 @@ class Reviews extends React.Component {
     this.handleHelpful=this.handleHelpful.bind(this);
     this.handleReport = this.handleReport.bind(this);
     this.handleViewMore = this.handleViewMore.bind(this);
+    this.getData = this.getData.bind(this);
   }
+
   componentDidMount() {
+    this.getData(this.props.productId);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props.productId !== prevProps.productId) {
+      this.getData(this.props.productId);
+    }
+  }
+
+  getData(id) {
     axios.get('/reviews', {
       params: {
-        product_id: 14931
+        product_id: id
       }
     })
     .then((response) => {
@@ -42,7 +54,7 @@ class Reviews extends React.Component {
 
     axios.get('/reviews/meta', {
       params: {
-        product_id: 14931
+        product_id: id
       }
     })
     .then((response) => {
@@ -58,7 +70,7 @@ class Reviews extends React.Component {
 
     axios.get('/products/', {
       params: {
-        product_id: 14931
+        product_id: id
       }
     })
     .then((response) => {

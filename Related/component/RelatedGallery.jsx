@@ -10,7 +10,7 @@ const RelatedGallery = (props) => {
       <div className={styles.relatedContainer} id="relatedContainer">
         <LeftArrowButton/>
         <RightArrowButton/>
-        {props.relatedItems.map((relatedItem, index) => <ProductCard relatedItem={relatedItem} currentItem={props.currentItem} index={index} key={index}/>)}
+        {props.relatedItems.map((relatedItem, index) => <ProductCard getData={props.getData} viewNewProduct={props.viewNewProduct} relatedItem={relatedItem} currentItem={props.currentItem} index={index} key={index}/>)}
       </div>
   )
 }
