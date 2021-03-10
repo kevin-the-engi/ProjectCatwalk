@@ -71,9 +71,9 @@ class RelatedItems extends React.Component {
     // console.log('this.state.currentItem: ', this.state.currentItem);
     // console.log('this.state.outfitItems: ', this.state.outfitItems);
     return (
-      <div>
+      <div className={styles.widget}>
         <div className={styles.widgetContainer}>
-          <div className={styles.relatedItemsBanner}>
+          <div className={styles.relatedItemsBanner} key={'relatedItemsBanner'}>
             <p className={styles.sectionTitle}>Related Products</p>
           </div>
           <RelatedGallery relatedItems={this.state.relatedItems} currentItem={this.state.currentItem}/>

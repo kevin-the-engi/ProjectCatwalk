@@ -51,9 +51,9 @@ class ProductInformation extends React.Component {
     render() {
         let displayPrice;
         if (this.state.salePrice === null) {
-            displayPrice = <div class={styles.defaultPrice}>${this.state.defaultPrice}</div>;
+            displayPrice = <div className={styles.defaultPrice}>${this.state.defaultPrice}</div>;
         } else {
-            displayPrice = <div class={styles.salePrice}>${this.state.salePrice}</div>;
+            displayPrice = <div className={styles.salePrice}>${this.state.salePrice}</div>;
         }
 
         let starRating;
@@ -77,11 +77,11 @@ class ProductInformation extends React.Component {
                 </div>
               </div>
               <div className={styles.productDetailsContainer}>
-                <div class={styles.productName}>
+                <div className={styles.productName}>
                     {this.state.productName}
                 </div>
                 {displayPrice}
-                <div class={styles.averageRating}>
+                <div className={styles.averageRating}>
                     {starRating}
                 </div>
               </div>
