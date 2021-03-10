@@ -4,7 +4,7 @@ var app = express()
 var route = express.Router()
 
 // Replace with tester API KEY
-var API = require('../../Product/config.js')
+var API = require('../../config.js')
 
 //CONTROLLERS
 route.get('/product/styles', (request, response) => {
@@ -34,7 +34,7 @@ let getProductStyles = (id, callback) => {
     method: 'get',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}/styles`,
     headers: {
-      Authorization: API.KEY
+      Authorization: API
     }
   })
   .then(response => {
@@ -51,7 +51,7 @@ let getProductData = function(id, callback) {
     method: 'get',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}`,
     headers: {
-      Authorization: API.KEY
+      Authorization: API
     }
   })
   .then(response =>

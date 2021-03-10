@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 var route = express.Router()
 //var API_KEY = require('../../Reviews/config.js')
-var API_KEY = '7fbb72373f07510cceba7801f7da3cd70f1af502';
+var API_KEY = require('../../config.js')
 var API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 var axios = require('axios')
 

@@ -1,5 +1,5 @@
 // const TOKEN = '36add1c2dcc65d0b90bf3e081b8a55d489f489f6'
-const TOKEN = '7fbb72373f07510cceba7801f7da3cd70f1af502';
+const TOKEN = require('../../config.js')
 const axios = require('axios');
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 
