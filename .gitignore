@@ -4,6 +4,9 @@ node_modules/
 # API Keys
 config.js
 
+# AWS
+fec.pem
+
 # Bundle
 bundle.js
 
