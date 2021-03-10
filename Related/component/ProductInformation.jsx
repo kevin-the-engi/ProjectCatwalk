@@ -24,6 +24,17 @@ class ProductInformation extends React.Component {
         this.findPrices();
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.relatedItem.product_id !== prevProps.relatedItem.product_id) {
+            this.setState({
+                category: this.props.relatedItem.product.category,
+                productName: this.props.relatedItem.product.name,
+                averageRating: this.calculateAverageRating()
+            })
+            this.findPrices();
+        }
+    }
+
     calculateAverageRating() {
         let numberOfReviews = 0;
         let weightedSum = 0;

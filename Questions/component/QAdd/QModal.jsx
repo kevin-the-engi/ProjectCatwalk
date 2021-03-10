@@ -77,7 +77,7 @@ class QModal extends React.Component {
                 <label><h4>Nickname:</h4></label>
                 <input
                   className={form.field}
-                  id="username"
+                  id="question-username"
                   onChange={this.handleChange}
                   type="text"
                   name="name"
@@ -93,7 +93,7 @@ class QModal extends React.Component {
                 <label><h4>Email:</h4></label>
                 <input
                   className={form.field}
-                  id="email"
+                  id="question-email"
                   onChange={this.handleChange}
                   type="email"
                   name="email"

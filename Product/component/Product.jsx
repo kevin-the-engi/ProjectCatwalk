@@ -6,10 +6,10 @@ import Info from './PInfo.jsx'
 import axios from 'axios';
 
 class Product extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
-    id: 14034,
+    id: this.props.productId,
     image: '',
     stylePhotos: [],
     info: {},
@@ -24,15 +24,25 @@ class Product extends React.Component {
   this.changeStyle = this.changeStyle.bind(this)
   this.handleThumbnailClick = this.handleThumbnailClick.bind(this)
   this.getSkus = this.getSkus.bind(this)
+  this.getData = this.getData.bind(this)
 }
-
   componentDidMount() {
-    // hardcoded product_id temporarily for MVP
-    this.setState({id: 14034})
+    this.getData(this.props.productId);
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props.productId !== prevProps.productId) {
+      this.setState((state, props) => {
+        id: this.props.productId
+      })
+      this.getData(this.props.productId);
+    }
+  }
+
+  getData(id) {
     axios.get('/product/data', {
       params: {
-        id: this.state.id
+        id: id
       }
     })
     .then(response => {
@@ -45,7 +55,7 @@ class Product extends React.Component {
 
     axios.get('/product/styles', {
       params: {
-        id: this.state.id
+        id: id
       }
     })
     .then((response) => {
@@ -66,8 +76,10 @@ class Product extends React.Component {
       }
 
       var skus = this.getSkus(skusObject);
+      // var productId = this.props.productId;
 
       this.setState({
+        // id: productId,
         image: image,
         stylePhotos: stylePhotos,
         styles: styles,

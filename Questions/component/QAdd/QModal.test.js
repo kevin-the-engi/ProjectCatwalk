@@ -18,12 +18,12 @@ describe('QModal', () => {
         name: 'body', value: 'What time is it?'
       }});
 
-    wrapper.find('#username').simulate('change',
+    wrapper.find('#question-username').simulate('change',
     {target: {
       name: 'name', value: 'Kevin'
     }});
 
-    wrapper.find('#email').simulate('change',
+    wrapper.find('#question-email').simulate('change',
     {target: {
       name: 'email', value: 'k@email.com'
     }});

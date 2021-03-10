@@ -1,4 +1,5 @@
-const TOKEN = '36add1c2dcc65d0b90bf3e081b8a55d489f489f6'
+// const TOKEN = '36add1c2dcc65d0b90bf3e081b8a55d489f489f6'
+const TOKEN = '7fbb72373f07510cceba7801f7da3cd70f1af502';
 const axios = require('axios');
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 
@@ -15,7 +16,6 @@ const readProductName = (req, res) => {
       res.status(200).send(product.data.name);
     })
     .catch(err => {
-      console.log(err);
       res.sendStatus(500);
     })
 }
@@ -56,7 +56,6 @@ const readQuestions = (req, res) => {
       res.status(200).send(questions.data);
     })
     .catch(err => {
-      console.log(err);
       res.sendStatus(500);
     })
 };
@@ -71,7 +70,6 @@ const readAnswers = (req, res) => {
       res.status(200).send(answers.data);
     })
     .catch(err => {
-      console.log(err);
       res.sendStatus(500);
     })
 };
@@ -83,7 +81,6 @@ const createQuestions = (req, res) => {
       res.sendStatus(201);
     })
     .catch(err => {
-      console.log(err);
       res.sendStatus(500);
     })
 
@@ -96,7 +93,6 @@ const createAnswers = (req, res) => {
     res.sendStatus(201);
   })
   .catch(err => {
-    console.log(err);
     res.sendStatus(500);
   })
   // res.send('I see you trying to POST an answer.');
@@ -108,7 +104,6 @@ const updateHelpfulQ = (req, res) => {
     res.sendStatus(204);
   })
   .catch(err => {
-    console.log(err);
     res.sendStatus(500);
   })
   // res.send('Let us PUT a pin on that helpful question');
@@ -120,7 +115,6 @@ const updateReportQ = (req, res) => {
     res.sendStatus(204);
   })
   .catch(err => {
-    console.log(err);
     res.sendStatus(500);
   })
   // res.send('PUT your hands up! You are reported for a bad question!');
@@ -132,7 +126,6 @@ const updateHelpfulA = (req, res) => {
     res.sendStatus(204);
   })
   .catch(err => {
-    console.log(err);
     res.sendStatus(500);
   })
   // res.send('Your answer was actually helpful so let\'s PUT that up.');
@@ -144,7 +137,6 @@ const updateReportA = (req, res) => {
     res.sendStatus(204);
   })
   .catch(err => {
-    console.log(err);
     res.sendStatus(500);
   })
   // res.send('I don\'t have to PUT up with your lame answer!');

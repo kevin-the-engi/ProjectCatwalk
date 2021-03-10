@@ -9,9 +9,20 @@ class ComparisonModal extends React.Component {
       tableRows: []
     }
     this.handleClick = this.handleClick.bind(this);
+    this.organizeFeaturesData = this.organizeFeaturesData.bind(this);
   }
 
   componentDidMount() {
+    this.organizeFeaturesData();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.currentItem[0].product_id !== prevProps.currentItem[0].product_id) {
+      this.organizeFeaturesData(0);
+    }
+  }
+
+  organizeFeaturesData() {
     let featuresData = {};
     for (let i = 0; i < this.props.currentItem[0].product.features.length; i++) {
       if (this.props.currentItem[0].product.features[i].value === null) {
@@ -67,12 +78,12 @@ class ComparisonModal extends React.Component {
   render() {
     // console.log('this.props.currentItem: ', this.props.currentItem);
     // console.log('this.props.relatedItem: ', this.props.relatedItem);
-   
+
     let showHide;
     if (!this.props.show) {
       showHide = null;
     } else {
-      showHide = 
+      showHide =
         <div className={styles.comparisonModalDisplayBlock} onClick={this.handleClick}>
           <section id="comparisonModal" className={styles.comparisonModalMain}>
             <div className={styles.modalBanner}>

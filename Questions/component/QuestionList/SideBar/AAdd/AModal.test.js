@@ -15,12 +15,12 @@ describe('AModal', () => {
         name: 'body', value: 'I sell things'
       }});
 
-    wrapper.find('#username').simulate('change',
+    wrapper.find('#answer-username').simulate('change',
       {target: {
         name: 'name', value: 'Seller'
       }});
 
-    wrapper.find('#email').simulate('change',
+    wrapper.find('#answer-email').simulate('change',
       {target: {
         name: 'email', value: 'seller@email.com'
       }});

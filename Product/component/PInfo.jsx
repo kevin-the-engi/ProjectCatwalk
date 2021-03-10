@@ -61,6 +61,11 @@ class Info extends React.Component {
     })
   }
 
+  scroll() {
+    var element_to_scroll_to = document.getElementById('#test');
+    element_to_scroll_to.scrollIntoView();
+  }
+
   render () {
     var prompt;
 
@@ -74,7 +79,7 @@ class Info extends React.Component {
           <div className={styles.info}>
 
             <div className={styles.reviews}>
-            ★★★★☆ <a className={styles.link}>Read all reviews</a>
+            ★★★★☆ <p className={styles.link} onClick={(e) => scroll()}>Read all reviews</p>
             </div>
 
             <p className={styles.category}>{this.props.info.category}</p>

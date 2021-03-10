@@ -60,6 +60,7 @@
       "./Questions/enzyme.config.js",
       "./Related/enzyme.config.js"
     ],
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "**/Product/component/*.{js,jsx}",
       "**/Questions/component/**/*.{js,jsx}",
