@@ -6,6 +6,7 @@ config.js
 
 # AWS
 KineticKingfishers.pem
+fec.pem
 
 # Bundle
 bundle.js
