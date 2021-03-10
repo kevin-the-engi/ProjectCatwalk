@@ -4,7 +4,7 @@ var app = express()
 var route = express.Router()
 // // Tester should copy/paste their own API key here
 // var API_KEY = require('../../Related/config.js');
-var API_KEY = '7fbb72373f07510cceba7801f7da3cd70f1af502';
+var API_KEY = require('../../config.js')
 
 // GET request handler for retrieving information on related products
 route.get('/related', (request, response) => {
