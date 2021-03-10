@@ -1,3 +1,23 @@
-p {
-  background-color: red;
+.header {
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 8%;
+  background-color: black;
 }
+
+.container {
+  display: flex;
+  margin-top: 2%;
+  margin-left: 20%;
+  margin-right: 20%;
+  overflow: hidden;
+}
+
+.left {
+  width: 66%;
+}
+
+.right {
+  width: 33%;
+}
+

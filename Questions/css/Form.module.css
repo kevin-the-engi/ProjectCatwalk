@@ -1,0 +1,53 @@
+.form-header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* margin: 5% auto; */
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  height: auto;
+  margin: 10% 0;
+}
+
+.form-footer {
+  width: 100%;
+}
+
+.form-main, .form-user, .form-email {
+  margin: 10px auto;
+  width: 100%;
+}
+
+.textarea, .field {
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  resize: none;
+}
+
+.field {
+  height: 30px;
+  size: 100%;
+}
+
+.submit-btn, .close-btn {
+  height: 40px;
+  width: 100%;
+  border-color: black;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.submit-btn:hover, .close-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.button-text {
+  height: 40px;
+}
+

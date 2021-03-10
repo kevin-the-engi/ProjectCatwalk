@@ -1,0 +1,16 @@
+#MoreQ-btn, #QAdd-btn {
+  height: 4em;
+  width: 20em;
+  border-color: black;
+  border-radius: 5px;
+  background-color: white;
+}
+
+#MoreQ-btn {
+  margin-right: 1em;
+}
+
+#MoreQ-btn:hover, #QAdd-btn:hover {
+  background-color: black;
+  color: white;
+}

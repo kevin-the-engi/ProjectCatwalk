@@ -1,0 +1,43 @@
+/* .question {
+  border: 2px solid lightslategray;
+  border-radius: 5px;
+} */
+
+/* .questionContainer {
+  display: flex;
+  flex-flow: column;
+  height: 400px;
+  overflow: scroll;
+} */
+
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.left {
+  display: flex;
+  width: 70%;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  width: 30%;
+}
+
+.text, .prefix {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.prefix {
+  padding-right: 5px;
+}
+
+.sidebar {
+  display: flex;
+  align-items: baseline;
+}

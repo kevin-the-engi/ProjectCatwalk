@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "product-test": "jest --coverage ./Product/test.js",
-    "reviews-test": "jest --coverage ./Reviews/reviews.test.js",
+    "reviews-test": "jest --coverage ./Reviews/*/*/*.test.js",
     "related-test": "jest --coverage ./Related/related.test.js",
     "questions-test": "jest --coverage ./Questions/questions.test.js",
     "webpack": "webpack --watch",
@@ -65,6 +65,7 @@
       "**/Questions/component/*.{js,jsx}",
       "**/Related/component/*.{js,jsx}",
       "**/Reviews/component/*.{js,jsx}",
+      "**/Reviews/component/*/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/tools/**",
       "!**/build/**",
