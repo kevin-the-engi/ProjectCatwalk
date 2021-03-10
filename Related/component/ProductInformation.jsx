@@ -1,5 +1,4 @@
 import React from 'react';
-import ComparisonModal from './ComparisonModal.jsx';
 import styles from './css_modules/RelatedGallery.module.css';
 
 class ProductInformation extends React.Component {
@@ -13,8 +12,6 @@ class ProductInformation extends React.Component {
             averageRating: '',
             show: false
         }
-        this.showModal = this.showModal.bind(this);
-        this.hideModal = this.hideModal.bind(this);
     }
 
     componentDidMount() {
@@ -25,7 +22,6 @@ class ProductInformation extends React.Component {
         })
         // check which style is the default style, and whether there is a sale price
         this.findPrices();
-        
     }
 
     calculateAverageRating() {
@@ -52,38 +48,43 @@ class ProductInformation extends React.Component {
         }
     }
 
-    showModal() {
-      this.setState({show: true});
-    }
-
-    hideModal() {
-      this.setState({show: false});
-    }
-
     render() {
         let displayPrice;
         if (this.state.salePrice === null) {
-            displayPrice = <div class={styles.price}>${this.state.defaultPrice}</div>;
+            displayPrice = <div className={styles.defaultPrice}>${this.state.defaultPrice}</div>;
         } else {
-            displayPrice = <div class={styles.price}>${this.state.salePrice}</div>;
+            displayPrice = <div className={styles.salePrice}>${this.state.salePrice}</div>;
         }
 
-        console.log('this.state.show: ', this.state.show);
+        let starRating;
+        if (Math.round(this.state.averageRating) === 1) {
+          starRating = '★☆☆☆☆';
+        } else if (Math.round(this.state.averageRating) === 2) {
+          starRating = '★★☆☆☆';
+        } else if (Math.round(this.state.averageRating) === 3) {
+          starRating = '★★★☆☆';
+        } else if (Math.round(this.state.averageRating) === 4) {
+          starRating = '★★★★☆';
+        } else if (Math.round(this.state.averageRating) === 5) {
+          starRating = '★★★★★';
+        }
 
         return (
-            <div>
+            <div className={styles.productInformationContainer}>
+              <div className={styles.categoryContainer}>
                 <div className={styles.category}>
                     {this.state.category}
                 </div>
-                <div class={styles.productName}>
+              </div>
+              <div className={styles.productDetailsContainer}>
+                <div className={styles.productName}>
                     {this.state.productName}
                 </div>
                 {displayPrice}
-                <div class={styles.averageRating}>
-                    Avg Rating: {this.state.averageRating}
+                <div className={styles.averageRating}>
+                    {starRating}
                 </div>
-                <div className={styles.starButton} onClick={this.showModal}>☆</div>
-                <ComparisonModal hideModal={this.hideModal} show={this.state.show}/>
+              </div>
             </div>
         )
 

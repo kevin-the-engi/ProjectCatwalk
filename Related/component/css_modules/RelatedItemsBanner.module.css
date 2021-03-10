@@ -1,6 +1,6 @@
 .widgetContainer {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 22%;
+  margin-right: 22%;
 }
 
 .relatedItemsBanner {
@@ -13,7 +13,8 @@
   margin-left: 8px;
 }
 
-p {
-  color: rgb;
-  font-family: "adobe-clean", sans-serif;
+.sectionTitle {
+  color: #767677;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
 }

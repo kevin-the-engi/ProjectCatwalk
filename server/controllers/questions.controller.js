@@ -1,4 +1,4 @@
-const TOKEN = require('../../Questions/config.js');
+const TOKEN = '36add1c2dcc65d0b90bf3e081b8a55d489f489f6'
 const axios = require('axios');
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 
