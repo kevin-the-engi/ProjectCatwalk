@@ -23,8 +23,6 @@ class HelpfulA extends React.Component {
   render() {
     const display = this.state.show ? `${styles['helpful-btn']} ${styles['display-on']}` : `${styles['helpful-btn']} ${styles['display-off']}`;
 
-    // console.log(this.props);
-
     return(
       <div className="helpContainer">
         <sub>

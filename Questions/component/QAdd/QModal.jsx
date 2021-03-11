@@ -50,69 +50,69 @@ class QModal extends React.Component {
       <div className={display} onClick={this.handleClick}>
         <div className={modal["modal-main"]} id="modal-main">
           <form className={form["question-form"]} onSubmit={this.handleSubmit}>
+            <div className={form["form-header"]}>
+              <h2>Add a Question</h2>
+              <sub>About the [{this.props.productName}]</sub><br />
+            </div>
 
-              <div className={form["form-header"]}>
-                <h2>Add a Question</h2>
-                <sub>About the [{this.props.productName}]</sub><br />
+            <div className={form["form-body"]}>
+              <div className={form["form-main"]}>
+                <label htmlFor="question"><h4>Your Question:</h4></label><br />
+                <textarea
+                  className={form.textarea}
+                  onChange={this.handleChange}
+                  name="body"
+                  value={this.state.body}
+                  placeholder="Why did you like the product or not?"
+                  minLength="20"
+                  maxLength="1000"
+                  rows="4"
+                  cols="40"
+                  required>
+                </textarea><br />
               </div>
 
-              <div className={form["form-body"]}>
-                <div className={form["form-main"]}>
-                  <label><h4>Your Question:</h4></label><br />
-                  <textarea
-                    className={form.textarea}
-                    onChange={this.handleChange}
-                    name="body"
-                    value={this.state.body}
-                    placeholder="Why did you like the product or not?"
-                    minLength="20"
-                    maxLength="1000"
-                    rows="4"
-                    cols="40"
-                    required>
-                  </textarea><br />
-                </div>
-
-                <div className={form["form-user"]}>
-                  <input
-                    className={form.field}
-                    id="question-username"
-                    onChange={this.handleChange}
-                    type="text"
-                    name="name"
-                    value={this.state.name}
-                    placeholder="jackson11!"
-                    maxLength="60"
-                    required>
-                  </input>
-                  <sub className={form.sub}>For privacy reasons, do not use your full name or email address</sub>
-                </div>
-
-                <div className={form["form-email"]}>
-                  <input
-                    className={form.field}
-                    id="question-email"
-                    onChange={this.handleChange}
-                    type="email"
-                    name="email"
-                    value={this.state.email}
-                    placeholder="jackson11!@email.com"
-                    maxLength="60"
-                    required>
-                  </input>
-                  <sub className={form.sub}>For authentication reasons, you will not be emailed</sub>
-
-                </div>
+              <div className={form["form-user"]}>
+                <label htmlFor="question-username" className="visuallyhidden">Nickname:</label>
+                <input
+                  className={form.field}
+                  id="question-username"
+                  onChange={this.handleChange}
+                  type="text"
+                  name="name"
+                  value={this.state.name}
+                  placeholder="jackson11!"
+                  maxLength="60"
+                  required>
+                </input>
+                <sub className={form.sub}>For privacy reasons, do not use your full name or email address</sub>
               </div>
 
-              <div className={form["form-footer"]}>
-                <button
-                  className={form["submit-btn"]}
-                  type="submit">
-                    <h4>SUBMIT QUESTION</h4>
-                </button>
-              </div>
+              <div className={form["form-email"]}>
+                <label htmlFor="question-email" className="visuallyhidden">Email:</label>
+                <input
+                  className={form.field}
+                  id="question-email"
+                  onChange={this.handleChange}
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  placeholder="jackson11!@email.com"
+                  maxLength="60"
+                  required>
+                </input>
+                <sub className={form.sub}>For authentication reasons, you will not be emailed</sub>
 
+              </div>
+            </div>
+
+            <div className={form["form-footer"]}>
+              <button
+                className={form["submit-btn"]}
+                type="submit">
+                  <h4>SUBMIT QUESTION</h4>
+              </button>
+            </div>
           </form>
         </div>
       </div>

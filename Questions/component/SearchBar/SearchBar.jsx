@@ -25,9 +25,15 @@ class SearchBar extends React.Component {
   render() {
     return(
       <div id="searchDiv">
+        <label htmlFor="searchbar" className="visuallyhidden">Search</label>
         <input
-          onChange={this.handleChange} className={styles.searchbar} type="text" name="search"
-          value={this.state.search} placeholder="Have a question? Search for answers...">
+          onChange={this.handleChange}
+          id="searchbar"
+          className={styles.searchbar}
+          type="text"
+          name="search"
+          value={this.state.search}
+          placeholder="Have a question? Search for answers...">
         </input>
       </div>
     )

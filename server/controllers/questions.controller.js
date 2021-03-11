@@ -1,14 +1,12 @@
-// const TOKEN = '36add1c2dcc65d0b90bf3e081b8a55d489f489f6'
 const TOKEN = require('../../config.js')
 const axios = require('axios');
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 
 const options = {
   headers: {
-    Authorization: TOKEN // replace with your own key and comment out line 1
+    Authorization: TOKEN
   }
 };
-
 
 const readProductName = (req, res) => {
   axios.get(API + req.path, options)
@@ -25,31 +23,6 @@ const readQuestions = (req, res) => {
   let page = req.query.page || 1;
   let count = req.query.count || 5;
   let query = API + req.path + `?product_id=${id}&page=${page}&count=${count}`;
-
-  // const innerFunction = (pg, data = null) => {
-  //   if (data !== null) {
-  //     if (data.length === 0) {
-  //       return [];
-  //     }
-  //   }
-
-  //   let query = API + req.path + `?product_id=${id}&page=${pg}&count=5`;
-
-  //   axios.get(query, options)
-  //   .then(questions => {
-  //     // res.status(200).send(questions.data);
-  //     let questionsPage = [];
-  //     questionsPage = questionsPage.concat(innerFunction(pg++, questions.data));
-
-  //     res.status(200).send(questionsPage);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.sendStatus(500);
-  //   })
-  // }
-
-  // innerFunction(page)
 
   axios.get(query, options)
     .then(questions => {
@@ -83,8 +56,6 @@ const createQuestions = (req, res) => {
     .catch(err => {
       res.sendStatus(500);
     })
-
-  // res.send('I see you trying to POST a question.');
 };
 
 const createAnswers = (req, res) => {
@@ -95,7 +66,6 @@ const createAnswers = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('I see you trying to POST an answer.');
 };
 
 const updateHelpfulQ = (req, res) => {
@@ -106,7 +76,6 @@ const updateHelpfulQ = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('Let us PUT a pin on that helpful question');
 };
 
 const updateReportQ = (req, res) => {
@@ -117,7 +86,6 @@ const updateReportQ = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('PUT your hands up! You are reported for a bad question!');
 };
 
 const updateHelpfulA = (req, res) => {
@@ -128,7 +96,6 @@ const updateHelpfulA = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('Your answer was actually helpful so let\'s PUT that up.');
 };
 
 const updateReportA = (req, res) => {
@@ -139,7 +106,6 @@ const updateReportA = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('I don\'t have to PUT up with your lame answer!');
 };
 
 module.exports = {

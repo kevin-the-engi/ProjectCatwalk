@@ -35,8 +35,6 @@ class AModal extends React.Component {
     let photo = URL.createObjectURL(event.target.files[0]);
     let file = event.target.files[0].name;
 
-    console.log(event.target.files[0]);
-
     this.setState({
       photos: [...this.state.photos, photo],
       file: file
@@ -83,7 +81,6 @@ class AModal extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
     let display = this.props.show ? `${modal["modal-back"]} ${modal.["display-on"]}` : `${modal["modal-back"]} ${modal["display-off"]}`;
 
     return(
@@ -98,7 +95,7 @@ class AModal extends React.Component {
 
               <div className={form["form-body"]}>
                 <div className={form["form-main"]}>
-                  <label><h4>Your Answer:</h4></label><br />
+                  <label htmlFor="answer"><h4>Your Answer:</h4></label><br />
                   <textarea
                     className={form.textarea}
                     onChange={this.handleChange}
@@ -113,9 +110,9 @@ class AModal extends React.Component {
                 </div>
 
                 <div className={form["form-user"]}>
+                  <label htmlFor="answer-username" className="visuallyhidden">Nickname:</label>
                   <input
-                    className={form.field}
-                    id="answer-username"
+                    className={`${form.field} answer-username`}
                     onChange={this.handleChange}
                     type="text"
                     name="name"
@@ -128,9 +125,9 @@ class AModal extends React.Component {
                 </div>
 
                 <div className={form["form-email"]}>
+                  <label htmlFor="answer-email" className="visuallyhidden">Email:</label>
                   <input
-                    className={form.field}
-                    id="answer-email"
+                    className={`${form.field} answer-email`}
                     onChange={this.handleChange}
                     type="email"
                     name="email"
@@ -145,7 +142,7 @@ class AModal extends React.Component {
                 <div className={form["form-photos"]}>
                   {this.state.show ?
                     <div className={form["form-upload"]}>
-                      <label><h4>Upload Photo:</h4></label>
+                      <label htmlFor="form-upload"><h4>Upload Photo:</h4></label>
                       <input
                         type="file"
                         key={this.state.file}
