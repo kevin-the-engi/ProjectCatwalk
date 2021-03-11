@@ -1,6 +1,9 @@
 #MoreQ-btn, #QAdd-btn {
-  height: 4em;
-  width: 20em;
+  height: 60px;
+  width: 180px;
+  margin-right: 15px;
+  font-size: 15px;
+  font-weight: bold;
   border-color: black;
   border-radius: 5px;
   background-color: white;

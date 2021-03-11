@@ -91,94 +91,91 @@ class AModal extends React.Component {
         <div className={modal["modal-main"]} id="modal-main">
           <form className={form["answer-form"]} onSubmit={this.handleSubmit}>
             <div className={form["form-container"]}>
-            <div className={form["form-header"]}>
-              <h2>Submit your Answer</h2>
-              <sub>[{this.props.productName}]: [{this.props.questionBody}]</sub>
-            </div>
-
-            <div className={form["form-body"]}>
-              <div className={form["form-main"]}>
-                <label><h4>Your Answer:</h4></label><br />
-                <textarea
-                  className={form.textarea}
-                  onChange={this.handleChange}
-                  name="body"
-                  value={this.state.body}
-                  minLength="20"
-                  maxLength="1000"
-                  rows="4"
-                  cols="40"
-                  required>
-                </textarea><br />
+              <div className={form["form-header"]}>
+                <h2>Submit your Answer</h2>
+                <sub>[{this.props.productName}]: [{this.props.questionBody}]</sub>
               </div>
 
-              <div className={form["form-user"]}>
-              < label><h4>Nickname:</h4></label>
-                <input
-                  className={form.field}
-                  id="answer-username"
-                  onChange={this.handleChange}
-                  type="text"
-                  name="name"
-                  value={this.state.name}
-                  placeholder="jack543!"
-                  maxLength="60"
-                  required>
-                </input>
-                <sub>For privacy reasons, do not use your full name or email address</sub><br />
-              </div>
+              <div className={form["form-body"]}>
+                <div className={form["form-main"]}>
+                  <label><h4>Your Answer:</h4></label><br />
+                  <textarea
+                    className={form.textarea}
+                    onChange={this.handleChange}
+                    name="body"
+                    value={this.state.body}
+                    minLength="20"
+                    maxLength="1000"
+                    rows="4"
+                    cols="40"
+                    required>
+                  </textarea><br />
+                </div>
 
-              <div className={form["form-user"]}>
-                <label><h4>Email:</h4></label>
-                <input
-                  className={form.field}
-                  id="answer-email"
-                  onChange={this.handleChange}
-                  type="email"
-                  name="email"
-                  value={this.state.email}
-                  placeholder="jack@email.com"
-                  maxLength="60"
-                  required>
-                </input>
-                <sub>For authentication reasons, you will not be emailed</sub><br />
-              </div>
+                <div className={form["form-user"]}>
+                  <input
+                    className={form.field}
+                    id="answer-username"
+                    onChange={this.handleChange}
+                    type="text"
+                    name="name"
+                    value={this.state.name}
+                    placeholder="jack543!"
+                    maxLength="60"
+                    required>
+                  </input>
+                  <sub>For privacy reasons, do not use your full name or email address</sub><br />
+                </div>
 
-              <div className={form["form-photos"]}>
-                {this.state.show ?
-                  <div className={form["form-upload"]}>
-                    <label><h4>Upload Photo:</h4></label>
-                    <input
-                      type="file"
-                      key={this.state.file}
-                      className="photo"
-                      accept="image/*"
-                      onChange={this.handleUpload}>
-                    </input>
-                  </div> : null
-                }
+                <div className={form["form-email"]}>
+                  <input
+                    className={form.field}
+                    id="answer-email"
+                    onChange={this.handleChange}
+                    type="email"
+                    name="email"
+                    value={this.state.email}
+                    placeholder="jack@email.com"
+                    maxLength="60"
+                    required>
+                  </input>
+                  <sub>For authentication reasons, you will not be emailed</sub><br />
+                </div>
 
-                <div className={form["form-thumbnails"]}>
-                  {this.state.photos.map((photo, i) =>
-                    <FileUpload
-                      key={i}
-                      photo={photo}
-                      alt={i}
-                      delete={this.deletePhoto}
-                    />
-                  )}
+                <div className={form["form-photos"]}>
+                  {this.state.show ?
+                    <div className={form["form-upload"]}>
+                      <label><h4>Upload Photo:</h4></label>
+                      <input
+                        type="file"
+                        key={this.state.file}
+                        className="photo"
+                        accept="image/*"
+                        onChange={this.handleUpload}>
+                      </input>
+                    </div> : null
+                  }
+
+                  <div className={form["form-thumbnails"]}>
+                    {this.state.photos.map((photo, i) =>
+                      <FileUpload
+                        key={i}
+                        photo={photo}
+                        alt={i}
+                        delete={this.deletePhoto}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className={form["form-footer"]}>
-              <div className={form.submitDiv}>
-                <button className={form["submit-btn"]} type="submit"><h4>SUBMIT ANSWER</h4></button>
+              <div className={form["form-footer"]}>
+                  <button
+                  className={form["submit-btn"]}
+                  type="submit">
+                    <h4>SUBMIT ANSWER</h4>
+                  </button>
               </div>
-              {/* <div className="close">
-                <button className="close-btn" type="button" onClick={this.props.close}>Close</button>
-              </div> */}
-            </div>
             </div>
           </form>
         </div>

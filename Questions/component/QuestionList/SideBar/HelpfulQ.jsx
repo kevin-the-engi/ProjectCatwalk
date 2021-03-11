@@ -21,7 +21,6 @@ class HelpfulQ extends React.Component {
   }
 
   render() {
-    // console.log(this.props);
     const display = this.state.show ? `${styles['helpful-btn']} ${styles['display-on']}` : `${styles['helpful-btn']} ${styles['display-off']}`;
 
     return(

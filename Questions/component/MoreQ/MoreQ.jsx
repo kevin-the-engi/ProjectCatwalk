@@ -16,7 +16,7 @@ class MoreQ extends React.Component {
     return(
       <div className="footer-MoreQ">
         <button id={styles['MoreQ-btn']} onClick={this.handleClick}>
-          <h3>More Answered Questions</h3>
+          MORE QUESTIONS
         </button>
       </div>
     )

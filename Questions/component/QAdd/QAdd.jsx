@@ -29,7 +29,7 @@ class QAdd extends React.Component {
     return(
       <div id="footer-QAdd">
         <button id={styles["QAdd-btn"]} onClick={this.showModal}>
-          <h3>Add a Question</h3>
+          ADD QUESTION +
         </button>
         <QModal
           show={this.state.show}

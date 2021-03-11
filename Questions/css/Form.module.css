@@ -1,10 +1,16 @@
-.answer-form {
+.answer-form, .question-form {
   height: auto;
 }
 
 .form-container {
   display: grid;
   grid-template-rows: 1fr 10fr 1fr;
+  height: 100%;
+}
+
+.question-form {
+  display: grid;
+  grid-template-rows: 15% 70% 15%;
   height: 100%;
 }
 
@@ -21,18 +27,21 @@
   grid-row: 2 / span 1;
   display: flex;
   flex-direction: column;
-  align-items: space-around;
-  height: auto;
+  margin: 0 20px;
 }
 
 .form-footer {
   grid-row: 3 / span 1;
-  align-self: center;
-  width: 100%;
+  justify-self: center;
 }
 
 .form-main, .form-user, .form-email, .form-photos {
   width: 100%;
+}
+
+.form-user, .form-email {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
 }
 
 .textarea, .field {
@@ -43,14 +52,28 @@
   resize: none;
 }
 
+.textarea {
+  margin-bottom: 10%;
+}
+
 .field {
+  grid-row: 1 / span 1;
+  align-content: end;
+  margin-top: 10px;
   height: 30px;
   size: 100%;
 }
 
+.sub {
+  grid-row-end: 2 / span 1;
+  align-items: start;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
 .submit-btn, .close-btn {
-  height: 40px;
-  width: 100%;
+  height: auto;
+  width: 200px;
   border-color: black;
   border-radius: 5px;
   background-color: white;
@@ -59,10 +82,6 @@
 .submit-btn:hover, .close-btn:hover {
   background-color: black;
   color: white;
-}
-
-.button-text {
-  height: 40px;
 }
 
 .form-thumbnails {

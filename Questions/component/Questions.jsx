@@ -148,7 +148,6 @@ class Questions extends React.Component {
   }
 
   moreQ() {
-    // console.log(this.state.qCount, this.state.qTotal);
     this.state.qCount += 2;
 
     if (this.state.qCount >= this.state.qTotal) {
@@ -179,7 +178,7 @@ class Questions extends React.Component {
     return (
       <div className="main-container">
         <div className="main-header">
-          <h4>Questions & Answers</h4>
+          <span className="main-title">QUESTIONS & ANSWERS</span>
           <SearchBar dynamicSearch={this.dynamicSearch} />
         </div>
 

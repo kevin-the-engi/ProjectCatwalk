@@ -1,6 +1,12 @@
 .searchbar {
+  height: 60px;
   width: 100%;
   padding: 1em;
+  margin-top: 2em;
   border-color: lightslategray;
   border-radius: 5px;
+}
+
+.searchbar::-webkit-input-placeholder {
+  font-size: 16px;
 }

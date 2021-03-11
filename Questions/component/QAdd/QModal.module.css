@@ -8,9 +8,6 @@
 }
 
 .modal-main {
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
   position: absolute;
   background: white;
   border-radius: 15px;

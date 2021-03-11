@@ -5,6 +5,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.main-header {
+  height: 100px;
+  font-family: Helvetica;
+}
+
 .main-body {
   display: flex;
   flex-direction: column;
@@ -14,6 +19,7 @@
 
 .main-footer {
   display: flex;
+  flex-wrap: wrap;
   /* justify-content: space-evenly; */
   justify-content: flex-start;
 }
