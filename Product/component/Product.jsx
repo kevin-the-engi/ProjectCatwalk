@@ -100,7 +100,7 @@ class Product extends React.Component {
     return skus;
   }
 
-  // user clicks on style - higlights it and updates style info across the app along with main image and thumbnails (style photos)
+  // user clicks on new style - function higlights current style, and sends info to state, including new thumbnails (stylePhotos) and main photo corresponding to thumbnail at the index of last clicked thumbnail (image) to state
   changeStyle(photos, style, skus, id) {
     if(this.state.styleClicked !== id && this.state.styleClicked !== '') {
       var clickedStyle = this.state.styleClicked
@@ -109,9 +109,10 @@ class Product extends React.Component {
     document.getElementById(id).className = styles.styleClicked;
 
     var skus = this.getSkus(skus);
+    
     this.setState({
       stylePhotos: photos,
-      image: photos[0].url,
+      image: photos[this.state.thumbnailClicked].url,
       style: style,
       skus: skus,
       styleClicked: id
