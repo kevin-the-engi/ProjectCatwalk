@@ -18,6 +18,29 @@ const readProductName = (req, res) => {
     })
 }
 
+const filterQuestions = (req, res) => {
+  let id = req.params.product_id;
+  let search = req.params.search;
+  let query = API + `/qa/questions/?product_id=${id}&page=1&count=100`;
+
+  axios.get(query, options)
+    .then(questions => {
+      questions = questions.data.results;
+      let filtered = questions.filter(question => {
+        if (question.question_body.toLowerCase().includes(search.toLowerCase())) {
+          return question;
+        } else {
+          return null
+        }
+      })
+
+      res.status(200).send(filtered);
+    })
+    .catch(err => {
+      res.sendStatus(500);
+    })
+};
+
 const readQuestions = (req, res) => {
   let id = req.query.product_id;
   let page = req.query.page || 1;
@@ -110,6 +133,7 @@ const updateReportA = (req, res) => {
 
 module.exports = {
   readProductName,
+  filterQuestions,
   readQuestions,
   readAnswers,
   createQuestions,

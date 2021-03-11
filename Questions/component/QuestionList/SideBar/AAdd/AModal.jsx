@@ -110,7 +110,6 @@ class AModal extends React.Component {
                 </div>
 
                 <div className={form["form-user"]}>
-                  <label htmlFor="answer-username" className="visuallyhidden">Nickname:</label>
                   <input
                     className={`${form.field} answer-username`}
                     onChange={this.handleChange}
@@ -121,7 +120,7 @@ class AModal extends React.Component {
                     maxLength="60"
                     required>
                   </input>
-                  <sub>For privacy reasons, do not use your full name or email address</sub><br />
+                  <sub className={form.sub}>For privacy reasons, do not use your full name or email address</sub>
                 </div>
 
                 <div className={form["form-email"]}>
@@ -136,7 +135,7 @@ class AModal extends React.Component {
                     maxLength="60"
                     required>
                   </input>
-                  <sub>For authentication reasons, you will not be emailed</sub><br />
+                  <sub className={form.sub}>For authentication reasons, you will not be emailed</sub>
                 </div>
 
                 <div className={form["form-photos"]}>

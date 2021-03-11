@@ -73,7 +73,6 @@ class QModal extends React.Component {
               </div>
 
               <div className={form["form-user"]}>
-                <label htmlFor="question-username" className="visuallyhidden">Nickname:</label>
                 <input
                   className={form.field}
                   id="question-username"
@@ -89,7 +88,6 @@ class QModal extends React.Component {
               </div>
 
               <div className={form["form-email"]}>
-                <label htmlFor="question-email" className="visuallyhidden">Email:</label>
                 <input
                   className={form.field}
                   id="question-email"
@@ -102,7 +100,6 @@ class QModal extends React.Component {
                   required>
                 </input>
                 <sub className={form.sub}>For authentication reasons, you will not be emailed</sub>
-
               </div>
             </div>
 
