@@ -5,7 +5,7 @@ import styles from './PInfo.module.css';
 const FeatureList = ({featureList}) => (
   <ul className={styles.list}>
     {featureList.map((feature, i) =>
-      <Feature key={i} feature={feature.feature}/>
+      <Feature key={i} feature={feature}/>
     )}
   </ul>
 )
