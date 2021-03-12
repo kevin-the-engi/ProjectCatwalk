@@ -6,7 +6,7 @@ const route = express.Router();
 
 route.get('/products/:product_id', api.readProductName);
 
-route.get('/qa/questions/:product_id/:search/', api.filterQuestions);
+route.get('/qa/questions/search/:product_id/:search/', api.filterQuestions);
 
 route.get('/qa/questions', api.readQuestions);
 

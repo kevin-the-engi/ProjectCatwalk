@@ -63,7 +63,10 @@ const readAnswers = (req, res) => {
 
   axios.get(query, options)
     .then(answers => {
-      res.status(200).send(answers.data);
+      let sortSeller = answers.data.results.sort((a, b) =>
+      (a.answerer_name === 'Seller') ? -1 : (a === b) ? ((a.answer_name !== 'Seller') ? 1 : -1) : 1);
+
+      res.status(200).send(sortSeller);
     })
     .catch(err => {
       res.sendStatus(500);
@@ -71,7 +74,6 @@ const readAnswers = (req, res) => {
 };
 
 const createQuestions = (req, res) => {
-  console.log(req.body);
   axios.post(API + req.path, req.body, options)
     .then(() => {
       res.sendStatus(201);

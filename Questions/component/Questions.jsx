@@ -46,27 +46,26 @@ class Questions extends React.Component {
   }
 
   dynamicSearch(search) {
+    let qCopy = this.state.questions.slice();
+
     if (search.length >= 3) {
-      let filtered = this.state.questions.filter(question => {
-         if (question.question_body.toLowerCase().includes(search.toLowerCase())) {
-           this.setState({
-             match: true
-           })
-
-           return question;
-         } else {
-           this.setState({
-             match: false
-           })
-         }
-      });
-
-      this.setState({
-        filtered: filtered
-      })
+      axios.get(`/qa/questions/search/${this.props.productId}/${search}`)
+        .then(filtered => {
+          if (filtered.data.length !== 0) {
+            this.setState({
+              questions: filtered.data,
+              qTotal: filtered.data.length,
+              match: true
+            })
+          } else {
+            this.setState({
+              match: false
+            })
+          }
+        })
     } else {
+      this.getQuestions();
       this.setState({
-        filtered: [],
         match: true
       })
     }
@@ -186,7 +185,7 @@ class Questions extends React.Component {
           {this.state.match ?
             (this.state.qTotal !== 0 ?
               <QList
-                qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
+                qData={this.state.questions}
                 updateHelpfulQ={this.updateHelpfulQ}
                 productName={this.state.productName}
               />  : <i>There are no questions for this product. Be the first to ask!</i>)
