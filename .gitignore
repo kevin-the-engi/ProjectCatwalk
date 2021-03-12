@@ -5,6 +5,7 @@ node_modules/
 config.js
 
 # AWS
+KineticKingfishers.pem
 fec.pem
 
 # Bundle
