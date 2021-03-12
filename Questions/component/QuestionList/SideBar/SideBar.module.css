@@ -7,8 +7,13 @@
   transition: transform 0.2s color 0.2s;
 }
 
+.helpful-btn:hover, .addAnswer-btn:hover {
+  color: #00ace6;
+  transform: scale(1.1);
+}
+
 #moreAnswer {
-  margin-left: 30px;
+  margin-left: 25px;
   margin-top: 10px;
 }
 
@@ -19,10 +24,11 @@
   cursor: pointer;
   outline: none;
   font-weight: bold;
+  transition: transform 0.2s color 0.2s;
 }
 
-.helpful-btn:hover, .addAnswer-btn:hover {
-  color: #00ace6;
+#moreAnswer-btn:hover {
+  color: gray;
   transform: scale(1.1);
 }
 
