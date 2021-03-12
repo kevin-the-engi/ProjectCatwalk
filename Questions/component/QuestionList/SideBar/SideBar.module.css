@@ -24,11 +24,10 @@
   cursor: pointer;
   outline: none;
   font-weight: bold;
-  transition: transform 0.2s color 0.2s;
+  transition: transform 0.2s;
 }
 
 #moreAnswer-btn:hover {
-  color: gray;
   transform: scale(1.1);
 }
 
