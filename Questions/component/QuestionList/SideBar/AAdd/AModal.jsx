@@ -124,7 +124,6 @@ class AModal extends React.Component {
                 </div>
 
                 <div className={form["form-email"]}>
-                  <label htmlFor="answer-email" className="visuallyhidden">Email:</label>
                   <input
                     className={`${form.field} answer-email`}
                     onChange={this.handleChange}

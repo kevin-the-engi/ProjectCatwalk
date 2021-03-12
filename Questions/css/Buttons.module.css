@@ -7,6 +7,7 @@
   border-color: black;
   border-radius: 5px;
   background-color: white;
+  transition: transform 0.3s;
 }
 
 #MoreQ-btn {
@@ -16,4 +17,5 @@
 #MoreQ-btn:hover, #QAdd-btn:hover {
   background-color: black;
   color: white;
+  transform: scale(1.1);
 }
