@@ -1,5 +1,5 @@
 import React from 'react';
-import sidebar from '../QuestionList/SideBar/SideBar.module.css'
+import sidebar from '../SideBar/SideBar.module.css'
 
 class MoreA extends React.Component {
   constructor(props) {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import QListA from './AnswerList/QListA.jsx';
 import HelpfulQ from './SideBar/HelpfulQ.jsx';
 import AAdd from './SideBar/AAdd/AAdd.jsx';
+import MoreA from './MoreA/MoreA.jsx';
 import styles from './QListQ.module.css';
 
 class QListQ extends React.Component {
@@ -10,43 +11,35 @@ class QListQ extends React.Component {
     super(props);
     this.state = {
       answers: [],
+      twoAnswers: [],
       allAnswers: [],
       aTotal: 0,
+      expand: false
     }
 
     this.getAnswers = this.getAnswers.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
     this.updateHelpfulA = this.updateHelpfulA.bind(this);
     this.reportA = this.reportA.bind(this);
+    this.moreA = this.moreA.bind(this);
   }
 
   componentDidMount() {
     this.getAnswers(this.props.question.question_id);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.expand !== prevProps.expand) {
-      console.log(this.props.expand, prevProps.expand)
-      this.getAnswers(this.props.question.question_id);
-    }
-  }
-
   getAnswers(questionID) {
+    console.log('test')
     axios.get(`/qa/questions/${questionID}/answers?page=1&count=100`)
       .then(answers => {
-        if (!this.props.expand) {
-          let twoAnswers = answers.data.slice(0, 2);
+        let twoAnswers = answers.data.slice(0, 2);
 
-          this.setState({
-            answers: twoAnswers,
-            aTotal: answers.data.length
-          })
-        } else {
-          this.setState({
-            answers: answers.data,
-            aTotal: answers.data.length
-          })
-        }
+        this.setState({
+          twoAnswers: twoAnswers,
+          answers: twoAnswers,
+          allAnswers: answers.data,
+          aTotal: answers.data.length
+        })
       })
       .catch(err => {
         console.log(err);
@@ -55,14 +48,11 @@ class QListQ extends React.Component {
 
   addAnswer(questionID, answerForm) {
     axios.post(`/qa/questions/${questionID}/answers`, answerForm)
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        this.getAnswers(questionID);
       })
       .catch(err => {
         console.log(err);
-      })
-      .then(() => {
-        this.getAnswers(questionID);
       })
   }
 
@@ -84,6 +74,22 @@ class QListQ extends React.Component {
       .catch(err => {
         console.log(err);
       })
+  }
+
+  moreA(expand) {
+    this.setState({
+      expand: expand
+    }, () => {
+      if (expand) {
+        this.setState({
+          answers: this.state.allAnswers
+        })
+      } else {
+        this.setState({
+          answers: this.state.twoAnswers
+        })
+      }
+    })
   }
 
   render() {
@@ -139,6 +145,8 @@ class QListQ extends React.Component {
               getAnswers={this.getAnswers}
             />
           )}
+
+          {this.state.aTotal > 2 ? <MoreA  moreA={this.moreA} /> : null}
         </section>
       </section>
     )
