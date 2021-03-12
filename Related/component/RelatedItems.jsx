@@ -29,15 +29,6 @@ class RelatedItems extends React.Component {
     }
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.productId !== prevProps.productId) {
-  //     this.setState((state, props) => {
-  //       product_id: this.props.productId
-  //     })
-  //     this.getData(this.props.productId);
-  //   }
-  // }
-
   getData(id) {
     // get product information for all related items
     axios.get('/related', {
@@ -93,7 +84,7 @@ class RelatedItems extends React.Component {
       <div  className={styles.widget}>
         <div className={styles.widgetContainer}>
           <div className={styles.relatedItemsBanner} key={'relatedItemsBanner'}>
-            <p id="test" className={styles.sectionTitle}>Related Products</p>
+            <p className={styles.sectionTitle}>Related Products</p>
           </div>
           <RelatedGallery relatedItems={this.state.relatedItems} currentItem={this.state.currentItem} viewNewProduct={this.props.viewNewProduct} getData={this.getData}/>
           <div className={styles.relatedItemsBanner}>

@@ -10,8 +10,9 @@ class CompareButton extends React.Component {
     this.hideModal = this.hideModal.bind(this);
   }
 
-  showModal() {
+  showModal(event) {
     this.setState({show: true});
+    event.stopPropagation();
   }
 
   hideModal() {

@@ -10,9 +10,9 @@ const RemoveButton = (props) => {
   return (
     <div className={styles.removeButtonContainer} onClick={handleClick}>
       <svg className={styles.removeButton}>
-        <circle cx="12" cy="12" r="11" stroke="black" stroke-width="2" fill="white" />
-        <path stroke="black" stroke-width="2" fill="none" d="M6.25,6.25,17.75,17.75" />
-        <path stroke="black" stroke-width="2" fill="none" d="M6.25,17.75,17.75,6.25" />
+        <circle cx="12" cy="12" r="11" stroke="black" stroke-width="1" fill="white" />
+        <path stroke="black" stroke-width="1" fill="none" d="M7,7,17,17" />
+        <path stroke="black" stroke-width="1" fill="none" d="M7,17,17,7" />
       </svg>
     </div>
   )
