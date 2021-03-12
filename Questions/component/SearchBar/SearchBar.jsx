@@ -25,7 +25,6 @@ class SearchBar extends React.Component {
   render() {
     return(
       <div id="searchDiv">
-        <label htmlFor="searchbar" className="visuallyhidden">Search</label>
         <input
           onChange={this.handleChange}
           id="searchbar"

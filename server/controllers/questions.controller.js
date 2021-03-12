@@ -63,6 +63,17 @@ const readAnswers = (req, res) => {
 
   axios.get(query, options)
     .then(answers => {
+      answers.data.results.forEach(answer => {
+        let date = answer.date.slice(0, 10).split('-');
+        let year = Number(date[0]);
+        let month = Number(date[1]) - 1;
+        let day = Number(date[2]) - 1;
+        date = new Date(year, month, day)
+
+        const formattedDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(date);
+        answer.date = formattedDate;
+      })
+
       let sortSeller = answers.data.results.sort((a, b) =>
       (a.answerer_name === 'Seller') ? -1 : (a === b) ? ((a.answer_name !== 'Seller') ? 1 : -1) : 1);
 
