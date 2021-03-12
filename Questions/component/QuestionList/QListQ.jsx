@@ -10,8 +10,8 @@ class QListQ extends React.Component {
     super(props);
     this.state = {
       answers: [],
+      allAnswers: [],
       aTotal: 0,
-      show: false
     }
 
     this.getAnswers = this.getAnswers.bind(this);
@@ -24,14 +24,26 @@ class QListQ extends React.Component {
     this.getAnswers(this.props.question.question_id);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.expand !== prevProps.expand) {
+      console.log(this.props.expand, prevProps.expand)
+      this.getAnswers(this.props.question.question_id);
+    }
+  }
+
   getAnswers(questionID) {
     axios.get(`/qa/questions/${questionID}/answers?page=1&count=100`)
       .then(answers => {
-        if (!this.state.show) {
+        if (!this.props.expand) {
           let twoAnswers = answers.data.slice(0, 2);
 
           this.setState({
             answers: twoAnswers,
+            aTotal: answers.data.length
+          })
+        } else {
+          this.setState({
+            answers: answers.data,
             aTotal: answers.data.length
           })
         }

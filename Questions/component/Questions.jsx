@@ -4,6 +4,7 @@ import styles from '../css/Questions.css';
 import SearchBar from './SearchBar/SearchBar.jsx';
 import QList from './QuestionList/QList.jsx';
 import MoreQ from './MoreQ/MoreQ.jsx';
+import MoreA from './MoreA/MoreA.jsx';
 import QAdd from './QAdd/QAdd.jsx';
 
 class Questions extends React.Component {
@@ -18,7 +19,9 @@ class Questions extends React.Component {
       qTotal: 0,
       qCount: 2,
       hide: true,
-      match: true
+      match: true,
+      expand: false,
+      hasAnswers: false
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
@@ -28,6 +31,7 @@ class Questions extends React.Component {
     this.getTotalQ = this.getTotalQ.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
     this.moreQ = this.moreQ.bind(this);
+    this.moreA = this.moreA.bind(this);
   }
 
   componentDidMount() {
@@ -46,8 +50,6 @@ class Questions extends React.Component {
   }
 
   dynamicSearch(search) {
-    let qCopy = this.state.questions.slice();
-
     if (search.length >= 3) {
       axios.get(`/qa/questions/search/${this.props.productId}/${search}`)
         .then(filtered => {
@@ -173,6 +175,12 @@ class Questions extends React.Component {
     this.getQuestions(this.props.productId);
   }
 
+  moreA(expand) {
+    this.setState({
+      expand: expand
+    })
+  }
+
   render() {
     return (
       <div className="main-container">
@@ -188,9 +196,12 @@ class Questions extends React.Component {
                 qData={this.state.questions}
                 updateHelpfulQ={this.updateHelpfulQ}
                 productName={this.state.productName}
+                expand={this.state.expand}
               />  : <i>There are no questions for this product. Be the first to ask!</i>)
               : <i>There are no matches. Try again.</i>
           }
+
+          <MoreA moreA={this.moreA} />
         </div>
 
         <div className="main-footer">
