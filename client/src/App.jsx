@@ -1,8 +1,8 @@
 import React from 'react'
-// import Product from '../../Product/component/Product.jsx';
+import Product from '../../Product/component/Product.jsx';
 import Questions from '../../Questions/component/Questions.jsx';
-// import RelatedItems from '../../Related/component/RelatedItems.jsx';
-// import Reviews from '../../Reviews/component/Reviews/Reviews.jsx';
+import RelatedItems from '../../Related/component/RelatedItems.jsx';
+import Reviews from '../../Reviews/component/Reviews/Reviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,10 +23,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <Product productId={this.state.productId} /> */}
-        {/* <RelatedItems productId={this.state.productId} viewNewProduct={this.viewNewProduct}/> */}
+        <Product productId={this.state.productId} />
+        <RelatedItems productId={this.state.productId} viewNewProduct={this.viewNewProduct}/>
         <Questions productId={this.state.productId} />
-        {/* <Reviews productId={this.state.productId} /> */}
+        <Reviews productId={this.state.productId} />
       </div>
     )
   }

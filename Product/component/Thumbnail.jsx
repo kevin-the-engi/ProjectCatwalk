@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './thumbnail.module.css'
+import styles from './Thumbnail.module.css'
 
 const Thumbnail = ({photo, handleThumbnailClick, id}) => (
   <div>
