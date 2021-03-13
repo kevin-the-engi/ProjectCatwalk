@@ -61,10 +61,13 @@ class ProductInformation extends React.Component {
 
     render() {
         let displayPrice;
+        let discountedPrice;
         if (this.state.salePrice === null) {
-            displayPrice = <div className={styles.defaultPrice}>${this.state.defaultPrice}</div>;
+          displayPrice = <div className={styles.defaultPrice}>${this.state.defaultPrice}</div>;
+          discountedPrice = null;
         } else {
-            displayPrice = <div className={styles.salePrice}>${this.state.salePrice}</div>;
+          displayPrice = <div className={styles.salePrice}>${this.state.salePrice}</div>;
+          discountedPrice = <div className={styles.discountedPrice}>${this.state.defaultPrice}</div>
         }
 
         let starRating;
@@ -81,24 +84,23 @@ class ProductInformation extends React.Component {
         }
 
         return (
-            <div className={styles.productInformationContainer}>
-              <div className={styles.categoryContainer}>
-                <div className={styles.category}>
-                    {this.state.category}
-                </div>
-              </div>
-              <div className={styles.productDetailsContainer}>
-                <div className={styles.productName}>
-                    {this.state.productName}
-                </div>
-                {displayPrice}
-                <div className={styles.averageRating}>
-                    {starRating}
-                </div>
+          <div className={styles.productInformationContainer}>
+            <div className={styles.categoryContainer}>
+              <div className={styles.category}>
+                  {this.state.category}
               </div>
             </div>
+            <div className={styles.productDetailsContainer}>
+              <div className={styles.productName}>
+                  {this.state.productName}
+              </div>
+              {displayPrice} {discountedPrice}
+              <div className={styles.averageRating}>
+                  {starRating}
+              </div>
+            </div>
+          </div>
         )
-
     }
 }
 

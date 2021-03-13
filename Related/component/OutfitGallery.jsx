@@ -1,18 +1,16 @@
 import React from 'react';
 import AddToOutfitCard from './AddToOutfitCard.jsx';
 import ProductCard from './ProductCard.jsx';
-import LeftArrowButton from './LeftArrowButton.jsx';
-import RightArrowButton from './RightArrowButton.jsx';
+import CarouselNavigator from './CarouselNavigator.jsx'
 import styles from './css_modules/RelatedGallery.module.css';
 
 const OutfitGallery = (props) => {
-
+  let gallery = 'outfit';
   return (
     <div className={styles.outfitContainer}>
-      {/* <LeftArrowButton/>
-      <RightArrowButton/> */}
       <AddToOutfitCard addToOutfit={props.addToOutfit}/>
-      {props.outfitItems.map((outfitItem) => <ProductCard relatedItem={outfitItem} removeFromOutfit={props.removeFromOutfit}/>)}
+      {/* <CarouselNavigator gallery={gallery}/> */}
+      {props.outfitItems.map((outfitItem, index) => <ProductCard relatedItem={outfitItem} removeFromOutfit={props.removeFromOutfit} viewNewProduct={props.viewNewProduct} index={index} key={index}/>)}
     </div>
   )
 }

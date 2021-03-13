@@ -18,7 +18,7 @@ class ComparisonModal extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.currentItem[0].product_id !== prevProps.currentItem[0].product_id) {
-      this.organizeFeaturesData(0);
+      this.organizeFeaturesData();
     }
   }
 
@@ -58,20 +58,19 @@ class ComparisonModal extends React.Component {
         }
       }
     }
-
     let featuresArray = Object.entries(featuresData);
     let rows = [];
     for (let i = 0; i < featuresArray.length; i++) {
       let currentRow = [featuresArray[i][1].currentItem.value, featuresArray[i][0], featuresArray[i][1].relatedItem.value]
       rows.push(currentRow);
     }
-
     this.setState({tableRows: rows});
   }
 
   handleClick (event) {
     if (!event.target.closest("#comparisonModal")) {
       this.props.hideModal();
+      event.stopPropagation();
     }
   }
 
@@ -93,18 +92,20 @@ class ComparisonModal extends React.Component {
             </div>
             <div className={styles.tableContainer}>
               <table id="comparisonTable">
-                <tr className={styles.tableHeaders}>
-                  <th className={styles.leftHeader}>{this.props.currentItem[0].product.name}</th>
-                  <th className={styles.centerHeader}></th>
-                  <th className={styles.rightHeader}>{this.props.relatedItem.product.name}</th>
-                </tr>
-                {this.state.tableRows.map((feature) => (
-                <tr>
-                  <td className={styles.leftColumn}>{feature[0]}</td>
-                  <td className={styles.centerColumn}>{feature[1]}</td>
-                  <td className={styles.rightColumn}>{feature[2]}</td>
-                </tr>
-                ))}
+                <tbody>
+                  <tr className={styles.tableHeaders} key={'header'}>
+                    <th className={styles.leftHeader}>{this.props.currentItem[0].product.name}</th>
+                    <th className={styles.centerHeader}></th>
+                    <th className={styles.rightHeader}>{this.props.relatedItem.product.name}</th>
+                  </tr>
+                  {this.state.tableRows.map((feature, index) => (
+                  <tr key={'tablerow' + index}>
+                    <td className={styles.leftColumn}>{feature[0]}</td>
+                    <td className={styles.centerColumn}>{feature[1]}</td>
+                    <td className={styles.rightColumn}>{feature[2]}</td>
+                  </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           </section>

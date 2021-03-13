@@ -8,7 +8,7 @@
   max-height: 450px;
   align-items: stretch;
   scroll-behavior: smooth;
-  margin-left: 8px;
+  scroll-snap-type: x mandatory;
 }
 
 .relatedContainer::-webkit-scrollbar {
@@ -22,9 +22,9 @@
   flex-basis: 30%;
   height: 400px;
   border: 1px solid transparent;
-  margin-right: 8px;
-  margin-left: 8px;
+  margin-right: 10px;
   cursor: pointer;
+  scroll-snap-align: start;
 }
 
 #productCard0 {
@@ -119,8 +119,18 @@
   color: red;
 }
 
+.discountedPrice {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: black;
+  text-decoration: line-through;
+}
+
 .averageRating {
-  margin-top: 20px;
+  margin-top: 8px;
   font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
@@ -128,16 +138,30 @@
 }
 
 /* CSS for arrow buttons */
+.navigatorContainer {
+  display: flex;
+}
+
 .leftArrowButton {
   align-self: center;
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 50px;
+  height: 50px;
   background-color: white;
   cursor: pointer;
   appearance: none;
   border: 0px;
   outline: none;
+  border: 1px solid black;
+  transform: translateY(-50%);
+  transition: color .1s cubic-bezier(0.3, 0, 0.45, 1),background-color .1s cubic-bezier(0.3, 0, 0.45, 1),opacity .2s cubic-bezier(0.3, 0, 0.45, 1);
+}
+
+.leftArrowButtonHide {
+  transition-delay: .5s, .0s; /* visibility delay = opacity duration */
+  transition-timing-function: ease-out;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .leftArrowButton:hover {
@@ -146,18 +170,18 @@
 
 .leftArrowButton:hover .arrowLeft {
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   display: inline-block;
-  padding: 3px;
+  padding: 4px;
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
 
 .arrowLeft {
   border: solid black;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   display: inline-block;
-  padding: 3px;
+  padding: 4px;
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
@@ -165,8 +189,8 @@
 .rightArrowButton {
   align-self: center;
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 50px;
+  height: 50px;
   background-color: white;
   cursor: pointer;
   appearance: none;
@@ -174,6 +198,21 @@
   right: 22%;
   margin-right: 0.25%;
   outline: none;
+  border: 1px solid black;
+  transform: translateY(-50%);
+  transition-property: color, background-color, opacity;
+  transition-duration: 0.1s, 0.1s, 0.2s;
+  transition-timing-function: cubic-bezier(0.3, 0, 0.45, 1), cubic-bezier(0.3, 0, 0.45, 1), cubic-bezier(0.3, 0, 0.45, 1);
+  transition-delay: 0s, 0s, 0s;
+}
+
+.rightArrowButtonHide {
+  opacity: 0;
+  transition-property: opacity, visibility;
+  transition-duration: 0.2s, 0.2s;
+  transition-timing-function: cubic-bezier(0.3, 0, 0.45, 1), cubic-bezier(0.3, 0, 0.45, 1);
+  transition-delay: 0s, 0.2s;
+  visibility: hidden;
 }
 
 .rightArrowButton:hover {
@@ -182,18 +221,18 @@
 
 .rightArrowButton:hover .arrowRight {
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   display: inline-block;
-  padding: 3px;
+  padding: 4px;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
 
 .arrowRight {
   border: solid black;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   display: inline-block;
-  padding: 3px;
+  padding: 4px;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
@@ -217,9 +256,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 1%;
-  border-radius: 2%;
+  border-radius: 3px;
 }
 
 .modalBanner {
@@ -281,7 +320,6 @@
   max-height: 450px;
   align-items: stretch;
   scroll-behavior: smooth;
-  margin-left: 8px;
 }
 
 .outfitContainer::-webkit-scrollbar {

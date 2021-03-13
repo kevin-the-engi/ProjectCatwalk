@@ -29,15 +29,6 @@ class RelatedItems extends React.Component {
     }
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.productId !== prevProps.productId) {
-  //     this.setState((state, props) => {
-  //       product_id: this.props.productId
-  //     })
-  //     this.getData(this.props.productId);
-  //   }
-  // }
-
   getData(id) {
     // get product information for all related items
     axios.get('/related', {
@@ -92,14 +83,14 @@ class RelatedItems extends React.Component {
     return (
       <div  className={styles.widget}>
         <div className={styles.widgetContainer}>
-          <div className={styles.relatedItemsBanner} key={'relatedItemsBanner'}>
-            <p id="test" className={styles.sectionTitle}>Related Products</p>
-          </div>
-          <RelatedGallery relatedItems={this.state.relatedItems} currentItem={this.state.currentItem} viewNewProduct={this.props.viewNewProduct} getData={this.getData}/>
-          <div className={styles.relatedItemsBanner}>
-            <p className={styles.sectionTitle}>Your Outfit</p>
-          </div>
-          <OutfitGallery addToOutfit={this.addToOutfit} removeFromOutfit={this.removeFromOutfit} outfitItems={this.state.outfitItems}/>
+          <section className={styles.sectionContainer}>
+            <h5 className={styles.sectionTitle}>Related Products</h5>
+            <RelatedGallery relatedItems={this.state.relatedItems} currentItem={this.state.currentItem} viewNewProduct={this.props.viewNewProduct} getData={this.getData}/>
+          </section>
+          <section className={styles.sectionContainer}>
+            <h5 className={styles.sectionTitle}>Your Outfit</h5>
+            <OutfitGallery addToOutfit={this.addToOutfit} removeFromOutfit={this.removeFromOutfit} outfitItems={this.state.outfitItems} viewNewProduct={this.props.viewNewProduct}/>
+          </section>
         </div>
       </div>
       )

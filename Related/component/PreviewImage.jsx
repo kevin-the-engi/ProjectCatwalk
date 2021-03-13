@@ -41,7 +41,7 @@ class PreviewImage extends React.Component {
     return (
         <div className={styles.imageContainer}>
           {actionButton}
-          <img className={styles.previewImage} src={this.state.url}></img>
+          <img className={styles.previewImage} src={this.state.url} alt="No image available for this product"></img>
         </div>
     )
   }
