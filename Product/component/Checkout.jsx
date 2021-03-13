@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Checkout.module.css'
 
-const Checkout = ({isStocked, checkSizeSelected}) => {
+const Checkout = ({isStocked, checkSizeSelected, hoverEffects}) => {
   var button;
   if(isStocked === true) {
-    button = <button id="checkoutButton" className={styles.cart} onClick={(e) => checkSizeSelected()}>ADD TO BAG</button>
+    button = <button id="checkoutButton" className={styles.cart} onClick={(e) => checkSizeSelected()} onMouseMove={(e) => hoverEffects(e)}>ADD TO BAG</button>
   } else {
     button = <button className={styles.cartGrey} onClick={(e) => checkSizeSelected()}>OUT OF STOCK</button>
   }
@@ -18,4 +18,3 @@ const Checkout = ({isStocked, checkSizeSelected}) => {
 }
 
 export default Checkout;
-

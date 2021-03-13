@@ -20,6 +20,7 @@ class Info extends React.Component {
 
     this.displayQuantities = this.displayQuantities.bind(this)
     this.checkSizeSelected = this.checkSizeSelected.bind(this)
+    this.hoverEffects = this.hoverEffects.bind(this)
   }
   // based on currently selected style and size
   displayQuantities(e){
@@ -61,10 +62,12 @@ class Info extends React.Component {
     })
   }
 
-  scroll() {
-    var element_to_scroll_to = document.getElementById('#test');
-    element_to_scroll_to.scrollIntoView();
-  }
+  hoverEffects(e) {
+    const el = document.querySelector("#checkoutButton");
+
+     el.style.backgroundPositionX = -e.offsetX + "px";
+     el.style.backgroundPositionY = -e.offsetY + "px";
+}
 
   render () {
     var prompt;
@@ -79,7 +82,7 @@ class Info extends React.Component {
           <div className={styles.info}>
 
             <div className={styles.reviews}>
-            ★★★★☆ <p className={styles.link} onClick={(e) => scroll()}>Read all reviews</p>
+            ★★★★☆ <a className={styles.link} href="#overview_to_reviews">Read all reviews</a>
             </div>
 
             <p className={styles.category}>{this.props.info.category}</p>
@@ -112,7 +115,7 @@ class Info extends React.Component {
               </div>
             </div>
             <div className={styles.checkoutDiv}>
-              <Checkout id="checkout" isStocked={this.state.isStocked} checkSizeSelected={this.checkSizeSelected} />
+              <Checkout id="checkout" isStocked={this.state.isStocked} checkSizeSelected={this.checkSizeSelected} hoverEffects={this.hoverEffects}/>
             </div>
           </div>
 

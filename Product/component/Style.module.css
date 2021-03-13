@@ -5,6 +5,15 @@
   border-radius: 50%;
   margin-right: .9vw;
   margin-bottom: .9vw;
+  margin-top: 1px;
+  margin-left: 1px;
   cursor: pointer;
   border:1px solid #657786;
+  transition: transform .3s;
+}
+
+.style:hover {
+  transform: scale(1.03);
+  /* background-color:#000;
+  opacity:0.8; */
 }
