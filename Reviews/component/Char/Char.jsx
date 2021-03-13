@@ -45,12 +45,12 @@ class Char extends React.Component {
         <div className={styles.select}>Please select</div> :
         <div className={styles.select}>{selectedChar[this.state.currentSelect - 1]}</div>}
         <div className={styles.buttonContainer}>
-          <div className={styles.buttons} onChange={this.handleSelect}>
-            <input className={styles.button1} type="radio" id="1" value="1" checked={this.state.currentSelect === '1'}/>
-            <input className={styles.button} type="radio" id="2" value="2" checked={this.state.currentSelect === '2'}/>
-            <input className={styles.button} type="radio" id="3" value="3" checked={this.state.currentSelect === '3'}/>
-            <input className={styles.button} type="radio" id="4" value="4" checked={this.state.currentSelect === '4'}/>
-            <input className={styles.button5} type="radio" id="5" value="5" checked={this.state.currentSelect === '5'}/>
+          <div className={styles.buttons} >
+            <input onChange={this.handleSelect} className={styles.button1} type="radio" id="1" value="1" checked={this.state.currentSelect === '1'}/>
+            <input onChange={this.handleSelect} className={styles.button} type="radio" id="2" value="2" checked={this.state.currentSelect === '2'}/>
+            <input onChange={this.handleSelect} className={styles.button} type="radio" id="3" value="3" checked={this.state.currentSelect === '3'}/>
+            <input onChange={this.handleSelect} className={styles.button} type="radio" id="4" value="4" checked={this.state.currentSelect === '4'}/>
+            <input onChange={this.handleSelect} className={styles.button5} type="radio" id="5" value="5" checked={this.state.currentSelect === '5'}/>
           </div>
         </div>
         <div className={styles.option}>

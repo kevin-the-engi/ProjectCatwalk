@@ -21,11 +21,22 @@
   overflow-y: auto;
   font-family: Helvetica;
   font-size: 16px;
-  padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 80px;
   padding-right: 30px;
   border-radius: 4px;
+}
+
+.closeButton {
+  padding-bottom: 20px;
+  padding-top: 30px;
+  float: right;
+  cursor: pointer;
+  font-size: 25px;
+  color: rgb(180, 180, 180);
+}
+.closeButton:hover {
+  color: rgb(0, 0, 0);
 }
 
 .form {
@@ -34,6 +45,7 @@
 }
 
 .title {
+  padding-top: 50px;
   font-size: 25px;
   margin-bottom: 50px;
   margin-top: 10px;
@@ -57,14 +69,15 @@
   cursor: pointer;
   font-weight: bold;
   margin-left: 32px;
-  border: 0.5px solid black;
-  background-color: white;
-  /* background-color: rgb(240, 240, 240); */
+  border-color: black;
+  border-radius: 2px;
+  color: white;
+  background-color: rgb(4, 0, 0);
 }
 
 .submitButton:hover {
-  color: white;
-  background-color: rgb(7, 0, 0);
+  background-color: rgb(102, 102, 102);
+  border-color: rgb(102, 102, 102);
 }
 
 .recommend {
@@ -78,6 +91,7 @@
   width: 24px;
   margin-bottom: 10px;
   cursor: pointer;
+  border: 1px solid rgb(165, 165, 165);
 }
 
 .select {
@@ -213,6 +227,7 @@
   padding-top: 14px;
   font-family: Helvetica;
   resize: none;
+  border: 1px solid rgb(165, 165, 165);
 }
 
 .summaryInput, .nickname, .email{
@@ -220,6 +235,7 @@
   padding-top: 12px;
   font-family: Helvetica;
   resize: none;
+  border: 1px solid rgb(165, 165, 165);
 }
 
 .alert {
@@ -231,3 +247,11 @@
   margin-top: 20px;
 }
 
+.bodyInput:hover, .summaryInput:hover, .nickname:hover, .email:hover {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.bodyInput:active, .bodyInput:focus, .summaryInput:active,  .summaryInput:focus, .nickname:active, .nickname:focus, .email:focus, .email:active {
+  outline: none;
+  border-bottom: 3px solid black;
+}

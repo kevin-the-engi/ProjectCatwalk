@@ -10,9 +10,9 @@ const ProductBreakdown = (props) => {
 
   return (
     <div id="prodChars">
-      {chars.map((char) => {
+      {chars.map((char, i) => {
         return (
-          <ProdChar char={char} metaData={props.metaData} chars={props.metaData.characteristics}/>
+          <ProdChar char={char} metaData={props.metaData} chars={props.metaData.characteristics} key={i}/>
         )
       })}
     </div>

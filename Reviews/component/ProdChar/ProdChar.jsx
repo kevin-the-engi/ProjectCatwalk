@@ -11,6 +11,7 @@ const ProdChar = (props) => {
     charMeaning = Object.values(charOptions[props.char]);
     percentage = (props.metaData.characteristics[props.char].value / 5) * 100;
   }
+  
   return (
    <div className={styles.container}>
      <div className={styles.chars}>

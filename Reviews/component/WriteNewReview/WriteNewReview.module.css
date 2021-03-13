@@ -10,8 +10,10 @@
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+  border-radius: 2px;
   border: 1px solid black;
   background-color: white;
+  outline: none;
 }
 
 .addReview {
@@ -23,7 +25,9 @@
   font-weight: bold;
   cursor: pointer;
   border: 1px solid black;
-  background-color: white
+  border-radius: 2px;
+  background-color: white;
+  outline: none;
 }
 
 .moreReviews:hover, .addReview:hover {

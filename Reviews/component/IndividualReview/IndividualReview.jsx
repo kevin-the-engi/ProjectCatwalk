@@ -10,8 +10,8 @@ class IndividualReview extends React.Component {
       report: false,
       review: ''
     }
-      this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
-      this.handleReportClick = this.handleReportClick.bind(this);
+    this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
+    this.handleReportClick = this.handleReportClick.bind(this);
   }
 
   handleHelpfulClick(e) {
@@ -23,14 +23,14 @@ class IndividualReview extends React.Component {
     this.props.handleHelpful(reviewId)
   }
 
-   handleReportClick(e) {
-    e.preventDefault();
-    this.setState({
-      report: true
-    })
-    var reviewId = this.state.review;
-    this.props.handleReport(reviewId)
-   }
+  handleReportClick(e) {
+  e.preventDefault();
+  this.setState({
+    report: true
+  })
+  var reviewId = this.state.review;
+  this.props.handleReport(reviewId)
+  }
 
   componentDidMount() {
     this.setState({

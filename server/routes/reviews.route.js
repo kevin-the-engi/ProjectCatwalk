@@ -23,7 +23,7 @@ route.post('/reviews', (req, res) => {
 })
 
 route.get('/reviews/', (req, res) => {
-  getReviews(req.query.product_id, (err, results) => {
+  getReviews(req.query.product_id, req.query.sort, (err, results) => {
     if (err) {
       res.sendStatus(404);
     } else {
@@ -83,7 +83,7 @@ var postReview = (params, callback) => {
   })
 }
 
-var getReviews = (id, callback) => {
+var getReviews = (id, sortType, callback) => {
   axios({
     method: 'get',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/`,
@@ -92,7 +92,8 @@ var getReviews = (id, callback) => {
     },
     params: {
       count: 150,
-      product_id: id
+      product_id: id,
+      sort: sortType
     }
   })
   .then((response) => {
