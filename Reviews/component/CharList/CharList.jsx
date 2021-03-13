@@ -20,7 +20,7 @@ class CharList extends React.Component {
   }
 
   render() {
-    console.log('charlist', this.state)
+    // console.log('charlist', this.state)
     var characteristics = Object.keys(this.props.metaData.characteristics);
     
     return (
