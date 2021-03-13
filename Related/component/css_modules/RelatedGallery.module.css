@@ -138,6 +138,10 @@
 }
 
 /* CSS for arrow buttons */
+.navigatorContainer {
+  display: flex;
+}
+
 .leftArrowButton {
   align-self: center;
   position: absolute;
@@ -188,6 +192,10 @@
   right: 22%;
   margin-right: 0.25%;
   outline: none;
+}
+
+.rightArrowButtonHide {
+  display: none
 }
 
 .rightArrowButton:hover {
