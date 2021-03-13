@@ -15,19 +15,23 @@ class Questions extends React.Component {
       productData: {},
       filtered: [],
       questions: [],
+      allQuestions: [],
       qTotal: 0,
       qCount: 2,
       hide: true,
       match: true,
+      height: 0,
+      expand: false
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
     this.getProductName = this.getProductName.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
-    this.getTotalQ = this.getTotalQ.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
     this.moreQ = this.moreQ.bind(this);
+    this.setOverflow = this.setOverflow.bind(this);
+    this.expandA = this.expandA.bind(this);
   }
 
   componentDidMount() {
@@ -55,14 +59,19 @@ class Questions extends React.Component {
               qTotal: filtered.data.length,
               match: true
             })
+
+            this.setOverflow();
           } else {
             this.setState({
               match: false
             })
+
+            this.setOverflow();
           }
         })
     } else {
       this.getQuestions();
+
       this.setState({
         match: true
       })
@@ -82,20 +91,29 @@ class Questions extends React.Component {
   }
 
   getQuestions(productID = this.state.productID) {
-    let query = `?product_id=${productID}&page=1&count=${this.state.qCount}`;
+    let query = `?product_id=${productID}&page=1&count=100`;
 
     axios.get('/qa/questions/' + query)
       .then(questions => {
+        let cutQuestions = questions.data.results.slice(0, this.state.qCount);
+
         this.setState({
           productData: questions.data,
-          questions: questions.data.results
+          questions: cutQuestions,
+          allQuestions: questions.data.results,
+          qTotal: questions.data.results.length
+        }, () => {
+          if (this.state.qTotal !== 0 && this.state.qCount < this.state.qTotal) {
+            this.setState({
+              hide: false
+            })
+          }
+
+          this.setOverflow();
         })
       })
       .catch(err => {
         console.log(err);
-      })
-      .then(() => {
-        this.getTotalQ();
       })
   }
 
@@ -105,32 +123,10 @@ class Questions extends React.Component {
 
     axios.post('/qa/questions/', data)
       .then((res) => {
-        console.log(res);
         this.getQuestions();
       })
       .catch(err => {
         console.log(err);
-      })
-  }
-
-  getTotalQ() {
-    let query = `?product_id=${this.state.productID}&page=1&count=100`;
-
-    axios.get('/qa/questions' + query)
-      .then((questions) => {
-        this.setState({
-          qTotal: questions.data.results.length
-        })
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .then(() => {
-        if (this.state.qTotal !== 0 && this.state.qCount < this.state.qTotal) {
-          this.setState({
-            hide: false
-          })
-        }
       })
   }
 
@@ -158,17 +154,35 @@ class Questions extends React.Component {
     }
 
     this.setState({
-      qCount: this.state.qCount
+      qCount: this.state.qCount,
     })
 
+    if (this.state.qCount === 4) {
+      this.setState({
+        height: document.getElementById('Q&AList').clientHeight
+      })
+    }
+
+    this.setOverflow();
+    this.getQuestions(this.props.productId);
+  }
+
+  setOverflow() {
     if (this.state.qCount >= 4 && this.state.questions.length >= 4) {
       let divHeight = document.getElementById('Q&AList').clientHeight;
 
       document.getElementById('Q&AList').style.height = divHeight;
       document.getElementById('Q&AList').setAttribute("class", "overFlow");
+    } else {
+      document.getElementById('Q&AList').style.height = "auto";
+      document.getElementById('Q&AList').removeAttribute("overFlow");
     }
+  }
 
-    this.getQuestions(this.props.productId);
+  expandA(expand) {
+    this.setState({
+      expand: expand
+    })
   }
 
   render() {
@@ -186,7 +200,8 @@ class Questions extends React.Component {
                 qData={this.state.questions}
                 updateHelpfulQ={this.updateHelpfulQ}
                 productName={this.state.productName}
-                expand={this.state.expand}
+                expandA={this.expandA}
+                isExpand={this.state.expand}
               />  : <i>There are no questions for this product. Be the first to ask!</i>)
               : <i>There are no matches. Try again.</i>
           }

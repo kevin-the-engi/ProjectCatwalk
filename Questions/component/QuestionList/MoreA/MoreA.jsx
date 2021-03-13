@@ -17,7 +17,7 @@ class MoreA extends React.Component {
     this.setState(state => ({
       expand: !state.expand
     }), () => {
-      this.props.moreA(this.state.expand);
+      this.props.expandA(this.state.expand);
     });
   }
 

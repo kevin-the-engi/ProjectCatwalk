@@ -80,7 +80,7 @@ class QModal extends React.Component {
                   type="text"
                   name="name"
                   value={this.state.name}
-                  placeholder="jackson11!"
+                  placeholder="Nickname: jackson11!"
                   maxLength="60"
                   required>
                 </input>
@@ -95,7 +95,7 @@ class QModal extends React.Component {
                   type="email"
                   name="email"
                   value={this.state.email}
-                  placeholder="jackson11!@email.com"
+                  placeholder="Email: jackson11!@email.com"
                   maxLength="60"
                   required>
                 </input>

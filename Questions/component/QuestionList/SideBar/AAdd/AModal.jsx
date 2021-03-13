@@ -116,7 +116,7 @@ class AModal extends React.Component {
                     type="text"
                     name="name"
                     value={this.state.name}
-                    placeholder="jack543!"
+                    placeholder="Nickname: jack543!"
                     maxLength="60"
                     required>
                   </input>
@@ -130,7 +130,7 @@ class AModal extends React.Component {
                     type="email"
                     name="email"
                     value={this.state.email}
-                    placeholder="jack@email.com"
+                    placeholder="Email: jack@email.com"
                     maxLength="60"
                     required>
                   </input>

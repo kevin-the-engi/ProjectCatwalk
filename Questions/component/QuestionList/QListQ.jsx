@@ -14,7 +14,6 @@ class QListQ extends React.Component {
       twoAnswers: [],
       allAnswers: [],
       aTotal: 0,
-      expand: false,
       height: "auto",
       overflow: false
     }
@@ -30,6 +29,12 @@ class QListQ extends React.Component {
     this.getAnswers(this.props.question.question_id);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.isExpand !== prevProps.isExpand) {
+      this.moreA();
+    }
+  }
+
   getAnswers(questionID) {
     axios.get(`/qa/questions/${questionID}/answers?page=1&count=100`)
       .then(answers => {
@@ -41,6 +46,9 @@ class QListQ extends React.Component {
           allAnswers: answers.data,
           aTotal: answers.data.length
         })
+      })
+      .then(() => {
+        this.moreA();
       })
       .catch(err => {
         console.log(err);
@@ -77,11 +85,8 @@ class QListQ extends React.Component {
       })
   }
 
-  moreA(expand) {
-    this.setState({
-      expand: expand
-    }, () => {
-      if (expand) {
+  moreA() {
+      if (this.props.isExpand) {
         this.setState({
           answers: this.state.allAnswers
         })
@@ -104,7 +109,6 @@ class QListQ extends React.Component {
           overflow: false
         })
       }
-    })
   }
 
   render() {
@@ -162,7 +166,7 @@ class QListQ extends React.Component {
           )}
         </section>
 
-          {this.state.aTotal > 2 ? <MoreA moreA={this.moreA} /> : null}
+          {this.state.aTotal > 2 ? <MoreA expandA={this.props.expandA} /> : null}
 
       </section>
     )
