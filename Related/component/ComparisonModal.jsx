@@ -65,7 +65,6 @@ class ComparisonModal extends React.Component {
       rows.push(currentRow);
     }
     this.setState({tableRows: rows});
-
   }
 
   handleClick (event) {

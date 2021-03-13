@@ -10,7 +10,11 @@ class RightArrowButton extends React.Component {
   handleClick() {
 
     let width = document.getElementById('productCard0').offsetWidth + 10;
+    // let scrollDistance = document.getElementById('relatedContainer').scrollLeft;
     document.getElementById('relatedContainer').scrollLeft += width;
+    // if (!(scrollDistance > 0)) {
+    //   console.log('no more scrolling room left');
+    // }
 
     // let containerWidth = document.getElementById('relatedContainer').scrollWidth;
 

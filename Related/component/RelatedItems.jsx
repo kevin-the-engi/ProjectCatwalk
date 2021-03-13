@@ -90,7 +90,7 @@ class RelatedItems extends React.Component {
           <div className={styles.relatedItemsBanner}>
             <p className={styles.sectionTitle}>Your Outfit</p>
           </div>
-          <OutfitGallery addToOutfit={this.addToOutfit} removeFromOutfit={this.removeFromOutfit} outfitItems={this.state.outfitItems}/>
+          <OutfitGallery addToOutfit={this.addToOutfit} removeFromOutfit={this.removeFromOutfit} outfitItems={this.state.outfitItems} viewNewProduct={this.props.viewNewProduct}/>
         </div>
       </div>
       )

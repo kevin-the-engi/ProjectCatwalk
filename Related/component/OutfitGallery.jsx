@@ -9,10 +9,10 @@ const OutfitGallery = (props) => {
 
   return (
     <div className={styles.outfitContainer}>
+      <AddToOutfitCard addToOutfit={props.addToOutfit}/>
       {/* <LeftArrowButton/>
       <RightArrowButton/> */}
-      <AddToOutfitCard addToOutfit={props.addToOutfit}/>
-      {props.outfitItems.map((outfitItem) => <ProductCard relatedItem={outfitItem} removeFromOutfit={props.removeFromOutfit}/>)}
+      {props.outfitItems.map((outfitItem, index) => <ProductCard relatedItem={outfitItem} removeFromOutfit={props.removeFromOutfit} viewNewProduct={props.viewNewProduct} index={index} key={index}/>)}
     </div>
   )
 }

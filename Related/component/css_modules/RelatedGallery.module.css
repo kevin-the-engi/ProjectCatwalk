@@ -120,8 +120,18 @@
   color: red;
 }
 
+.discountedPrice {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px;
+  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: black;
+  text-decoration: line-through;
+}
+
 .averageRating {
-  margin-top: 20px;
+  margin-top: 8px;
   font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
@@ -139,6 +149,10 @@
   appearance: none;
   border: 0px;
   outline: none;
+}
+
+.leftArrowButtonHide {
+  display: none;
 }
 
 .leftArrowButton:hover {
@@ -218,9 +232,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 1%;
-  border-radius: 2%;
+  border-radius: 3px;
 }
 
 .modalBanner {
