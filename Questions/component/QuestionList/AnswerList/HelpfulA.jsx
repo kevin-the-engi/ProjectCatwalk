@@ -21,13 +21,17 @@ class HelpfulA extends React.Component {
   }
 
   render() {
-    const display = this.state.show ? `${styles['helpful-btn']} ${styles['display-on']}` : `${styles['helpful-btn']} ${styles['display-off']}`;
-
     return(
       <div className="helpContainer">
         <sub>
           <span className={styles.text}>Helpful?</span>
-          <button className={display} onClick={this.handleClick}>Yes</button>
+          <button
+            className={this.state.show ?
+              `${styles['helpful-btn']} ${styles['display-on']}` :
+              `${styles['helpful-btn']} ${styles['display-off']}`
+            }
+            onClick={this.handleClick}>Yes
+          </button>
           <span className={styles.number}>
             ({this.props.helpful})
           </span>
