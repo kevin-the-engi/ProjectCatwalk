@@ -14,13 +14,11 @@ class CarouselNavigator extends React.Component {
     this.scrollLeft = this.scrollLeft.bind(this);
   }
 
-  /*
-    1. manage state of maxScrollCount, leftScrollCount and rightScrollCount in this component
-    2. send the states down to each of the Left and Right Arrow components to facilitate conditional rendering of arrows
-    3. update state of lettScrollCount and rightScrollCount based on click handlers
-    */
-
   scrollRight() {
+    // let containerId;
+    // if (this.props.gallery === 'related') {
+    //   containerId = 'relatedContainer';
+    // }
     let width = document.getElementById('productCard0').offsetWidth + 10;
     let scrollWidth = document.getElementById('relatedContainer').scrollWidth;
     let clientWidth = document.getElementById('relatedContainer').clientWidth;
@@ -41,8 +39,8 @@ class CarouselNavigator extends React.Component {
   render() {
     return (
       <div className={styles.navigatorContainer}>
-        <LeftArrowButton maxScrollCount={this.state.maxScrollCount} scrollCount={this.state.scrollCount} scrollLeft={this.scrollLeft}/>
-        <RightArrowButton maxScrollCount={this.state.maxScrollCount} scrollCount={this.state.scrollCount} scrollRight={this.scrollRight}/>
+        <LeftArrowButton maxScrollCount={this.state.maxScrollCount} scrollCount={this.state.scrollCount} scrollLeft={this.scrollLeft} gallery ={this.props.gallery}/>
+        <RightArrowButton maxScrollCount={this.state.maxScrollCount} scrollCount={this.state.scrollCount} scrollRight={this.scrollRight} gallery={this.props.gallery}/>
       </div>
     )
   }

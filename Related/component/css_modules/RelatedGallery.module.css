@@ -154,19 +154,14 @@
   outline: none;
   border: 1px solid black;
   transform: translateY(-50%);
-  transition-property: color, background-color, opacity;
-  transition-duration: 0.1s, 0.1s, 0.2s;
-  transition-timing-function: cubic-bezier(0.3, 0, 0.45, 1), cubic-bezier(0.3, 0, 0.45, 1), cubic-bezier(0.3, 0, 0.45, 1);
-  transition-delay: 0s, 0s, 0s;
+  transition: color .1s cubic-bezier(0.3, 0, 0.45, 1),background-color .1s cubic-bezier(0.3, 0, 0.45, 1),opacity .2s cubic-bezier(0.3, 0, 0.45, 1);
 }
 
 .leftArrowButtonHide {
-  opacity: 0;
-  transition-property: opacity, visibility;
-  transition-duration: 0.2s, 0.2s;
-  transition-timing-function: cubic-bezier(0.3, 0, 0.45, 1), cubic-bezier(0.3, 0, 0.45, 1);
-  transition-delay: 0s, 0.2s;
+  transition-delay: .5s, .0s; /* visibility delay = opacity duration */
+  transition-timing-function: ease-out;
   visibility: hidden;
+  opacity: 0;
 }
 
 .leftArrowButton:hover {

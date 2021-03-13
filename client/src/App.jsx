@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      productId: 14053
+      productId: 14038
     }
     this.viewNewProduct = this.viewNewProduct.bind(this);
   }
@@ -23,10 +23,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Product productId={this.state.productId} />
+        {/* <Product productId={this.state.productId} /> */}
         <RelatedItems productId={this.state.productId} viewNewProduct={this.viewNewProduct}/>
-        <Questions productId={this.state.productId} />
-        <Reviews productId={this.state.productId} />
+        {/* <Questions productId={this.state.productId} />
+        <Reviews productId={this.state.productId} /> */}
       </div>
     )
   }
