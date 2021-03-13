@@ -21,7 +21,6 @@ class Questions extends React.Component {
       hide: true,
       match: true,
       height: 0,
-      expand: false
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
@@ -31,7 +30,6 @@ class Questions extends React.Component {
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
     this.moreQ = this.moreQ.bind(this);
     this.setOverflow = this.setOverflow.bind(this);
-    this.expandA = this.expandA.bind(this);
   }
 
   componentDidMount() {
@@ -179,12 +177,6 @@ class Questions extends React.Component {
     }
   }
 
-  expandA(expand) {
-    this.setState({
-      expand: expand
-    })
-  }
-
   render() {
     return (
       <div className="main-container">
@@ -200,8 +192,7 @@ class Questions extends React.Component {
                 qData={this.state.questions}
                 updateHelpfulQ={this.updateHelpfulQ}
                 productName={this.state.productName}
-                expandA={this.expandA}
-                isExpand={this.state.expand}
+                expand={this.state.expand}
               />  : <i>There are no questions for this product. Be the first to ask!</i>)
               : <i>There are no matches. Try again.</i>
           }

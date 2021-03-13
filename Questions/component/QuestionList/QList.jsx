@@ -10,8 +10,6 @@ const QList = (props) => {
           question={question}
           updateHelpfulQ={props.updateHelpfulQ}
           productName={props.productName}
-          expandA={props.expandA}
-          isExpand={props.isExpand}
         />
       )}
     </div>
