@@ -10,6 +10,7 @@
 .helpful-btn:hover, .addAnswer-btn:hover {
   color: #00ace6;
   transform: scale(1.1);
+  font-weight: bold;
 }
 
 #moreAnswer {
@@ -17,7 +18,7 @@
   margin-top: 10px;
 }
 
-#moreAnswer-btn {
+.moreAnswer-btn {
   background: none;
   border: none;
   padding: 0;
@@ -27,13 +28,14 @@
   transition: transform 0.2s;
 }
 
-#moreAnswer-btn:hover {
+.moreAnswer-btn:hover {
   transform: scale(1.1);
 }
 
 .report-btn:hover {
   color: red;
   transform: scale(1.1);
+  font-weight: bold;
 }
 
 .sidebar {

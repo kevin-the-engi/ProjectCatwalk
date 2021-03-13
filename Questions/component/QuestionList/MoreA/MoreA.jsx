@@ -24,7 +24,7 @@ class MoreA extends React.Component {
   render() {
     return(
       <div id={sidebar.moreAnswer}>
-        <button id={sidebar["moreAnswer-btn"]} onClick={this.handleClick}>
+        <button className={sidebar["moreAnswer-btn"]} onClick={this.handleClick}>
           {this.state.expand ? 'COLLAPSE ANSWERS' : 'SEE MORE ANSWERS'}
         </button>
       </div>

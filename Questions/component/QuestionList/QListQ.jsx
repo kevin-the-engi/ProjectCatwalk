@@ -14,7 +14,9 @@ class QListQ extends React.Component {
       twoAnswers: [],
       allAnswers: [],
       aTotal: 0,
-      expand: false
+      expand: false,
+      height: "auto",
+      overflow: false
     }
 
     this.getAnswers = this.getAnswers.bind(this);
@@ -29,7 +31,6 @@ class QListQ extends React.Component {
   }
 
   getAnswers(questionID) {
-    console.log('test')
     axios.get(`/qa/questions/${questionID}/answers?page=1&count=100`)
       .then(answers => {
         let twoAnswers = answers.data.slice(0, 2);
@@ -84,9 +85,23 @@ class QListQ extends React.Component {
         this.setState({
           answers: this.state.allAnswers
         })
+
+        if (this.state.aTotal <= 5) {
+          this.setState({
+            height: "auto",
+            overflow: false
+          })
+        } else {
+          this.setState({
+            height: "400px",
+            overflow: true
+          })
+        }
       } else {
         this.setState({
-          answers: this.state.twoAnswers
+          answers: this.state.twoAnswers,
+          height: "auto",
+          overflow: false
         })
       }
     })
@@ -134,7 +149,7 @@ class QListQ extends React.Component {
           </div>
         </div>
 
-        <section className={styles.answersContainer}>
+        <section id="answersContainer" className={`${styles.answersContainer} ${this.state.overflow ? 'overFlow' : null}`} style={{height: this.state.height}}>
           {this.state.answers.map(answer =>
             <QListA
               key={answer.answer_id}
@@ -145,9 +160,10 @@ class QListQ extends React.Component {
               getAnswers={this.getAnswers}
             />
           )}
-
-          {this.state.aTotal > 2 ? <MoreA  moreA={this.moreA} /> : null}
         </section>
+
+          {this.state.aTotal > 2 ? <MoreA moreA={this.moreA} /> : null}
+
       </section>
     )
   }

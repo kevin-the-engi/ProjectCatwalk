@@ -75,13 +75,14 @@
   width: 200px;
   border-color: black;
   border-radius: 5px;
-  background-color: white;
+  background-color: black;
+  color: white;
   transition: transform 0.3s;
 }
 
 .submit-btn:hover, .close-btn:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   transform: scale(1.1);
 }
 
