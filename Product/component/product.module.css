@@ -41,7 +41,6 @@
   border-bottom: 3px solid black;
 }
 
-
 .style {
   width: 4vw;
   height: 4vw;
@@ -51,6 +50,11 @@
   margin-bottom: .9vw;
   cursor: pointer;
   border:1px solid #657786;
+}
+
+.style:hover {
+  background-color:#000;
+  opacity:0.5;
 }
 
 .styleClicked {
