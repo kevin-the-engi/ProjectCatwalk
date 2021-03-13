@@ -45,6 +45,9 @@ class QListQ extends React.Component {
       .catch(err => {
         console.log(err);
       })
+      .then(() => {
+        this.moreA(this.state.expand)
+      })
   }
 
   addAnswer(questionID, answerForm) {
