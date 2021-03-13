@@ -33,10 +33,12 @@ class Gallery extends React.Component {
   render() {
     return (
       <div className={styles.right}>
-        <div className={styles.imageDiv}>
-          <div id="preview" className={styles.div} onMouseMove={this.zoomIn} onMouseOut={this.zoomOut}>
+        <div className={styles.galleryDiv}>
+          <div id="preview" className={styles.preview} onMouseMove={this.zoomIn} onMouseOut={this.zoomOut}>
+          <div className={styles.imageDiv}>
             <img id="zoom1" className={styles.image} src={this.props.image} alt="dress"></img>
-            <div id="thumbnails" className={styles.thumbnails}>
+          </div>
+          <div id="thumbnails" className={styles.thumbnails}>
               {this.props.stylePhotos.map((photo, i) =>
                 <Thumbnail key={i} id={i} photo={photo.url} handleThumbnailClick={this.props.handleThumbnailClick}/>)}
             </div>
