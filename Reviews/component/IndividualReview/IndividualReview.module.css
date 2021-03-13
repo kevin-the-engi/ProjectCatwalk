@@ -44,10 +44,18 @@
   cursor: pointer;
 }
 
+.helpfulYesButton:hover {
+  font-weight: bold;
+}
+
 .report {
   margin-left: 13px;
   border-bottom: 1px solid black;
   cursor: pointer;
+}
+
+.report:hover {
+  font-weight: bold;
 }
 
 .helpful {

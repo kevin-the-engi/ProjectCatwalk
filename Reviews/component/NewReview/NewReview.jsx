@@ -1,7 +1,6 @@
 import React from 'react';
 import CharList from '../CharList/CharList.jsx'
 import NewReviewStars from '../NewReviewStars/NewReviewStars.jsx'
-
 import styles from './NewReview.module.css'
 import axios from 'axios'
 
@@ -58,30 +57,30 @@ class NewReview extends React.Component {
      })
    }
 
-   validateForm() {
-     var validated = false;
-     if (this.state.summary.length < 61 &&
-      this.state.summary.length !== 0 &&
-      this.state.body.length > 49 &&
-      this.state.body.length !== 0 &&
-      this.state.body.length < 999 &&
-      this.state.email.length < 61 &&
-      this.state.email.length !==0 &&
-      this.state.name.length < 61 &&
-      this.state.rating !== '' &&
-      this.state.recommend !== '' &&
-      this.state.chars !== {}) {
-        validated = true;
-     }
-     if (!validated) {
+  validateForm() {
+    var validated = false;
+    if (this.state.summary.length < 61 &&
+    this.state.summary.length !== 0 &&
+    this.state.body.length > 49 &&
+    this.state.body.length !== 0 &&
+    this.state.body.length < 999 &&
+    this.state.email.length < 61 &&
+    this.state.email.length !==0 &&
+    this.state.name.length < 61 &&
+    this.state.rating !== '' &&
+    this.state.recommend !== '' &&
+    this.state.chars !== {}) {
+      validated = true;
+    }
+    if (!validated) {
       this.setState({
         alert: true
       })
-     }
-     return validated;
-   }
+    }
+    return validated;
+  }
 
-   handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     var params = {
       product_id: this.state.product_id,
@@ -98,14 +97,13 @@ class NewReview extends React.Component {
       this.props.handleClick();
       this.props.handlePostReview(params);
     }
-   }
+  }
 
   render() {
-    console.log('newrev', this.props)
-
     return (
       <div className={styles.modal}>
         <div className={styles.modalmain}>
+          <div className={styles.closeButton} onClick={this.props.handleClick}>X</div>
           <div className={styles.title}>Write Your Review About the {this.props.productName}</div>
           <form id='formSubmit' className={styles.form} onSubmit={this.handleSubmit}>
             <div className={styles.product}>
@@ -118,14 +116,14 @@ class NewReview extends React.Component {
                 <div className={styles.recommend}>
                   <div>Would you recommend this product?</div>
                   <div className={styles.recommendContainer}>
-                    <div className={styles.recommendButtons}  onChange={this.changeRecommend}>
-                      <input type="radio" name="recommend" id="recommendYes" className={styles.recommendButton} checked={this.state.recommend === true} required></input>
+                    <div className={styles.recommendButtons}>
+                      <input onChange={this.changeRecommend} type="radio" name="recommend" id="recommendYes" className={styles.recommendButton} checked={this.state.recommend === true} required></input>
                       <div className={styles.recommendLabel}>
                         <label>Yes</label>
                       </div>
                     </div>
-                    <div className={styles.recommendButtons}  onChange={this.changeRecommend}>
-                      <input type="radio" name="recommend" id="recommendNo" className={styles.recommendButton} checked={this.state.recommend === false} required></input>
+                    <div className={styles.recommendButtons}>
+                      <input onChange={this.changeRecommend} type="radio" name="recommend" id="recommendNo" className={styles.recommendButton} checked={this.state.recommend === false} required></input>
                       <div className={styles.recommendLabel}>
                         <label className={styles.recommendLabel}>No</label>
                       </div>

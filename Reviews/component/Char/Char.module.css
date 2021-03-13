@@ -31,14 +31,17 @@
   position: relative;
   top: -13px;
   cursor: pointer;
+  border: 1px solid rgb(165, 165, 165);
 }
 
 .button1 {
   right: 6px;
+  border: 1px solid rgb(165, 165, 165);
 }
 
 .button5 {
   left: 6px;
+  border: 1px solid rgb(165, 165, 165);
 }
 
 .buttons {
@@ -48,14 +51,13 @@
   position: relative;
   height: 1px;
   width: 85%;
-  background:rgb(0, 0, 0);
+  background:rgb(160, 160, 160);
   bottom: -17px;
 }
 
 .buttonContainer {
   height: 38px;
 }
-
 
 .charContainer {
   width: 50%;

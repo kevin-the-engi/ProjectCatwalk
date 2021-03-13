@@ -22,10 +22,11 @@ class CharList extends React.Component {
   render() {
     console.log('charlist', this.state)
     var characteristics = Object.keys(this.props.metaData.characteristics);
+    
     return (
       <div className={styles.container}>
-        {characteristics.map((char) =>
-        <Char char={char} metaData={this.props.metaData} handleSelectOption={this.handleSelectOption} />)}
+        {characteristics.map((char, i) =>
+        <Char char={char} metaData={this.props.metaData} handleSelectOption={this.handleSelectOption} key={i} />)}
       </div>
     )
   }

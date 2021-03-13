@@ -4,7 +4,8 @@ import Stars from '../Stars/Stars.jsx'
 import styles from './RatingBreakdown.modules.css'
 
 const RatingBreakdown = (props) => {
-   if (props && props.recommended.true !== '' || props.recommended.false!== '' && props.ratings) {
+
+  if (props && props.recommended && props.ratings) {
     var oneRatings = Number(props.ratings['1']) || 0;
     var twoRatings = Number(props.ratings['2']) || 0;
     var threeRatings = Number(props.ratings['3']) || 0;
@@ -24,28 +25,29 @@ const RatingBreakdown = (props) => {
     var recommendFalse = Number(props.recommended.false);
     var rating = recommendTrue / (recommendTrue + recommendFalse) * 100;
     var roundedRating = rating.toFixed(1);
-   }
-    return (
-      <div className={styles.ratingBreakdown}>
-        <div className={styles.header}>
-          <div className={styles.numRating}>
-            {roundedAvg}
-          </div>
-          <Stars rating={Math.round(roundedAvg)}/>
-        </div>
-        <div className={styles.recommend}>
-          {roundedRating}% of reviewers recommend this product
-        </div>
-          <Sliders
-          oneStar={percentageOne} oneRatings={oneRatings}
-          twoStars={percentageTwo} twoRatings={twoRatings}
-          threeStars={percentageThree} threeRatings={threeRatings}
-          fourStars={percentageFour} fourRatings={fourRatings}
-          fiveStars={percentageFive} fiveRatings={fiveRatings}
-          />
-      </div>
-    )
   }
+
+  return (
+    <div className={styles.ratingBreakdown}>
+      <div className={styles.header}>
+        <div className={styles.numRating}>
+          {roundedAvg}
+        </div>
+        <Stars rating={Math.round(roundedAvg)}/>
+      </div>
+      <div className={styles.recommend}>
+        {roundedRating}% of reviewers recommend this product
+      </div>
+        <Sliders
+        oneStar={percentageOne} oneRatings={oneRatings}
+        twoStars={percentageTwo} twoRatings={twoRatings}
+        threeStars={percentageThree} threeRatings={threeRatings}
+        fourStars={percentageFour} fourRatings={fourRatings}
+        fiveStars={percentageFive} fiveRatings={fiveRatings}
+        />
+    </div>
+  )
+}
 
 
 export default RatingBreakdown;

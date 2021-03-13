@@ -1,7 +1,8 @@
 .title {
   margin-left: 22%;
   font-family: Helvetica;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
+  font-size: 20px;
 }
 
 .container {
@@ -15,6 +16,8 @@
 }
 
 .left {
+  position: relative;
+  z-index: -1;
   width: 33%;
   font-family: Helvetica;
   margin-right: 5%;
@@ -31,9 +34,114 @@
   font-family: Helvetica;
   font-size: 20px;
   font-weight: bold;
+  display: flex;
 }
 
 .footer {
   padding-top: 35px;
   padding-bottom: 20px;
+}
+
+.dropbtn {
+  font-size: 20px;
+  font-family: Helvetica;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  padding-left: 3px;
+  outline: none;
+}
+
+.drop {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.v {
+  border-bottom: 1px solid black;
+  font-size: 10px;
+  padding-top: 7px;
+}
+
+.dropdown {
+  margin-left: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+.btnWithV {
+  display:flex;
+}
+
+.dropdowncontent {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 160px;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-weight: normal;
+  border:  solid rgb(189, 189, 189);
+  border-width: thin;
+  border-radius: 3px;
+}
+
+.sortoption {
+  height: 30px;
+  padding-left: 15px;
+  padding-top: 15px;
+  color: rgb(6, 0, 0);
+  text-decoration: none;
+  display: block;
+  font-size: 15px;
+  border-bottom:  solid rgb(189, 189, 189);
+  border-width: thin;
+}
+
+.sortoption:hover {
+  background-color: rgb(236, 234, 234);
+}
+
+.dropDownClick {
+  margin-left: 5px;
+  display: block;
+  outline: 0;
+}
+
+.dropDownClickClose {
+  margin-left: 5px;
+  position: relative;
+  display: inline-block;
+  outline: 0;
+}
+
+.dropDownContent {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 160px;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-weight: normal;
+  border:  solid rgb(189, 189, 189);
+  border-width: thin;
+  border-radius: 3px;
+}
+
+.dropDownContentClose {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 160px;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-weight: normal;
+  border:  solid rgb(189, 189, 189);
+  border-width: thin;
+  border-radius: 3px;
 }
