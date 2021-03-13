@@ -5,16 +5,33 @@
 
 .imageDiv {
   height: 33vw;
-  text-align: center;
   border:1px solid #E1E8ED;
+  background: #f8f8f8;
+  border-radius: 3px;
+  text-align: center;
+  position: relative;
+}
+
+.div {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 1000px;
+  background-position: center;
+  cursor: crosshair;
   position: relative;
 }
 
 .image{
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   cursor: crosshair;
+}
+
+.hide{
+  visibility: hidden;
+  display: none;
 }
 
 .thumbnails {
@@ -25,6 +42,7 @@
   left: 2%;
   overflow: hidden;
   scroll-behavior: smooth;
+  border-radius: 3px;
 }
 
 .topArrow {
@@ -50,7 +68,7 @@
 }
 
 .hide {
-  border: solid red;
+  border: solid transparent;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
