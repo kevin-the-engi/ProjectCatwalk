@@ -8,20 +8,12 @@ const QListA = (props) => {
     answer: {
       answer_id,
       body,
+      date,
       answerer_name,
       helpfulness
     }
   } = props;
 
-  let date = props.answer.date.slice(0, 10).split('-');
-  let year = Number(date[0]);
-  let month = Number(date[1]) - 1;
-  let day = Number(date[2]) - 1;
-  date = new Date(year, month, day)
-
-  const formattedDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(date);
-
-  // console.log(props);
   return(
     <div className={styles.answerContainer}>
       <div className={styles["answer-body"]}>
@@ -37,7 +29,7 @@ const QListA = (props) => {
           <span className={styles.answererContainer}>
             <span className={styles.answerer}>
               <sub>
-                by {answerer_name === 'Seller' ? <strong>{answerer_name}</strong>: `${answerer_name}`}, {formattedDate}
+                by {answerer_name === 'Seller' ? <strong>{answerer_name}</strong>: `${answerer_name}`}, {date}
               </sub>
             </span>
 

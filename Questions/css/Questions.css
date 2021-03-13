@@ -1,8 +1,11 @@
 .main-container {
-  /* max-width: 900px; */
-
   margin: 5em 22%;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-header {
+  height: 100px;
+  font-family: Helvetica;
 }
 
 .main-body {
@@ -14,8 +17,12 @@
 
 .main-footer {
   display: flex;
-  /* justify-content: space-evenly; */
+  flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.visuallyhidden {
+  visibility: hidden;
 }
 
 .separator {
@@ -28,7 +35,7 @@
 }
 
 .overFlow::-webkit-scrollbar {
-  background: floralwhite;
+  background: rgb(235, 235, 235);
   border-radius: 10px;
   width: 10px;
 }

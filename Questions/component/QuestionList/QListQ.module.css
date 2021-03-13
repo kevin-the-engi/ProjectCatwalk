@@ -34,6 +34,7 @@ section.questionContainer:last-of-type {
 
 .answersContainer {
   margin-top: 10px;
+  height: auto;
 }
 
 .question-text, .question-prefix {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import QListA from './AnswerList/QListA.jsx';
 import HelpfulQ from './SideBar/HelpfulQ.jsx';
 import AAdd from './SideBar/AAdd/AAdd.jsx';
+import MoreA from './MoreA/MoreA.jsx';
 import styles from './QListQ.module.css';
 
 class QListQ extends React.Component {
@@ -10,14 +11,19 @@ class QListQ extends React.Component {
     super(props);
     this.state = {
       answers: [],
+      twoAnswers: [],
+      allAnswers: [],
       aTotal: 0,
-      show: false
+      expand: false,
+      height: "auto",
+      overflow: false
     }
 
     this.getAnswers = this.getAnswers.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
     this.updateHelpfulA = this.updateHelpfulA.bind(this);
     this.reportA = this.reportA.bind(this);
+    this.moreA = this.moreA.bind(this);
   }
 
   componentDidMount() {
@@ -27,33 +33,30 @@ class QListQ extends React.Component {
   getAnswers(questionID) {
     axios.get(`/qa/questions/${questionID}/answers?page=1&count=100`)
       .then(answers => {
-        let sortSeller = answers.data.results.sort((a, b) =>
-          (a.answerer_name === 'Seller') ? -1 : (a === b) ? ((a.answer_name !== 'Seller') ? 1 : -1) : 1);
+        let twoAnswers = answers.data.slice(0, 2);
 
-        if (!this.state.show) {
-          let twoAnswers = sortSeller.slice(0, 2);
-
-          this.setState({
-            answers: twoAnswers,
-            aTotal: answers.data.results.length
-          })
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-
-  addAnswer(questionID, answerForm) {
-    axios.post(`/qa/questions/${questionID}/answers`, answerForm)
-      .then(res => {
-        console.log(res);
+        this.setState({
+          twoAnswers: twoAnswers,
+          answers: twoAnswers,
+          allAnswers: answers.data,
+          aTotal: answers.data.length
+        })
       })
       .catch(err => {
         console.log(err);
       })
       .then(() => {
+        this.moreA(this.state.expand)
+      })
+  }
+
+  addAnswer(questionID, answerForm) {
+    axios.post(`/qa/questions/${questionID}/answers`, answerForm)
+      .then(() => {
         this.getAnswers(questionID);
+      })
+      .catch(err => {
+        console.log(err);
       })
   }
 
@@ -75,6 +78,36 @@ class QListQ extends React.Component {
       .catch(err => {
         console.log(err);
       })
+  }
+
+  moreA(expand) {
+    this.setState({
+      expand: expand
+    }, () => {
+      if (expand) {
+        this.setState({
+          answers: this.state.allAnswers
+        })
+
+        if (this.state.aTotal <= 5) {
+          this.setState({
+            height: "auto",
+            overflow: false
+          })
+        } else {
+          this.setState({
+            height: "400px",
+            overflow: true
+          })
+        }
+      } else {
+        this.setState({
+          answers: this.state.twoAnswers,
+          height: "auto",
+          overflow: false
+        })
+      }
+    })
   }
 
   render() {
@@ -119,7 +152,7 @@ class QListQ extends React.Component {
           </div>
         </div>
 
-        <section className={styles.answersContainer}>
+        <section id="answersContainer" className={`${styles.answersContainer} ${this.state.overflow ? 'overFlow' : null}`} style={{height: this.state.height}}>
           {this.state.answers.map(answer =>
             <QListA
               key={answer.answer_id}
@@ -131,6 +164,9 @@ class QListQ extends React.Component {
             />
           )}
         </section>
+
+          {this.state.aTotal > 2 ? <MoreA moreA={this.moreA} /> : null}
+
       </section>
     )
   }

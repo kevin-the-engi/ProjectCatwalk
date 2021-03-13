@@ -2,16 +2,16 @@
   position: fixed;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-main {
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-  position: absolute;
+  position: fixed;
   background: white;
   border-radius: 15px;
   width: 50%;
@@ -19,10 +19,25 @@
   min-width: 450px;
   max-width: 500px;
   max-height: 700px;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%,-50%);
   padding: 2em;
+  animation-name: show;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .display-on {

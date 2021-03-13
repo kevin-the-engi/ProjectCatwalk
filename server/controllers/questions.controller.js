@@ -1,14 +1,12 @@
-// const TOKEN = '36add1c2dcc65d0b90bf3e081b8a55d489f489f6'
 const TOKEN = require('../../config.js')
 const axios = require('axios');
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 
 const options = {
   headers: {
-    Authorization: TOKEN // replace with your own key and comment out line 1
+    Authorization: TOKEN
   }
 };
-
 
 const readProductName = (req, res) => {
   axios.get(API + req.path, options)
@@ -20,36 +18,34 @@ const readProductName = (req, res) => {
     })
 }
 
+const filterQuestions = (req, res) => {
+  let id = req.params.product_id;
+  let search = req.params.search;
+  let query = API + `/qa/questions/?product_id=${id}&page=1&count=100`;
+
+  axios.get(query, options)
+    .then(questions => {
+      questions = questions.data.results;
+      let filtered = questions.filter(question => {
+        if (question.question_body.toLowerCase().includes(search.toLowerCase())) {
+          return question;
+        } else {
+          return null
+        }
+      })
+
+      res.status(200).send(filtered);
+    })
+    .catch(err => {
+      res.sendStatus(500);
+    })
+};
+
 const readQuestions = (req, res) => {
   let id = req.query.product_id;
   let page = req.query.page || 1;
   let count = req.query.count || 5;
   let query = API + req.path + `?product_id=${id}&page=${page}&count=${count}`;
-
-  // const innerFunction = (pg, data = null) => {
-  //   if (data !== null) {
-  //     if (data.length === 0) {
-  //       return [];
-  //     }
-  //   }
-
-  //   let query = API + req.path + `?product_id=${id}&page=${pg}&count=5`;
-
-  //   axios.get(query, options)
-  //   .then(questions => {
-  //     // res.status(200).send(questions.data);
-  //     let questionsPage = [];
-  //     questionsPage = questionsPage.concat(innerFunction(pg++, questions.data));
-
-  //     res.status(200).send(questionsPage);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.sendStatus(500);
-  //   })
-  // }
-
-  // innerFunction(page)
 
   axios.get(query, options)
     .then(questions => {
@@ -67,7 +63,21 @@ const readAnswers = (req, res) => {
 
   axios.get(query, options)
     .then(answers => {
-      res.status(200).send(answers.data);
+      answers.data.results.forEach(answer => {
+        let date = answer.date.slice(0, 10).split('-');
+        let year = Number(date[0]);
+        let month = Number(date[1]) - 1;
+        let day = Number(date[2]) - 1;
+        date = new Date(year, month, day)
+
+        const formattedDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(date);
+        answer.date = formattedDate;
+      })
+
+      let sortSeller = answers.data.results.sort((a, b) =>
+      (a.answerer_name === 'Seller') ? -1 : (a === b) ? ((a.answer_name !== 'Seller') ? 1 : -1) : 1);
+
+      res.status(200).send(sortSeller);
     })
     .catch(err => {
       res.sendStatus(500);
@@ -75,7 +85,6 @@ const readAnswers = (req, res) => {
 };
 
 const createQuestions = (req, res) => {
-  console.log(req.body);
   axios.post(API + req.path, req.body, options)
     .then(() => {
       res.sendStatus(201);
@@ -83,8 +92,6 @@ const createQuestions = (req, res) => {
     .catch(err => {
       res.sendStatus(500);
     })
-
-  // res.send('I see you trying to POST a question.');
 };
 
 const createAnswers = (req, res) => {
@@ -95,7 +102,6 @@ const createAnswers = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('I see you trying to POST an answer.');
 };
 
 const updateHelpfulQ = (req, res) => {
@@ -106,7 +112,6 @@ const updateHelpfulQ = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('Let us PUT a pin on that helpful question');
 };
 
 const updateReportQ = (req, res) => {
@@ -117,7 +122,6 @@ const updateReportQ = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('PUT your hands up! You are reported for a bad question!');
 };
 
 const updateHelpfulA = (req, res) => {
@@ -128,7 +132,6 @@ const updateHelpfulA = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('Your answer was actually helpful so let\'s PUT that up.');
 };
 
 const updateReportA = (req, res) => {
@@ -139,11 +142,11 @@ const updateReportA = (req, res) => {
   .catch(err => {
     res.sendStatus(500);
   })
-  // res.send('I don\'t have to PUT up with your lame answer!');
 };
 
 module.exports = {
   readProductName,
+  filterQuestions,
   readQuestions,
   readAnswers,
   createQuestions,

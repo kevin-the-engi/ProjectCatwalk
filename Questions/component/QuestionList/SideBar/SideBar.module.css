@@ -1,9 +1,41 @@
-.helpful-btn, #addAnswer-btn, .report-btn {
+.helpful-btn, .addAnswer-btn, .report-btn {
   background: none;
   border: none;
   padding: 0;
   text-decoration: underline;
   cursor: pointer;
+  transition: transform 0.2s color 0.2s;
+}
+
+.helpful-btn:hover, .addAnswer-btn:hover {
+  color: #00ace6;
+  transform: scale(1.1);
+  font-weight: bold;
+}
+
+#moreAnswer {
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.moreAnswer-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.moreAnswer-btn:hover {
+  transform: scale(1.1);
+}
+
+.report-btn:hover {
+  color: red;
+  transform: scale(1.1);
+  font-weight: bold;
 }
 
 .sidebar {

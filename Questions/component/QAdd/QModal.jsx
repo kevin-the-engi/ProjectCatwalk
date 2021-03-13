@@ -44,13 +44,12 @@ class QModal extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
     let display = this.props.show ? `${modal["modal-back"]} ${modal.["display-on"]}` : `${modal["modal-back"]} ${modal["display-off"]}`;
 
     return(
       <div className={display} onClick={this.handleClick}>
         <div className={modal["modal-main"]} id="modal-main">
-          <form onSubmit={this.handleSubmit}>
+          <form className={form["question-form"]} onSubmit={this.handleSubmit}>
             <div className={form["form-header"]}>
               <h2>Add a Question</h2>
               <sub>About the [{this.props.productName}]</sub><br />
@@ -58,7 +57,7 @@ class QModal extends React.Component {
 
             <div className={form["form-body"]}>
               <div className={form["form-main"]}>
-                <label><h4>Your Question:</h4></label><br />
+                <label htmlFor="question"><h4>Your Question:</h4></label><br />
                 <textarea
                   className={form.textarea}
                   onChange={this.handleChange}
@@ -74,7 +73,6 @@ class QModal extends React.Component {
               </div>
 
               <div className={form["form-user"]}>
-                <label><h4>Nickname:</h4></label>
                 <input
                   className={form.field}
                   id="question-username"
@@ -82,15 +80,14 @@ class QModal extends React.Component {
                   type="text"
                   name="name"
                   value={this.state.name}
-                  placeholder="jackson11!"
+                  placeholder="Nickname: jackson11!"
                   maxLength="60"
                   required>
                 </input>
-                <sub>For privacy reasons, do not use your full name or email address</sub><br />
+                <sub className={form.sub}>For privacy reasons, do not use your full name or email address</sub>
               </div>
 
               <div className={form["form-email"]}>
-                <label><h4>Email:</h4></label>
                 <input
                   className={form.field}
                   id="question-email"
@@ -98,21 +95,20 @@ class QModal extends React.Component {
                   type="email"
                   name="email"
                   value={this.state.email}
-                  placeholder="jackson11!@email.com"
+                  placeholder="Email: jackson11!@email.com"
                   maxLength="60"
                   required>
                 </input>
-                <sub>For authentication reasons, you will not be emailed</sub>
+                <sub className={form.sub}>For authentication reasons, you will not be emailed</sub>
               </div>
             </div>
 
             <div className={form["form-footer"]}>
-              <div className={form.submitDiv}>
-                <button className={form["submit-btn"]} type="submit"><h4>SUBMIT QUESTION</h4></button>
-              </div>
-              {/* <div className="close">
-                <button className="close-btn" type="button" onClick={this.props.close}>Close</button>
-              </div> */}
+              <button
+                className={form["submit-btn"]}
+                type="submit">
+                  <h4>SUBMIT QUESTION</h4>
+              </button>
             </div>
           </form>
         </div>

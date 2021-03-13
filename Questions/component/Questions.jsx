@@ -15,19 +15,21 @@ class Questions extends React.Component {
       productData: {},
       filtered: [],
       questions: [],
+      allQuestions: [],
       qTotal: 0,
       qCount: 2,
       hide: true,
-      match: true
+      match: true,
+      height: 0,
     }
 
     this.dynamicSearch = this.dynamicSearch.bind(this);
     this.getProductName = this.getProductName.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
-    this.getTotalQ = this.getTotalQ.bind(this);
     this.updateHelpfulQ = this.updateHelpfulQ.bind(this);
     this.moreQ = this.moreQ.bind(this);
+    this.setOverflow = this.setOverflow.bind(this);
   }
 
   componentDidMount() {
@@ -47,26 +49,28 @@ class Questions extends React.Component {
 
   dynamicSearch(search) {
     if (search.length >= 3) {
-      let filtered = this.state.questions.filter(question => {
-         if (question.question_body.toLowerCase().includes(search.toLowerCase())) {
-           this.setState({
-             match: true
-           })
+      axios.get(`/qa/questions/search/${this.props.productId}/${search}`)
+        .then(filtered => {
+          if (filtered.data.length !== 0) {
+            this.setState({
+              questions: filtered.data,
+              qTotal: filtered.data.length,
+              match: true
+            })
 
-           return question;
-         } else {
-           this.setState({
-             match: false
-           })
-         }
-      });
+            this.setOverflow();
+          } else {
+            this.setState({
+              match: false
+            })
 
-      this.setState({
-        filtered: filtered
-      })
+            this.setOverflow();
+          }
+        })
     } else {
+      this.getQuestions();
+
       this.setState({
-        filtered: [],
         match: true
       })
     }
@@ -85,20 +89,29 @@ class Questions extends React.Component {
   }
 
   getQuestions(productID = this.state.productID) {
-    let query = `?product_id=${productID}&page=1&count=${this.state.qCount}`;
+    let query = `?product_id=${productID}&page=1&count=100`;
 
     axios.get('/qa/questions/' + query)
       .then(questions => {
+        let cutQuestions = questions.data.results.slice(0, this.state.qCount);
+
         this.setState({
           productData: questions.data,
-          questions: questions.data.results
+          questions: cutQuestions,
+          allQuestions: questions.data.results,
+          qTotal: questions.data.results.length
+        }, () => {
+          if (this.state.qTotal !== 0 && this.state.qCount < this.state.qTotal) {
+            this.setState({
+              hide: false
+            })
+          }
+
+          this.setOverflow();
         })
       })
       .catch(err => {
         console.log(err);
-      })
-      .then(() => {
-        this.getTotalQ();
       })
   }
 
@@ -108,32 +121,10 @@ class Questions extends React.Component {
 
     axios.post('/qa/questions/', data)
       .then((res) => {
-        console.log(res);
         this.getQuestions();
       })
       .catch(err => {
         console.log(err);
-      })
-  }
-
-  getTotalQ() {
-    let query = `?product_id=${this.state.productID}&page=1&count=100`;
-
-    axios.get('/qa/questions' + query)
-      .then((questions) => {
-        this.setState({
-          qTotal: questions.data.results.length
-        })
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .then(() => {
-        if (this.state.qTotal !== 0 && this.state.qCount < this.state.qTotal) {
-          this.setState({
-            hide: false
-          })
-        }
       })
   }
 
@@ -148,7 +139,6 @@ class Questions extends React.Component {
   }
 
   moreQ() {
-    // console.log(this.state.qCount, this.state.qTotal);
     this.state.qCount += 2;
 
     if (this.state.qCount >= this.state.qTotal) {
@@ -162,24 +152,36 @@ class Questions extends React.Component {
     }
 
     this.setState({
-      qCount: this.state.qCount
+      qCount: this.state.qCount,
     })
 
+    if (this.state.qCount === 4) {
+      this.setState({
+        height: document.getElementById('Q&AList').clientHeight
+      })
+    }
+
+    this.setOverflow();
+    this.getQuestions(this.props.productId);
+  }
+
+  setOverflow() {
     if (this.state.qCount >= 4 && this.state.questions.length >= 4) {
       let divHeight = document.getElementById('Q&AList').clientHeight;
 
       document.getElementById('Q&AList').style.height = divHeight;
       document.getElementById('Q&AList').setAttribute("class", "overFlow");
+    } else {
+      document.getElementById('Q&AList').style.height = "auto";
+      document.getElementById('Q&AList').removeAttribute("overFlow");
     }
-
-    this.getQuestions(this.props.productId);
   }
 
   render() {
     return (
       <div className="main-container">
         <div className="main-header">
-          <h4>Questions & Answers</h4>
+          <span className="main-title">QUESTIONS & ANSWERS</span>
           <SearchBar dynamicSearch={this.dynamicSearch} />
         </div>
 
@@ -187,9 +189,10 @@ class Questions extends React.Component {
           {this.state.match ?
             (this.state.qTotal !== 0 ?
               <QList
-                qData={this.state.filtered.length > 0 ? this.state.filtered : this.state.questions}
+                qData={this.state.questions}
                 updateHelpfulQ={this.updateHelpfulQ}
                 productName={this.state.productName}
+                expand={this.state.expand}
               />  : <i>There are no questions for this product. Be the first to ask!</i>)
               : <i>There are no matches. Try again.</i>
           }

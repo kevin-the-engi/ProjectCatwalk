@@ -26,8 +26,13 @@ class SearchBar extends React.Component {
     return(
       <div id="searchDiv">
         <input
-          onChange={this.handleChange} className={styles.searchbar} type="text" name="search"
-          value={this.state.search} placeholder="Have a question? Search for answers...">
+          onChange={this.handleChange}
+          id="searchbar"
+          className={styles.searchbar}
+          type="text"
+          name="search"
+          value={this.state.search}
+          placeholder="Have a question? Search for answers...">
         </input>
       </div>
     )
