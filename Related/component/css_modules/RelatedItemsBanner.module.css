@@ -3,18 +3,17 @@
   margin-right: 22%;
 }
 
-.relatedItemsBanner {
-  display: flex;
-  box-sizing: border-box;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 8px;
+.sectionContainer {
+  margin-bottom: 54px; 
+  opacity: 1;
 }
 
 .sectionTitle {
-  color: #767677;
-  font-family: "AdihausDIN", Helvetica, Arial, sans-serif;
+  font-family: "AdineuePRO",Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
   text-transform: uppercase;
+  font-size: 26px;
+  line-height: 24px;
+  margin-bottom: 20px;
 }

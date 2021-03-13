@@ -7,7 +7,6 @@
   overflow: auto hidden;
   max-height: 450px;
   align-items: stretch;
-  margin-left: 8px;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 }
@@ -296,7 +295,6 @@
   max-height: 450px;
   align-items: stretch;
   scroll-behavior: smooth;
-  margin-left: 8px;
 }
 
 .outfitContainer::-webkit-scrollbar {

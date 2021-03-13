@@ -84,24 +84,23 @@ class ProductInformation extends React.Component {
         }
 
         return (
-            <div className={styles.productInformationContainer}>
-              <div className={styles.categoryContainer}>
-                <div className={styles.category}>
-                    {this.state.category}
-                </div>
-              </div>
-              <div className={styles.productDetailsContainer}>
-                <div className={styles.productName}>
-                    {this.state.productName}
-                </div>
-                {displayPrice} {discountedPrice}
-                <div className={styles.averageRating}>
-                    {starRating}
-                </div>
+          <div className={styles.productInformationContainer}>
+            <div className={styles.categoryContainer}>
+              <div className={styles.category}>
+                  {this.state.category}
               </div>
             </div>
+            <div className={styles.productDetailsContainer}>
+              <div className={styles.productName}>
+                  {this.state.productName}
+              </div>
+              {displayPrice} {discountedPrice}
+              <div className={styles.averageRating}>
+                  {starRating}
+              </div>
+            </div>
+          </div>
         )
-
     }
 }
 
