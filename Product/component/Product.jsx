@@ -17,8 +17,8 @@ class Product extends React.Component {
     styles: [],
     style: {},
     skus: [],
-    thumbnailClicked: '',
-    styleClicked: ''
+    thumbnailClicked: 0,
+    styleClicked: -1
   }
 
   this.changeStyle = this.changeStyle.bind(this)
@@ -64,7 +64,7 @@ class Product extends React.Component {
       var image;
       var style;
       var skusObject;
-      // finds default style and saves its main image and thumbnails(stylePhotos)
+      // finds default style and saves its default image and thumbnails(stylePhotos)
       for(var i = 0; i < styles.length; i++) {
         if (styles[i]['default?'] === true) {
           image = styles[i].photos[0].url;
@@ -76,10 +76,8 @@ class Product extends React.Component {
       }
 
       var skus = this.getSkus(skusObject);
-      // var productId = this.props.productId;
 
       this.setState({
-        // id: productId,
         image: image,
         stylePhotos: stylePhotos,
         styles: styles,
@@ -89,7 +87,7 @@ class Product extends React.Component {
     })
   }
 
-  // transforms skus object to array of skus data
+  // transforms skus object to array of data
   getSkus(skusObject) {
     var skus= []
 
@@ -100,30 +98,33 @@ class Product extends React.Component {
     return skus;
   }
 
-  // user clicks on new style - function higlights current style, and sends info to state, including new thumbnails (stylePhotos) and main photo corresponding to thumbnail at the index of last clicked thumbnail (image) to state
+  // When switching between styles, style is highlighted,  new thumbnails are rendered (stylePhotos), the index of the thumbnail currently selected is maintained when gallery updates (image), and new style info is collected
   changeStyle(photos, style, skus, id) {
-    if(this.state.styleClicked !== id && this.state.styleClicked !== '') {
+    // remove border from previously clicked style
+    if(this.state.styleClicked !== id && this.state.styleClicked !== -1 ) {
       var clickedStyle = this.state.styleClicked
       document.getElementById(clickedStyle).className = styles.style
     }
+
+    // add border to newly clicked style
     document.getElementById(id).className = styles.styleClicked;
 
     var skus = this.getSkus(skus);
-    
+
     this.setState({
-      stylePhotos: photos,
       image: photos[this.state.thumbnailClicked].url,
+      stylePhotos: photos,
       style: style,
       skus: skus,
       styleClicked: id
     })
   }
 
-  // user clicks on thumbnail - higlights thumbnail and updates main image
+  // user clicks on thumbnail - thumbnail gets highlighted and gallery updates
   handleThumbnailClick(photo, id) {
-    if(this.state.thumbnailClicked !== id && this.state.thumbnailClicked !== '') {
-      var clickedStyle = this.state.thumbnailClicked
-      document.getElementById(clickedStyle).className = styles.thumbnail
+    if(this.state.thumbnailClicked !== id && this.state.thumbnailClicked !== -1) {
+      var clickedThumbnail = this.state.thumbnailClicked
+      document.getElementById(clickedThumbnail).className = styles.thumbnail
       }
       document.getElementById(id).className = styles.clicked;
 
