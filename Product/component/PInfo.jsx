@@ -22,6 +22,7 @@ class Info extends React.Component {
     this.checkSizeSelected = this.checkSizeSelected.bind(this)
     this.hoverEffects = this.hoverEffects.bind(this)
   }
+  
   // based on currently selected style and size
   displayQuantities(e){
     var size =  e.target.value
@@ -42,6 +43,7 @@ class Info extends React.Component {
         isStocked = false;
         quantity = ['-']
       } else {
+        // display sequence of integers, capped by either the quantity of this style and size in stock, or a hard limit of 15.
         quantity = [...Array(quantity + 1).keys()].slice(1, 16)
       }
     // otherwise display default quantity
