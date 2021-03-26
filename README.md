@@ -1,5 +1,7 @@
 # Project Catwalk
-<img src="https://github.com/kinetickingfishers/ProjectCatwalk/blob/main/fec2.gif" align="center" width="800">
+<p align="center">
+  <img src="https://github.com/kinetickingfishers/ProjectCatwalk/blob/main/fec2.gif" align="center" width="800">
+</p>
 
 ## Introduction
 The goal of Project Catwalk is to create an online retail portal as per requested docs and specs. There are four different sections assigned to the following developers:
