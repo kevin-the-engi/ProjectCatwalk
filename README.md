@@ -10,10 +10,10 @@
   <img src="https://github.com/kinetickingfishers/ProjectCatwalk/blob/main/fec2.gif" align="center" width="800">
 </p>
 
-## Overview
+### Overview
 The goal of Project Catwalk is to create an online retail portal. Overall functionality is determined by requested docs/specs and design inspired by current retail portal trends while a product data API is provided for the database. The project is coordinated by four engineers, each responsible for one of the four main modules.
 
-## Features
+### Features
 1. Product Detail: 
    - Provides general information of the current product including price, associated styles, availability, pics, etc.
 2. Related Items & Comparison
@@ -23,12 +23,15 @@ The goal of Project Catwalk is to create an online retail portal. Overall functi
 4. Ratings & Reviews:
    - Showcases user submitted reviews and calculated ratings for current product.
 
-## Technologies
-* React.js
-* Express.js
-* Node.js
+### Technologies
+* Front-end:
+  * React.js, HTML/CSS, CSS Flexbox/Grid, CSS Modules
+* Back-end:
+  * Express.js, Node.js
+* Tools:
+  * Jest
 
-## Credits
+### Credits
 1. Product Detail: Ika Ogeil
 2. Related Items & Comparison: Jeff Huang
 3. Questions & Answers: Kevin Ng
