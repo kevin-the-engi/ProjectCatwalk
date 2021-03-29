@@ -32,7 +32,7 @@ The goal of Project Catwalk is to create an online retail portal. Overall functi
   * Jest
 
 ### Credits
-1. Product Detail: Ika Ogeil
-2. Related Items & Comparison: Jeff Huang
-3. Questions & Answers: Kevin Ng
-4. Ratings & Reviews: Britta Kotov
+* Product Detail: Ika Ogeil
+* Related Items & Comparison: Jeff Huang
+* Questions & Answers: Kevin Ng
+* Ratings & Reviews: Britta Kotov
