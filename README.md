@@ -1,5 +1,5 @@
-# Project Catwalk
-<p>
+<h1 align="center">Project Catwalk</h1>
+<p align="center">
   <img src="https://img.shields.io/badge/react-v16.14-blue">
   <img src="https://img.shields.io/badge/express-v4.17.1-blue">
   <img src="https://img.shields.io/badge/axios-v0.21.1-blue">
