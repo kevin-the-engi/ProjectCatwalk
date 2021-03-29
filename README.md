@@ -1,5 +1,6 @@
 # Project Catwalk
 <img src="https://img.shields.io/badge/react-v16.14-blue">
+<img src="https://img.shields.io/badge/express-v4.17.1-blue">
 <p align="center">
   <img src="https://github.com/kinetickingfishers/ProjectCatwalk/blob/main/fec2.gif" align="center" width="800">
 </p>
