@@ -29,7 +29,7 @@ The goal of Project Catwalk is to create an online retail portal. Overall functi
 * Back-end:
   * Express.js, Node.js
 * Tools:
-  * Jest
+  * Jest, Enzyme, Webpack/Babel
 
 ### Credits
 * Product Detail: Ika Ogeil
