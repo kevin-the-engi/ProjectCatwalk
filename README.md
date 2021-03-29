@@ -1,6 +1,11 @@
 # Project Catwalk
-<img src="https://img.shields.io/badge/react-v16.14-blue">
-<img src="https://img.shields.io/badge/express-v4.17.1-blue">
+<p>
+  <img src="https://img.shields.io/badge/react-v16.14-blue">
+  <img src="https://img.shields.io/badge/express-v4.17.1-blue">
+  <img src="https://img.shields.io/badge/axios-v0.21.1-blue">
+  <img src="https://img.shields.io/badge/webpack-v5.24.2-blue">
+  <img src="https://img.shields.io/badge/css--loader-v5.0.2-blue">
+</p>
 <p align="center">
   <img src="https://github.com/kinetickingfishers/ProjectCatwalk/blob/main/fec2.gif" align="center" width="800">
 </p>
